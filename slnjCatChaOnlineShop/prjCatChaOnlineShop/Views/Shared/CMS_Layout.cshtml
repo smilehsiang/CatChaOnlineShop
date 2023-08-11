@@ -166,13 +166,14 @@
                 </div>
             </navbar>
 
-            <div class="middle-content">
-            </div>
+            
+                @RenderBody()
+            
 
         </div>
     </div>
 
-    @RenderBody()
+    
     @await RenderSectionAsync("Scripts",required:false)
 </body>
 </html>
