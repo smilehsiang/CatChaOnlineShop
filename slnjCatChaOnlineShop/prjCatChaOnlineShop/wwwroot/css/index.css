@@ -1,0 +1,199 @@
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    height: 100%;
+}
+
+.all-content {
+    max-height: 100vh;
+}
+
+.close-icon {
+    float: right;
+    cursor: pointer;
+}
+
+.fa-times-circle {
+    font-size: 30px;
+}
+
+.fa-angle-up {
+    float: right;
+    margin-top: 5px;
+}
+
+.fa-user-shield {
+    font-size: 13px;
+}
+
+.right-content {
+    width: 100%;
+    background-color: #f8f9fc;
+    overflow-x: hidden;
+}
+
+.right-content navbar {
+    background-color: #FFF;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, .15);
+    padding: 10px;
+}
+
+.img-profile {
+    height: 50px;
+    margin: 0 0 0 10px;
+}
+
+.middle-content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.drop-animation {
+    -webkit-animation-name: growIn;
+    animation-name: growIn;
+    -webkit-animation-duration: .2s;
+    animation-duration: .2s;
+    -webkit-animation-timing-function: transform cubic-bezier(.18, 1.25, .4, 1), opacity cubic-bezier(0, 1, .4, 1);
+    animation-timing-function: transform cubic-bezier(.18, 1.25, .4, 1), opacity cubic-bezier(0, 1, .4, 1)
+}
+
+.collapse {
+    margin: 10px 0 10px 0;
+}
+
+@-webkit-keyframes growIn {
+    0% {
+        transform: scale(0.9);
+        opacity: 0
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+@keyframes growIn {
+    0% {
+        transform: scale(0.9);
+        opacity: 0
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.show-content {
+    display: block !important;
+}
+
+.SideBar .nav-item {
+    margin: 17px 0 17px 0;
+}
+
+.nav-link .title {
+    margin-left: 10px;
+}
+
+.nav-item .big-title {
+    margin-left: 5px;
+}
+
+.nav-item .nav-link {
+    color: rgba(255, 255, 255, .8);
+}
+
+.nav-item .nav-link:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.sidebar-detail-ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidebar-detail-ul li {
+    margin: 0 0.5rem;
+}
+
+.sidebar-detail-ul li a {
+    color: #3a3b45;
+    text-decoration: none;
+    /*讓a標籤可以不是點文字才導去別的頁面，整個區塊點擊*/
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
+.sidebar-detail-ul li:hover {
+    background-color: #ededed;
+    cursor: pointer;
+}
+
+.sidebar-detail-ul li:hover a {
+    color: #b95756;
+}
+
+/*font-awasome click - icon切換*/
+[data-toggle="collapse"] .fa-angle-up:before {
+    content: "\f106";
+}
+
+/*font-awasome click - icon切換*/
+[data-toggle="collapse"].collapsed .fa-angle-up:before {
+    content: "\f107";
+}
+
+.SideBar {
+    min-height: 100vh;
+    width: 16rem;
+    padding: 10px 15px 0 15px;
+    list-style: none;
+    background-color: #b95756;
+    z-index: 1000;
+    font-size: 18px;
+}
+
+.SideBar_Suppiler {
+    background-color: #477f58;
+}
+
+.hide_sidebar {
+    left: -100vw;
+}
+
+@media screen and (max-width:768px) {
+    .SideBar {
+        width: 0px;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+    }
+
+    /*背景遮罩*/
+    .maxBG {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1040;
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+        z-index: 1;
+        opacity: .9;
+    }
+
+    .show_sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        min-height: 100vh;
+        width: 15rem;
+        padding: 10px 15px 0 15px;
+        /*滑動效果*/
+        transition: left 0.3s ease;
+    }
+}
