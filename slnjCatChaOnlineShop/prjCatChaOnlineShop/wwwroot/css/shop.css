@@ -1,0 +1,122 @@
+.shop-filter-select{
+    display: inline-block;
+}
+
+.item-d {
+    color:#FFFFFF;
+    font-weight: 900;
+  }
+  .cart{
+    background-color: #b0b435;
+    color: #ffff;
+    font-weight: 900;
+  }
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .shop-cat-boxs {
+	margin-bottom: 30px;
+	position: relative;
+	padding: 3px;
+	overflow: hidden;
+	border: 0px solid #000000;
+	box-shadow: 9px 9px 30px 0px rgba(0, 0, 0, 0.3);
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease-in-out 0s;
+	border-radius: 10px;
+    background-color:#b0b435 ;
+	/*增加:邊框圓角*/
+}
+
+.shop-cat-boxs img {
+	margin: -15px 0 0 -15px;
+	max-width: none;
+	width: -webkit-calc(100% + 10px);
+	width: calc(100% + 20px);
+	/*+10px->移動後不會露出白邊*/
+	opacity: 0.9;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: translate3d(5px, 5px, 0);
+	transform: translate3d(5px, 5px, 0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.shop-cat-boxs:hover img {
+	opacity: 0.6;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+.shop-cat-boxs span{
+    padding-left: 5px;
+	text-align: middle;
+	border: none;
+	color: #FFFFFF;
+	font-size: 20px;
+	font-weight: 700;
+    z-index: 2;
+}
+
+.shop-image:hover{
+    opacity: 0.6;
+	transform: translate3d(-2px, -2px, 0);
+}

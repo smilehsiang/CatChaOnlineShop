@@ -1,0 +1,380 @@
+﻿
+@{
+    ViewData["Title"] = "ShopDetail";
+}
+
+@section Styles{
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/css/style.css" />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/css/responsive.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/custom.css" />
+    <link rel="stylesheet" href="~/css/custom-home-details-wishlist.css" />
+}
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>產品資訊</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">首頁</a></li>
+                    <li class="breadcrumb-item active">產品資訊</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start Shop Detail  -->
+<div class="shop-detail-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-5 col-md-6">
+                <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="~/images/prod-eg-1.png" alt="First slide" />
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="~/images/prod-eg-7.png" alt="Second slide" />
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="~/images/prod-eg-8.png" alt="Third slide" />
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-example-1" role="button" data-slide="next">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-1" data-slide-to="0" class="active">
+                            <img class="d-block w-100 img-fluid" src="~/images/prod-eg-1.png" alt="" />
+                        </li>
+                        <li data-target="#carousel-example-1" data-slide-to="1">
+                            <img class="d-block w-100 img-fluid" src="~/images/prod-eg-7.png" alt="" />
+                        </li>
+                        <li data-target="#carousel-example-1" data-slide-to="2">
+                            <img class="d-block w-100 img-fluid" src="~/images/prod-eg-8.png" alt="" />
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-7 col-md-6">
+                <div class="single-product-details">
+                    <div class="add-to-btn float-end">
+                    </div>
+                    <h2>喵洽普 | 貓咪營養肉泥</h2>
+
+                    <h5><del>$ 60.00</del> $40.79</h5>
+                    <p class="available-stock">
+                        <span><i class="fa-solid fa-circle-check fa-xs"></i>尚有庫存</span>
+                    </p>
+                    <p>
+                        <i class="fa-solid fa-star fa-xs"></i><i class="fa-solid fa-star fa-xs"></i><i class="fa-solid fa-star fa-xs"></i><i class="fa-solid fa-star fa-xs"></i><i class="fa-solid fa-star fa-xs"></i>(12)
+                    </p>
+                    <h4></h4>
+                    <p>
+                        一包四入
+                    </p>
+                    <ul>
+                        <li>
+                            <div class="form-group quantity-box">
+                                <label class="control-label">請選擇</label>
+                                <select class="form-control">
+                                    <option value="">請選擇</option>
+                                    <option value="1" selected>鮪魚&鮭魚</option>
+                                    <option value="2">鮪魚&干貝</option>
+                                    <option value="3">鮪魚&蟹肉</option>
+                                </select>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="form-group quantity-box">
+                                <label class="control-label">數量</label>
+                                <input class="form-control" value="0" min="0" max="20" type="number" />
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="price-box-bar">
+                        <div class="cart-and-bay-btn">
+                            <a class="btn hvr-hover" data-fancybox-close="" href="#"><i class="fa-solid fa-cart-plus"></i></a>
+                            <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- start 展開區域 -->
+        <div class="card-header">
+
+            <!-- start商品詳細資訊 -->
+            <div class="accordion" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            產品詳細資訊
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                         data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <p>
+                                ◆無穀物、無抗生素、無防腐劑</br>
+                                ◆百分之百韓國生產貓營養肉泥</br>
+                                ◆ 添加具有酶分解特性的低聚醣</br>
+                                ◆ 可改善腸道環境，維持腸道健康</br>
+                                ◆ 使用人類食用等級原料，讓貓咪吃得健康又安心</br>
+                                ◆ 特殊封口易開設計，攜帶方便不髒手</br>
+                                ◆粉色『鮪魚鮭魚』Omega3配方
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end商品詳細描述 -->
+                <!-- start評論 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            商品評論
+                            <i class="fa-solid fa-star fa-xs"></i>
+                            <i class="fa-solid fa-star fa-xs"></i>
+                            <i class="fa-solid fa-star fa-xs"></i>
+                            <i class="fa-solid fa-star fa-xs"></i>
+                            <i class="fa-solid fa-star fa-xs"></i>
+                            </i>(12)
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                         data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <div class="card-body">
+                                <div class="media mb-3">
+                                    <div class="mr-2">
+                                        <img class="rounded-circle border p-1"
+                                             src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+                                             alt="Generic placeholder image" />
+                                    </div>
+                                    <div class="media-body">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                            Omnis et enim aperiam inventore, similique necessitatibus
+                                            neque non! Doloribus, modi sapiente laboriosam aperiam
+                                            fugiat laborum. Sequi mollitia, necessitatibus quae sint
+                                            natus.
+                                        </p>
+                                        <small class="text-muted">Posted by Anonymous on 3/1/18</small>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="media mb-3">
+                                    <div class="mr-2">
+                                        <img class="rounded-circle border p-1"
+                                             src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+                                             alt="Generic placeholder image" />
+                                    </div>
+                                    <div class="media-body">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                            Omnis et enim aperiam inventore, similique necessitatibus
+                                            neque non! Doloribus, modi sapiente laboriosam aperiam
+                                            fugiat laborum. Sequi mollitia, necessitatibus quae sint
+                                            natus.
+                                        </p>
+                                        <small class="text-muted">Posted by Anonymous on 3/1/18</small>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="media mb-3">
+                                    <div class="mr-2">
+                                        <img class="rounded-circle border p-1"
+                                             src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+                                             alt="Generic placeholder image" />
+                                    </div>
+                                    <div class="media-body">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                            Omnis et enim aperiam inventore, similique necessitatibus
+                                            neque non! Doloribus, modi sapiente laboriosam aperiam
+                                            fugiat laborum. Sequi mollitia, necessitatibus quae sint
+                                            natus.
+                                        </p>
+                                        <small class="text-muted">Posted by Anonymous on 3/1/18</small>
+                                    </div>
+                                </div>
+                                <hr />
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 評論 -->
+            </div>
+        </div>
+        <!-- end 展開區域 -->
+
+        <div class="row my-5">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>相關商品</h1>
+                </div>
+                <div class="featured-products-box owl-carousel owl-theme">
+                    <!-- start prod1 -->
+                    <div class="item">
+                        <div class="products-single-custom fix">
+                            <a href="#" title="喵洽普 | 貓咪營養肉泥">
+                                <div class="box-img-hover">
+                                    <div class="type-lb">
+                                        <p class="sale">Sale</p>
+                                    </div>
+                                    <img src="~/images/prod-eg-1.png" class="img-fluid shop-image" alt="Image" />
+                                    
+                                </div>
+                            </a>
+                                <div class="why-text">
+                                    <h4>喵洽普 | 貓咪營養肉泥</h4>
+                                    <h5>$65</h5>
+                                    <button type="button" class="add-to-cart-coustom">
+                                        <i class="fa-solid fa-cart-plus"></i>
+                                    </button>
+                                    <button class="add-to-wishlist-coustom" type="button">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+
+                                </div>
+
+                            
+                        </div>
+                    </div>
+                    <!-- end prod1  -->
+                    <!-- start prod2 -->
+                    <div class="item">
+                        <div class="products-single-custom fix">
+                            <a href="#" title="PETCIRCLE｜寵物繩結胡蘿蔔">
+                                <div class="box-img-hover">
+                                    <div class="type-lb">
+                                        <p class="new">New</p>
+                                    </div>
+                                    <img src="~/images/prod-eg-2.png" class="img-fluid shop-image" alt="Image" />
+                                    
+                                </div>
+                            </a>
+                                <div class="why-text">
+                                    <h4>PETCIRCLE｜寵物繩結胡蘿蔔</h4>
+                                    <h5>$99</h5>
+                                    <button type="button" class="add-to-cart-coustom">
+                                        <i class="fa-solid fa-cart-plus"></i>
+                                    </button>
+                                    <button class="add-to-wishlist-coustom" type="button">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+
+                                </div>
+
+                            
+                        </div>
+                    </div>
+                    <!-- end prod2  -->
+                    <!-- start prod3  -->
+                    <div class="item">
+                        <div class="products-single-custom fix">
+                            <a href="#" title="Pet Candy｜手工貓草玩具">
+                                <div class="box-img-hover">
+                                    <div class="type-lb">
+                                        <p class="sale">Sale</p>
+                                    </div>
+                                    <img src="~/images/prod-eg-3.png" class="img-fluid shop-image" alt="Image" />
+                                    
+                                </div>
+                            </a>
+                                <div class="why-text">
+                                    <h4>Pet Candy｜手工貓草玩具</h4>
+                                    <h5>$240</h5>
+                                    <del>$280</del>
+                                    <button type="button" class="add-to-cart-coustom">
+                                        <i class="fa-solid fa-cart-plus"></i>
+                                    </button>
+                                    <button class="add-to-wishlist-coustom" type="button">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+
+                                </div>
+                            
+                        </div>
+                    </div>
+                    <!-- end prod3  -->
+                    <!-- start prod4 -->
+                    <div class="item">
+                        <div class="products-single-custom fix">
+                            <a href="#" title="GLADVET｜舒穩安 天然情緒保健品">
+                                <div class="box-img-hover">
+                                    <div class="type-lb">
+                                        <p class="new">New</p>
+                                    </div>
+                                    <img src="~/images/prod-eg-5.png" class="img-fluid shop-image" alt="Image" />
+                                    
+                                </div>
+
+                                <div class="why-text">
+                                    <h4>GLADVET｜舒穩安 天然情緒保健品</h4>
+                                    <h5>$2200</h5>
+
+                                    <button type="button" class="add-to-cart-coustom">
+                                        <i class="fa-solid fa-cart-plus"></i>
+                                    </button>
+                                    <button class="add-to-wishlist-coustom" type="button">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+
+                                </div>
+
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end prod4  -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Cart -->
+
+@section Scripts{
+    <!-- ALL JS FILES -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/custom-home-details-wishlist.js"></script>
+
+    <!-- ALL PLUGINS -->
+    <script src="~/js/jquery.superslides.min.js"></script>
+    <script src="~/js/bootstrap-select.js"></script>
+    <script src="~/js/inewsticker.js"></script>
+    <script src="~/js/bootsnav.js."></script>
+    <script src="~/js/images-loded.min.js"></script>
+    <script src="~/js/isotope.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/baguetteBox.min.js"></script>
+    <script src="~/js/form-validator.min.js"></script>
+    <script src="~/js/contact-form-script.js"></script>
+    <script src="~/js/custom.js"></script>
+}

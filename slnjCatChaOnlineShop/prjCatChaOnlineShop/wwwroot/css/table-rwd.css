@@ -1,0 +1,93 @@
+/*--------------------------------收藏清單RWD-----------------------------*/
+
+/*螢幕較大時標頭字體顏色*/
+tr.tr-only-hide {color: #f8f9fa;}
+
+.thumbnail-img{
+  width: 120px;
+}
+/*螢幕大時讓"x"隱藏*/
+.remove-pr-rwd{
+  text-align: center;
+  display: none;
+}
+
+.remove-pr{
+  padding:5px ;
+
+}
+.add-pr{
+  padding:5px ;
+}
+.table-main{
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+@media screen and (max-width: 736px) {
+  .table-rwd{min-width: 100%;}
+  /*針對tr去做隱藏*/
+  tr.tr-only-hide {display: none !important;}
+  /*讓tr變成區塊主要讓他有個區塊*/
+  .table-rwd tr{
+    display: block;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+  }
+  .table-rwd td {
+    text-align: left;
+    font-size: 18px;
+    overflow: hidden;
+    width: 100%;
+    display: block;
+	}
+  
+  .table-rwd td del {
+    
+    text-align: left;
+    font-size: 12px;
+    overflow: hidden;
+    width: 100%;
+    
+	}
+	.table-rwd td:before {
+    /*最重要的就是這串*/
+    content: attr(data-th);
+    /*最重要的就是這串*/
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #DE9E4F;
+  }
+  /*當RWD縮小的時候.table-bordered 會有兩條線，所以針對.table-bordered去做修正*/
+  .table-rwd.table-bordered td,.table-rwd.table-bordered th,.table-rwd.table-bordered{
+    border:0;
+  }
+  .thumbnail-img{
+    width: 120px;    
+  }
+  /*螢幕小時顯示"x"*/
+  .remove-pr-rwd{
+    display: block;
+    float: right;
+  }
+  /*螢幕小時"x"在右上，隱藏螢幕大時會出現在最後一欄的"x"*/
+  .remove-pr{
+    display: none;
+  }
+
+  .table td, .table th {
+    border-top:0;
+  }
+  tbody, td, tfoot, th, thead, tr {
+    border-color: inherit;
+    border-style: none;
+    border-width: 0;
+}
+
+
+}
+.total-pr-remove {
+  margin-left: 20%;
+}
