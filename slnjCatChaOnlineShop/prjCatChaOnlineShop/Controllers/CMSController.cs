@@ -9,7 +9,7 @@ namespace prjCatChaOnlineShop.Controllers
         { 
             return View();
         }
-        public IActionResult Salon()
+        public IActionResult SalonOrder()
         { 
             return View();
         }
@@ -25,7 +25,7 @@ namespace prjCatChaOnlineShop.Controllers
         { 
         return View();
         }
-        public IActionResult Order() 
+        public IActionResult ShopOrder() 
         { 
             return View();
         }
@@ -50,10 +50,6 @@ namespace prjCatChaOnlineShop.Controllers
             return View();
         }
         public IActionResult GameProduct()
-        {
-            return View();
-        }
-        public IActionResult DataAnalysis()
         {
             return View();
         }

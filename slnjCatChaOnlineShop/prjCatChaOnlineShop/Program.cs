@@ -22,6 +22,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Cms}/{action=Adminmanage}/{id?}");
+    pattern: "{controller=Cms}/{action=Index}/{id?}");
 
 app.Run();

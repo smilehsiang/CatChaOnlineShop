@@ -1,0 +1,31 @@
+﻿/*容器垂直置中*/
+body {
+    height: 100vh;
+    /* 設定容器高度為視窗高度，確保垂直置中的效果 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e5d27891;
+    background-image: linear-gradient(to top, #fbdfa7, #ffebeb);
+}
+
+.bg-login-image {
+    background: url(/images/2267272.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.btn-user {
+    background-image: linear-gradient(to right, #ff00e9, #00ebff);
+    /* 設定漸層方向 (to right 表示水平向右) 和漸層顏色起始終止點 */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+    .login-right-card {
+        margin: 1.8rem !important;
+    }
+}
