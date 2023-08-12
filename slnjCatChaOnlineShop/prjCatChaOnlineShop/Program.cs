@@ -22,6 +22,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Cms}/{action=Adminmanage}/{id?}");
+    pattern: "CMS管理系統/{controller=Member}/{action=Member}/{id?}");
 
 app.Run();
