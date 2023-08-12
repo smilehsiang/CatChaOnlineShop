@@ -4,7 +4,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
 {
     public class DataAnalysisController : Controller
     {
-        public IActionResult Index()
+        public IActionResult IndDataAnalysisex()
         {
             return View();
         }

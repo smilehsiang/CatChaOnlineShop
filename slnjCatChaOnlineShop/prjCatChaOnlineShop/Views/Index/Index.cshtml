@@ -1,0 +1,546 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Styles{
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/css/star-rating.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-fas/theme.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" />
+
+    <link rel="stylesheet" href="~/css/review.css" />
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/css/responsive.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/custom.css" />
+    <link rel="stylesheet" href="~/css/custom-home-details-wishlist.css" />
+
+}
+<!-- Start Slider -->
+<div id="slides-shop" class="cover-slides">
+    <ul class="slides-container">
+        <li class="text-center">
+            <img src="~/images/home-slide-1.jpg" alt="" />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p><a class="btn hvr-hover" href="#">來去逛逛</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-center">
+            <img src="~/images/home-slide-2.jpg" alt="" />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p><a class="btn hvr-hover" href="#">來去逛逛</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-center">
+            <img src="~/images/home-slide-3.jpg" alt="" />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p><a class="btn hvr-hover" href="#">來去逛逛</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="slides-navigation">
+        <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+    </div>
+</div>
+<!-- End Slider -->
+<!-- start 貓寵補給站區域 -->
+<div class="box-add-products position-relative">
+    <div class="container padding-custom">
+        <div class="home-title text-center">
+            <h1>貓寵補給站</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 div-center-custom">
+
+                <div class="round-box-title">熱賣商品</div>
+                <div class="round-box-custome offer-box-products">
+                    <img class="text-center rounded-circle img-fluid" src="~/images/hot.png" alt="" />
+                    <a href="#">
+                        <div class="mask rounded-circle">
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-6 div-center-custom">
+                <div class="round-box-title">貓咪玩具</div>
+                <div class="round-box-custome offer-box-products">
+                    <img class="text-center rounded-circle img-fluid" src="~/images/toy.png" alt="" />
+                    <a href="#">
+                        <div class="mask rounded-circle">
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-6 div-center-custom">
+                <div class="round-box-title">保健食品</div>
+                <div class="round-box-custome offer-box-products">
+                    <img class="text-center rounded-circle img-fluid" src="~/images/supplement.png" alt="" />
+                    <a href="#">
+                        <div class="mask rounded-circle">
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-6 div-center-custom">
+                <div class="round-box-title">寵物美容</div>
+                <div class="round-box-custome offer-box-products">
+                    <img class="text-center rounded-circle img-fluid" src="~/images/shower.png" alt="" />
+                    <a href="#">
+                        <div class="mask rounded-circle">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- <div class="col-lg-3 col-md-3 col-sm-6 div-center-custom">
+                <div class="offer-box-products rounded-circle">
+                  <a href="#">
+                    <div class="round-box-custome offer-box-products rounded-circle">
+                      <img
+                        class="text-center rounded-circle img-fluid"
+                        src="images/shower.png"
+                        alt=""
+                      />
+                      <span >寵物美容</span>
+                    </div>
+                  </a>
+                </div>
+              </div> -->
+        </div>
+    </div>
+</div>
+<!-- end 貓寵補給站區域 -->
+<!-- Start 新進商品區域  -->
+<div class="products-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="home-section-title">
+                    <h2>新進商品!</h2>
+                    <a href="#">
+                        <span>瀏覽所有新商品</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row special-list">
+
+            <!-- start prod1  -->
+            <div class="col-lg-3 col-md-6 special-grid best-seller">
+                <div class="products-single-custom fix">
+                    <a href="http://127.0.0.1:5500/shop-detail.html" title="喵洽普 | 貓咪營養肉泥">
+
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="sale">Sale</p>
+                            </div>
+                            <img src="~/images/prod-eg-1.png" class="img-fluid shop-image" alt="Image" />
+
+                        </div>
+                    </a>
+                    <div class="why-text">
+                        <h4>喵洽普 | 貓咪營養肉泥</h4>
+                        <h5>$65</h5>
+                        <button type="button" class="add-to-cart-coustom">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                        <button class="add-to-wishlist-coustom" type="button">
+                            <i class="far fa-heart"></i>
+                        </button>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- end prod1  -->
+            <!-- start prod2  -->
+            <div class="col-lg-3 col-md-6 special-grid best-seller">
+                <div class="products-single-custom fix">
+                    <a href="#" title="PETCIRCLE｜寵物繩結胡蘿蔔">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="new">New</p>
+                            </div>
+                            <img src="~/images/prod-eg-2.png" class="img-fluid shop-image" alt="Image" />
+
+                        </div>
+                    </a>
+                    <div class="why-text">
+                        <h4>PETCIRCLE｜寵物繩結胡蘿蔔</h4>
+                        <h5>$99</h5>
+                        <button type="button" class="add-to-cart-coustom">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                        <button class="add-to-wishlist-coustom" type="button">
+                            <i class="far fa-heart"></i>
+                        </button>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- end prod2  -->
+            <!-- start prod3  -->
+            <div class="col-lg-3 col-md-6 special-grid best-seller">
+                <div class="products-single-custom fix">
+                    <a href="#" title="Pet Candy｜手工貓草玩具">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="sale">Sale</p>
+                            </div>
+                            <img src="~/images/prod-eg-3.png" class="img-fluid shop-image" alt="Image" />
+
+                        </div>
+                    </a>
+                    <div class="why-text">
+                        <h4>Pet Candy｜手工貓草玩具</h4>
+                        <h5>$240</h5>
+                        <del>$280</del>
+                        <button type="button" class="add-to-cart-coustom">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                        <button class="add-to-wishlist-coustom" type="button">
+                            <i class="far fa-heart"></i>
+                        </button>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- end prod3  -->
+            <!-- start prod4 -->
+            <div class="col-lg-3 col-md-6 special-grid best-seller">
+                <div class="products-single-custom fix">
+                    <a href="#" title="GLADVET｜舒穩安 天然情緒保健品">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="new">New</p>
+                            </div>
+                            <img src="~/images/prod-eg-5.png" class="img-fluid shop-image" alt="Image" />
+
+                        </div>
+                    </a>
+                    <div class="why-text">
+                        <h4>GLADVET｜舒穩安 天然情緒保健品</h4>
+                        <h5>$2200</h5>
+
+                        <button type="button" class="add-to-cart-coustom">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                        <button class="add-to-wishlist-coustom" type="button">
+                            <i class="far fa-heart"></i>
+                        </button>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+            <!-- end prod4  -->
+        </div>
+    </div>
+</div>
+<!-- End 新進商品  -->
+<!-- Start Blog  -->
+<div class="latest-blog">
+    <div class="container sale-info-box">
+        <div class="card">
+            <img src="~/images/sale-info.jpg" class="card-img" alt="...">
+            <div class="card-img-overlay">
+                <p class="card-title">特別寵寶驚喜箱</p>
+                <p class="card-text">UP TO</p>
+                <p class="discount ">50%</p>
+                <p class="card-text">熱賣商品與新進商品都在這裡!</p>
+                <p class="card-text">用甜甜價把寶貝喜歡的帶回家~</p>
+                <div class="go-to-sale-info">
+                    <a href="#">
+                        <span>快來看看我!</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="timer-section">
+            <span>倒數計時</span></br>
+            <span id="timer">12:00:00</span>
+        </div>
+    </div>
+</div>
+<!-- End Blog  -->
+<!-- Start 熱賣商品區域  -->
+<div class="products-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="home-section-title">
+                    <h2>熱賣商品!</h2>
+                    <a href="#">
+                        <span>瀏覽所有熱賣商品</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row special-list">
+
+            <!-- start prod1  -->
+            <div class="col-lg-3 col-md-6 special-grid best-seller">
+                <div class="products-single-custom fix">
+                    <a href="#" title="喵洽普 | 貓咪營養肉泥">
+
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="sale">Sale</p>
+                            </div>
+                            <img src="~/images/prod-eg-1.png" class="img-fluid shop-image" alt="Image" />
+
+                        </div>
+                    </a>
+                    <div class="why-text">
+                        <h4>喵洽普 | 貓咪營養肉泥</h4>
+                        <h5>$65</h5>
+                        <button type="button" class="add-to-cart-coustom">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                        <button class="add-to-wishlist-coustom" type="button">
+                            <i class="far fa-heart"></i>
+                        </button>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- end prod1  -->
+            <!-- start prod2  -->
+            <div class="col-lg-3 col-md-6 special-grid best-seller">
+                <div class="products-single-custom fix">
+                    <a href="#" title="PETCIRCLE｜寵物繩結胡蘿蔔">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="new">New</p>
+                            </div>
+                            <img src="~/images/prod-eg-2.png" class="img-fluid shop-image" alt="Image" />
+
+                        </div>
+                    </a>
+                    <div class="why-text">
+                        <h4>PETCIRCLE｜寵物繩結胡蘿蔔</h4>
+                        <h5>$99</h5>
+                        <button type="button" class="add-to-cart-coustom">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                        <button class="add-to-wishlist-coustom" type="button">
+                            <i class="far fa-heart"></i>
+                        </button>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- end prod2  -->
+            <!-- start prod3  -->
+            <div class="col-lg-3 col-md-6 special-grid best-seller">
+                <div class="products-single-custom fix">
+                    <a href="#" title="Pet Candy｜手工貓草玩具">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="sale">Sale</p>
+                            </div>
+                            <img src="~/images/prod-eg-3.png" class="img-fluid shop-image" alt="Image" />
+
+                        </div>
+                    </a>
+                    <div class="why-text">
+                        <h4>Pet Candy｜手工貓草玩具</h4>
+                        <h5>$240</h5>
+                        <del>$280</del>
+                        <button type="button" class="add-to-cart-coustom">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                        <button class="add-to-wishlist-coustom" type="button">
+                            <i class="far fa-heart"></i>
+                        </button>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- end prod3  -->
+            <!-- start prod4 -->
+            <div class="col-lg-3 col-md-6 special-grid best-seller">
+                <div class="products-single-custom fix">
+                    <a href="#" title="GLADVET｜舒穩安 天然情緒保健品">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="new">New</p>
+                            </div>
+                            <img src="~/images/prod-eg-5.png" class="img-fluid shop-image" alt="Image" />
+
+                        </div>
+                    </a>
+                    <div class="why-text">
+                        <h4>GLADVET｜舒穩安 天然情緒保健品</h4>
+                        <h5>$2200</h5>
+
+                        <button type="button" class="add-to-cart-coustom">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                        <button class="add-to-wishlist-coustom" type="button">
+                            <i class="far fa-heart"></i>
+                        </button>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- end prod4  -->
+        </div>
+    </div>
+</div>
+<!-- End 熱賣商品  -->
+<!-- Start 評論  -->
+<div class="title-all text-center">
+    <h1>商品評論</h1>
+</div>
+<div class="slider slider-nav">
+    <div class="slides">
+        <div class="container line mt-3">
+            <div class="row mt-2">
+                <div class="col-12 line">
+                    <img src="https://images.chinatimes.com/newsphoto/2022-01-23/656/20220123002048.jpg" class="img-fluid">
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center mt-3">
+                <div class="col-lg-4 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                    </svg>
+                </div>
+                <div class="col"> <span class="slides-span">陳xx東</span></div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5" dir="ltr" data-size="lg" data-show-clear="false" data-show-caption="false">
+            </div>
+            <p>真的非常好用 我也很推薦給其他人 真的非常好用</p>
+        </div>
+    </div>
+    <div class="slide">
+        <div class="container line mt-3">
+            <div class="row mt-2">
+                <div class="col-12 line">
+                    <img src="https://images.chinatimes.com/newsphoto/2022-01-23/656/20220123002048.jpg" class="img-fluid">
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center mt-3">
+                <div class="col-lg-4 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                    </svg>
+                </div>
+                <div class="col"> <span class="slide-span">陳xx東</span></div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5" dir="ltr" data-size="lg" data-show-clear="false" data-show-caption="false">
+            </div>
+            <p>真的非常好用 我也很推薦給其他人 真的非常好用</p>
+        </div>
+    </div>
+    <div class="slide">
+        <div class="container line mt-3">
+            <div class="row mt-2">
+                <div class="col-12 line">
+                    <img src="https://images.chinatimes.com/newsphoto/2022-01-23/656/20220123002048.jpg" class="img-fluid">
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center mt-3">
+                <div class="col-lg-4 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                    </svg>
+                </div>
+                <div class="col"> <span class="slide-span">陳xx東</span></div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5" dir="ltr" data-size="lg" data-show-clear="false" data-show-caption="false">
+            </div>
+            <p>真的非常好用 我也很推薦給其他人 真的非常好用</p>
+        </div>
+    </div>
+    <div class="slide">
+        <h3>4</h3>
+    </div>
+    <div class="slide">
+        <h3>5</h3>
+    </div>
+</div>
+<!-- End 評論  -->
+@section Scripts{
+
+    <!-- ALL JS FILES -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- 原首頁下拉選單消失問題少了下面這個: -->
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/star-rating.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/locales/LANG.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-star-rating@4.1.2/js/star-rating.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-fas/theme.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="~/js/review.js"></script>
+    <script src="~/js/custom-home-details-wishlist.js"></script>
+
+    <!-- ALL PLUGINS -->
+    <script src="~/js/jquery.superslides.min.js"></script>
+    <script src="~/js/bootstrap-select.js"></script>
+    <script src="~/js/inewsticker.js"></script>
+    <script src="~/js/bootsnav.js."></script>
+    <script src="~/js/images-loded.min.js"></script>
+    <script src="~/js/isotope.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/baguetteBox.min.js"></script>
+    <script src="~/js/form-validator.min.js"></script>
+    <script src="~/js/contact-form-script.js"></script>
+    <script src="~/js/custom.js"></script>
+}

@@ -4,7 +4,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
 {
     public class NavbarController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Navbar()
         {
             return View();
         }

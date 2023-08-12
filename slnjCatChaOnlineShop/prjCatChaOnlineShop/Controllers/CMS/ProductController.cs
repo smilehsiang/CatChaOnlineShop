@@ -4,7 +4,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
 {
     public class ProductController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Product()
         {
             return View();
         }

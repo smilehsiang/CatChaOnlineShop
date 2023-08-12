@@ -4,7 +4,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
 {
     public class AdminManageController : Controller
     {
-        public IActionResult Index()
+        public IActionResult AdminManage()
         {
             return View();
         }

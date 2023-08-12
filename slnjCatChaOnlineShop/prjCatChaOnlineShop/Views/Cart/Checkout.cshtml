@@ -1,0 +1,1206 @@
+﻿@{
+    ViewData["Title"] = "Checkout";
+}
+
+@section Styles{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/custom.css">
+    <!--myCss-->
+    <link rel="stylesheet" href="~/css/myCss.css">
+
+}
+
+<!-- Start All Title Box -->
+<div class="all-title-box-picture all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>填寫結帳資料</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="shop.html">首頁</a></li>
+                    <li class="breadcrumb-item active">結帳</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!--中間主畫面Start-->
+<div class="cart-box-main">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12 col-lg-12">
+                <div class="odr-box">
+                    <div class="title-left">
+                        <h3>購物明細</h3>
+                    </div>
+                    <div class="rounded p-2 bg-light">
+                        <div class="media mb-2 border-bottom">
+                            <div class="media-body">
+                                <a href="detail.html"> 熱帶雨林芭蕉樹貓跳台</a>
+                                <div class="small text-muted">
+                                    價格: NT1,280 <span class="mx-2">|</span> 數量: 1
+                                    <span class="mx-2">|</span> 小計: NT1,280
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media mb-2 border-bottom">
+                            <div class="media-body">
+                                <a href="detail.html"> 小黃花仙人掌貓抓柱</a>
+                                <div class="small text-muted">
+                                    價格: NT699<span class="mx-2">|</span> 數量: 1
+                                    <span class="mx-2">|</span> 小計: NT699
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media mb-2">
+                            <div class="media-body">
+                                <a href="detail.html"> ZEZE 好柿幸運貓抓柱</a>
+                                <div class="small text-muted">
+                                    價格: NT990 <span class="mx-2">|</span> 數量: 1
+                                    <span class="mx-2">|</span> 小計: NT990
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--貓幣折抵Start-->
+        <!--新增catCoin-Margin的樣式-->
+        <div class="row catCoin-Margin">
+            <div class="col-sm-12 col-lg-12 mb-3">
+                <div class="checkout-address">
+                    <div class="title-left">
+                        <h3>貓幣折抵</h3>
+                    </div>
+                    <form class="needs-validation" novalidate>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="use_CatCoin">
+                            <label class="custom-control-label" for="use_CatCoin">使用1000貓幣折抵NT100</label>
+                        </div>
+                        <div class="ml-4 mb-2 small">您有75648個貓幣，單筆訂單最多可折抵10%商品金額</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--貓幣折抵End-->
+        <!--使用優惠券欄位Start-->
+        <div class="row ">
+            <div class="col-sm-12 col-lg-12 mb-2">
+                <div class="checkout-address">
+                    <div class="title-left">
+                        <h3>使用優惠券</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <label for="cc-name">優惠券代碼</label>
+                            <div class="input-group mb-2">
+                                <input type="text" class="form-control" placeholder="請輸入優惠券代碼(英數字)"
+                                       aria-label="請輸入優惠券代碼(英數字)" aria-describedby="button-addon2">
+                                <button class="coupon-box-btn ml-auto btn hvr-hover coupon-box" type="button"
+                                        id="button-couponCode">
+                                    使用優惠券
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-1  coupon-box-a">
+                            <a>或</a>
+                        </div>
+                        <div class="col-md-5 mb-2">
+                            <label for="cc-name">使用我的優惠券</label>
+                            <div class="input-group mb-3">
+                                <!-- 觸發互動視窗的按鈕 -->
+                                <button type="button" class="coupon-box-btn btn hvr-hover coupon-box" data-bs-toggle="modal"
+                                        data-bs-target="#myCouponBackdrop">
+                                    我的優惠券
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 互動視窗內容 -->
+                    <div class="modal fade " id="myCouponBackdrop" data-bs-backdrop="static"
+                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="myCouponBackdropLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="myCouponBackdropLabel">我的優惠券</h5>
+                                    <button type="button" class="btn-close " data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="getCouponList" class="modal-body">
+                                        <div class="coupon-content flex-container">
+                                            <div class="coupon-left flex-container flex-1">
+                                                <div class="coupon-intro text-center">
+                                                    <div class="intro green">免運<br>運費折抵</div>
+                                                </div>
+                                                <div class="coupon-middle flex-container flex-1">
+                                                    <div class="middle-left flex-1">
+                                                        <span class="coupon-tag">
+                                                            限用 1
+                                                            次
+                                                        </span>&ensp;<span class="coupon-name">2023買飼料免運費八月份</span>
+                                                        <div class="coupon-description">
+                                                            買貓狗飼料免運費，指名來好物快寵
+                                                        </div>
+                                                        <div class="coupon-time">
+                                                            有效期限：2023-09-01 00:00
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="coupon-status text-center">
+                                                <div class="coupon-status-left flex-1 text-left">
+                                                    <span>優惠碼</span>
+                                                    <div class="coupon-code">PetFoodFree08</div>
+                                                </div>
+                                                <button type="button" class="btn">立即使用</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class=" modal-footer ">
+                                    <button type=" button" class="coupon-btn"
+                                            data-bs-dismiss="modal">
+                                        不使用優惠券
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--使用優惠券欄位End-->
+        <!--訂購人資料Start-->
+        <div class="row ">
+            <div class="col-sm-12 col-lg-12 mb-3">
+                <div class="title-left">
+                    <h3>訂購人資料</h3>
+                </div>
+                <div>
+                    <ul class="customer_info">
+                        <li>姓名：徐雅莉</li>
+                        <li>電話：0923468145</li>
+                        <li>Email：seoari@gmail.com</li>
+                        <li>地址： 台北市信義區松壽路12號</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--訂購人資料End-->
+        <!--運送方式Start-->
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 mb-3">
+                <div class="title-left">
+                    <h3>運送方式</h3>
+                </div>
+                <nav>
+                    <div class="nav nav-tabs" id="DeliveryMethod_nav-tab" role="tablist">
+                        <button class=" nav-link active" id="DeliveryMethod_711-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-711" type="button" role="tab"
+                                aria-controls="DeliveryMethod_711-tab" aria-selected="true">
+                            7-11取貨
+                        </button>
+                        <button class=" nav-link" id="DeliveryMethod_fami-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-fami" type="button" role="tab"
+                                aria-controls="DeliveryMethod_fami-tab" aria-selected="false">
+                            全家取貨
+                        </button>
+                        <button class="nav-link " id="DeliveryMethod_byHome-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-homeService" type="button" role="tab"
+                                aria-controls="DeliveryMethod_byHome-tab" aria-selected="false">
+                            宅配到府
+                        </button>
+                        <button class="nav-link" id="DeliveryMethod_post-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-post" type="button" role="tab"
+                                aria-controls="DeliveryMethod_post-tab" aria-selected="false">
+                            郵局配送
+                        </button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="DeliveryMethod_nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-711" role="tabpanel"
+                         aria-labelledby="DeliveryMethod_711-tab">
+                        <ul>
+                            <li>
+                                超商門市：桂林門市
+                                <!-- 觸發選擇711超商的按鈕 -->
+                                <button type="button" class="chooseStore_btn" data-bs-toggle="modal"
+                                        data-bs-target="#choose711Store">
+                                    選擇門市
+                                </button>
+                                <!-- 選擇711超商的互動視窗 -->
+                                <div class="modal fade" id="choose711Store" data-bs-backdrop="static"
+                                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="my711StoreLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="my711StoreLabel">我的7-11門市</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table class="table addressBox_modal">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>選擇</th>
+                                                            <th>超商門市</th>
+                                                            <th>姓名</th>
+                                                            <th>電話</th>
+                                                            <th>刪除</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="radio" name="select" value="option1">
+                                                            </td>
+                                                            <td>貴陽門市</td>
+                                                            <td>徐雅莉</td>
+                                                            <td>0923468145</td>
+                                                            <td><span id="delete">刪除</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="radio" name="select" value="option1">
+                                                            </td>
+                                                            <td>桂林門市</td>
+                                                            <td>王小美</td>
+                                                            <td>0985624473</td>
+                                                            <td><span id="delete">刪除</span></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="coupon-btn"
+                                                        data-bs-dismiss="modal">
+                                                    確定
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>姓名：韓俊景</li>
+                            <li>電話：0927463518</li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="nav-fami" role="tabpanel"
+                         aria-labelledby="DeliveryMethod_fami-tab">
+                        <ul>
+                            <li>
+                                超商門市：全家成都店
+                                <!-- 觸發選擇全家超商的按鈕 -->
+                                <button type="button" class="chooseStore_btn" data-bs-toggle="modal"
+                                        data-bs-target="#chooseFamiStore">
+                                    選擇門市
+                                </button>
+                                <!-- 選擇全家超商的互動視窗 -->
+                                <div class="modal fade" id="chooseFamiStore" data-bs-backdrop="static"
+                                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="myFamiStoreLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="myFamiStoreLabel">我的全家門市</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table class="table addressBox_modal">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>選擇</th>
+                                                            <th>超商門市</th>
+                                                            <th>姓名</th>
+                                                            <th>電話</th>
+                                                            <th>刪除</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="radio" name="select" value="option1">
+                                                            </td>
+                                                            <td>全家大里店</td>
+                                                            <td>鄭小璇</td>
+                                                            <td>0984637265</td>
+                                                            <td><span id="delete">刪除</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="radio" name="select" value="option1">
+                                                            </td>
+                                                            <td>全家信義店</td>
+                                                            <td>錢錢</td>
+                                                            <td>0985624473</td>
+                                                            <td><span id="delete">刪除</span></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="coupon-btn"
+                                                        data-bs-dismiss="modal">
+                                                    確定
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>姓名：尹程善</li>
+                            <li>電話：0983755199</li>
+                        </ul>
+                    </div>
+                    <!--選擇宅配地址Start-->
+                    <div class="tab-pane fade" id="nav-homeService" role="tabpanel"
+                         aria-labelledby="DeliveryMethod_byHome-tab">
+                        <div class="row ">
+                            <div class="col-sm-12 col-lg-12 mb-3">
+                                <nav class="mt-2">
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <input class="nav-link active" id="nav-homeMemberInfo-tab"
+                                               data-bs-toggle="tab" data-bs-target="#nav-homeMemberInfo" type="radio"
+                                               name="deliveryHomeOption" role="tab" aria-controls="nav-homeMemberInfo"
+                                               aria-selected="true" checked>
+                                        <label for="nav-homeMemberInfo-tab">同訂購人資料</label>
+
+                                        <input class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                               data-bs-target="#nav-profile" type="radio" name="deliveryHomeOption"
+                                               role="tab" aria-controls="nav-profile" aria-selected="false">
+
+                                        <label for="nav-profile-tab">從儲存的地址中挑選</label>
+
+                                        <input class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                                               data-bs-target="#nav-contact" type="radio" name="deliveryHomeOption"
+                                               role="tab" aria-controls="nav-contact" aria-selected="false">
+
+                                        <label for="nav-contact-tab">自填收件人資料</label>
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-homeMemberInfo" role="tabpanel"
+                                         aria-labelledby="nav-homeMemberInfo-tab">
+                                        <ul>
+                                            <li>姓名：徐雅莉</li>
+                                            <li>電話：0923468145</li>
+                                            <li>Email：seoari@gmail.com</li>
+                                            <li>地址： 台北市信義區松壽路12號</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                         aria-labelledby="nav-profile-tab">
+                                        <ul>
+                                            <li>姓名：尹詩炫</li>
+                                            <li>電話：0983726593</li>
+                                            <li>Email：chungah@gmail.com</li>
+                                            <li>地址： 新北市板橋區縣民大道二段7號</li>
+                                        </ul>
+                                        <div class="input-group mb-3">
+                                            <!-- 觸發選擇地址視窗的按鈕 -->
+                                            <button type="button" class="coupon-btn" data-bs-toggle="modal"
+                                                    data-bs-target="#chooseMyAddress">
+                                                選擇地址
+                                            </button>
+                                        </div>
+                                        <!-- 選擇地址視窗的按鈕 -->
+                                        <div class="modal fade" id="chooseMyAddress" data-bs-backdrop="static"
+                                             data-bs-keyboard="false" tabindex="-1"
+                                             aria-labelledby="MyAddressBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="MyAddressBackdropLabel">
+                                                            我的地址
+                                                        </h5>
+                                                        <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <table class="table addressBox_modal">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>選擇</th>
+                                                                    <th>姓名</th>
+                                                                    <th>電子信箱</th>
+                                                                    <th>地址</th>
+                                                                    <th>聯絡電話</th>
+                                                                    <th>刪除</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <input type="radio" name="select"
+                                                                               value="option1">
+                                                                    </td>
+                                                                    <td>徐雅莉</td>
+                                                                    <td>123@gmail.com</td>
+                                                                    <td>台北市信義區松壽路12號</td>
+                                                                    <td>0923468145</td>
+                                                                    <td><span id="delete">刪除</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <input type="radio" name="select"
+                                                                               value="option1">
+                                                                    </td>
+                                                                    <td>王小美</td>
+                                                                    <td>567@gmail.com</td>
+                                                                    <td>台北市萬華區成都路33號</td>
+                                                                    <td>0985624473</td>
+                                                                    <td><span id="delete">刪除</span></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="coupon-btn"
+                                                                data-bs-dismiss="modal">
+                                                            確定
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-contact" role="tabpanel"
+                                         aria-labelledby="nav-contact-tab">
+                                        <form class="needs-validation" novalidate>
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3 mt-2">
+                                                    <label for="username">姓名 *</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="username"
+                                                               placeholder="請輸入與證件相符的姓名" required>
+                                                        <div class="invalid-feedback" style="width: 100%;">
+                                                            請輸入姓名
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3 mt-2">
+                                                    <label for="email">電話 *</label>
+                                                    <input type="email" class="form-control" id="email"
+                                                           placeholder="請輸入手機號碼">
+                                                    <div class="invalid-feedback"> 請輸入電話號碼 </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3 mt-2">
+                                                    <label for="email">電子信箱</label>
+                                                    <input type="email" class="form-control" id="email"
+                                                           placeholder="">
+                                                    <div class="invalid-feedback"> 請輸入電子信箱 </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="country">縣市 *</label>
+                                                    <select class="wide w-100" id="country">
+                                                        <option value="Choose..." data-display="Select">請選擇</option>
+                                                        <option value="United States">台北市</option>
+                                                        <option value="United States">花蓮市</option>
+                                                    </select>
+                                                    <div class="invalid-feedback"> 請選擇縣市 </div>
+                                                </div>
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="state">行政區 *</label>
+                                                    <select class="wide w-100" id="state">
+                                                        <option data-display="Select">請選擇</option>
+                                                        <option>大安區</option>
+                                                    </select>
+                                                    <div class="invalid-feedback"> 請選擇行政區</div>
+                                                </div>
+                                                <div class="col-md-6 mb-1">
+                                                    <label for="address">寄送地址 *</label>
+                                                    <input type="text" class="form-control" id="address"
+                                                           placeholder="" required>
+                                                    <div class="invalid-feedback"> 請輸入地址 </div>
+                                                </div>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
+                                                       id="save-NewAddress1">
+                                                <label class="custom-control-label"
+                                                       for="save-NewAddress1">儲存至常用地址</label>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--選擇宅配地址End-->
+                    <!--選擇郵寄地址Start-->
+                    <div class="tab-pane fade " id="nav-post" role="tabpanel"
+                         aria-labelledby="DeliveryMethod_post-tab">
+                        <div class="row mt-2">
+                            <div class="col-sm-12 col-lg-12 mb-3">
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-buyer-tab" role="tablist">
+                                        <input class="nav-link active" id="nav-memberInfo-tab" data-bs-toggle="tab"
+                                               data-bs-target="#nav-memberInfo" type="radio" name="deliveryPostOption"
+                                               role="tab" aria-controls="nav-memberInfo" aria-selected="true" checked>
+                                        <label for="nav-memberInfo-tab">同訂購人資料</label>
+
+                                        <input class="nav-link" id="nav-addressInfo-tab" data-bs-toggle="tab"
+                                               data-bs-target="#nav-addressInfo" type="radio" name="deliveryPostOption"
+                                               role="tab" aria-controls="nav-addressInfo" aria-selected="false">
+
+                                        <label for="nav-addressInfo-tab">從儲存的地址中挑選</label>
+
+                                        <input class="nav-link" id="nav-inputAddress-tab" data-bs-toggle="tab"
+                                               data-bs-target="#nav-inputAddress" type="radio"
+                                               name="deliveryPostOption" role="tab" aria-controls="nav-inputAddress"
+                                               aria-selected="false">
+
+                                        <label for="nav-inputAddress-tab">自填收件人資料</label>
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent2">
+                                    <div class="tab-pane fade show active" id="nav-memberInfo" role="tabpanel"
+                                         aria-labelledby="nav-memberInfo-tab">
+                                        <ul>
+                                            <li>姓名：徐雅莉</li>
+                                            <li>電話：0923468145</li>
+                                            <li>Email：seoari@gmail.com</li>
+                                            <li>地址： 台北市信義區松壽路12號</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="nav-addressInfo" role="tabpanel"
+                                         aria-labelledby="nav-addressInfo-tab">
+                                        <ul>
+                                            <li>姓名：尹詩炫</li>
+                                            <li>電話：0983726593</li>
+                                            <li>Email：chungah@gmail.com</li>
+                                            <li>地址： 新北市板橋區縣民大道二段7號</li>
+                                        </ul>
+                                        <div class="input-group mb-3">
+                                            <!-- 觸發選擇地址視窗的按鈕 -->
+                                            <button type="button" class="coupon-btn" data-bs-toggle="modal"
+                                                    data-bs-target="#choosePostAddress">
+                                                選擇地址
+                                            </button>
+                                        </div>
+                                        <!-- 選擇地址視窗的按鈕 -->
+                                        <div class="modal fade" id="choosePostAddress" data-bs-backdrop="static"
+                                             data-bs-keyboard="false" tabindex="-1"
+                                             aria-labelledby="PostAddressBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="PostAddressBackdropLabel">
+                                                            我的地址
+                                                        </h5>
+                                                        <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <table class="table addressBox_modal">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>選擇</th>
+                                                                    <th>姓名</th>
+                                                                    <th>電子信箱</th>
+                                                                    <th>地址</th>
+                                                                    <th>聯絡電話</th>
+                                                                    <th>刪除</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <input type="radio" name="select"
+                                                                               value="option1">
+                                                                    </td>
+                                                                    <td>徐雅莉</td>
+                                                                    <td>123@gmail.com</td>
+                                                                    <td>台北市信義區松壽路12號</td>
+                                                                    <td>0923468145</td>
+                                                                    <td><span id="delete">刪除</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <input type="radio" name="select"
+                                                                               value="option1">
+                                                                    </td>
+                                                                    <td>王小美</td>
+                                                                    <td>567@gmail.com</td>
+                                                                    <td>台北市萬華區成都路33號</td>
+                                                                    <td>0985624473</td>
+                                                                    <td><span id="delete">刪除</span></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="coupon-btn"
+                                                                data-bs-dismiss="modal">
+                                                            確定
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-inputAddress" role="tabpanel"
+                                         aria-labelledby="nav-inputAddress-tab">
+                                        <form class="needs-validation" novalidate>
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3 mt-2">
+                                                    <label for="username">姓名 *</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="username"
+                                                               placeholder="請輸入與證件相符的姓名" required>
+                                                        <div class="invalid-feedback" style="width: 100%;">
+                                                            請輸入姓名
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3 mt-2">
+                                                    <label for="email">電話 *</label>
+                                                    <input type="email" class="form-control" id="email"
+                                                           placeholder="請輸入手機號碼">
+                                                    <div class="invalid-feedback"> 請輸入電話號碼 </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3 mt-2">
+                                                    <label for="email">電子信箱</label>
+                                                    <input type="email" class="form-control" id="email"
+                                                           placeholder="">
+                                                    <div class="invalid-feedback"> 請輸入電子信箱 </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="country">縣市 *</label>
+                                                    <select class="wide w-100" id="country">
+                                                        <option value="Choose..." data-display="Select">請選擇</option>
+                                                        <option value="United States">台北市</option>
+                                                        <option value="United States">花蓮市</option>
+                                                    </select>
+                                                    <div class="invalid-feedback"> 請選擇縣市 </div>
+                                                </div>
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="state">行政區 *</label>
+                                                    <select class="wide w-100" id="state">
+                                                        <option data-display="Select">請選擇</option>
+                                                        <option>大安區</option>
+                                                    </select>
+                                                    <div class="invalid-feedback"> 請選擇行政區</div>
+                                                </div>
+                                                <div class="col-md-6 mb-1">
+                                                    <label for="address">寄送地址 *</label>
+                                                    <input type="text" class="form-control" id="address"
+                                                           placeholder="" required>
+                                                    <div class="invalid-feedback"> 請輸入地址 </div>
+                                                </div>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
+                                                       id="save-NewAddress2">
+                                                <label class="custom-control-label"
+                                                       for="save-NewAddress2">儲存至常用地址</label>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--選擇郵寄地址End-->
+                </div>
+            </div>
+        </div>
+        <!--運送方式End-->
+        <!--付款方式Start-->
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 mb-3">
+                <div class="title-left">
+                    <h3>付款方式</h3>
+                </div>
+                <!--三種付款方式選項分頁按鈕-->
+                <nav class="customer_info">
+                    <div class="nav nav-tabs" id="nav-paymentMethod-tab" role="tablist">
+                        <input class="nav-link active" id="nav-credit-tab" type="radio" name="paymentMethod"
+                               data-bs-toggle="tab" data-bs-target="#nav-credit" role="tab" aria-controls="nav-credit"
+                               aria-selected="true" checked>
+                        <label for="nav-credit-tab">信用卡付款</label>
+
+                        <input class="nav-link" id="nav-ATM-tab" type="radio" name="paymentMethod"
+                               data-bs-toggle="tab" data-bs-target="#nav-ATM" role="tab" aria-controls="nav-ATM"
+                               aria-selected="false">
+                        <label for="nav-ATM-tab">銀行轉帳</label>
+
+                        <input class="nav-link" id="nav-cashOnDelivery-tab" type="radio" name="paymentMethod"
+                               data-bs-toggle="tab" data-bs-target="#nav-cashOnDelivery" role="tab"
+                               aria-controls="nav-cashOnDelivery" aria-selected="false">
+                        <label for="nav-cashOnDelivery-tab">貨到付款</label>
+                    </div>
+                </nav>
+                <!--三種付款方式的分頁-->
+                <div class="tab-content invoice-size" id="nav-invoice-tabContent">
+                    <!--信用卡付款分頁內容-->
+                    <div class="tab-pane fade show active" id="nav-credit" role="tabpanel"
+                         aria-labelledby="nav-credit-tab">
+                        <div class="row ">
+                            <form class="needs-validation" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6 ">
+                                        <label for="cc-name">持卡人姓名</label>
+                                        <input type="text" class="form-control" id="cc-name" placeholder="請輸入全名"
+                                               required>
+                                        <div class="invalid-feedback"> 持卡人姓名為必填 </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <label for="cc-number">信用卡號</label>
+                                        <input type="text" class="form-control" id="cc-number"
+                                               placeholder="XXXX-XXXX-XXXX-XXXX" required>
+                                        <div class="invalid-feedback"> 信用卡號為必填 </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 ">
+                                        <label for="cc-expiration">到期日</label>
+                                        <input type="text" class="form-control" id="cc-expiration"
+                                               placeholder="MM/YY" required>
+                                        <div class="invalid-feedback"> 到期日為必填 </div>
+                                    </div>
+                                    <div class="col-md-3 ">
+                                        <label for="cc-expiration">CVV</label>
+                                        <input type="text" class="form-control" id="cc-cvv" placeholder="背面末三碼"
+                                               required>
+                                        <div class="invalid-feedback"> 信用卡檢核碼為必填 </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="payment-icon-mycss payment-icon ">
+                                            <ul>
+                                                <li>
+                                                    <img class="img-fluid" src="~/images/payment-icon/1.png" alt="">
+                                                </li>
+                                                <li>
+                                                    <img class="img-fluid" src="~/images/payment-icon/2.png" alt="">
+                                                </li>
+                                                <li>
+                                                    <img class="img-fluid" src="images/payment-icon/3.png" alt="">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--銀行轉帳分頁內容-->
+                    <div class="tab-pane fade" id="nav-ATM" role="tabpanel" aria-labelledby="nav-ATM-tab">
+                        <label class="nav-ATM-css">選擇此方式再送出訂單後會得到一組僅供本次交易使用的轉帳帳號，請在期限內匯款完畢，否則此筆交易將取消。</label>
+                        <ul class="nav-ATM-fontSize">
+                            <li>以下為範例：</li>
+                            <li>轉帳銀行：013國泰世華銀行</li>
+                            <li>轉帳帳號：1470305054433903(僅供本次交易使用)</li>
+                            <li>轉帳金額：NT2969</li>
+                            <li>繳款期限：2023年08月05日23點59分前</li>
+                        </ul>
+                    </div>
+                    <!--貨到付款分頁內容-->
+                    <div class="tab-pane fade" id="nav-cashOnDelivery" role="tabpanel"
+                         aria-labelledby="nav-cashOnDelivery-tab">
+                        <ul class="nav-ATM-fontSize">
+                            <li>目前僅供超商取貨可使用「超商取貨付款」</li>
+                            <li>單筆訂單金額二萬元以內可使用。</li>
+                            <li>為確保順利取件，請填寫正確姓名及手機號碼。</li>
+                            <li>商品送達門市時會簡訊通知，送達門市後逾期未前往取貨常溫七天/低溫四天，商品將退回貓抓抓購物。</li>
+                            <li>如有多次未取貨記錄，將影響您日後訂購商品的權益。</li>
+                            <li>訂單金額滿2000元免收運費，不足酌收60元運費。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--付款方式End-->
+        <!--發票資料Start-->
+        <div class="row ">
+            <div class="col-sm-12 col-lg-12 mb-3">
+                <div class="title-left">
+                    <h3>發票資料</h3>
+                </div>
+                <!--四種發票的選項分頁按鈕-->
+                <nav>
+                    <div class="nav nav-tabs" id="nav-invoice-tab" role="tablist">
+                        <button class=" nav-link active" id="nav-einvoice-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-einvoice" type="button" role="tab" aria-controls="nav-einvoice"
+                                aria-selected="true">
+                            個人雲端發票
+                        </button>
+                        <button class=" nav-link" id="nav-taxIDNum-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-taxIDNum" type="button" role="tab" aria-controls="nav-taxIDNum"
+                                aria-selected="false">
+                            公司用(僅供線上列印)
+                        </button>
+                        <button class=" nav-link" id="nav-invoiceDonate-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-invoiceDonate" type="button" role="tab"
+                                aria-controls="nav-invoiceDonate" aria-selected="false">
+                            雲端發票捐贈
+                        </button>
+                        <button class="nav-link" id="nav-paperInvoice-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-paperInvoice" type="button" role="tab"
+                                aria-controls="nav-paperInvoice" aria-selected="false">
+                            個人紙本發票
+                        </button>
+                    </div>
+                </nav>
+                <!--四種發票選項的分頁-->
+                <div class="tab-content invoice-size" id="nav-invoice-tabContent">
+                    <!--個人雲端發票分頁內容-->
+                    <div class="tab-pane fade show active" id="nav-einvoice" role="tabpanel"
+                         aria-labelledby="nav-einvoice-tab">
+                        <div class="row ">
+                            <div class="col-sm-12 col-lg-12 mb-3">
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <input class="nav-link active" id="nav-mobileBarcode-tab"
+                                               data-bs-toggle="tab" data-bs-target="#nav-mobileBarcode" type="radio"
+                                               name="deliveryOption" role="tab" aria-controls="nav-mobileBarcode"
+                                               aria-selected="true" checked>
+                                        <label for="nav-mobileBarcode-tab">手機條碼載具</label>
+
+                                        <input class="nav-link" id="nav-IDcode-tab" data-bs-toggle="tab"
+                                               data-bs-target="#nav-IDcode" type="radio" name="deliveryOption"
+                                               role="tab" aria-controls="nav-IDcode" aria-selected="false">
+                                        <label for="nav-IDcode-tab">自然人憑證載具</label>
+                                    </div>
+                                </nav>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="nav-mobileBarcode" role="tabpanel"
+                                         aria-labelledby="nav-mobileBarcode-tab">
+                                        <!-- 手機條碼載具內容 -->
+                                        <div class="row">
+                                            <div class="col-md-3 mb-3">
+                                                <label for="eInvoiceNum">載具條碼：</label>
+                                                <div class="input-group">
+
+                                                    <input type="text" class="form-control" id="eInvoiceNum"
+                                                           placeholder="請輸入載具條碼(包含/)" required>
+                                                    <div class="invalid-feedback" style="width: 100%;">
+                                                        請輸入載具條碼
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 mb-3 d-flex align-items-end">
+                                                <!-- 觸發選擇載具條碼的按鈕 -->
+                                                <button type="button" class="chooseStore_btn" data-bs-toggle="modal"
+                                                        data-bs-target="#chooseEinvoice">
+                                                    選擇載具條碼
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- 選擇載具條碼的互動視窗 -->
+                                        <div class="modal fade" id="chooseEinvoice" data-bs-backdrop="static"
+                                             data-bs-keyboard="false" tabindex="-1"
+                                             aria-labelledby="myFamiStoreLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="myEinvoiceLabel">我的載具條碼</h5>
+                                                        <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <table class="table addressBox_modal ">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>選擇</th>
+                                                                    <th>載具條碼</th>
+                                                                    <th>刪除</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <input type="radio" name="selectEinvoice"
+                                                                               value="option1">
+                                                                    </td>
+                                                                    <td>/W837DG3</td>
+                                                                    <td><span id="delete">刪除</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <input type="radio" name="selectEinvoice"
+                                                                               value="option1">
+                                                                    </td>
+                                                                    <td>/9Qj376W</td>
+                                                                    <td><span id="delete">刪除</span></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="coupon-btn"
+                                                                data-bs-dismiss="modal">
+                                                            確定
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input"
+                                                   id="recordMobileBarcode">
+                                            <label class="custom-control-label"
+                                                   for="recordMobileBarcode">我同意紀錄本次手機條碼為常用載具</label>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-IDcode" role="tabpanel"
+                                         aria-labelledby="nav-IDcode-tab">
+                                        <!-- 自然人憑證載具內容 -->
+                                        <div class="row">
+                                            <div class="col-md-3 mb-3">
+                                                <label for="IDcodeNum">自然人憑證載具：</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="IDcodeNum"
+                                                           placeholder="請輸入共16碼大寫英數字" required>
+                                                    <div class="invalid-feedback" style="width: 100%;">
+                                                        自然人憑證格式不正確，請重新輸入
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="recordIDcode">
+                                            <label class="custom-control-label"
+                                                   for="recordIDcode">我同意紀錄本次自然人憑證為常用載具</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--公司用分頁內容-->
+                    <div class="tab-pane fade" id="nav-taxIDNum" role="tabpanel" aria-labelledby="nav-taxIDNum-tab">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="taxIDNum">統一編號：</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="taxIDNum" placeholder="請輸入統一編號"
+                                           required>
+                                    <div class="invalid-feedback" style="width: 100%;"> 請輸入統一編號 </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="invoice-companyName">公司名稱：</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="invoice-companyName"
+                                           placeholder="請輸入公司名稱" required>
+                                    <div class="invalid-feedback" style="width: 100%;"> 請輸入公司名稱 </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="recordTaxcode">
+                                <label class="custom-control-label" for="recordTaxcode">我同意紀錄本次統一編號為常用統編</label>
+                            </div>
+                            <div class="ml-4 small einvoice-color">*開立發票後，至會員中心/訂單查詢，下載列印電子發票證明聯（報帳用）</div>
+                        </div>
+
+                    </div>
+                    <!--分頁內容-->
+                    <div class="tab-pane fade" id="nav-invoiceDonate" role="tabpanel"
+                         aria-labelledby="nav-invoiceDonate-tab">
+                        <div class="row ml-4 mt-2">
+                            <div class="col-md-4 mb-3 ">
+                                <input class="form-check-input" type="radio" name="donateInvoiceCode"
+                                       id="InvoiceCode1018" checked>
+                                <label class=" form-check-label" for="InvoiceCode1018">財團法人台灣肯納自閉症基金會(1018)</label>
+                            </div>
+                            <div class="col-md-4 mb-3 ">
+                                <input class="form-check-input" type="radio" name="donateInvoiceCode"
+                                       id="InvoiceCode52599">
+                                <label class="form-check-label" for="InvoiceCode52599">財團法人台灣輔助犬公益基金會(52599)</label>
+                            </div>
+                            <div class="col-md-4 mb-3 ">
+                                <input class="form-check-input" type="radio" name="donateInvoiceCode"
+                                       id="InvoiceCode9527">
+                                <label class="form-check-label" for="InvoiceCode9527">財團法人罕見疾病基金會(9527)</label>
+                            </div>
+                            <div class="col-md-4 mb-3 ">
+                                <input class="form-check-input" type="radio" name="donateInvoiceCode"
+                                       id="InvoiceCode1050">
+                                <label class="form-check-label" for="InvoiceCode1050">財團法人脊髓損傷社會福利基金會(1050)</label>
+                            </div>
+                            <div class="col-md-4 mb-3 ">
+                                <input class="form-check-input" type="radio" name="donateInvoiceCode"
+                                       id="InvoiceCode321">
+                                <label class="form-check-label" for="InvoiceCode321">財團法人中華民國唐氏症基金會(321)</label>
+                            </div>
+                            <div class="col-md-4 mb-3 ">
+                                <input class="form-check-input" type="radio" name="donateInvoiceCode"
+                                       id="InvoiceCode0855">
+                                <label class="form-check-label"
+                                       for="InvoiceCode0855">財團法人中華民國發展遲緩兒童基金會(0855)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--個人紙本分頁內容-->
+                    <div class="tab-pane fade" id="nav-paperInvoice" role="tabpanel"
+                         aria-labelledby="nav-paperInvoice-tab">
+                        <form class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="username">姓名 *</label>
+                                <input type="text" class="form-control" id="username" placeholder="請輸入與證件相符的姓名"
+                                       required>
+                                <div class="invalid-feedback">請輸入姓名</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <label for="country">縣市 *</label>
+                                    <select class="wide w-100" id="country" required>
+                                        <option value="United States" data-display="Select">請選擇</option>
+                                        <option value="United States">台北市</option>
+                                        <option value="United States">花蓮市</option>
+                                    </select>
+                                    <div class="invalid-feedback">請選擇縣市</div>
+                                </div>
+
+                                <div class="col-md-3 mb-3">
+                                    <label for="state">行政區 *</label>
+                                    <select class="wide w-100" id="state" required>
+                                        <option data-display="Select">請選擇</option>
+                                        <option>大安區</option>
+                                    </select>
+                                    <div class="invalid-feedback">請選擇行政區</div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="address">寄送地址 *</label>
+                                    <input type="text" class="form-control" id="address" placeholder="" required>
+                                    <div class="invalid-feedback">請輸入地址</div>
+                                </div>
+                            </div>
+                            <div class="small einvoice-color">*發票於到貨後猶豫期+5個工作天以平信寄出。</div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!--同意退換貨條款-->
+            <div class="col-sm-12 col-lg-12 mb-3">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="returnsInvoice">
+                    <label class="custom-control-label" for="returnsInvoice">
+                        我同意辦理退貨時，由貓抓抓代為處理電子發票及銷貨退回證明單，以加速退款作業。
+                        <br>依統一發票使用辦法規定，個人發票一經開立，不得更改或改開公司戶發票。
+                        <a href="https://www.einvoice.nat.gov.tw/?CSRT=6201288656407980614"
+                           class="einvoice-link">財政部電子發票流程說明</a>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!--發票資料End-->
+        <!--小計Start-->
+        <div class="row ">
+            <div class="col-md-12 col-lg-12">
+                <div class="title-left">
+                    <h3>總計</h3>
+                </div>
+                <div class="order-box">
+                    <div class="d-flex">
+                        <h4>小計</h4>
+                        <div class="ml-auto font-weight-bold"> NT2969 </div>
+                    </div>
+                    <div class="d-flex">
+                        <h4>折扣</h4>
+                        <div class="ml-auto font-weight-bold"> NT0</div>
+                    </div>
+                    <hr class="my-1">
+                    <div class="d-flex">
+                        <h4>優惠券折扣</h4>
+                        <div class="ml-auto font-weight-bold"> NT0 </div>
+                    </div>
+                    <div class="d-flex">
+                        <h4>運費</h4>
+                        <div class="ml-auto font-weight-bold"> NT60 </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex gr-total">
+                        <h5>總計</h5>
+                        <div class="ml-auto h5"> NT3029 </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="coupon-box-btn col-12 d-flex shopping-box">
+                <a href="MyCatCha_CheckoutDetails.html"
+                   class="checkout-btn ml-auto btn hvr-hover">送出訂單</a>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+    </div>
+    </div>
+<!--中間主畫面End-->
+@section Scripts{
+    <!-- ALL JS FILES -->
+    <!--引用Bundle，這樣nav導覽與頁籤就可以使用-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <!--引用分離(Separate)-->
+    @*  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script> *@
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ"
+            crossorigin="anonymous"></script>
+    <!---->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="~/js/jquery.superslides.min.js"></script>
+    <script src="~/js/bootstrap-select.js"></script>
+    <script src="~/js/inewsticker.js"></script>
+    <script src="~/js/bootsnav.js."></script>
+    <script src="~/js/images-loded.min.js"></script>
+    <script src="~/js/isotope.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/baguetteBox.min.js"></script>
+    <script src="~/js/form-validator.min.js"></script>
+    <script src="~/js/contact-form-script.js"></script>
+    <script src="~/js/custom.js"></script>
+    <!--nav導覽與頁籤使用-->
+    <script src="~/js/myScript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+}
+
+

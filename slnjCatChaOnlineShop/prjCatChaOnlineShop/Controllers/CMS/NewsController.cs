@@ -4,7 +4,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
 {
     public class NewsController : Controller
     {
-        public IActionResult Index()
+        public IActionResult news()
         {
             return View();
         }

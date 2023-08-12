@@ -4,7 +4,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
 {
     public class BonusController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Bonus()
         {
             return View();
         }

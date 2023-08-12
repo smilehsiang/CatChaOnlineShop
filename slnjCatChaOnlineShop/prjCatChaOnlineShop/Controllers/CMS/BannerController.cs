@@ -4,7 +4,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
 {
     public class BannerController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Banner()
         {
             return View();
         }

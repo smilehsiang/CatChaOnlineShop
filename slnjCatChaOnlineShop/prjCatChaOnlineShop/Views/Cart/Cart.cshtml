@@ -1,0 +1,284 @@
+﻿@{
+    ViewData["Title"] = "Cart";
+}
+
+
+@section Styles{
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css">
+    <link rel="stylesheet" href="~/css/onlyCart.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/custom.css">
+}
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>購物車</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">首頁</a></li>
+                    <li class="breadcrumb-item active">購物車</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start About Page  -->
+<!-- cart + summary -->
+<section class=" my-5">
+    <div class="container">
+        <div class="row">
+            <!-- cart -->
+            <div class="col-lg-9 order-1 order-sm-1 order-md-1 order-xs-1">
+                <div class="card border shadow-0">
+                    <div class="m-4">
+                        <div class="row gy-3 mb-4">
+                            <div class="col-lg-5">
+                                <div class="me-lg-5">
+                                    <div class="d-flex">
+                                        <img src="~/images/instagram-img-08.jpg" class="border rounded me-3" style="width: 96px; height: 96px;" />
+                                        <div class="">
+                                            <a href="#" class="nav-link">一個貓罐頭</a>
+                                            <div class="">
+                                                <select class="form-select for-detail-select me-4">
+                                                    <option>1kg,小份</option>
+                                                    <option>2kg,中份</option>
+                                                    <option>3kg,大份</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
+                                <div class="">
+                                    <span>數量</span>
+                                    <select class="form-select me-4 for-count-select">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                                <div class="">
+                                    <p class="mb-0">價格</p>
+                                    <span class="h6">$1,156</span> <br />
+                                    <small class="text-muted text-nowrap"> $460 / 份 </small>
+                                </div>
+                            </div>
+                            <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
+                                <div class="float-md-end">
+                                    <a href="#" class="btn btn-light border text-danger icon-hover-danger"> 移除</a>
+                                </div>
+                            </div>
+                            <hr class="for-hr">
+                        </div>
+
+                        <div class="row gy-3 mb-4">
+                            <div class="col-lg-5">
+                                <div class="me-lg-5">
+                                    <div class="d-flex">
+                                        <img src="~/images/instagram-img-08.jpg" class="border rounded me-3" style="width: 96px; height: 96px;" />
+                                        <div class="">
+                                            <a href="#" class="nav-link">一個貓罐頭</a>
+                                            <div class="">
+                                                <select class="form-select me-4 for-detail-select">
+                                                    <option>1kg,小份</option>
+                                                    <option>2kg,中份</option>
+                                                    <option>3kg,大份</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
+                                <div class="">
+                                    <span>數量</span>
+                                    <select class="form-select me-4 for-count-select">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                                <div class="">
+                                    <p class="mb-0">價格</p>
+                                    <span class="h6">$1,156</span> <br />
+                                    <small class="text-muted text-nowrap"> $460 / 份 </small>
+                                </div>
+                            </div>
+                            <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
+                                <div class="float-md-end">
+                                    <a href="#" class="btn btn-light border text-danger icon-hover-danger"> 移除</a>
+                                </div>
+                            </div>
+                            <hr class="for-hr">
+                        </div>
+
+                        <div class="row gy-3">
+                            <div class="col-lg-5">
+                                <div class="me-lg-5">
+                                    <div class="d-flex">
+                                        <img src="~/images/instagram-img-08.jpg" class="border rounded me-3" style="width: 96px; height: 96px;" />
+                                        <div class="">
+                                            <a href="#" class="nav-link">一個貓罐頭</a>
+                                            <div class="">
+                                                <select class="form-select me-4 for-detail-select">
+                                                    <option>1kg,小份</option>
+                                                    <option>2kg,中份</option>
+                                                    <option>3kg,大份</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
+                                <div class="">
+                                    <span>數量</span>
+                                    <select class="form-select me-4 for-count-select">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                                <div class="">
+                                    <p class="mb-0">價格</p>
+                                    <span class="h6">$1,156</span> <br />
+                                    <small class="text-muted text-nowrap"> $460 / 份 </small>
+                                </div>
+                            </div>
+                            <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
+                                <div class="float-md-end">
+                                    <a href="#" class="btn btn-light border text-danger icon-hover-danger"> 移除</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- cart -->
+            <!-- summary -->
+            <div class="col-lg-3 order-2 order-sm-2 order-md-2 order-xs-2">
+                <div class="card mb-3 border shadow-0">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label class="form-label">您目前持有的優惠券</label>
+                                <div class="input-group">
+                                    <select style="width: 80px;" class="form-select ">
+                                        <option>10%抵用券</option>
+                                        <option>10%抵用券</option>
+                                        <option>10%抵用券</option>
+                                    </select>
+                                    <button class="btn btn-light border">使用</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card shadow-0 border">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <p class="mb-2">總價:</p>
+                            <p class="mb-2">$329</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="mb-2">折扣:</p>
+                            <p class="mb-2 text-success">-$60</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="mb-2">稅額:</p>
+                            <p class="mb-2">$14</p>
+                        </div>
+                        <hr class="for-hr">
+                        <div class="d-flex justify-content-between">
+                            <p class="mb-2">小計:</p>
+                            <p class="mb-2 fw-bold">$283</p>
+                        </div>
+
+                        <div class="mt-3">
+                            <a href="MyCatCha_CheckoutDetails.html" class="btn btn-success w-100 shadow-0 mb-2"> 前往結帳 </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- summary -->
+        </div>
+        <div class="col-lg-4 mt-5 order-1 order-sm-1 order-md-1 order-xs-1">
+            <h4>安全且便利的購物</h4>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <i class="fa-solid fa-rotate-left"></i>7天內免費退貨
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-mdb-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            免費退貨
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            <i class="fa-regular fa-credit-card"></i>便捷的支付方式
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-mdb-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            便捷的支付方式
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            <i class="fa-solid fa-cart-flatbed"></i>可送貨到府或其他指定地點
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-mdb-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            可送貨到府或其他指定地點
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End About Page -->
+@section Scripts{
+    <!-- ALL JS FILES -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="~/js/jquery.superslides.min.js"></script>
+    <script src="~/js/bootstrap-select.js"></script>
+    <script src="~/js/inewsticker.js"></script>
+    <script src="~/js/bootsnav.js."></script>
+    <script src="~/js/images-loded.min.js"></script>
+    <script src="~/js/isotope.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/baguetteBox.min.js"></script>
+    <script src="~/js/form-validator.min.js"></script>
+    <script src="~/js/contact-form-script.js"></script>
+    <script src="~/js/custom.js"></script>
+}
+
+
