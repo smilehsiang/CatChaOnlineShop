@@ -1,13 +1,26 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="zh-tw">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/index.css">
+    <link href="~/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-    @await RenderSectionAsync("Styles",required:false)
-    <title>貓抓抓-後台管理中心</title>
+    <!---字型-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
 
+    <!--DATATABLE-->
+    <link rel="stylesheet" href="~/css/cdnjs.cloudflare.com_ajax_libs_twitter-bootstrap_5.3.0_css_bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/cdn.datatables.net_1.13.6_css_dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="~/css/cdn.datatables.net_responsive_2.5.0_css_responsive.bootstrap5.min.css">
+
+    @await RenderSectionAsync("Styles", required: false)
 </head>
+
 <body>
     <div class="d-flex all-content">
 
@@ -28,7 +41,7 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item active">
-                <a class="nav-link" href="DataAnalysis.html">
+                <a class="nav-link" asp-area="" asp-controller="CMS" asp-action="Index">
                     <i class="fas fa-chart-pie"></i>
                     <span class="title">數據分析</span>
                 </a>
@@ -39,7 +52,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="member.html">
+                <a class="nav-link" asp-area="" asp-controller="CMS" asp-action="Member">
                     <i class="fas fa-user"></i>
                     <span class="title">會員管理</span>
                 </a>
@@ -58,13 +71,13 @@
                     <div class="bg-white text-dark py-2 collapse-inner rounded">
                         <div class="center">
                             <ul class="sidebar-detail-ul">
-                                <li><a href="order.html">商城訂單管理</a></li>
-                                <li><a href="salon.html">美容訂單管理</a></li>
-                                <li><a href="product.html">產品管理</a></li>
-                                <li><a href="grooming.html">寵物美容管理</a></li>
-                                <li><a href="bonus.html">優惠券管理</a></li>
-                                <li><a href="return.html">退換貨管理</a></li>
-                                <li><a href="ProductReview.html">產品評論管理</a></li>
+                                <li><a asp-area="" asp-controller="CMS" asp-action="ShopOrder">商城訂單管理</a></li>
+                                <li><a asp-area="" asp-controller="CMS" asp-action="SalonOrder">美容訂單管理</a></li>
+                                <li><a asp-area="" asp-controller="CMS" asp-action="Product">產品管理</a></li>
+                                <li><a asp-area="" asp-controller="CMS" asp-action="Grooming">寵物美容管理</a></li>
+                                <li><a asp-area="" asp-controller="CMS" asp-action="Bonus">優惠券管理</a></li>
+                                <li><a asp-area="" asp-controller="CMS" asp-action="Return">退換貨管理</a></li>
+                                <li><a asp-area="" asp-controller="CMS" asp-action="ProductReview">產品評論管理</a></li>
                             </ul>
                         </div>
                     </div>
@@ -84,7 +97,7 @@
                     <div class="bg-white text-dark py-2 collapse-inner rounded">
                         <div class="center">
                             <ul class="sidebar-detail-ul">
-                                <li><a href="GameProduct.html">商品管理</a></li>
+                                <li><a asp-area="" asp-controller="CMS" asp-action="GameProduct">商品管理</a></li>
                             </ul>
                         </div>
                     </div>
@@ -92,7 +105,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="service.html">
+                <a class="nav-link" asp-area="" asp-controller="CMS" asp-action="Service">
                     <i class="fas fa-headset"></i>
                     <span class="title">客服回覆</span>
                 </a>
@@ -114,9 +127,9 @@
                     <div class="bg-white text-dark py-2 collapse-inner rounded">
                         <div class="center">
                             <ul class="sidebar-detail-ul">
-                                <li><a href="banner.html">Banner</a></li>
-                                <li><a href="navbar.html">navbar</a></li>
-                                <li><a href="new.html">公告消息</a></li>
+                                <li><a asp-area="" asp-controller="CMS" asp-action="Banner">Banner</a></li>
+                                <li><a asp-area="" asp-controller="CMS" asp-action="Navbar">navbar</a></li>
+                                <li><a asp-area="" asp-controller="CMS" asp-action="News">公告消息</a></li>
                             </ul>
                         </div>
                     </div>
@@ -124,7 +137,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="AdminManage.html">
+                <a class="nav-link" asp-area="" asp-controller="CMS" asp-action="AdminManage">
                     <i class="fas fa-user-shield"></i>
                     <span class="big-title">管理員</span>
                 </a>
@@ -134,14 +147,14 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" target="_blank">
                     <i class="fas fa-home"></i>
-                    <span class="big-title">回首頁</span>
+                    <span class="big-title">回商城首頁</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="javascript:;">
+                <a class="nav-link" onclick="SignOut()" style="cursor: pointer;">
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="big-title">登出</span>
                 </a>
@@ -173,7 +186,42 @@
         </div>
     </div>
 
-    
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+    <script src="~/js/index.js"></script>
+
+    <!--DATATABLE-->
+    <script src="~/js/cdn.datatables.net_1.13.6_js_jquery.dataTables.min.js"></script>
+    <script src="~/js/cdn.datatables.net_1.13.6_js_dataTables.bootstrap5.min.js"></script>
+    <script src="~/js/cdn.datatables.net_responsive_2.5.0_js_dataTables.responsive.min.js"></script>
+    <script src="~/js/cdn.datatables.net_responsive_2.5.0_js_responsive.bootstrap5.min.js"></script>
+
+    <!--SWEET ALERT-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--登出事件-->
+    <!--用src引入會造成中文變成亂碼-->
+    <script>
+        function SignOut() {
+            Swal.fire({
+                title: '確定要登出嗎?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, sign out!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'sign out!',
+                        'You has been sign out.',
+                        'success'
+                    )
+                }
+            })
+        }
+    </script>
+
     @await RenderSectionAsync("Scripts",required:false)
 </body>
 </html>
