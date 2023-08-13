@@ -1,0 +1,12 @@
+diff a/slnjCatChaOnlineShop/prjCatChaOnlineShop/Program.cs b/slnjCatChaOnlineShop/prjCatChaOnlineShop/Program.cs	(rejected hunks)
+@@ -22,6 +22,10 @@
+ 
+ app.MapControllerRoute(
+     name: "default",
++<<<<<<< HEAD
+     pattern: "CMS�޲z�t��/{controller=Member}/{action=Member}/{id?}");
++=======
++    pattern: "{controller=Cms}/{action=Index}/{id?}");
++>>>>>>> fab44e010b89e08312646effb1f86919957e51c7
+ 
+ app.Run();

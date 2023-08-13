@@ -6,7 +6,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
     {
         public IActionResult Member()
         {
-            return View();
+            return View("~/Views/CMSBackend/Member/Member.cshtml");
         }
     }
 }
