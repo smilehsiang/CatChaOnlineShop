@@ -41,7 +41,7 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item active">
-                <a class="nav-link" asp-area="" asp-controller="CMS" asp-action="Index">
+                <a class="nav-link" asp-area="" asp-controller="DataAnalysis" asp-action="DataAnalysis">
                     <i class="fas fa-chart-pie"></i>
                     <span class="title">數據分析</span>
                 </a>
@@ -52,7 +52,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" asp-area="" asp-controller="CMS" asp-action="Member">
+                <a class="nav-link" asp-area="" asp-controller="Member" asp-action="Member">
                     <i class="fas fa-user"></i>
                     <span class="title">會員管理</span>
                 </a>
@@ -71,13 +71,13 @@
                     <div class="bg-white text-dark py-2 collapse-inner rounded">
                         <div class="center">
                             <ul class="sidebar-detail-ul">
-                                <li><a asp-area="" asp-controller="CMS" asp-action="ShopOrder">商城訂單管理</a></li>
-                                <li><a asp-area="" asp-controller="CMS" asp-action="SalonOrder">美容訂單管理</a></li>
-                                <li><a asp-area="" asp-controller="CMS" asp-action="Product">產品管理</a></li>
-                                <li><a asp-area="" asp-controller="CMS" asp-action="Grooming">寵物美容管理</a></li>
-                                <li><a asp-area="" asp-controller="CMS" asp-action="Bonus">優惠券管理</a></li>
-                                <li><a asp-area="" asp-controller="CMS" asp-action="Return">退換貨管理</a></li>
-                                <li><a asp-area="" asp-controller="CMS" asp-action="ProductReview">產品評論管理</a></li>
+                                <li><a asp-area="" asp-controller="Order" asp-action="Order">商城訂單管理</a></li>
+                                <li><a asp-area="" asp-controller="Salon" asp-action="Salon">美容訂單管理</a></li>
+                                <li><a asp-area="" asp-controller="Product" asp-action="Product">產品管理</a></li>
+                                <li><a asp-area="" asp-controller="Grooming" asp-action="Grooming">寵物美容管理</a></li>
+                                <li><a asp-area="" asp-controller="Bonus" asp-action="Bonus">優惠券管理</a></li>
+                                <li><a asp-area="" asp-controller="Return" asp-action="Return">退換貨管理</a></li>
+                                <li><a asp-area="" asp-controller="ProductReview" asp-action="ProductReview">產品評論管理</a></li>
                             </ul>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                     <div class="bg-white text-dark py-2 collapse-inner rounded">
                         <div class="center">
                             <ul class="sidebar-detail-ul">
-                                <li><a asp-area="" asp-controller="CMS" asp-action="GameProduct">商品管理</a></li>
+                                <li><a asp-area="" asp-controller="GameProduct" asp-action="GameProduct">商品管理</a></li>
                             </ul>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="CMS" asp-action="Service">
+                <a class="nav-link" asp-area="" asp-controller="Service" asp-action="Service">
                     <i class="fas fa-headset"></i>
                     <span class="title">客服回覆</span>
                 </a>
@@ -127,9 +127,9 @@
                     <div class="bg-white text-dark py-2 collapse-inner rounded">
                         <div class="center">
                             <ul class="sidebar-detail-ul">
-                                <li><a asp-area="" asp-controller="CMS" asp-action="Banner">Banner</a></li>
-                                <li><a asp-area="" asp-controller="CMS" asp-action="Navbar">navbar</a></li>
-                                <li><a asp-area="" asp-controller="CMS" asp-action="News">公告消息</a></li>
+                                <li><a asp-area="" asp-controller="Banner" asp-action="Banner">Banner</a></li>
+                                <li><a asp-area="" asp-controller="Navbar" asp-action="Navbar">navbar</a></li>
+                                <li><a asp-area="" asp-controller="News" asp-action="News">公告消息</a></li>
                             </ul>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="CMS" asp-action="AdminManage">
+                <a class="nav-link" asp-area="" asp-controller="AdminManage" asp-action="AdminManage">
                     <i class="fas fa-user-shield"></i>
                     <span class="big-title">管理員</span>
                 </a>
@@ -147,7 +147,7 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" target="_blank">
+                <a class="nav-link" asp-area="" asp-controller="Index" asp-action="Index" target="_blank">
                     <i class="fas fa-home"></i>
                     <span class="big-title">回商城首頁</span>
                 </a>
