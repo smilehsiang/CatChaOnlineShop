@@ -4,7 +4,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
 {
     public class CMSHomeController : Controller
     {
-        public IActionResult SalonOrder()
+        public IActionResult Login()
         {
             return View();
         }
