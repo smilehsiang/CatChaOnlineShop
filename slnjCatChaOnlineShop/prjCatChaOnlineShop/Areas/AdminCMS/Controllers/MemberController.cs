@@ -8,7 +8,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
         
         public IActionResult Member()
         {
-            return View();
+            return View("~/Areas/AdminCMS/Views/CMSBackend/Member/Member.cshtml");
         }
     }
 }
