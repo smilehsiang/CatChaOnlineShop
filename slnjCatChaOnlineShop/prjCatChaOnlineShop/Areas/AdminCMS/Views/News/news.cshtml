@@ -7,16 +7,16 @@
 @section Styles{
     <!--SCEditor-->
     <!-- 引入SCEditor的CSS -->
-    <link rel="stylesheet" href="minified/themes/default.min.css">
+    <link rel="stylesheet" href="~/newsEditor/minified/themes/default.min.css">
 
     <!-- 引入jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.x.x/jquery.min.js"></script>
 
     <!-- 引入SCEditor的JavaScript -->
-    <script src="minified/sceditor.min.js"></script>
-    <script src="minified/formats/bbcode.js"></script>
-    <script src="minified/formats/xhtml.js"></script>
-    <script src="languages/de.js"></script>
+    <script src="~/newsEditor/minified/sceditor.min.js"></script>
+    <script src="~/newsEditor/minified/formats/bbcode.js"></script>
+    <script src="~/newsEditor/minified/formats/xhtml.js"></script>
+    <script src="~/newsEditor/languages/de.js"></script>
 
     <style>
         /* 原始圖片的視窗 */
@@ -326,13 +326,13 @@
         sceditor.create(textarea, {
             format: 'bbcode',
             icons: 'monocons',
-            style: 'minified/themes/content/default.min.css'
+            style: '~/newsEditor/minified/themes/content/default.min.css'
         });
 
 
         var themeInput = document.getElementById('theme');
         themeInput.onchange = function () {
-            var theme = 'minified/themes/' + themeInput.value + '.min.css';
+            var theme = '~/newsEditor/minified/themes/' + themeInput.value + '.min.css';
 
             document.getElementById('theme-style').href = theme;
         };
