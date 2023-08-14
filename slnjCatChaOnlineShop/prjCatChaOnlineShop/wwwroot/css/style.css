@@ -643,6 +643,7 @@
      text-transform: uppercase;
 }
 .hvr-hover {
+    color:#ffffff;
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
@@ -1507,7 +1508,7 @@
 }
 /*------------------------------------------------------------------ All Pages -------------------------------------------------------------------*/
  .all-title-box{
-     background: url("../images/all-bg-title.jpg") no-repeat center center;
+     background: url("~/images/CatCha/Cart_BigTitle.jpg") no-repeat center center;
      -webkit-background-size: cover;
      -moz-background-size: cover;
      -ms-background-size: cover;
@@ -1519,7 +1520,7 @@
      position: relative;
 }
  .all-title-box::before{
-     background: rgba(0,0,0,0.6);
+     background: rgba(0,0,0,0.3);
      content: "";
      position: absolute;
      z-index: 0;
@@ -1535,21 +1536,21 @@
 	 float: left;
      padding: 10px 0px;
 }
- .all-title-box .breadcrumb{
-     background: #b0b435;
-     margin: 0px;
-     display: inline-block;
-     border-radius: 0px;
-	 float: right;
-}
+    .all-title-box .breadcrumb {
+        background: #b4793594;
+        margin: 0px;
+        display: inline-block;
+        border-radius: 0px;
+        float: right;
+    }
  .all-title-box .breadcrumb li{
      display: inline-block;
      color: #000000;
-     font-size: 16px;
+     font-size: 25px;
 }
  .all-title-box .breadcrumb li a{
      color: #ffffff;
-     font-size: 16px;
+     font-size: 25px;
 }
  .all-title-box .breadcrumb-item + .breadcrumb-item::before{
      color: #000000;

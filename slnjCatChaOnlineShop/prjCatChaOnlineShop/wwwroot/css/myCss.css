@@ -47,6 +47,7 @@
 .checkout-btn {
     border-radius: 5px;
     background: #b4793594;
+    color:#ffffff;
 }
 
     #getCouponList .coupon-content {
@@ -222,7 +223,7 @@
 }
 
 #loginModal .btn-primary , .btn-light ,#forgotPasswordModal .btn-primary{
-    color: #fff;
+    color: #ffffff;
     display: inline-block;
      vertical-align: middle;
      -webkit-transform: perspective(1px) translateZ(0);
@@ -343,3 +344,6 @@ background-color:#EDD8C0 ;
 }
 /* -------------------end footer部分顏色------------------*/
 
+.checokoutbtn {
+ color:#ffffff
+}
