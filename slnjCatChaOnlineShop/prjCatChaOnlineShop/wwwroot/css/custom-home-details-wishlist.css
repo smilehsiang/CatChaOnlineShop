@@ -89,49 +89,47 @@ body{
 
 /*-----------------------------側邊按鈕區域-----------------------------*/
 #go-to-game {
-  position: fixed;
-  
-  bottom: 280px;
-  right: 0px;
-  z-index: 9999;
-  width: 60px;
-  height: 200px;
-  text-align: center;
-  line-height: 5px;
-  background:url("../images/game-background.jpg") ;
-  color: #000000;
-  cursor: pointer;
-  border:#2f2f2f 3px solid ;
-  border-right: none;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  text-decoration: none;
-  transition: opacity 0.2s ease-out;
-  font-size: 20px;
-  opacity: 0.7;
-
+    position: fixed;
+    bottom: 280px;
+    right: 0px;
+    z-index: 9999;
+    width: 60px;
+    height: 200px;
+    text-align: center;
+    line-height: 5px;
+    background: url("../images/go-to-game-1.JPG");
+    color: #000000;
+    cursor: pointer;
+    border: #2f2f2f 3px solid;
+    border-right: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    font-size: 20px;
+    opacity: 0.7;
 }
-#go-to-game:hover{
-  position: fixed;
-  bottom: 280px;
-  right: 0px;
-  z-index: 9999;
-  width: 60px;
-  height: 200px;
-  text-align: center;
-  line-height: 5px;
-  background: #ffffff;
-  cursor: pointer;
-  border:#858585 3px inset;
-  border-right: none;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  text-decoration: none;
-  transition: opacity 0.2s ease-out;
-  font-size: 20px;
-  background:url("../images/game-background.jpg") ;
-  opacity: 1;
-}
+    #go-to-game:hover {
+        position: fixed;
+        bottom: 280px;
+        right: 0px;
+        z-index: 9999;
+        width: 60px;
+        height: 200px;
+        text-align: center;
+        line-height: 5px;
+        background: #ffffff;
+        cursor: pointer;
+        border: #858585 3px inset;
+        border-right: none;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        text-decoration: none;
+        transition: opacity 0.2s ease-out;
+        font-size: 20px;
+        background: url("../images/go-to-game-1.JPG");
+        opacity: 1;
+    }
 /*側邊按鈕文字*/
 #go-to-game a{
   position: fixed;
