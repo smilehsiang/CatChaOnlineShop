@@ -2,9 +2,10 @@
 
 namespace prjCatChaOnlineShop.Controllers.CMS
 {
+    [Area("AdminCMS")]
     public class ReturnController : Controller
     {
-        [Area("AdminCMS")]
+        
         public IActionResult Return()
         {
             return View();

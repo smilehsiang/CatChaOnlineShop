@@ -2,9 +2,10 @@
 
 namespace prjCatChaOnlineShop.Controllers.CMS
 {
+    [Area("AdminCMS")]
     public class NavbarController : Controller
     {
-        [Area("AdminCMS")]
+        
         public IActionResult Navbar()
         {
             return View();

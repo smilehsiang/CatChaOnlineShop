@@ -2,9 +2,10 @@
 
 namespace prjCatChaOnlineShop.Controllers.CMS
 {
+    [Area("AdminCMS")]
     public class BonusController : Controller
     {
-        [Area("AdminCMS")]
+        
         public IActionResult Bonus()
         {
             return View();

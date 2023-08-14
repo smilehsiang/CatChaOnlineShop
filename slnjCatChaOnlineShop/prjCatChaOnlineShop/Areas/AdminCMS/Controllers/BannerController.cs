@@ -2,9 +2,10 @@
 
 namespace prjCatChaOnlineShop.Controllers.CMS
 {
+    [Area("AdminCMS")]
     public class BannerController : Controller
     {
-        [Area("AdminCMS")]
+        
         public IActionResult Banner()
         {
             return View();

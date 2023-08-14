@@ -2,9 +2,10 @@
 
 namespace prjCatChaOnlineShop.Controllers.CMS
 {
+    [Area("AdminCMS")]
     public class DataAnalysisController : Controller
     {
-        [Area("AdminCMS")]
+        
         public IActionResult DataAnalysis()
         {
             return View();

@@ -3,9 +3,10 @@
 namespace prjCatChaOnlineShop.Areas.AdminCMS.Controllers
 
 {
+    [Area("AdminCMS")]
     public class AdminManageController : Controller
     {
-        [Area("AdminCMS")]
+        
         public IActionResult AdminManage()
         {
             return View();
