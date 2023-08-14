@@ -15,6 +15,17 @@
     margin-top: 10px;
 }
 
+.shopping-box a {
+    border-radius: 5px;
+    background: #b4793594;
+    
+
+}
+
+    .shopping-box a:hover {
+        background-color: #B98046;
+    }
+
 .coupon-box {
     font-size: 18px;
     color: #ffffff;
@@ -29,16 +40,21 @@
     justify-content: center;
 }
 
-.coupon-box-btn, .side-bar-btn , .checkout-btn{
+.coupon-box-btn, .side-bar-btn , {
     border-radius: 5px;
 }
 
-#getCouponList .coupon-content {
-    margin-bottom: 20px;
-    position: relative;
-    border: 1px solid #999;
-    border-radius: 4px;
+.checkout-btn {
+    border-radius: 5px;
+    background: #b4793594;
 }
+
+    #getCouponList .coupon-content {
+        margin-bottom: 20px;
+        position: relative;
+        border: 1px solid #999;
+        border-radius: 4px;
+    }
 .flex-container {
     display: flex;
     flex-wrap: wrap;
@@ -222,12 +238,12 @@
      box-shadow: none;
      border: none;
 }
+    
 
-
-#loginModal .btn-primary:hover , .btn-light:hover , #forgotPasswordModal .btn-primary:hover{
-    background-color: #B98046; /* 滑鼠移過去的背景色 */
-    color: #fff;
-}
+    #loginModal .btn-primary:hover, .btn-light:hover, #forgotPasswordModal .btn-primary:hover {
+        background-color: #B98046; /* 滑鼠移過去的背景色 */
+        color: #fff;
+    }
 
 .link-color{
     color: #67451D !important;
@@ -236,7 +252,6 @@
 
     color: #AF7431;
 }
-
 
 
 /*
@@ -262,7 +277,69 @@ background-color:#EDD8C0 ;
     height: 100px;
 }
 
-.modal {
-    z-index: 2000; /* 設定一個較高的 z-index 值 */
+/* -------------------start footer部分顏色------------------*/
+.footer-top-box h3::before {
+    border-bottom: 2px solid #f8f9fa;
+    content: "";
+    height: 3px;
+    width: 50%;
+    position: absolute;
+    bottom: 3px;
+    left: 0px;
 }
+
+.footer-widget h4::before {
+    border-bottom: 3px solid #f8f9fa;
+    content: "";
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    bottom: 3px;
+    left: 0px;
+}
+
+.footer-link h4::before {
+    border-bottom: 3px solid #f8f9fa;
+    content: "";
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    bottom: 3px;
+    left: 0px;
+}
+
+.footer-link-contact h4::before {
+    border-bottom: 3px solid #f8f9fa;
+    content: "";
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    bottom: 3px;
+    left: 0px;
+}
+
+.footer-link ul li a:hover {
+    color: #000000;
+    border-color: #000000;
+    padding-left: 20px;
+}
+
+
+.footer-link-contact ul li p a:hover {
+    color: #000000;
+}
+
+.footer-top-box ul li a:hover {
+    color: #000000;
+    border-color: #000000;
+}
+
+.single-product-details ul {
+    display: inline-block;
+    width: 100%;
+    border: 1px #000000 dashed;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+/* -------------------end footer部分顏色------------------*/
 
