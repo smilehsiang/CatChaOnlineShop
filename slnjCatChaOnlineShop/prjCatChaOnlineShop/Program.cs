@@ -24,7 +24,7 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Index}/{action=Index}/{id?}");
+        pattern: "{controller=Cart}/{action=Cart}/{id?}");
 
     endpoints.MapControllerRoute(
         name: "areas",
