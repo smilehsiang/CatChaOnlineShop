@@ -17,7 +17,7 @@
 
     <!-- Site Icons -->
     <link rel="shortcut icon" href="~/images/fac.ico" type="image/x-icon" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/style.css">
@@ -26,85 +26,84 @@
     @await RenderSectionAsync("Styles",required:false)
 </head>
 <body>
-   <!-- Start Main Top -->
+    <!-- Start Main Top -->
     <div class="main-top">
-      <div class="d-flex justify-content-center p-2">
-          <ul>
-              <li>
-                  <i class="fab fa-opencart"><span class="formain-topSpan">打折</span></i>
-              </li>
-          </ul>
-      </div>
-  </div>
-  <!-- End Main Top -->
-
-  <!-- Start Main Top -->
-  <header class="main-header">
-      <!-- Start Navigation -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
-          <div class="container-fluid">
-              <!-- Start Header Navigation -->
-              <div class="navbar-header">
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
-                      aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                      <i class="fa fa-bars"></i>
-                  </button>
-                  <a class="navbar-brand" href="index.html"><img src="~/images/logo.png" class="logo" alt=""></a>
-              </div>
-              <!-- End Header Navigation -->
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse  start-0" id="navbar-menu">
-                  <ul class="nav navbar-nav " data-in="fadeInDown" data-out="fadeOutUp">
-                      <li class="dropdown">
-                          <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">所有商品</a>
-                          <ul class="dropdown-menu">
-                              <li><a href="shop.html">商品</a></li>
-                              <li><a href="shop.html">商品</a></li>
-                              <li><a href="shop.html">商品</a></li>
-                              <li><a href="shop.html">商品</a></li>
-                              <li><a href="shop.html">商品</a></li>
-                              <li><a href="shop.html">商品</a></li>
-                          </ul>
-                      </li>
-                      <li class="nav-item"><a class="nav-link" href="News.html">最新消息</a></li>
-                      <li class="nav-item"><a class="nav-link" href="about.html">關於我們</a></li>
-                  </ul>
-              </div>
-              <!-- /.navbar-collapse -->
-
-              <!-- Start Atribute Navigation -->
-              <div class="attr-nav">
-                  <ul>
-                      <li class="heart">
-                          <a href="membership.html">
-                              <i class="fa-regular fa-heart"></i>
-                              <span class="customRule for_header_twoIcon">3</span>
-                          </a>
-                      </li>
-                      <li class="side-menu" >
-                          <a href="cart.html">
-                              <i class="fa-solid fa-cart-plus"></i>
-                              <span class="customRule for_header_twoIcon">3</span>
-                          </a>
-                      </li>
-                      <li class="Login">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <div class="d-flex justify-content-center p-2">
+            <ul>
+                <li>
+                    <i class="fab fa-opencart"><span class="formain-topSpan">打折</span></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- End Main Top -->
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container-fluid">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
+                            aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="~/images/logo.png" class="logo" alt=""></a>
+                </div>
+                <!-- End Header Navigation -->
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse  start-0" id="navbar-menu">
+                    <ul class="nav navbar-nav " data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">所有商品</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="shop.html">商品</a></li>
+                                <li><a href="shop.html">商品</a></li>
+                                <li><a href="shop.html">商品</a></li>
+                                <li><a href="shop.html">商品</a></li>
+                                <li><a href="shop.html">商品</a></li>
+                                <li><a href="shop.html">商品</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="ShopNews" asp-action="News">最新消息</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="About" asp-action="About">關於我們</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Membership" asp-action="Membership">會員中心</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav">
+                    <ul>
+                        <li class="heart">
+                            <a href="membership.html">
+                                <i class="fa-regular fa-heart"></i>
+                                <span class="customRule for_header_twoIcon">3</span>
+                            </a>
+                        </li>
+                        <li class="side-menu">
+                            <a href="cart.html">
+                                <i class="fa-solid fa-cart-plus"></i>
+                                <span class="customRule for_header_twoIcon">3</span>
+                            </a>
+                        </li>
+                        <li class="Login">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
                                 <i class="fa-solid fa-arrow-right-to-bracket"></i>
                                 <span class="LoginText">未登入</span>
                             </a>
-                      </li>
-                  </ul>
-              </div>
-              <!-- End Atribute Navigation -->
-              <!--會員登入互動視窗Start-->
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Atribute Navigation -->
+                <!--會員登入互動視窗Start-->
                 <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                    aria-labelledby="loginModalLabel" aria-hidden="true">
+                     aria-labelledby="loginModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="d-flex align-items-center modal-header">
                                 <h5 class=" modal-title" id="loginModalLabel">登入</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                        aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="mt-2 icon d-flex align-items-center justify-content-center">
@@ -118,13 +117,13 @@
                                                     <div>
                                                         <label for="login-name">電子信箱：</label>
                                                         <input type="text" class="form-control" id="login-name"
-                                                            placeholder="email" required>
+                                                               placeholder="email" required>
                                                         <div class="invalid-feedback"> 請輸入電子信箱</div>
                                                     </div>
                                                     <div>
                                                         <label for="login-password">密碼：</label>
                                                         <input type="text" class="form-control" id="login-password"
-                                                            placeholder="password" required>
+                                                               placeholder="password" required>
                                                         <div class="invalid-feedback"> 請輸入密碼 </div>
                                                     </div>
                                                 </div>
@@ -133,24 +132,23 @@
                                                     <button class="btn btn-primary" type="button">登入</button>
                                                 </div>
                                                 <div>
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center mb-3 mt-2">
+                                                    <div class="d-flex justify-content-between align-items-center mb-3 mt-2">
                                                         <div class="d-flex justify-content-between">
                                                             <div class="form-check form-switch">
                                                                 <input class="form-check-input" type="checkbox"
-                                                                    @* role="switch"  *@id="loginCheckDefault">
+                                                                @* role="switch" *@id="loginCheckDefault">
                                                                 <label class="form-check-label"
-                                                                    for="loginCheckDefault">記住我</label>
+                                                                       for="loginCheckDefault">記住我</label>
                                                             </div>
                                                         </div>
                                                         <div class=" d-flex justify-content-end">
                                                             <a href="#" class="link-color link-primary"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#forgotPasswordModal">忘記密碼?</a>
+                                                               data-bs-toggle="modal"
+                                                               data-bs-target="#forgotPasswordModal">忘記密碼?</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer row gy-4" ></div>
+                                                <div class="modal-footer row gy-4"></div>
                                                 <div class="d-grid gap-2">
                                                     <button class="btn btn-light" type="button">加入會員</button>
                                                 </div>
@@ -168,7 +166,7 @@
                                                         <span> <img src="images/CatCha/twitter_icon.png"></span>
                                                     </a>
                                                 </div>
-                                                </form>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -176,11 +174,11 @@
                         </div>
                     </div>
                 </div>
-          </div>
-          <!--會員登入視窗End-->
-          <!--忘記密碼視窗Start-->
-          <div class="modal fade" id="forgotPasswordModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                tabindex="-1" aria-labelledby="forgotPasswordBackdropLabel" aria-hidden="true">
+            </div>
+            <!--會員登入視窗End-->
+            <!--忘記密碼視窗Start-->
+            <div class="modal fade" id="forgotPasswordModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                 tabindex="-1" aria-labelledby="forgotPasswordBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="d-flex align-items-center modal-header">
@@ -207,14 +205,14 @@
                                                 <div class="mb-3">
                                                     <label for="login-name">電子信箱：</label>
                                                     <input type="text" class="form-control" id="login-name"
-                                                        placeholder="email" required>
+                                                           placeholder="email" required>
                                                     <div class="invalid-feedback"> 請輸入電子信箱</div>
                                                 </div>
                                             </div>
                                             <div class="d-grid gap-2 mt-3">
                                                 <button class="mb-3 btn btn-primary" type="button">寄送密碼修改信</button>
                                             </div>
-                                            </form>
+                                        </form>
                                     </div>
                                     <!--<div class="modal-footer" class="row gy-4"></div>-->
                                 </div>
@@ -223,9 +221,9 @@
                     </div>
                 </div>
             </div>
-          <!--忘記密碼視窗End-->
-          </nav>
-</header>
+            <!--忘記密碼視窗End-->
+        </nav>
+    </header>
     @RenderBody()
     <!-- Start Footer  -->
     <footer>
@@ -258,11 +256,11 @@
                         <div class="footer-top-box">
                             <h3>追蹤我們</h3>
                             <div class="mt-3">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                            </ul>
-                        </div>
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -300,8 +298,9 @@
                                     <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:02-6631-6588">02-6631-6588</a></p>
                                 </li>
                                 <li>
-                                    <p><i class="fas fa-envelope"></i>Email: <a
-                                            href="mailto:catCha@gmail.com">catCha@gmail.com</a></p>
+                                    <p>
+                                        <i class="fas fa-envelope"></i>Email: <a href="mailto:catCha@gmail.com">catCha@gmail.com</a>
+                                    </p>
                                 </li>
                             </ul>
                         </div>
@@ -311,10 +310,10 @@
         </div>
     </footer>
     <!-- End Footer  -->
-
     <!-- Start copyright  -->
     <div class="footer-copyright">
-        <p class="footer-company">All Rights Reserved. &copy; 2023 <a href="#">catCha</a>
+        <p class="footer-company">
+            All Rights Reserved. &copy; 2023 <a href="#">catCha</a>
         </p>
     </div>
     <!-- End copyright  -->
@@ -325,6 +324,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
+    @await RenderSectionAsync("ScriptsForAfter",required:false)
+
 </body>
 </html>
