@@ -1,0 +1,1532 @@
+﻿@{
+    ViewData["Title"] = "Membership";
+}
+
+@section Styles{
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="~/css/onlycart.css" rel="stylesheet" />
+    <!--add-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css">
+    <!--add-->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/css/star-rating.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-fas/theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="~/css/membership.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/custom.css">
+    <link rel="stylesheet" href="~/css/forNews.css">
+
+    <!--增加的部分:用於圖片放大預覽-->
+    <style>
+        /* 原始圖片的視窗 */
+        .image-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* 視窗置中 */
+            max-width: 80%;
+            /* 視窗寬度 */
+            background-color: #f8f9fa;
+            padding: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+
+            .image-popup img {
+                width: 400px;
+            }
+
+        /* 縮略圖片的樣式 */
+        .thumbnail-image {
+            /* position: relative; */
+            cursor: pointer;
+            /* 將鼠標指針設置為手型以指示圖片可懸停 */
+        }
+
+        .test {
+            position: relative;
+        }
+    </style>
+
+    <!--增加的部分:用於隱藏dataTables的內建搜尋框-->
+    <style>
+        .dataTables_filter {
+            display: none;
+        }
+    </style>
+
+    <!--增加的部分:用於搜尋關鍵字採ajax-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+}
+
+<!-- 開始公告頁 -->
+<!-- cart + summary -->
+<div class="container mt-4 mb-4">
+
+    <!--導覽列:選單-->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="membership-tab" data-bs-toggle="tab" href="#membership" role="tab"
+               aria-controls="home" aria-selected="true" >會員基本資料</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="shoppingsheet-tab" data-bs-toggle="tab" href="#shoppingsheet" role="tab"
+               aria-selected="false">消費紀錄</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="return-tab" data-bs-toggle="tab" href="#return" role="tab"
+               aria-selected="false">退貨紀錄</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="booking-tab" data-bs-toggle="tab" href="#booking" role="tab"
+               aria-selected="false">預約紀錄</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="collect-tab" data-bs-toggle="tab" href="#collect" role="tab"
+               aria-selected="false">收藏紀錄</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="Complaint-tab" data-bs-toggle="tab" href="#Complaint" role="tab"
+               aria-selected="false">客訴紀錄</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="CustomerService-tab" data-bs-toggle="tab" href="#CustomerService" role="tab"
+               aria-selected="false">客服中心</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+
+        <!--會員基本資料的內容-->
+        <div class="tab-pane fade show active" id="membership" role="tabpanel" aria-labelledby="membership-tab">
+            <section class="my-5">
+                <div class="container">
+                    <div class="row">
+                        <!-- cart -->
+                        <div class="col-lg-9 order-2 order-sm-2 order-md-2 order-xs-2">
+                            <div class="card border shadow-0">
+                                <div class="m-4">
+                                    <div class="row gy-3 mb-4">
+                                        <div class="container">
+                                            <div class="card-body">
+                                                <form>
+                                                    <div class="form-row">
+                                                        <div class="col-md-6">
+                                                            <label>帳號</label>
+                                                            <input type="text" placeholder="帳號"
+                                                                   class="form-control" />
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>密碼</label>
+                                                            <input type="password" placeholder="密碼"
+                                                                   class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="col-md-6">
+                                                            <label>姓名</label>
+                                                            <input type="text" placeholder="姓名"
+                                                                   class="form-control" />
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>生日</label>
+                                                            <input type="date" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="col-md-6">
+                                                            <label>電子信箱</label>
+                                                            <input type="email" class="form-control"
+                                                                   placeholder="電子信箱" />
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>手機號碼</label>
+                                                            <input type="tel" pattern="^\d{10}$" placeholder="手機號碼"
+                                                                   class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                    <!--常用地址-->
+                                                    <div class="form-row">
+                                                        <div class="col-md-7">
+                                                            <label>常用地址</label>
+                                                            <div class="d-flex align-items-center">
+                                                                <select class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option selected>常用地址1號</option>
+                                                                    <option value="1">常用地址2號</option>
+                                                                    <option value="2">常用地址3號</option>
+                                                                    <option value="3">常用地址4號</option>
+                                                                </select>
+                                                                <button type="button" class="btn add-address"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#addressModal">
+                                                                    查看已儲存地址
+                                                                </button>
+                                                                <button type="button" class="btn add-address"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#NewAddressModal">
+                                                                    新增地址
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--7-11超商取貨地址-->
+                                                    <div class="form-row">
+                                                        <div class="col-md-9">
+                                                            <label>7-11超商取貨地址</label>
+                                                            <div class="d-flex align-items-center">
+                                                                <select class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option selected>桂林門市</option>
+                                                                    <option value="1">稻埕門市</option>
+                                                                    <option value="2">中興門市</option>
+                                                                    <option value="3">北醫門市</option>
+                                                                </select>
+                                                                <select id="countySelect" class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option value="">請選擇縣市</option>
+                                                                </select>
+                                                                <select id="townSelect" class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option value="">請選擇鄉鎮</option>
+                                                                </select>
+                                                                <select id="roadSelect" class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option value="">請選擇街道</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--全家超商取貨地址-->
+                                                    <div class="form-row">
+                                                        <div class="col-md-9">
+                                                            <label>全家超商取貨地址</label>
+                                                            <div class="d-flex align-items-center">
+                                                                <select class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option selected>松慈店</option>
+                                                                    <option value="1">民和店</option>
+                                                                    <option value="2">成都店</option>
+                                                                    <option value="3">南機場店</option>
+                                                                </select>
+                                                                <select id="county2Select" class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option value="">請選擇縣市</option>
+                                                                </select>
+                                                                <select id="town2Select" class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option value="">請選擇鄉鎮</option>
+                                                                </select>
+                                                                <select id="roadSelect" class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option value="">請選擇街道</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--導入7-11超商的script，之後可以做address.cshtml導入老師的script.js-->
+                                                    <script>
+                                                        const countySelect = document.getElementById('countySelect');
+                                                        const townSelect = document.getElementById('townSelect');
+
+                                                        // 假設 countyData 是一個包含縣市和鄉鎮資料的物件陣列
+                                                        const countyData = [
+                                                            {
+                                                                county: '台北市',
+                                                                towns: ['中正區', '大同區', '中山區', '松山區', '大安區'] // 這裡只列了部分鄉鎮
+                                                            },
+                                                            {
+                                                                county: '新北市',
+                                                                towns: ['板橋區', '三重區', '新莊區', '永和區', '中和區'] // 這裡只列了部分鄉鎮
+                                                            },
+                                                            {
+                                                                county: '基隆市',
+                                                                towns: ['中正區', '七堵區', '暖暖區', '仁愛區', '安樂區']
+                                                            },
+                                                            {
+                                                                county: '澎湖縣',
+                                                                towns: ['馬公市', '湖西鄉', '白沙鄉', '西嶼鄉', '望安鄉', /* ... */]
+                                                            }
+                                                            // 其他縣市的資料...
+                                                        ];
+
+                                                        // 初始化縣市選單
+                                                        countyData.forEach(item => {
+                                                            const option = document.createElement('option');
+                                                            option.value = item.county;
+                                                            option.textContent = item.county;
+                                                            countySelect.appendChild(option);
+                                                        });
+
+                                                        // 當縣市選項改變時，動態生成鄉鎮選單
+                                                        countySelect.addEventListener('change', () => {
+                                                            const selectedCounty = countySelect.value;
+                                                            const selectedData = countyData.find(item => item.county === selectedCounty);
+
+                                                            townSelect.innerHTML = ''; // 清空鄉鎮選單
+
+                                                            selectedData.towns.forEach(town => {
+                                                                const option = document.createElement('option');
+                                                                option.value = town;
+                                                                option.textContent = town;
+                                                                townSelect.appendChild(option);
+                                                            });
+                                                        });
+
+                                                    </script>
+                                                    <!--導入全家超商的script，之後可以做address.cshtml導入老師的script.js-->
+                                                    <script>
+                                                        const county2Select = document.getElementById('county2Select');
+                                                        const town2Select = document.getElementById('town2Select');
+
+                                                        // 假設 countyData 是一個包含縣市和鄉鎮資料的物件陣列
+                                                        const county2Data = [
+                                                            {
+                                                                county: '台北市',
+                                                                towns: ['中正區', '大同區', '中山區', '松山區', '大安區'] // 這裡只列了部分鄉鎮
+                                                            },
+                                                            {
+                                                                county: '新北市',
+                                                                towns: ['板橋區', '三重區', '新莊區', '永和區', '中和區'] // 這裡只列了部分鄉鎮
+                                                            },
+                                                            {
+                                                                county: '基隆市',
+                                                                towns: ['中正區', '七堵區', '暖暖區', '仁愛區', '安樂區']
+                                                            },
+                                                            {
+                                                                county: '澎湖縣',
+                                                                towns: ['馬公市', '湖西鄉', '白沙鄉', '西嶼鄉', '望安鄉', /* ... */]
+                                                            }
+                                                            // 其他縣市的資料...
+                                                        ];
+
+                                                        // 初始化縣市選單
+                                                        county2Data.forEach(item => {
+                                                            const option = document.createElement('option');
+                                                            option.value = item.county;
+                                                            option.textContent = item.county;
+                                                            county2Select.appendChild(option);
+                                                        });
+
+                                                        // 當縣市選項改變時，動態生成鄉鎮選單
+                                                        county2Select.addEventListener('change', () => {
+                                                            const selected2County = county2Select.value;
+                                                            const selected2Data = county2Data.find(item => item.county === selected2County);
+
+                                                            town2Select.innerHTML = ''; // 清空鄉鎮選單
+
+                                                            selected2Data.towns.forEach(town => {
+                                                                const option = document.createElement('option');
+                                                                option.value = town;
+                                                                option.textContent = town;
+                                                                town2Select.appendChild(option);
+                                                            });
+                                                        });
+
+                                                    </script>
+                                                    <button class="btn-customs btn hvr-hovers ">
+                                                        送出
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--彈跳視窗: 查看已儲存地址-->
+                        <div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="addressModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="addressModalLabel">常用地址一覽</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="col-md-9">
+                                            <ol>
+                                                <li>
+                                                    <input type="text" value="地址一號"><span class="minus-address">
+                                                        <i class="fa-solid fa-circle-minus"></i>
+                                                    </span>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">
+                                            關閉
+                                        </button>
+                                        <button type="button" class="btn btn-primary">儲存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--彈跳視窗: 新增地址-->
+                        <div class="modal fade" id="NewAddressModal" tabindex="-1"
+                             aria-labelledby="NewAddressModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="addressModalLabel">新增地址</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="col-md-9">
+                                            <ol>
+                                                <li><input type="text" value="" placeholder="填入地址"></li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">
+                                            關閉
+                                        </button>
+                                        <button type="button" class="btn btn-primary">儲存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--彈跳視窗: 查看已儲存超商取貨地址-->
+                        <div class="modal fade" id="storeModal" tabindex="-1" aria-labelledby="storeModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="storeModalLabel">常用門市一覽</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="col-md-9">
+                                            <ol>
+                                                <li>
+                                                    <input type="text" value="7-11桂林門市"><span class="minus-address">
+                                                        <i class="fa-solid fa-circle-minus"></i>
+                                                    </span>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">
+                                            關閉
+                                        </button>
+                                        <button type="button" class="btn btn-primary">儲存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--彈跳視窗: 新增門市-->
+                        <div class="modal fade" id="NewStoreModal" tabindex="-1"
+                             aria-labelledby="NewStoreModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="NewStoreModalLabel">新增門市</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="col-md-9">
+                                            <ol>
+                                                <li><input type="text" value="" placeholder="填入店名"></li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">
+                                            關閉
+                                        </button>
+                                        <button type="button" class="btn btn-primary">儲存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- cart -->
+                        <!-- summary -->
+                        <div class="col-lg-3 order-1 order-sm-1 order-md-1 order-xs-1">
+                            <div class="card mb-3 border shadow-0">
+                                <div class="card-body text-center">
+                                    <div class="avatar text-center">
+                                        <img class="avatar-img mx-auto"
+                                             src="https://randomuser.me/api/portraits/women/17.jpg" alt="">
+                                    </div>
+                                    <span>陳XX</span>
+                                    <div class="d-flex justify-content-center">
+                                        <span>您目前持有點數：9點</span><span>/1元</span>
+                                    </div>
+                                    <div class="text-center ">
+                                        <button class="btn-customs btn hvr-hovers " data-bs-toggle="modal"
+                                                data-bs-target="#couponModal">
+                                            查看持有優惠券
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- summary -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!--彈跳視窗:查看持有優惠券-->
+        <div class="modal fade" id="couponModal">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3>我的優惠券</h3>
+                                </div>
+                                <div class="col d-flex justify-content-end">
+                                    <button type="button" class="btn btn-warning btn-sm" data-bs-dismiss="modal">
+                                        X
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-condensed">
+                            <thead class="table-warning">
+                                <tr>
+                                    <th>優惠名稱</th>
+                                    <th>適用範圍</th>
+                                    <th>使用期限</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>全站$299起免運券</td>
+                                    <td>本運費抵用券僅適用於全站有開啟四大超商超運費折抵</td>
+                                    <td>2023-8-8 00:00~2023-8-8 24:00</td>
+                                </tr>
+                                <tr>
+                                    <td>全站$299起免運券</td>
+                                    <td>本運費抵用券僅適用於全站有開啟四大超商超運費折抵</td>
+                                    <td>2023-8-8 00:00~2023-8-8 24:00</td>
+                                </tr>
+                                <tr>
+                                    <td>全站$299起免運券</td>
+                                    <td>本運費抵用券僅適用於全站有開啟四大超商超運費折抵</td>
+                                    <td>2023-8-8 00:00~2023-8-8 24:00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--消費紀錄的內容-->
+        <div class="tab-pane fade" id="shoppingsheet" role="tabpanel" aria-labelledby="shoppingsheet-tab">
+            <section class="my-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 order-2 order-sm-2 order-md-2 order-xs-2">
+                            <div class="card mb-3 border shadow-0">
+                                <form>
+                                    <div class="col">
+                                        <label>選擇日期區間</label>
+                                        <input class="dateRange form-control" type="text" />
+                                        <label>關鍵字搜尋</label>
+                                        <input class="form-control" type="text" value=""
+                                               placeholder="請輸入關鍵字或訂單編號" id="myKeyWord" />
+                                        <div class="text-center mb-2 ">
+                                            <button class="btn-customs btn hvr-hovers" id="btnQuery" type="button">
+                                                查詢
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 order-3 order-sm-3 order-md-3 order-xs-3">
+                            <div class="row gy-3 mb-4">
+                                <div style="height: 350px; overflow: auto;" class="table-responsive">
+                                    <table class="table  table-bordered table-hover " id="example">
+                                        <thead class="table-warning text-center">
+                                            <tr>
+                                                <th scope="col">訂單編號</th>
+                                                <th scope="col">訂單成立日期</th>
+                                                <th scope="col">產品名稱</th>
+                                                <th scope="col">產品規格</th>
+                                                <th scope="col">訂購數量</th>
+                                                <th scope="col">消費金額</th>
+                                                <th scope="col">付款方式</th>
+                                                <th scope="col">付款時間</th>
+                                                <th scope="col">配送狀態</th>
+                                                <th scope="col">完成時間</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-left">
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>2023/07/26</td>
+                                                <td>寵愛貓飼料</td>
+                                                <td>家庭號</td>
+                                                <td>3</td>
+                                                <td>600</td>
+                                                <td>信用卡支付</td>
+                                                <td>2023/07/27 12:00</td>
+                                                <td>運送中</td>
+                                                <td>尚未完成</td>
+                                                <td>
+                                                    <div class="d-flex flex-column">
+                                                        <button type="button"
+                                                                class="btn btn-outline-dark mb-2 btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#invoiceModal">
+                                                            電子發票
+                                                        </button>
+                                                        <button type="button"
+                                                                class="btn btn-outline-dark mb-2 btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#returnModal">
+                                                            申請退換貨
+                                                        </button>
+                                                        <button type="button" class="btn btn-warning btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#commentModal">
+                                                            評論
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>2023/07/21</td>
+                                                <td>逗貓棒</td>
+                                                <td>單支</td>
+                                                <td>1</td>
+                                                <td>50</td>
+                                                <td>貨到付款</td>
+                                                <td>2023/07/23 12:00</td>
+                                                <td>運送中</td>
+                                                <td>已完成</td>
+                                                <td>
+                                                    <div class="d-flex flex-column">
+                                                        <button type="button"
+                                                                class="btn btn-outline-dark mb-2 btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#invoiceModal">
+                                                            電子發票
+                                                        </button>
+                                                        <button type="button"
+                                                                class="btn btn-outline-dark mb-2 btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#returnModal">
+                                                            申請退換貨
+                                                        </button>
+                                                        <button type="button" class="btn btn-warning btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#commentModal">
+                                                            評論
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>2023/06/26</td>
+                                                <td>貓跳台</td>
+                                                <td>特製三層版</td>
+                                                <td>1</td>
+                                                <td>1000</td>
+                                                <td>銀行轉帳</td>
+                                                <td>2023/06/30 12:00</td>
+                                                <td>運送中</td>
+                                                <td>已完成</td>
+                                                <td>
+                                                    <div class="d-flex flex-column">
+                                                        <button type="button"
+                                                                class="btn btn-outline-dark mb-2 btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#invoiceModal">
+                                                            電子發票
+                                                        </button>
+                                                        <button type="button"
+                                                                class="btn btn-outline-dark mb-2 btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#returnModal">
+                                                            申請退換貨
+                                                        </button>
+                                                        <button type="button" class="btn btn-warning btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#commentModal">
+                                                            評論
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!--彈跳視窗:申請退換貨-->
+        <div class="modal fade" id="returnModal">
+            <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="col d-flex justify-content-end">
+                            <button type="button" class="btn btn-warning btn-sm px-2" data-bs-dismiss="modal">
+                                X
+                            </button>
+                        </div>
+                        <div class="container">
+                            <form action="">
+                                <div class="row my-1 ml-2">
+                                    <label>訂單編號: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>成立日期: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>產品名稱: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>產品規格: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>訂購數量: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>消費金額: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>配送完成日期: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <div class="d-flex">
+                                        <label>退換貨數量: </label>
+                                        <input class="col-md-4" type="number">
+                                    </div>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <div class="d-flex">
+                                        <label>退換貨理由: </label>
+                                        <select class="form-md-select" aria-label="Default select example">
+                                            <option selected>太貴</option>
+                                            <option value="1">太難用</option>
+                                            <option value="2">不符合需求</option>
+                                            <option value="3">就想退</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>備註(非必填): </label>
+                                </div>
+                                <textarea class="form-control" placeholder="內容" rows="4"></textarea>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col mt-2">
+                                            <button type="button" class="btn btn-danger btn-block">申請退換貨</button>
+                                        </div>
+                                        <div class="col mt-2">
+                                            <button type="button" class="btn btn-outline-secondary btn-block"
+                                                    data-bs-dismiss="modal">
+                                                取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--彈跳視窗:評論-->
+        <div class="modal fade" id="commentModal">
+            <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="col d-flex justify-content-end">
+                            <button type="button" class="btn btn-warning btn-sm px-2" data-bs-dismiss="modal">
+                                X
+                            </button>
+                        </div>
+                        <div class="container">
+                            <form action="">
+                                <div class="row my-1 ml-2">
+                                    <label>訂單編號: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>成立日期: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>產品名稱: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>產品規格: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>訂購數量: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>消費金額: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>配送完成日期: </label>
+                                </div>
+                                <div class="row my-1 ml-2 align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <label>評價: </label>
+                                        <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5"
+                                               dir="ltr" data-size="md" data-show-clear="false"
+                                               data-show-caption="false">
+                                    </div>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>評論: </label>
+                                    <div class="input-group">
+                                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col mt-2">
+                                            <button type="button" class="btn btn-danger btn-block">送出</button>
+                                        </div>
+                                        <div class="col mt-2">
+                                            <button type="button" class="btn btn-outline-secondary btn-block"
+                                                    data-bs-dismiss="modal">
+                                                取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--退貨紀錄的內容-->
+        <div class="tab-pane fade" id="return" role="tabpanel" aria-labelledby="return-tab">
+            <section class="my-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 order-2 order-sm-2 order-md-2 order-xs-2">
+                            <div class="card mb-3 border shadow-0">
+                                <form>
+                                    <div class="col">
+                                        <label>選擇日期區間</label>
+                                        <input class="dateRange form-control" type="text" />
+                                        <label>關鍵字搜尋</label>
+                                        <input class="form-control" type="text" value=""
+                                               placeholder="請輸入關鍵字或訂單編號" id="myKeyWord2" />
+                                        <div class="text-center mb-2 ">
+                                            <button class="btn-customs btn hvr-hovers" id="btnQuery2" type="button">
+                                                查詢
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 order-3 order-sm-3 order-md-3 order-xs-3">
+                            <div class="row gy-3 mb-4">
+                                <div style="height: 350px; overflow: scroll;" class="table-responsive">
+                                    <table class="table table-bordered table-hover" id="example2">
+                                        <thead class="table-warning text-center">
+                                            <tr>
+                                                <th scope="col">訂單編號</th>
+                                                <th scope="col">退貨日期</th>
+                                                <th scope="col">產品名稱</th>
+                                                <th scope="col">產品規格</th>
+                                                <th scope="col">退貨數量</th>
+                                                <th scope="col">產品單價</th>
+                                                <th scope="col">退貨理由</th>
+                                                <th scope="col">退貨狀態</th>
+                                                <th scope="col">完成時間</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-left">
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>2023/07/26</td>
+                                                <td>寵愛貓飼料</td>
+                                                <td>家庭號</td>
+                                                <td>3</td>
+                                                <td>NT$600</td>
+                                                <td>包裝破損，飼料受潮無法保存與食用</td>
+                                                <td>已退還款項並完成退貨</td>
+                                                <td>2023/07/27 12:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>2023/07/21</td>
+                                                <td>逗貓棒</td>
+                                                <td>單支</td>
+                                                <td>1</td>
+                                                <td>NT$50</td>
+                                                <td>型號不符合所需，尚未拆封</td>
+                                                <td>已退還款項並完成退貨</td>
+                                                <td>2023/07/23 12:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>2023/06/26</td>
+                                                <td>貓跳台</td>
+                                                <td>特製三層版</td>
+                                                <td>1</td>
+                                                <td>NT$1000</td>
+                                                <td>商品規格過大，家中擺不下</td>
+                                                <td>已退還款項並完成退貨</td>
+                                                <td>2023/06/29 12:00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!--預約紀錄的內容-->
+        <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="booking-tab">
+            <section class="my-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 order-2 order-sm-2 order-md-2 order-xs-2">
+                            <div class="card mb-3 border shadow-0">
+                                <form>
+                                    <div class="col">
+                                        <label>選擇日期區間</label>
+                                        <input class="dateRange form-control" type="text" />
+                                        <label>關鍵字搜尋</label>
+                                        <input class="form-control" type="text" value=""
+                                               placeholder="請輸入關鍵字或訂單編號" id="myKeyWord3" />
+                                        <div class="text-center mb-2 ">
+                                            <button class="btn-customs btn hvr-hovers" id="btnQuery3" type="button">
+                                                查詢
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 order-3 order-sm-3 order-md-3 order-xs-3">
+                            <div class="row gy-3 mb-4">
+                                <div style="height: 350px; overflow: scroll;" class="table-responsive">
+                                    <table class="table table-bordered table-hover " id="example3">
+                                        <thead class="table-warning text-center">
+                                            <tr>
+                                                <th scope="col">訂單編號</th>
+                                                <th scope="col">預約時間</th>
+                                                <th scope="col">服務數量</th>
+                                                <th scope="col">服務費用</th>
+                                                <th scope="col">服務狀態</th>
+                                                <th scope="col">完成時間</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-left">
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>2023/07/26</td>
+                                                <td>1</td>
+                                                <td>1000</td>
+                                                <td>完成</td>
+                                                <td>2023/07/27 12:00</td>
+                                                <td>
+                                                    <div class="d-flex flex-column">
+                                                        <button type="button"
+                                                                class="btn btn-outline-dark mb-2 btn-sm" id="cancelBooking1">
+                                                            取消預約
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>2023/07/26</td>
+                                                <td>1</td>
+                                                <td>1000</td>
+                                                <td>尚未完成</td>
+                                                <td>2023/07/27 12:00</td>
+                                                <td>
+                                                    <div class="d-flex flex-column">
+                                                        <button type="button"
+                                                                class="btn btn-outline-dark mb-2 btn-sm" id="cancelBooking2">
+                                                            取消預約
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>2023/07/26</td>
+                                                <td>1</td>
+                                                <td>1000</td>
+                                                <td>完成</td>
+                                                <td>2023/07/27 12:00</td>
+                                                <td>
+                                                    <div class="d-flex flex-column">
+                                                        <button type="button"
+                                                                class="btn btn-outline-dark mb-2 btn-sm" id="cancelBooking3">
+                                                            取消預約
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!--收藏紀錄的內容-->
+        <div class="tab-pane fade" id="collect" role="tabpanel" aria-labelledby="collect-tab">
+            <section class="my-5">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 order-3 order-sm-3 order-md-3 order-xs-3">
+                            <div class="row gy-3 mb-4">
+                                <div style="height: 350px; overflow: scroll;" class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead class="table-warning text-center">
+                                            <tr>
+                                                <th scope="col">圖片</th>
+                                                <th scope="col">產品名稱</th>
+                                                <th scope="col">售價</th>
+                                                <th scope="col" colspan="2"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-left">
+                                            <tr>
+                                                <td class="test">
+                                                    <img src='@Url.Content("~/images/prod-eg-1.png")'
+                                                         style="width: 100px; height: auto;"
+                                                         class="thumbnail-image img-fluid">
+                                                    <!-- 原始圖片的視窗 -->
+                                                    <div class="image-popup">
+                                                        <img src='@Url.Content("~/images/prod-eg-1.png")' alt="Original Image">
+                                                    </div>
+                                                </td>
+                                                <td class="name-pr">
+                                                    <a href="http://127.0.0.1:5500/shop-detail.html">
+                                                        喵洽普 | 貓咪營養肉泥
+                                                    </a>
+                                                </td>
+                                                <td>$ 65</td>
+                                                <td>
+                                                    <span class="quantity-box">剩餘x件</span>
+                                                </td>
+                                                <td>
+                                                    <span class="add-pr">
+                                                        <a class="btn hvr-hover" href="#">
+                                                            <i class="fa-solid fa-cart-plus"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span class="remove-pr">
+                                                        <a href="#">
+                                                            <i class="fas fa-times"></i>
+                                                        </a>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="test">
+                                                    <img src='@Url.Content("~/images/prod-eg-4.png")'
+                                                         style="width: 100px; height: auto;"
+                                                         class="thumbnail-image img-fluid">
+                                                    <!-- 原始圖片的視窗 -->
+                                                    <div class="image-popup">
+                                                        <img src='@Url.Content("~/images/prod-eg-4.png")' alt="Original Image">
+                                                    </div>
+                                                </td>
+                                                <td class="name-pr">
+                                                    <a href="http://127.0.0.1:5500/shop-detail.html">
+                                                        貓抓嚴選｜Solo Toy：呆呆動物園
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <span class="price-pr">
+                                                        $ 30<del>$ 50</del>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="quantity-box">剩餘x件</span>
+
+                                                </td>
+                                                <td>
+                                                    <span class="add-pr">
+                                                        <a class="btn hvr-hover" href="#">
+                                                            <i class="fa-solid fa-cart-plus"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span class="remove-pr">
+                                                        <a href="#">
+                                                            <i class="fas fa-times"></i>
+                                                        </a>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="test">
+                                                    <img src='@Url.Content("~/images/prod-eg-3.png")'
+                                                         style="width: 100px; height: auto;"
+                                                         class="thumbnail-image img-fluid">
+                                                    <!-- 原始圖片的視窗 -->
+                                                    <div class="image-popup">
+                                                        <img src='@Url.Content("~/images/prod-eg-3.png")' alt="Original Image">
+                                                    </div>
+                                                </td>
+                                                <td class="name-pr">
+                                                    <a href="http://127.0.0.1:5500/shop-detail.html">
+                                                        Pet Candy｜手工貓草玩具
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <span class="price-pr">$ 240<del>$ 280</del></span>
+                                                </td>
+                                                <td>
+                                                    <span class="quantity-box">剩餘x件</span>
+                                                </td>
+                                                <td>
+                                                    <span class="add-pr">
+                                                        <a class="btn hvr-hover" href="#">
+                                                            <i class="fa-solid fa-cart-plus"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span class="remove-pr">
+                                                        <a href="#">
+                                                            <i class="fas fa-times"></i>
+                                                        </a>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!--客訴紀錄的內容-->
+        <div class="tab-pane fade" id="Complaint" role="tabpanel" aria-labelledby="Complaint-tab">
+            <section class="my-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 order-2 order-sm-2 order-md-2 order-xs-2">
+                            <div class="card mb-3 border shadow-0">
+                                <form>
+                                    <div class="col">
+                                        <label>選擇日期區間</label>
+                                        <input class="dateRange form-control" type="text" />
+                                        <label>關鍵字搜尋</label>
+                                        <input class="form-control" type="text" value=""
+                                               placeholder="請輸入關鍵字或訂單編號" id="myKeyWord4" />
+                                        <div class="text-center mb-2 ">
+                                            <button class="btn-customs btn hvr-hovers" id="btnQuery4" type="button">
+                                                查詢
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 order-3 order-sm-3 order-md-3 order-xs-3">
+                            <div class="row gy-3 mb-4">
+                                <div style="height: 350px; overflow: scroll;" class="table-responsive">
+                                    <table class="table table-bordered table-hover" id="example4">
+                                        <thead class="table-warning text-center">
+                                            <tr>
+                                                <th scope="col">客訴編號</th>
+                                                <th scope="col">客訴時間</th>
+                                                <th scope="col">客訴類型</th>
+                                                <th scope="col">客訴主旨</th>
+                                                <th scope="col">客訴狀態</th>
+                                                <th scope="col">完成時間</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-left">
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>2023/07/26</td>
+                                                <td>1</td>
+                                                <td>1000</td>
+                                                <td>尚未完成</td>
+                                                <td>2023/07/27 12:00</td>
+                                                <td>
+                                                    <div class="d-flex flex-column">
+                                                        <button type="button"
+                                                                class="btn btn-outline-dark mb-2 btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#ComplaintModal">
+                                                            客訴內容
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>2023/07/26</td>
+                                                <td>1</td>
+                                                <td>1000</td>
+                                                <td>完成</td>
+                                                <td>2023/07/27 12:00</td>
+                                                <td>
+                                                    <div class="d-flex flex-column">
+                                                        <button type="button"
+                                                                class="btn btn-outline-dark mb-2 btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#ComplaintModal">
+                                                            客訴內容
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>2023/07/26</td>
+                                                <td>1</td>
+                                                <td>1000</td>
+                                                <td>完成</td>
+                                                <td>2023/07/27 12:00</td>
+                                                <td>
+                                                    <div class="d-flex flex-column">
+                                                        <button type="button"
+                                                                class="btn btn-outline-dark mb-2 btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#ComplaintModal">
+                                                            客訴內容
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!--客服中心的內容-->
+        <div class="tab-pane fade" id="CustomerService" role="tabpanel" aria-labelledby="CustomerService-tab">
+            <section class="my-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>請選擇申訴類型</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="subject" name="name" placeholder="標題"
+                                       required data-error="請輸入您的標題">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea class="form-control" id="message" placeholder="內容" rows="4"
+                                          data-error="請輸入您的內容" required></textarea>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="submit-button text-center">
+                                <button class="btn hvr-hover" id="submit" type="submit">送出訊息</button>
+                                <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!--彈跳視窗:客訴內容-->
+<div class="modal fade" id="ComplaintModal">
+    <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="col d-flex justify-content-end">
+                    <button type="button" class="btn btn-warning btn-sm px-2" data-bs-dismiss="modal">
+                        X
+                    </button>
+                </div>
+                <div class="container">
+                    <form action="">
+                        <div class="row my-1 ml-2">
+                            <label>客訴編號: </label>
+                        </div>
+                        <div class="row my-1 ml-2">
+                            <label>成立日期: </label>
+                        </div>
+                        <div class="row my-1 ml-2">
+                            <label>客訴類型: </label>
+                        </div>
+                        <div class="row my-1 ml-2">
+                            <label>客訴主旨: </label>
+                        </div>
+                        <div class="row my-1 ml-2">
+                            <label>客訴內文 </label>
+                            <div class="input-group">
+                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="row my-1 ml-2">
+                            <label>客服回覆 </label>
+                            <div class="input-group">
+                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col mt-2">
+                                    <button type="button" class="btn btn-outline-secondary btn-block"
+                                            data-bs-dismiss="modal">
+                                        取消
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 跳出視窗:電子發票 -->
+<div class="modal fade" id="invoiceModal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <!-- 頭Header -->
+                <div class="modal-header">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h1>電子發票</h1>
+                            </div>
+                            <div class="col d-flex justify-content-end">
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-dismiss="modal">
+                                    X
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 身體Body -->
+                <div class="modal-body">
+                    <div>
+                        <h3>號碼: ML15495931</h3>
+                        <h3>期別: 112年09-10月</h3>
+                    </div>
+                    <div class="container">
+                        <div id="qrcode"></div>
+                    </div>
+                    <!--上方的qrcode沒有跑出來-->
+                    <!--
+                    <div>
+                        <p>將【QR Code】置於框內以進行掃描輸入</p>
+                    </div>
+                    -->
+                </div>
+                <!-- 腳Footer -->
+                <div class="modal-footer">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 結束公告頁 -->
+
+@section Scripts{
+    <!-- ALL JS FILES -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/star-rating.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-star-rating@4.1.2/js/star-rating.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-fas/theme.js"></script>
+    <script src="~/js/membership.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="~/js/datepicker.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="~/js/jquery.superslides.min.js"></script>
+    <script src="~/js/bootstrap-select.js"></script>
+    <script src="~/js/inewsticker.js"></script>
+    <script src="~/js/bootsnav.js."></script>
+    <script src="~/js/images-loded.min.js"></script>
+    <script src="~/js/isotope.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/baguetteBox.min.js"></script>
+    <script src="~/js/form-validator.min.js"></script>
+    <script src="~/js/contact-form-script.js"></script>
+    <script src="~/js/custom.js"></script>
+    <script src="~/js/forNews.js"></script>
+
+    <!--增加的部分:用於圖片放大預覽-->
+    <script>
+        // 當頁面載入完成後執行
+        document.addEventListener("DOMContentLoaded", function () {
+            // 獲取所有包含縮略圖片和視窗的元素
+            const thumbnailImages = document.querySelectorAll(".thumbnail-image");
+            const imagePopups = document.querySelectorAll(".image-popup");
+
+            // 對每個圖片進行事件處理
+            thumbnailImages.forEach((thumbnailImage, index) => {
+                // 當滑鼠懸停在圖片上時
+                thumbnailImage.addEventListener("mouseover", function () {
+                    // 顯示對應的原始圖片的視窗
+                    imagePopups[index].style.display = "block";
+                });
+
+                // 當滑鼠移開圖片時
+                thumbnailImage.addEventListener("mouseout", function () {
+                    // 隱藏對應的原始圖片的視窗
+                    imagePopups[index].style.display = "none";
+                });
+            });
+        });
+    </script>
+
+    <!--新加入qrcode的cdn   
+    <script  src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
+    <script  src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <script>
+        const qrcode = new QRCode(document.getElementById("qrcode"), {
+            width: 250,
+            height: 250,
+            text: "https://www.youtube.com/"
+        });
+    </script>
+    -->
+
+    <!--新加入sweetalert2的cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function showCancelConfirmation() {
+            Swal.fire({
+                title: '您確定要取消預約嗎',
+                text: "這將無法復原！",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '是的，取消它！',
+                cancelButtonText: '離開'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        '已取消',
+                        '',
+                        'success'
+                    )
+                }
+            });
+        }
+
+        document.getElementById("cancelBooking1").addEventListener("click", showCancelConfirmation);
+        document.getElementById("cancelBooking2").addEventListener("click", showCancelConfirmation);
+        document.getElementById("cancelBooking3").addEventListener("click", showCancelConfirmation);
+    </script>
+
+    <!--增加的部分:用於dataTables搜尋關鍵字採ajax-->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        var dataTableConfig = {
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/zh-HANT.json',
+            },
+            pageLength: 5,
+            lengthMenu: [5, 10, 15], // 下拉選單每頁顯示幾筆
+        };
+        function initializeDataTable(tableId, keywordId, btnId) {
+            var customTable = new DataTable(tableId, dataTableConfig);
+            $(btnId).on("click", function (event) {
+                customTable.search($(keywordId).val()).draw();
+            });
+        }
+
+        //以下分別是標記[消費紀錄、退貨紀錄、預約紀錄、客訴紀錄]
+        initializeDataTable('#example', '#myKeyWord', '#btnQuery');
+        initializeDataTable('#example2', '#myKeyWord2', '#btnQuery2');
+        initializeDataTable('#example3', '#myKeyWord3', '#btnQuery3');
+        initializeDataTable('#example4', '#myKeyWord4', '#btnQuery4');
+    </script>
+
+}
+
+

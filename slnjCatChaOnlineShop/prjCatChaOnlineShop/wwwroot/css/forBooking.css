@@ -1,0 +1,202 @@
+/* 開始預約服務按鈕 */
+.booking{
+  background-image: url(https://img.ttshow.tw/images/media/uploads/2020/07/23/746.jpg);
+  height: 50px;
+  display: flex;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #ffff;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+      transform: scale(0.9);
+  }
+  70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+  }
+  100% {
+      transform: scale(0.9);
+      box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+  }
+}
+/* 結束預約服務按鈕 */
+.timePicker{
+  width: 150px;
+}
+
+.calendar {
+  width: 100%;
+  height: 52rem;
+  background-color: green;
+  box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
+  margin: auto;  
+}
+
+.month {
+  width: 100%;
+  height: 8rem;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  text-align: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.month i {
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.month h1 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.month p {
+  font-size: 1.2rem;
+}
+
+.weekdays {
+  width: 100%;
+  height: 5rem;
+  padding: 0 0.4rem;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.weekdays div {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  width: calc(100% / 7);  /* Changed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.days {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.2rem;
+}
+
+.days div {
+  font-size: 16px;
+  margin: 0.3rem;
+  width: calc(100% / 7 - 0.6rem);  /* Changed */
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+  transition: background-color 0.2s;
+  text-align: center;
+  color: black;
+}
+.days p{
+    margin-bottom: 0;
+}
+
+.days div:hover:not(.today) {
+  background-color: #262626;
+  border: 0.2rem solid #777;
+  cursor: pointer;
+}
+
+.prev-date,
+.next-date {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.today {
+  background-color: #167e56;
+}
+
+.submitBtn{
+  width: 100%;
+}
+
+.bookingHeader{
+  height: 50px;
+}
+
+/* 結束預約服務行事曆 */
+
+
+
+.kv-ltr-theme-fas-star {
+    display: none;
+  }
+  
+  .slick-next:before, .slick-prev:before {
+    color: red;
+    opacity:.30;
+  }
+
+  .slider {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .slides {
+    height: 100%;
+    min-height: 400px;
+    max-height: 750px;
+    background-color: #ffff;
+    box-shadow: 5px 1px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    word-wrap: break-word;
+    white-space: normal;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-align: center;
+  }
+  .slides p{
+    text-align: start;
+  }
+  .slides-span {
+    font-size: 2rem;
+  }
+  
+  @media (max-width: 767px) {
+    .slider {
+      max-width: 300px;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .slider {
+      max-width: 900px;
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    .slider {
+      max-width: 1100px;
+    }
+  }
+
+  .for-comment-title{
+    font-size: 28px;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 700;
+  }

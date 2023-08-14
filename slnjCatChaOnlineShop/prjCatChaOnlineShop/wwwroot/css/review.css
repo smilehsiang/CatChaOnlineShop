@@ -1,0 +1,54 @@
+.kv-ltr-theme-fas-star {
+  display: none;
+}
+
+.slider {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8f9fa;
+}
+
+.slides {
+  height: 100%;
+  min-height: 400px;
+  max-height: 750px;
+  background-color: #ffff;
+  box-shadow: 5px 1px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  word-wrap: break-word;
+  white-space: normal;
+  margin-right: 10px;
+  margin-left: 10px;
+  text-align: center;
+  background: #f8f9fa;
+}
+.slides p{
+  text-align: start;
+}
+.slides-span {
+  font-size: 2rem;
+}
+
+@media (max-width: 767px) {
+  .slider {
+    max-width: 400px;
+    background: #f8f9fa;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .slider {
+    max-width: 600px;
+    background: #f8f9fa;
+  }
+}
+
+@media (min-width: 1025px) {
+  .slider {
+    max-width: 800px;
+    background: #f8f9fa;
+  }
+}

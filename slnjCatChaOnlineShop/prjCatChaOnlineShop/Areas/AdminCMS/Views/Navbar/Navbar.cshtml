@@ -1,0 +1,412 @@
+﻿
+@{
+    ViewData["Title"] = "Navbar";
+    Layout = "~/Areas/AdminCMS/Views/Shared/CMS_Layout.cshtml";
+}
+
+@section Styles{
+    <style>
+        /* 原始圖片的視窗 */
+        .image-popup {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 150px;
+            /* 將視窗放在圖片右側 */
+            /* max-width: 100%; */
+            /* 視窗寬度 */
+            background-color: #aaa;
+            padding: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+            .image-popup img {
+                width: 300px;
+            }
+
+        /* 縮略圖片的樣式 */
+        .thumbnail-image {
+            /* position: relative; */
+            cursor: pointer;
+            /* 將鼠標指針設置為手型以指示圖片可懸停 */
+        }
+
+        .test {
+            position: relative;
+        }
+    </style>
+}
+
+<div class="middle-content">
+
+    <div class="row align-items-center">
+        <div class="col-6">
+            <h2 class="mt-3">子標題管理</h2>
+        </div>
+        <div class="col-6 text-end mt-3">
+            <button class="btn btn-primary" data-bs-toggle="modal" href="#addNavbarModalToggle"
+                    role="button">
+                新增子標題
+            </button>
+        </div>
+    </div>
+
+    <!---新增子標題 modal-->
+    <div class="modal fade" id="addNavbarModalToggle" aria-hidden="true"
+         aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel">新增子標題</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <!-- <label>ID：</label> -->
+                            <input type="hidden" class="form-control" disabled readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>名稱：</label>
+                            <input type="text" class="form-control">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>子標題狀態</label>
+                            <select class="form-control">
+                                <option value="顯示">顯示</option>
+                                <option value="隱藏">隱藏</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label>隸屬主標題</label>
+                            <select class="form-control">
+                                <option>主標題1</option>
+                                <option>主標題2</option>
+                                <option>主標題3</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-danger btn-block" style="width: 100%;">儲存</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---新增子標題 modal-->
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <!--表格-->
+                <!--子標題-->
+                <table id="GProduct-table" class="table table-striped nowrap" style="width:100%">
+                    <thead>
+                        <tr>
+                            <!-- <th>序號</th> -->
+                            <th>ID</th>
+                            <th>子標題名稱</th>
+                            <th>子標題狀態</th>
+                            <th>隸屬主標題</th>
+                            <th>編輯/刪除</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- <td>1</td> -->
+                            <td>1</td>
+                            <td>子標題1</td>
+                            <td>隱藏</td>
+                            <td>主標題2</td>
+                            <!--用主標題ID連結select內容-->
+                            <td>
+                                <a href="#">
+                                    <button class="btn" data-bs-toggle="modal"
+                                            href="#exampleModalToggle" role="button">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </a> | <button class="btn"
+                                               onclick="userDelete()">
+                                    <a href="#" id="b5">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td>2</td> -->
+                            <td>2</td>
+                            <td>子標題2</td>
+                            <td>顯示</td>
+                            <td>主標題1</td>
+                            <!--用主標題ID連結select內容-->
+                            <td>
+                                <a href="#">
+                                    <button class="btn" data-bs-toggle="modal"
+                                            href="#exampleModalToggle" role="button">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </a> | <button class="btn"
+                                               onclick="userDelete()">
+                                    <a href="#" id="b5">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!--編輯彈出視窗-->
+                        <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                             aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalToggleLabel">編輯 Edit</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!--內容表單-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>ID</label>
+                                                <input type="text" class="form-control" readonly disabled>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>子標題名稱</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>子標題狀態</label>
+                                                <select class="form-control">
+                                                    <option value="顯示">顯示</option>
+                                                    <option value="隱藏">隱藏</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>隸屬主標題</label>
+                                                <select class="form-control">
+                                                    <option>主標題1</option>
+                                                    <option>主標題2</option>
+                                                    <option>主標題3</option>
+                                                </select>
+                                            </div>
+                                            <button type="submit" class="mt-3 btn btn-primary btn-block"
+                                                    style="width: 100%;">
+                                                儲存
+                                            </button>
+                                        </div>
+                                        <!--內容表單-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--編輯彈出視窗-->
+                    </tbody>
+                </table>
+                <!--子標題-->
+
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <h2 class="mt-3">主標題管理</h2>
+                    </div>
+                    <div class="col-6 text-end mt-3">
+                        <button class="btn btn-primary" data-bs-toggle="modal" href="#addNavbarModalToggle2" role="button">新增主標題</button>
+                    </div>
+                </div>
+
+                <!---新增主標題 modal-->
+                <div class="modal fade" id="addNavbarModalToggle2" aria-hidden="true"
+                     aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalToggleLabel">新增主標題</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <!-- <label>ID：</label> -->
+                                        <input type="hidden" class="form-control" disabled readonly>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>主標題名稱</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>主標題狀態</label>
+                                        <select class="form-control">
+                                            <option value="顯示">顯示</option>
+                                            <option value="隱藏">隱藏</option>
+                                        </select>
+                                    </div>
+
+                                    <button class="btn btn-danger btn-block"
+                                            style="width: 100%;">
+                                        儲存
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!---新增主標題 modal-->
+                <!--主標題-->
+                <table id="GProduct-table" class="table table-striped nowrap" style="width:100%">
+                    <thead>
+                        <tr>
+                            <!-- <th>序號</th> -->
+                            <th>ID</th>
+                            <th>主標題名稱</th>
+                            <th>主標題狀態</th>
+                            <th>編輯/刪除</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- <td>1</td> -->
+                            <td>1</td>
+                            <td>主標題1</td>
+                            <td>隱藏</td>
+                            <!--用主標題ID連結select內容-->
+                            <td>
+                                <a href="#">
+                                    <button class="btn" data-bs-toggle="modal"
+                                            href="#exampleModalToggle2" role="button">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </a> | <button class="btn"
+                                               onclick="userDelete()">
+                                    <a href="#" id="b5">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td>2</td> -->
+                            <td>2</td>
+                            <td>主標題2</td>
+                            <td>顯示</td>
+                            <!--用主標題ID連結select內容-->
+                            <td>
+                                <a href="#">
+                                    <button class="btn" data-bs-toggle="modal"
+                                            href="#exampleModalToggle" role="button">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </a> | <button class="btn"
+                                               onclick="userDelete()">
+                                    <a href="#" id="b5">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!--編輯彈出視窗-->
+                        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
+                             aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalToggleLabel">編輯 Edit</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!--內容表單-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>ID</label>
+                                                <input type="text" class="form-control" readonly disabled>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>主標題名稱</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>主標題狀態</label>
+                                                <select class="form-control">
+                                                    <option value="顯示">顯示</option>
+                                                    <option value="隱藏">隱藏</option>
+                                                </select>
+                                            </div>
+                                            <button type="submit" class="mt-3 btn btn-primary btn-block"
+                                                    style="width: 100%;">
+                                                儲存
+                                            </button>
+                                        </div>
+                                        <!--內容表單-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--編輯彈出視窗-->
+                    </tbody>
+                </table>
+                <!--主標題-->
+                <!--表格-->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts{
+    <script>
+        // 當頁面載入完成後執行
+        document.addEventListener("DOMContentLoaded", function () {
+            // 獲取所有包含縮略圖片和視窗的元素
+            const thumbnailImages = document.querySelectorAll(".thumbnail-image");
+            const imagePopups = document.querySelectorAll(".image-popup");
+
+            // 對每個圖片進行事件處理
+            thumbnailImages.forEach((thumbnailImage, index) => {
+                // 當滑鼠懸停在圖片上時
+                thumbnailImage.addEventListener("mouseover", function () {
+                    // 顯示對應的原始圖片的視窗
+                    imagePopups[index].style.display = "block";
+                });
+
+                // 當滑鼠移開圖片時
+                thumbnailImage.addEventListener("mouseout", function () {
+                    // 隱藏對應的原始圖片的視窗
+                    imagePopups[index].style.display = "none";
+                });
+            });
+        });
+
+        new DataTable('#GProduct-table', {
+            responsive: true,
+        });
+
+        function userDelete() {
+            Swal.fire({
+                title: '確定要刪除嗎?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        }
+    </script>
+}
+

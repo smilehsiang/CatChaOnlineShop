@@ -1,0 +1,304 @@
+﻿
+@{
+    ViewData["Title"] = "ShopOrder";
+    Layout = "~/Views/Shared/CMS_Layout.cshtml";
+}
+
+@section Styles{
+    
+}
+
+<div class="middle-content">
+
+    <h2 class="mt-3">商城訂單管理</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex justify-content-between">
+                <select class="form-select" id="payList">
+                    <option value="" selected disabled>付款方式篩選</option>
+                    <option value="">全部訂單</option>
+                    <option value="取貨付款">取貨付款</option>
+                    <option value="信用卡">信用卡</option>
+                </select>
+
+                <select class="form-select" id="deliveryList">
+                    <option value="" selected disabled>配送方式篩選</option>
+                    <option value="">全部訂單</option>
+                    <option value="7-Eleven">7-Eleven</option>
+                    <option value="全家">全家</option>
+                </select>
+
+                <select class="form-select" id="statusList">
+                    <option value="" selected>訂單狀態篩選</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <!--表格-->
+                <table id="order-table" class="table table-striped nowrap" style="width:100%">
+                    <thead>
+                        <tr>
+                            <!-- <th>序號</th> -->
+                            <th>ID</th>
+                            <th>訂購人</th>
+                            <th>收件人</th>
+                            <th>優惠券</th>
+                            <th>付款方式</th>
+                            <th>運輸方式</th>
+                            <th>成立日期</th>
+                            <th>最後更新</th>
+                            <th>狀態</th>
+                            <th>詳細資料</th>
+                            <th>編輯</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- <td>1</td> -->
+                            <td>1</td>
+                            <td>A小姐</td>
+                            <td>B先生</td>
+                            <td>1 (張)</td>
+                            <td>取貨付款</td>
+                            <td>全家取貨</td>
+                            <td>2023/08/03</td>
+                            <td>2023/08/04</td>
+                            <td>配送中</td>
+                            <td>
+                                <a href="#">
+                                    <button class="btn btn-success" data-bs-toggle="modal"
+                                            href="#orderDetailModalToggle" role="button">
+                                        訂單明細
+                                    </button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <button class="btn" data-bs-toggle="modal"
+                                            href="#exampleModalToggle" role="button">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td>1</td> -->
+                            <td>2</td>
+                            <td>A小姐</td>
+                            <td>B先生</td>
+                            <td>1 (張)</td>
+                            <td>信用卡</td>
+                            <td>7-11取貨</td>
+                            <td>2023/08/03</td>
+                            <td>2023/08/04</td>
+                            <td>配送中</td>
+                            <td>
+                                <a href="#">
+                                    <button class="btn btn-success" data-bs-toggle="modal"
+                                            href="#orderDetailModalToggle" role="button">
+                                        訂單明細
+                                    </button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <button class="btn" data-bs-toggle="modal"
+                                            href="#exampleModalToggle" role="button">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td>1</td> -->
+                            <td>2</td>
+                            <td>A小姐</td>
+                            <td>B先生</td>
+                            <td>1 (張)</td>
+                            <td>取貨付款</td>
+                            <td>全家 信義店</td>
+                            <td>2023/08/03</td>
+                            <td>2023/08/04</td>
+                            <td>配送中</td>
+                            <td>
+                                <a href="#">
+                                    <button class="btn btn-success" data-bs-toggle="modal"
+                                            href="#orderDetailModalToggle" role="button">
+                                        訂單明細
+                                    </button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <button class="btn" data-bs-toggle="modal"
+                                            href="#exampleModalToggle" role="button">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+
+
+                        <!--編輯彈出視窗-->
+                        <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                             aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalToggleLabel">編輯 Edit</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!--內容表單-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>ID</label>
+                                                <input type="text" class="form-control" readonly disabled>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>訂購人</label>
+                                                <input type="text" class="form-control" readonly disabled>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>收件人</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>收件地址</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>收件電話</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>付款方式</label>
+                                                <input type="text" class="form-control" readonly disabled>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>配送類別</label>
+                                                <select name="" id="" class="form-select">
+                                                    <option value="">7-Eleven</option>
+                                                    <option value="">全家</option>
+                                                    <option value="">萊爾富</option>
+                                                    <option value="">OK</option>
+                                                    <option value="">宅配到府</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label>狀態</label>
+                                                <select name="" id="" class="form-select">
+                                                    <option value="">處理中</option>
+                                                    <option value="">配送中</option>
+                                                    <option value="">已完成</option>
+                                                    <option value="">已取消</option>
+                                                </select>
+                                            </div>
+
+                                            <button type="submit" class="mt-3 btn btn-primary btn-block"
+                                                    style="width: 100%;">
+                                                儲存
+                                            </button>
+                                        </div>
+                                        <!--內容表單-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tbody>
+                </table>
+                <!--表格-->
+                <!---詳細資料model-->
+                <div class="modal fade" id="orderDetailModalToggle" aria-hidden="true"
+                     aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title bg-dark text-white" id="exampleModalToggleLabel">
+                                    訂單明細
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-6" style="border-right: 1px solid #000;">
+                                        <p>ID</p>
+                                        <p>訂購人</p>
+                                        <p>收件人：XXX</p>
+                                        <p>收件地址：</p>
+                                        <p>收件電話：</p>
+                                        <p>收件地址：</p>
+                                        <p>優惠券</p>
+                                        <p>付款方式</p>
+                                        <p>確認配送類別?</p>
+                                        <p>成立日期</p>
+                                        <p>最後更新</p>
+                                        <p>狀態</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>產品名稱：XXX</p>
+                                        <p>產品價格：XXX</p>
+                                        <p>產品數量：XXX</p>
+                                        <p>小計：XXX</p>
+                                        <p>運費：XXX</p>
+                                        <p>全館優惠?：XXX</p>
+                                        <p>折抵紅利：XXX</p>
+                                        <p>優惠券?：XXX</p>
+                                        <p>總金額：XXX</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!---詳細資料model-->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var table = $('#order-table').DataTable({
+                responsive: true,
+                // 在這裡指定需要過濾的列，假設第一列和第二列需要過濾
+                columnDefs: [
+                    { targets: 4, searchable: true },
+                    { targets: 5, searchable: true }
+                    // 其他列...
+                ]
+            });
+
+            // 綁定select元素的change事件，當選擇條件改變時，重新過濾表格資料
+            $('#payList').on('change', function () {
+                var filterOption1 = $(this).val();
+
+                // 使用DataTable的column().search()方法進行過濾
+                table.column(4).search(filterOption1).draw();
+                // 其他列...
+            });
+
+            $('#deliveryList').on('change', function () {
+                // var filterOption1 = $('#payList').val();
+                var filterOption2 = $(this).val();
+
+                // 使用DataTable的column().search()方法進行過濾
+                table.column(5).search(filterOption2).draw();
+                // 其他列...
+            });
+        });
+    </script>
+}

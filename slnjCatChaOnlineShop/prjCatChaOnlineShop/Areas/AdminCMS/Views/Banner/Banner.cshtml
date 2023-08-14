@@ -1,0 +1,281 @@
+﻿
+@{
+    ViewData["Title"] = "Banner";
+    Layout = "~/Areas/AdminCMS/Views/Shared/CMS_Layout.cshtml";
+}
+
+@section Styles{
+    <style>
+    /* 原始圖片的視窗 */
+    .image-popup {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 150px;
+        /* 將視窗放在圖片右側 */
+        /* max-width: 100%; */
+        /* 視窗寬度 */
+        background-color: #aaa;
+        padding: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        z-index: 1;
+    }
+
+    .image-popup img {
+        width: 300px;
+    }
+
+    /* 縮略圖片的樣式 */
+    .thumbnail-image {
+        /* position: relative; */
+        cursor: pointer;
+        /* 將鼠標指針設置為手型以指示圖片可懸停 */
+    }
+
+    .test {
+        position: relative;
+    }
+</style>
+}
+
+
+
+        <div class="middle-content">
+
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <h2 class="mt-3">Banner管理</h2>
+                </div>
+                <div class="col-6 text-end mt-3">
+                    <button class="btn btn-primary" data-bs-toggle="modal" href="#addBannerModalToggle"
+                            role="button">
+                        新增Banner
+                    </button>
+                </div>
+            </div>
+
+            <!---新增Banner modal-->
+            <div class="modal fade" id="addBannerModalToggle" aria-hidden="true"
+                 aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalToggleLabel">新增Banner</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <!-- <label>ID：</label> -->
+                                    <input type="hidden" class="form-control" disabled readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>名稱：</label>
+                                    <input type="text" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>類型：</label>
+                                    <select class="form-control">
+                                        <option value="BannerCatgory1">1</option>
+                                        <option value="BannerCatgory2">2</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label>圖片</label>
+                                    <input type="file" class="form-control">
+                                </div>
+
+                                <button class="btn btn-danger btn-block" style="width: 100%;">儲存</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---新增Banner modal-->
+
+            <div class="container-fluid mt-4">
+                <div class="row">
+                    <div class="col-12">
+                        <!--表格-->
+                        <table id="GProduct-table" class="table table-striped nowrap" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <!-- <th>序號</th> -->
+                                    <th>ID</th>
+                                    <th>名稱</th>
+                                    <th>類型ID</th>
+                                    <th>圖片</th>
+                                    <th>編輯/刪除</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <!-- <td>1</td> -->
+                                    <td>1</td>
+                                    <td>Banner1</td>
+                                    <td>1</td>
+                                    <td class="test">
+                                        <img src="https://a.rimg.com.tw/s6/3a2/204/lin1070520/d/fa/22132414751226_487.jpg"
+                                             width="100" height="100" class="thumbnail-image">
+                                        <!-- 原始圖片的視窗 -->
+                                        <div class="image-popup">
+                                            <img src="https://a.rimg.com.tw/s6/3a2/204/lin1070520/d/fa/22132414751226_487.jpg"
+                                                 alt="Original Image">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            <button class="btn" data-bs-toggle="modal"
+                                                    href="#exampleModalToggle" role="button">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </a> | <button class="btn"
+                                                       onclick="userDelete()">
+                                            <a href="#" id="b5">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <!-- <td>2</td> -->
+                                    <td>2</td>
+                                    <td>Banner2</td>
+                                    <td>2</td>
+                                    <td class="test">
+                                        <img src="https://a.rimg.com.tw/s6/3a2/204/lin1070520/d/fa/22132414751226_487.jpg"
+                                             width="100" height="100" class="thumbnail-image">
+                                        <!-- 原始圖片的視窗 -->
+                                        <div class="image-popup">
+                                            <img src="https://a.rimg.com.tw/s6/3a2/204/lin1070520/d/fa/22132414751226_487.jpg"
+                                                 alt="Original Image">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            <button class="btn" data-bs-toggle="modal"
+                                                    href="#exampleModalToggle" role="button">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </a> | <button class="btn"
+                                                       onclick="userDelete()">
+                                            <a href="#" id="b5">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </button>
+                                    </td>
+                                </tr>
+
+
+
+                                <!--編輯彈出視窗-->
+                                <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                                     aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalToggleLabel">編輯 Edit</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!--內容表單-->
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>ID</label>
+                                                        <input type="text" class="form-control" readonly disabled>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>名稱</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>類型ID</label>
+                                                        <select class="form-control">
+                                                            <option value="BannerCatgory1">1</option>
+                                                            <option value="BannerCatgory2">2</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label>圖片</label>
+                                                        <input type="file" class="form-control">
+                                                    </div>
+
+                                                    <button type="submit" class="mt-3 btn btn-primary btn-block"
+                                                            style="width: 100%;">
+                                                        儲存
+                                                    </button>
+                                                </div>
+                                                <!--內容表單-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--編輯彈出視窗-->
+                            </tbody>
+                        </table>
+                        <!--表格-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+ 
+    
+
+@section Scripts{
+
+    <script>
+        // 當頁面載入完成後執行
+        document.addEventListener("DOMContentLoaded", function () {
+            // 獲取所有包含縮略圖片和視窗的元素
+            const thumbnailImages = document.querySelectorAll(".thumbnail-image");
+            const imagePopups = document.querySelectorAll(".image-popup");
+
+            // 對每個圖片進行事件處理
+            thumbnailImages.forEach((thumbnailImage, index) => {
+                // 當滑鼠懸停在圖片上時
+                thumbnailImage.addEventListener("mouseover", function () {
+                    // 顯示對應的原始圖片的視窗
+                    imagePopups[index].style.display = "block";
+                });
+
+                // 當滑鼠移開圖片時
+                thumbnailImage.addEventListener("mouseout", function () {
+                    // 隱藏對應的原始圖片的視窗
+                    imagePopups[index].style.display = "none";
+                });
+            });
+        });
+
+        new DataTable('#GProduct-table', {
+            responsive: true,
+        });
+
+        function userDelete() {
+            Swal.fire({
+                title: '確定要刪除嗎?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        }
+    </script>
+}
+

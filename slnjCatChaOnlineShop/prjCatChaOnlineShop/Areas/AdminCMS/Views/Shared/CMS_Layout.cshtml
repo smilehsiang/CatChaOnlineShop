@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/index.css">
+    <link href="~/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!---字型-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
+
+    <!--DATATABLE-->
+    <link rel="stylesheet" href="~/css/cdnjs.cloudflare.com_ajax_libs_twitter-bootstrap_5.3.0_css_bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/cdn.datatables.net_1.13.6_css_dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="~/css/cdn.datatables.net_responsive_2.5.0_css_responsive.bootstrap5.min.css">
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+    <div class="d-flex all-content">
+
+        <ul class="SideBar text-white">
+
+            <div class="mb-3">
+                <h5>
+                    CatCha 貓抓抓
+                    <span class="close-icon" onclick="closeSideBar()">
+                        <i class="far fa-times-circle d-md-none"></i>
+                    </span>
+                </h5>
+                <h5>後台管理中心</h5>
+
+            </div>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <li class="nav-item active">
+                <!--按下後無反應-->
+@*                <a class="nav-link" asp-area="AdminCMS" asp-controller="DataAnalysis" asp-action="DataAnalysis">*@
+                <a class="nav-link" href="/AdminCMS/DataAnalysis/DataAnalysis">
+                    <i class="fas fa-chart-pie"></i>
+                    <span class="title">數據分析</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/AdminCMS/Member/Member">
+                    <i class="fas fa-user"></i>
+                    <span class="title">會員管理</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
+                   aria-expanded="false" aria-controls="collapseOne">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="title">商城管理</span>
+                    <i class="fas fa-angle-up"></i>
+                </a>
+
+                <div id="collapseOne" class="collapse drop-animation" aria-labelledby="headingOne"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white text-dark py-2 collapse-inner rounded">
+                        <div class="center">
+                            <ul class="sidebar-detail-ul">
+                                <li><a href="/AdminCMS/Order/Order">商城訂單管理</a></li>
+                                <li><a href="/AdminCMS/Salon/Salon">美容訂單管理</a></li>
+                                <li><a href="/AdminCMS/Product/Product">產品管理</a></li>
+                                <li><a href="/AdminCMS/Grooming/Grooming">寵物美容管理</a></li>
+                                <li><a href="/AdminCMS/Bonus/Bonus">優惠券管理</a></li>
+                                <li><a href="/AdminCMS/Return/Return">退換貨管理</a></li>
+                                <li><a href="/AdminCMS/ProductReview/ProductReview">產品評論管理</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                   aria-expanded="false" aria-controls="collapseTwo">
+                    <i class="fas fa-gamepad"></i>
+                    <span class="big-title">遊戲管理</span>
+                    <i class="fas fa-angle-up"></i>
+                </a>
+                <div id="collapseTwo" class="collapse drop-animation" aria-labelledby="headingTwo"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white text-dark py-2 collapse-inner rounded">
+                        <div class="center">
+                            <ul class="sidebar-detail-ul">
+                                <li><a href="/AdminCMS/GameProduct/GameProduct">商品管理</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/AdminCMS/Service/Service">
+                    <i class="fas fa-headset"></i>
+                    <span class="title">客服回覆</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                   aria-expanded="false" aria-controls="collapseThree">
+                    <i class="fab fa-html5"></i>
+                    <span class="title">網頁管理</span>
+                    <i class="fas fa-angle-up"></i>
+                </a>
+                <div id="collapseThree" class="collapse drop-animation" aria-labelledby="headingTwo"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white text-dark py-2 collapse-inner rounded">
+                        <div class="center">
+                            <ul class="sidebar-detail-ul">
+                                <li><a href="/AdminCMS/Banner/Banner">Banner</a></li>
+                                <li><a href="/AdminCMS/Navbar/Navbar">navbar</a></li>
+                                <li><a href="/AdminCMS/News/News">公告消息</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/AdminCMS/AdminManage/AdminManage">
+                    <i class="fas fa-user-shield"></i>
+                    <span class="big-title">管理員</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+                <a href="#" class="nav-link" asp-area="" asp-controller="Index" asp-action="Index" target="_blank">
+                    <i class="fas fa-home"></i>
+                    <span class="big-title">回商城首頁</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" onclick="SignOut()" style="cursor: pointer;">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="big-title">登出</span>
+                </a>
+            </li>
+
+        </ul>
+
+        <div id="bg-hide"></div>
+
+        <div class="right-content d-flex flex-column">
+            <navbar>
+                <div class="row align-items-center">
+                    <div class="col-4 d-md-none">
+                        <button class="btn" onclick="showSideBar()">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-12 col-8 text-end">
+                        <span>管理員姓名</span>
+                        <img class="img-profile rounded-circle" src="~/images/undraw_profile.svg" />
+                    </div>
+                </div>
+            </navbar>
+
+            
+                @RenderBody()
+            
+
+        </div>
+    </div>
+
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+    <script src="~/js/index.js"></script>
+
+    <!--DATATABLE-->
+    <script src="~/js/cdn.datatables.net_1.13.6_js_jquery.dataTables.min.js"></script>
+    <script src="~/js/cdn.datatables.net_1.13.6_js_dataTables.bootstrap5.min.js"></script>
+    <script src="~/js/cdn.datatables.net_responsive_2.5.0_js_dataTables.responsive.min.js"></script>
+    <script src="~/js/cdn.datatables.net_responsive_2.5.0_js_responsive.bootstrap5.min.js"></script>
+
+    <!--SWEET ALERT-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--登出事件-->
+    <!--用src引入會造成中文變成亂碼-->
+    <script>
+        $('a').on('click', function(){
+        console.log("...........");
+        })
+        function SignOut() {
+            Swal.fire({
+                title: '確定要登出嗎?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, sign out!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'sign out!',
+                        'You has been sign out.',
+                        'success'
+                    )
+                }
+            })
+        }
+    </script>
+
+    @await RenderSectionAsync("Scripts",required:false)
+</body>
+</html>

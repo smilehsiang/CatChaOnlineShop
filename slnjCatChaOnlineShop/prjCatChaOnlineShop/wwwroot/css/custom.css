@@ -1,0 +1,20 @@
+
+/** ADD YOUR AWESOME CODES HERE **/
+.for_header_twoIcon{
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 2rem;
+    background-color: red;
+    color: white;
+}
+.material-symbols-outlined, .Login span {
+    display: inline-block;
+    vertical-align: top;  
+}
+
+
+
+  

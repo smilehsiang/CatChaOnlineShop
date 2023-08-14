@@ -1,0 +1,268 @@
+
+.quantity-box input {
+    width: 60%;
+}
+
+.cart-box {
+    text-align: center;
+}
+
+.all-title-box-picture{
+    background-image: url(../images/CatCha/Cart_BigTitle.jpg);
+}
+
+.catCoin-Margin {
+    margin-top: 10px;
+}
+
+.coupon-box {
+    font-size: 18px;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+}
+
+.coupon-box-a {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coupon-box-btn, .side-bar-btn , .checkout-btn{
+    border-radius: 5px;
+}
+
+#getCouponList .coupon-content {
+    margin-bottom: 20px;
+    position: relative;
+    border: 1px solid #999;
+    border-radius: 4px;
+}
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#getCouponList .coupon-left {
+    flex-direction: row-reverse;
+}
+.flex-1 {
+    flex: 1;
+}
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+#getCouponList .coupon-intro {
+    width: 120px;
+    margin-right: 0;
+    padding: 10px;
+    border: none;
+    align-items: center;
+}
+.text-center {
+    text-align: center;
+}
+#getCouponList .coupon-middle {
+    display: block;
+    margin: 0;
+    border: none;
+    padding: 10px 0;
+}
+#getCouponList .coupon-tag {
+    padding: 3px;
+    background: #b4793594;
+    color: #fff;
+    font-weight: bold;
+}
+#getCouponList .coupon-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+#getCouponList .coupon-description {
+    margin: 10px 0 0;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #000;
+}
+#getCouponList .coupon-time {
+    margin: 10px 0 0;
+    padding-left: 10px;
+    color: #666;
+}
+#getCouponList .coupon-status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-top: 1px dashed #666;
+    margin-left: -1px;
+}
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left;
+}
+#getCouponList .coupon-status-left .coupon-code {
+    font-size: 20px;
+}
+#getCouponList .coupon-code {
+    font-size: 24px;
+    font-weight: bold;
+}
+#getCouponList .coupon-status button {
+    border: 2px solid #b4793594;
+    background: #b4793594;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0 10px;
+    width: 100px;
+}
+
+#getCouponList .coupon_cancel button {
+    border: 2px solid #b4793594;
+    background: #b4793594;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0 10px;
+    width: 100px;
+}
+
+.coupon-btn,.chooseStore_btn{ 
+    border-radius: 5px; /* 圓角 */
+    background-color: #b4793594; /* 背景顏色 */
+    color: white; /* 字體顏色 */
+    border:2px  #b4793594;
+    transition: background-color 0.3s ease;
+
+    &:hover{
+        background-color: #B98046;
+      
+    }
+}
+
+ .addressBox_modal {
+    text-align: center;
+}
+
+#nav-home ul, #nav-profile ul ,#DeliveryMethod_nav-tabContent ul, .customer_info, .invoice-size
+{
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+
+/*讓分頁按鈕的字體顏色改變*/
+.nav-tabs button{
+    color:#DE9E4F;
+    background-color: #FDFCFC;
+}
+
+/*讓分頁裡的按鈕移至超連結的顏色都是橘色*/
+.nav-tabs .nav-link:hover {
+    color: orange;
+  }
+
+
+  .Einvoice-style {
+    text-align: center;
+}
+
+.einvoice-link
+{
+    color: 	#0000C6;
+}
+
+.einvoice-color{
+    color: 	#AE0000;
+}
+
+.payment-icon-mycss{
+    padding: 20px 0px
+}
+.payment-icon-mycss ul li{
+    width: 25%;
+}
+
+.form-check-input:checked {
+    background-color: #b4793594;
+    border-style: none;
+    box-shadow: none;
+}
+
+.nav-ATM-css{
+    color: 	#AE0000
+}
+
+.nav-ATM-fontSize{
+    font-size: 13px;
+}
+
+#loginModal .btn-primary , .btn-light ,#forgotPasswordModal .btn-primary{
+    color: #fff;
+    display: inline-block;
+     vertical-align: middle;
+     -webkit-transform: perspective(1px) translateZ(0);
+     transform: perspective(1px) translateZ(0);
+     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+     position: relative;
+     background: #b4793594;
+     -webkit-transition-property: color;
+     transition-property: color;
+     -webkit-transition-duration: 0.3s;
+     transition-duration: 0.3s;
+     border-radius: 5;
+     box-shadow: none;
+     border: none;
+}
+
+
+#loginModal .btn-primary:hover , .btn-light:hover , #forgotPasswordModal .btn-primary:hover{
+    background-color: #B98046; /* 滑鼠移過去的背景色 */
+    color: #fff;
+}
+
+.link-color{
+    color: #67451D !important;
+}
+.link-color:hover{
+
+    color: #AF7431;
+}
+
+
+
+/*
+.input-group-border{
+    border-color: #EDD8C0;
+    border-style: solid;
+    border-radius: 10px;
+}*/
+
+/*
+.input-group-color{
+    border: solid #EDD8C0;
+background-color:#EDD8C0 ;
+}*/
+
+.form-check-input:checked {
+    background-color: #b4793594;
+    border-color: #b4793594;
+}
+
+.icon img {
+    width: 100px;
+    height: 100px;
+}
+
+.modal {
+    z-index: 2000; /* 設定一個較高的 z-index 值 */
+}
+

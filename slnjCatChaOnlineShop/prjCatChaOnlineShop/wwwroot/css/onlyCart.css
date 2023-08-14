@@ -1,0 +1,12 @@
+.for-hr{
+    box-sizing: border-box;
+    height: 0;
+    overflow: visible;
+    opacity: 1;
+}
+.for-detail-select{
+    width: 100%;
+}
+.for-count-select{
+    width: 100px;
+}
