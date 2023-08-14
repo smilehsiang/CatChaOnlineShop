@@ -22,10 +22,6 @@
   <ItemGroup>
     <Folder Include="Areas\AdminCMS\Data\" />
     <Folder Include="Areas\AdminCMS\Models\" />
-    <Folder Include="Areas\Admin_CMS\Controllers\" />
-    <Folder Include="Areas\Admin_CMS\Data\" />
-    <Folder Include="Areas\Admin_CMS\Models\" />
-    <Folder Include="Areas\Admin_CMS\Views\" />
   </ItemGroup>
 
 </Project>
