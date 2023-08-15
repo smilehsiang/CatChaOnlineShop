@@ -36,12 +36,10 @@
             position: relative;
         }
 
-
         .form-select {
             width: 200px;
             height: 40px;
         }
-
 
     </style>
 }
@@ -160,7 +158,7 @@
         <div class="row">
             <div class="col-12">
                 <!--表格-->
-                <table id="GProduct-table" class="table table-striped nowrap" style="width:100%">
+                <table id="Product-table" class="table table-striped nowrap" style="width:100%">
                     <thead>
                         <tr>
                             <!-- <th>序號</th> -->
@@ -345,7 +343,7 @@
 
         //篩選類別
         $(document).ready(function () {
-            var table = $('#GProduct-table').DataTable({
+            var table = $('#Product-table').DataTable({
                 responsive: true,
                 // 在這裡指定需要過濾的列，商品類別為第六列->索引5
                 columnDefs: [
