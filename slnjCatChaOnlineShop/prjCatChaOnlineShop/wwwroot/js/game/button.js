@@ -10,7 +10,7 @@ const startRunGameBTN = document.getElementById('startRunGameBTN');//遊戲說�
 const closeinstruction = document.getElementById('closeinstruction');//遊戲說明右上角叉叉
 const popup = document.getElementById('popup');//開啟跑步遊戲說明視窗
 
-const switchBTNs= [rungameBTN,checkinBTN,rankBTN,storeBTN,gatchaBTN,lobbynBTN] //上面六個按鈕存放區
+const switchBTNs= [rungameBTN,gatchaBTN,lobbynBTN] //上面六個按鈕存放區
 const allPages = [Canvaslobby, Canvasrungame, CatchaGatCha,CanvasCheckIn,CanvasRank,CanvasStore]//主要遊戲畫面存放區
 
 
@@ -53,30 +53,13 @@ rungameBTN.addEventListener("click", () => {
 });
 
 gatchaBTN.addEventListener("click", () => {
-    CatchaGatCha.style.display = "block";
+   
     pagesControl(CatchaGatCha);
     btnsControl(gatchaBTN);
 });
 
-//checkinBTN.addEventListener("click", () => {
-//    pagesControl(CanvasCheckIn);
-//    btnsControl(checkinBTN);
-//    Canvaslobby.style.display = "block"
-//  });
-//rankBTN.addEventListener("click", () => {
-//  pagesControl(CanvasRank);
-//  btnsControl(rankBTN);
-//  Canvaslobby.style.display = "block"
-//  });
 
-
-    
-//storeBTN.addEventListener("click", () => {
-//   restartRunGame()
-  
-//   pagesControl(CanvasStore);
-//   btnsControl(storeBTN);
-//  });
+//跑步遊戲說明
 
 startRunGameBTN.addEventListener("click", () => {
     hideInstructions()

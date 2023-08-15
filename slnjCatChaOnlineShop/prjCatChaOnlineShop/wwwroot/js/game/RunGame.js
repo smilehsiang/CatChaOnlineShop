@@ -6,13 +6,17 @@ const ctxrungame = Canvasrungame.getContext('2d');
 let isAnimationRunning = true; //遊戲停止與否
 let checkmachine = false;//加分檢查點
 const gravity = 0.5;
-ctxrungame.font = "25px monospace";
+ctxrungame.font = "20px monospace";
 const rungameBK = new Image();
 const kittenRun = new Image();
 const floorR = new Image();
 const floorR2 = new Image();
 const rock = new Image();
 const pauseBTNimg = new Image();
+const ScoreBK = new Image();
+
+
+
 let isPause = false;//判斷遊戲暫停狀態
 
 
@@ -29,11 +33,13 @@ class ScoreDisplay {
     }
     loadHightestScore() {
         ctxrungame.fillStyle = "black";
-        ctxrungame.fillText(`Highest: ${hightestScore}`, this.x, this.y);
+        ctxrungame.drawImage(ScoreBK, 20, 20, 150, 40);
+        ctxrungame.fillText(`Highest:${hightestScore}`, this.x, this.y);
     }
     loadCurrentScore() {
         ctxrungame.fillStyle = "black";
-        ctxrungame.fillText(`Score: ${userScore}`, this.x + 170, this.y);
+        ctxrungame.drawImage(ScoreBK, 190, 20, 150, 40);
+        ctxrungame.fillText(`Score:${userScore}`, this.x + 170, this.y);
     }
     load() {
         this.loadHightestScore();
@@ -186,7 +192,7 @@ class rungameBackgroud {
 
 class Pause {
     constructor() {
-        this.x = 340;
+        this.x = 360;
         this.y = 25;
         this.width = 30;
         this.height = 30;
@@ -227,7 +233,7 @@ function checkPoint() {//檢查是否符合得分條件
 const rcat = new runCat('BK');
 const rfloor = new RFloor(0, 480, 720, 30);//x座標，y座標，寬，高
 const rfloor2 = new RFloor(720, 480, 720, 30);//x座標，y座標，寬，高
-const scoredisplay = new ScoreDisplay(userInfoX, userInfoY)
+const scoredisplay = new ScoreDisplay(30, 46)
 const b1 = new block();
 const rungamebackground = new rungameBackgroud()
 const pauseBTN = new Pause();
@@ -314,6 +320,12 @@ function gameEnd() {//腳色死亡時觸發此方法
         doubleCheckLoad()//彈出確認視窗
         isAnimationRunning = false; //停止遊戲所有畫面
     }
+
+}
+
+function selectYourCat() {
+    CanvasDoubleCheck.height = 500;
+
 
 }
 

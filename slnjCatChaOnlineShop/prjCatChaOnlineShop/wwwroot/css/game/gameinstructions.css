@@ -1,26 +1,28 @@
 .instructions-container {
-left: 5%;
-    top: 20%;
-    background-color:white; 
+    left: 5%;
+    top: 120px;
+    background-color: white;
     height: 350px;
     width: 370px;
     display: flex;
     /* justify-content:first baseline; */
-    align-items:center;
+    align-items: center;
     flex-direction: column;
     position: relative; /* 設定 .container 為相對定位 */
     border-radius: 20px; /* 設置圓角半徑為 20px */
-  }
-  .btn-secondary{
+}
+
+.btn-secondary {
     color: black;
     font-size: 35px;
     background-color: white;
-    margin-left:82%;
-    margin-top:1%;
+    margin-left: 82%;
+    margin-top: 0%;
     padding: 0px 10px 0px 10px;
     border: 0;
 }
-  .instructions {
+
+.instructions {
     width: 700px;
     display: flex;
     justify-content: center;
@@ -30,48 +32,55 @@ left: 5%;
     top: 0; /* 距離父容器頂部的距離為 0 */
     left: 0; /* 距離父容器左側的距離為 0 */
     z-index: 1; /* 設定 z-index 為 1，使其在最上層 */
-  }
-  
-  /* 隱藏導航箭頭
+}
+
+/* 隱藏導航箭頭
   .page-item:first-child, .page-item:last-child {
     display: none;
   }
    */
-  .button3 {
+.button3 {
     display: block;
-  }
-  
-  .xx {
+}
+
+.xx {
     display: none;
     text-align: center;
-  }
-  
-  #a:target, #b:target, #c:target {
+}
+
+.text {
+    position: relative;
+    top: -30px
+}
+
+#a:target, #b:target, #c:target {
     display: block;
-  }
-  
-  .pagination-container {
+}
+
+.pagination-container {
     display: flex;
-    margin-top: 60px; /* 調整上方距離，根據需要自行調整 */
+    margin-top: 77px; /* 調整上方距離，根據需要自行調整 */
     position: absolute;
-    text-align:center;
-  justify-content: center;
-  left:27%;
-  }
-  
-  .pagination {
+    text-align: center;
+    justify-content: center;
+    left: 27%;
+}
+
+.pagination {
     display: flex;
     /* align-items: flex-end; */
-  }
-  .page-item2 {
+}
+
+.page-item2 {
     list-style: none; /* 移除點 */
     width: 50px;
-  }
+}
 
-  .btn-outline-info {
+.btn-outline-info {
     background-color: white;
     width: 55px;
+    font-size: 5px;
     color: black;
     border: solid black 1px;
     cursor: pointer;
-  }
+}

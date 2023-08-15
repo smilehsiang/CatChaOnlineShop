@@ -74,6 +74,7 @@ floorR.src = '../../images/game/runGame/rungameFloor.jpg';
 floorR2.src = '../../images/game/runGame/rungameFloor.jpg';
 rungameBK.src = '../../images/game/runGame/rungameBK.png';
 pauseBTNimg.src = '../../images/game/runGame/pause.png';
+ScoreBK.src = '../../images/game/runGame/scoreBK.png'
 
 const RunCatData = {
     Default: {

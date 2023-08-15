@@ -46,6 +46,7 @@
         background-size: cover; /* 設定背景圖片覆蓋整個按鈕 */
         background-position: center; /* 設定背景圖片居中對齊 */
         border: none; /* 移除按鈕邊框 */
+        justify-content:center;
     }
 
     .Gatchagif {
