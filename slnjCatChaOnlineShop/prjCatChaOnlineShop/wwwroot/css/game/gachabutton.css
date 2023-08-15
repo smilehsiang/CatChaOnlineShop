@@ -1,0 +1,44 @@
+#summon-buttons {
+position:absolute;
+top: 80%;
+left: 40%;
+}
+
+
+
+#RubySingleDrow {
+    width: 120px; /* 設定按鈕寬度 */
+    height: 40px; /* 設定按鈕高度 */
+    background-image: url('/images/game/rubyBTN.png'); /* 設定背景圖片路徑 */
+    background-size: cover; /* 設定背景圖片覆蓋整個按鈕 */
+    background-position: center; /* 設定背景圖片居中對齊 */
+    border: none; /* 移除按鈕邊框 */
+}
+#RubyTenDrows {
+    width: 120px; /* 設定按鈕寬度 */
+    height: 40px; /* 設定按鈕高度 */
+    background-image: url('/images/game/rubyBTN_10.png'); /* 設定背景圖片路徑 */
+    background-size: cover; /* 設定背景圖片覆蓋整個按鈕 */
+    background-position: center; /* 設定背景圖片居中對齊 */
+    border: none; /* 移除按鈕邊框 */
+}
+
+
+#CatPointSingleDrow {
+    width: 120px; /* 設定按鈕寬度 */
+    height: 40px; /* 設定按鈕高度 */
+    background-image: url('/images/game/ccoinBTN.png'); /* 設定背景圖片路徑 */
+    background-size: cover; /* 設定背景圖片覆蓋整個按鈕 */
+    background-position: center; /* 設定背景圖片居中對齊 */
+    border: none; /* 移除按鈕邊框 */
+}
+
+
+#CatPointTenDrows {
+    width: 120px; /* 設定按鈕寬度 */
+    height: 40px; /* 設定按鈕高度 */
+    background-image: url('/images/game/ccoinBTN_10.png'); /* 設定背景圖片路徑 */
+    background-size: cover; /* 設定背景圖片覆蓋整個按鈕 */
+    background-position: center; /* 設定背景圖片居中對齊 */
+    border: none; /* 移除按鈕邊框 */
+}
