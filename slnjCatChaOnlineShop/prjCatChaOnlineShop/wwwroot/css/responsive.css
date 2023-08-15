@@ -21,7 +21,7 @@
          padding-top: 6px;
          padding-top: 6px;
          float: left;
-         margin-top: 20px;
+         margin-top: auto;
     }
      nav.navbar.bootsnav ul.nav > li > a{
          padding: 5px 15px;
@@ -86,7 +86,7 @@
          padding-top: 6px;
          padding-bottom: 6px;
          float: left;
-         margin-top: 28px;
+         margin-top: auto;
     }
      nav.navbar.bootsnav ul.nav > li > a{
          padding: 5px 15px;
