@@ -1,6 +1,10 @@
 /*----公告----
 -------------*/
 
+.bg-img {
+    background-image: url("~/images/CatCha/Cart_BigTitle.jpg");
+}
+
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link {
     font-weight: 800px;
