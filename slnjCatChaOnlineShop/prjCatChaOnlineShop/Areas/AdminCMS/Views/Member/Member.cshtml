@@ -1,11 +1,10 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Member";
     Layout = "~/Areas/AdminCMS/Views/Shared/CMS_Layout.cshtml";
 }
 
 @section Styles{
-    
+
 }
 
 <div class="middle-content">
@@ -262,33 +261,35 @@
                                             <div class="tab-pane fade" id="member-edit-nav-profile">
                                                 <form>
                                                     <div class="form-group">
-                                                        <label>Level ID：</label>
+                                                        <label>Level ID</label>
                                                         <input type="text" class="form-control" disabled
                                                                readonly>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label>Character Name：</label>
+                                                        <label>Character Name</label>
                                                         <input type="text" class="form-control">
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label>Cat Coin Quantity：</label>
+                                                        <label>Cat Coin Quantity</label>
                                                         <input type="text" class="form-control">
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label>Loyalty Points：</label>
+                                                        <label>
+                                                            Loyalty Points 紅利數量
+                                                        </label>
                                                         <input type="text" class="form-control">
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label>MyCatNameListID：</label>
+                                                        <label>MyCatNameListID</label>
                                                         <input type="text" class="form-control">
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label>RunGameHighestScore：</label>
+                                                        <label>RunGameHighestScore</label>
                                                         <input type="text" class="form-control">
                                                     </div>
 
@@ -303,6 +304,7 @@
                                                 <form>
                                                     <div class="form-group">
                                                         <label>Address ID：</label>
+
                                                         <input type="text" class="form-control">
                                                     </div>
 
@@ -328,7 +330,16 @@
                                                 </form>
                                             </div>
                                             <div class="tab-pane fade" id="member-edit-nav-paper">
-                                                <p>顯示優惠券 | <button>刪除</button></p>
+                                                <div style="border: 1px solid #000;">
+                                                    <p>折價券ID：2</p>
+                                                    <p>折價券內容：滿500折10</p>
+                                                    <p>使用狀態：未使用</p>
+                                                    <p>優惠券狀態：_______(此欄待確認)</p>
+                                                    <button class="btn btn-danger btn-block" style="width: 100%"
+                                                            onclick="userDelete()">
+                                                        刪除
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -336,155 +347,6 @@
                             </div>
                         </div>
                         <!--編輯彈出視窗-->
-                        <!-- <tr>
-                            <td>2</td>
-                            <td>4</td>
-                            <td>aaa</td>
-                            <td>1@yahoo.com.tw</td>
-                            <td>女</td>
-                            <td>1990-01-01</td>
-                            <td>bbb@gmail.com</td>
-                            <td>1911234567</td>
-                            <td><i class="fas fa-edit"></i></td>
-                            <td>台北市大安區復興南路一段390號2樓</td>
-                            <td>2023-06-29 15:30:00.000</td>
-                            <td>2023-06-29 15:30:01.000</td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td>6</td>
-                            <td>c81</td>
-                            <td>test@gmail.com</td>
-                            <td>女</td>
-                            <td>1990-01-01</td>
-                            <td>bbb@gmail.com</td>
-                            <td>1911234567</td>
-                            <td><i class="fas fa-edit"></i></td>
-                            <td>台北市大安區復興南路一段390號2樓</td>
-                            <td>2023-06-29 15:30:00.000</td>
-                            <td>2023-06-29 15:30:01.000</td>
-                        </tr>
-
-                        <tr>
-                            <td>4</td>
-                            <td>6</td>
-                            <td>c81</td>
-                            <td>test@gmail.com</td>
-                            <td>女</td>
-                            <td>1990-01-01</td>
-                            <td>bbb@gmail.com</td>
-                            <td>1911234567</td>
-                            <td><i class="fas fa-edit"></i></td>
-                            <td>台北市大安區復興南路一段390號2樓</td>
-                            <td>2023-06-29 15:30:00.000</td>
-                            <td>2023-06-29 15:30:01.000</td>
-                        </tr>
-
-                        <tr>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>c81</td>
-                            <td>test@gmail.com</td>
-                            <td>女</td>
-                            <td>1990-01-01</td>
-                            <td>bbb@gmail.com</td>
-                            <td>1911234567</td>
-                            <td><i class="fas fa-edit"></i></td>
-                            <td>台北市大安區復興南路一段390號2樓</td>
-                            <td>2023-06-29 15:30:00.000</td>
-                            <td>2023-06-29 15:30:01.000</td>
-                        </tr>
-
-                        <tr>
-                            <td>6</td>
-                            <td>6</td>
-                            <td>c81</td>
-                            <td>test@gmail.com</td>
-                            <td>女</td>
-                            <td>1990-01-01</td>
-                            <td>bbb@gmail.com</td>
-                            <td>1911234567</td>
-                            <td><i class="fas fa-edit"></i></td>
-                            <td>台北市大安區復興南路一段390號2樓</td>
-                            <td>2023-06-29 15:30:00.000</td>
-                            <td>2023-06-29 15:30:01.000</td>
-                        </tr>
-
-                        <tr>
-                            <td>7</td>
-                            <td>6</td>
-                            <td>c81</td>
-                            <td>test@gmail.com</td>
-                            <td>女</td>
-                            <td>1990-01-01</td>
-                            <td>bbb@gmail.com</td>
-                            <td>1911234567</td>
-                            <td><i class="fas fa-edit"></i></td>
-                            <td>台北市大安區復興南路一段390號2樓</td>
-                            <td>2023-06-29 15:30:00.000</td>
-                            <td>2023-06-29 15:30:01.000</td>
-                        </tr>
-
-                        <tr>
-                            <td>8</td>
-                            <td>6</td>
-                            <td>c81</td>
-                            <td>test@gmail.com</td>
-                            <td>女</td>
-                            <td>1990-01-01</td>
-                            <td>bbb@gmail.com</td>
-                            <td>1911234567</td>
-                            <td><i class="fas fa-edit"></i></td>
-                            <td>台北市大安區復興南路一段390號2樓</td>
-                            <td>2023-06-29 15:30:00.000</td>
-                            <td>2023-06-29 15:30:01.000</td>
-                        </tr>
-
-                        <tr>
-                            <td>9</td>
-                            <td>6</td>
-                            <td>c81</td>
-                            <td>test@gmail.com</td>
-                            <td>女</td>
-                            <td>1990-01-01</td>
-                            <td>bbb@gmail.com</td>
-                            <td>1911234567</td>
-                            <td><i class="fas fa-edit"></i></td>
-                            <td>台北市大安區復興南路一段390號2樓</td>
-                            <td>2023-06-29 15:30:00.000</td>
-                            <td>2023-06-29 15:30:01.000</td>
-                        </tr>
-
-                        <tr>
-                            <td>10</td>
-                            <td>6</td>
-                            <td>c81</td>
-                            <td>test@gmail.com</td>
-                            <td>女</td>
-                            <td>1990-01-01</td>
-                            <td>bbb@gmail.com</td>
-                            <td>1911234567</td>
-                            <td><i class="fas fa-edit"></i></td>
-                            <td>台北市大安區復興南路一段390號2樓</td>
-                            <td>2023-06-29 15:30:00.000</td>
-                            <td>2023-06-29 15:30:01.000</td>
-                        </tr>
-
-                        <tr>
-                            <td>11</td>
-                            <td>6</td>
-                            <td>c81</td>
-                            <td>test@gmail.com</td>
-                            <td>女</td>
-                            <td>1990-01-01</td>
-                            <td>bbb@gmail.com</td>
-                            <td>1911234567</td>
-                            <td><i class="fas fa-edit"></i></td>
-                            <td>台北市大安區復興南路一段390號2樓</td>
-                            <td>2023-06-29 15:30:00.000</td>
-                            <td>2023-06-29 15:30:01.000</td>
-                        </tr> -->
                     </tbody>
                 </table>
                 <!--表格-->
@@ -541,12 +403,13 @@
                                         <p>會員狀態：</p>
                                     </div>
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel">
-                                        <p>Level ID：</p>
-                                        <p>Character Name：</p>
-                                        <p>Cat Coin Quantity：</p>
-                                        <p>Loyalty Points：</p>
-                                        <p>MyCatNameListID：</p>
-                                        <p>RunGameHighestScore：</p>
+                                        <p>Level ID 等級ID：1</p>
+                                        <p>Character Name 遊戲角色名稱：小仙</p>
+                                        <p>Cat Coin Quantity 貓幣數量：9999</p>
+                                        <p>Loyalty Points 紅利數量：35835303</p>
+                                        <p>MyCatNameListID：_______(此欄待確認)</p>
+                                        <p>RunGameHighestScore：100分</p>
+
                                     </div>
                                     <div class="tab-pane fade" id="nav-contact" role="tabpanel">
                                         <p>Member ID</p>
@@ -556,7 +419,10 @@
                                         <p>Recipient Address</p>
                                     </div>
                                     <div class="tab-pane fade" id="nav-paper" role="tabpanel">
-                                        <p>顯示優惠券</p>
+                                        <p>折價券ID：2</p>
+                                        <p>折價券內容：滿500折10</p>
+                                        <p>使用狀態：未使用</p>
+                                        <p>優惠券狀態：_______(此欄待確認)</p>
                                     </div>
                                 </div>
                                 <!---詳細資料model-->
@@ -568,8 +434,8 @@
 
             </div>
         </div>
-</div>
     </div>
+</div>
 
 @section Scripts{
     <script>
@@ -608,12 +474,12 @@
                 }
             })
         }
-        //     $('#myTable').DataTable( {
-        //     responsive: true
-        // } );
-            //https://codepen.io/SitePoint/pen/xbvWQv
+                //     $('#myTable').DataTable( {
+                //     responsive: true
+                // } );
+                    //https://codepen.io/SitePoint/pen/xbvWQv
 
-        // See:
-        // http://www.sitepoint.com/responsive-data-tables-comprehensive-list-solutions
+                // See:
+                // http://www.sitepoint.com/responsive-data-tables-comprehensive-list-solutions
     </script>
 }
