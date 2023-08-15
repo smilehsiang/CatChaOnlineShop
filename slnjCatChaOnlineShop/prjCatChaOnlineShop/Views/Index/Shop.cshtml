@@ -18,6 +18,69 @@
     <link rel="stylesheet" href="~/css/custom-home-details-wishlist.css" />
 }
 
+<!-- Start All Title Box -->
+<div class="categories-shop">
+    <div class="container">
+        <div class="title-all text-left">
+            <!--增加:Start當前分類-->
+            <h1>[當前分類]</h1>
+        </div>
+        <!--增加:End當前分類-->
+        <div class="row">
+            <div class="col-md-2 col-4">
+                <div class="shop-cat-boxs">
+                    <a href="#">
+                        <img class="img-fluid" src="~/images/categories_img_01.jpg" alt="" />
+                        <span>安心正餐</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-2 col-4">
+                <div class="shop-cat-boxs">
+                    <a href="#">
+                        <img class="img-fluid" src="~/images/categories_img_01.jpg" alt="" />
+                        <span>安心正餐</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-2 col-4">
+                <div class="shop-cat-boxs">
+                    <a href="#">
+                        <img class="img-fluid" src="~/images/categories_img_01.jpg" alt="" />
+                        <span>安心正餐</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-2 col-4">
+                <div class="shop-cat-boxs">
+                    <a href="#">
+                        <img class="img-fluid" src="~/images/categories_img_01.jpg" alt="" />
+                        <span>安心正餐</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-2 col-4">
+                <div class="shop-cat-boxs">
+                    <a href="#">
+                        <img class="img-fluid" src="~/images/categories_img_01.jpg" alt="" />
+                        <span>安心正餐</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-2 col-4">
+                <div class="shop-cat-boxs">
+                    <a href="#">
+                        <img class="img-fluid" src="~/images/categories_img_01.jpg" alt="" />
+                        <span>安心正餐</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Categories -->
+
+
 <!-- Start Shop Page  -->
 <div class="shop-box-inner">
     <div class="container">
@@ -82,7 +145,7 @@
                                                 <div class="type-lb">
                                                     <p class="sale">Sale</p>
                                                 </div>
-                                                <a href="#">
+                                                <a asp-controller="Index" asp-action="ShopDetail">
                                                     <img src="~/images/img-pro-01.jpg" class="img-fluid" alt="Image" />
                                                 </a>
                                             </div>
@@ -300,9 +363,6 @@
 @section Scripts{
     <!-- ALL JS FILES -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
-    <script src="~/js/jquery-3.2.1.min.js"></script>
-    <script src="~/js/popper.min.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
     <!-- ALL PLUGINS -->
     <script src="~/js/jquery.superslides.min.js"></script>
     <script src="~/js/bootstrap-select.js"></script>
