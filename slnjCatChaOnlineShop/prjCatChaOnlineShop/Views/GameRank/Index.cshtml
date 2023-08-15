@@ -1,0 +1,49 @@
+﻿@model IEnumerable<prjCatChaOnlineShop.AllunModels.ShopMemberInfo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>遊戲排行榜</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                名次
+            </th>
+            <th>
+                角色名稱
+            </th>
+            <th>
+                角色等級
+            </th>
+            <th>
+                最高分數
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = 0;
+            foreach (var item in Model)
+            {
+                count++;
+          <tr>
+             <td>
+             @count
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LevelId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RunGameHighestScore)
+            </td>
+        </tr>
+}}
+    </tbody>
+</table>

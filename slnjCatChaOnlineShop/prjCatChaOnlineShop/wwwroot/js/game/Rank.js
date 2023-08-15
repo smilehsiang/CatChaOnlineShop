@@ -1,0 +1,1 @@
+const CanvasRank = document.getElementById("CanvasRank");

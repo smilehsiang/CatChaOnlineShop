@@ -1,0 +1,321 @@
+@media only screen {
+
+    .result-container { /*設定抽獎格子*/
+        grid-template-columns: repeat(5, 70px); /* 5個70px寬的列 */
+        gap: 10px; /* 每個項目之間的間距 */
+        max-width: 500px; /* 最大寬度為600px */
+        width: 100%; /* 使用100%寬度以適應父容器的大小 */
+        height: 100%;
+        text-align: center;
+        border: 2px solid black;
+        background-color: rgba(128, 128, 128, 0.8);
+        display: none;
+        place-items: center;
+    }
+
+    .gamelayer {
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+    /* canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  } */
+    /* 遊戲畫面 */
+    #Canvaslobby {
+        text-align: center;
+        position: relative;
+        justify-content: center;
+        width: 406px; /* 維持canvas的寬度為406px */
+        height: 600px; /* 維持canvas的高度為600px */
+      /*  display: none;*/
+       
+    }
+
+    /*轉蛋畫面*/
+    #CatchaGatCha {
+        width: 408px;
+        height: 600px;
+        border: solid;
+        background-color: aquamarine;
+        z-index: 3;
+        display: none;
+        background-image: url('/images/game/summonback.png'); /* 設定背景圖片路徑 */
+        background-size: cover; /* 設定背景圖片覆蓋整個按鈕 */
+        background-position: center; /* 設定背景圖片居中對齊 */
+        border: none; /* 移除按鈕邊框 */
+    }
+
+    .Gatchagif {
+        width: 100px;
+        height: 100px;
+    }
+
+    .cat1_stopR {
+        width: 80px;
+        height: 80px;
+        margin-left: 30px;
+    }
+
+    .本週加成 {
+        text-align: left;
+        font-size: 24px;
+        margin-left: 30px;
+    }
+
+    .CatCha轉蛋機 {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .catcha {
+        margin-left:-70px;
+        height: 600px;
+        width: 506px;
+    }
+
+    #CanvasCheckIn {
+        position: absolute;
+        text-align: center;
+        justify-content: center;
+        width: 406px; /* 維持canvas的寬度為406px */
+        height: 600px; /* 維持canvas的高度為600px */
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+    }
+
+    #CanvasRank {
+        position: absolute;
+        text-align: center;
+        justify-content: center;
+        width: 406px; /* 維持canvas的寬度為406px */
+        height: 600px; /* 維持canvas的高度為600px */
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+    }
+
+    #Canvasrungame {
+        text-align: center;
+        position: relative;
+        justify-content: center;
+        width: 406px; /* 維持canvas的寬度為406px */
+        height: 600px; /* 維持canvas的高度為600px */
+        display: none;
+    }
+
+    #CanvasGatcha {
+        text-align: center;
+        position: relative;
+        justify-content: center;
+        width: 406px; /* 維持canvas的寬度為406px */
+        height: 600px; /* 維持canvas的高度為600px */
+        display: none;
+    }
+
+    #CanvasDoubleCheck {
+        position: absolute;
+        text-align: center;
+        justify-content: center;
+        width: 406px; /* 維持canvas的寬度為406px */
+        height: 600px; /* 維持canvas的高度為600px */
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+    }
+
+    #CanvasSummonResult {
+        position: absolute;
+        text-align: center;
+        justify-content: center;
+        width: 406px; /* 維持canvas的寬度為406px */
+        height: 600px; /* 維持canvas的高度為600px */
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+    }
+
+    #CanvasStore {
+        text-align: center;
+        position: relative;
+        justify-content: center;
+        width: 406px; /* 維持canvas的寬度為406px */
+        height: 600px; /* 維持canvas的高度為600px */
+        display: none;
+    }
+
+
+    #popup {
+        position: absolute;
+        text-align: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 406px; /* 維持canvas的寬度為406px */
+        height: 600px; /* 維持canvas的高度為600px */
+        display: none;
+        z-index:99;
+    }
+
+    /*.animation-container {
+        position: absolute;
+        text-align: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 406px;*/ /* 維持canvas的寬度為406px */
+        /*height: 600px;*/ /* 維持canvas的高度為600px */
+
+    /*}*/
+    /* .canvas-container {
+    width: 90%;
+    display: flex;
+    justify-content: center;  
+
+} */
+    .btn-content {
+        display: flex;
+        flex-direction: column;
+        height: 50px;
+        justify-content: space-around;
+    }
+
+    .btns {
+        display: flex;
+        justify-content: center;
+        margin: 5px 0 0 0;
+    }
+
+    .btn {
+        width: 105px;
+        padding: 5px 5px;
+        background-color: #f0cf75;
+        color: black;
+        border: solid black 1px;
+        border-radius: 5px;
+        margin: 0px 5px;
+        cursor: pointer;
+    }
+}
+@media (max-width: 767px){
+
+        .gamelayer{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        
+        }
+        canvas {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        /* 遊戲畫面 */
+        #Canvaslobby{
+          text-align:center;
+          position: relative;
+          justify-content: center;
+          width:100%;
+          /* display: none; */
+          }
+        #CanvasCheckIn{
+            position: absolute;
+            text-align:center;
+            justify-content: center;
+            width:100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+          }  
+          #CanvasRank{
+            position: absolute;
+            text-align:center;
+            justify-content: center;
+            width:100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+          }
+       
+        #Canvasrungame{
+          text-align:center;
+          position: relative;
+          justify-content: center;
+          width:100%;
+          display: none;
+         } 
+        #CanvasGatcha{
+          text-align:center;
+          position: relative;
+          justify-content: center;
+          width:100%;
+          display: none;
+       }
+
+       #CanvasStore{
+        text-align:center;
+        position: relative;
+        justify-content: center;
+        width:100%;
+        display: none;
+
+       }
+       #CanvasDoubleCheck{
+        position: absolute;
+        text-align:center;
+        justify-content: center;
+        width:100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        
+       }
+       #CanvasSummonResult{
+        position: absolute;
+        text-align:center;
+        justify-content: center;
+        width:100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+       }
+
+    #popup {
+        position: relative;
+        text-align: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 406px; /* 維持canvas的寬度為406px */
+        height: 600px; /* 維持canvas的高度為600px */
+        display: none;
+        z-index: 99;
+    }
+        /* .canvas-container {
+          width: 90%;
+          display: flex;
+          justify-content: center;  
+  
+      } */
+      .btn-content{
+          display: flex;
+          flex-direction: column;
+          height: 50px;
+          justify-content: space-around;
+        }
+
+      .btns{
+        display: flex;
+        justify-content: center;  
+        margin: 5px 0 0 0;
+      } 
+
+      .btn{
+        width: 105px;
+        padding: 5px 5px;
+        background-color: #f0cf75;
+        color: black;
+        border: solid black 1px;
+        border-radius: 5px;
+        margin: 0px 5px;
+        cursor: pointer;
+      }
+      }
+
+
+
+
+    

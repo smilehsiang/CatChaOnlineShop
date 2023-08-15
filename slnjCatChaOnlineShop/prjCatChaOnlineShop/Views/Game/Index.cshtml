@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>Freshshop - Ecommerce Bootstrap 4 HTML Template</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        @section Styles{
+        <!-- Bootstrap CSS -->
+        <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+        <!-- Site CSS -->
+        <link href="~/css/style.css" rel="stylesheet" />
+        <!-- Responsive CSS -->
+        <link href="~/css/responsive.css" rel="stylesheet" />
+        <!-- Custom CSS -->
+        <link href="~/css/custom.css" rel="stylesheet" />
+        <!-- 遊戲相關 CSS -->
+        <link href="~/css/game/Mainstyle.css" rel="stylesheet" />
+        <link href="~/css/game/gameinstructions.css" rel="stylesheet" />
+        <link href="~/css/game/gachabutton.css" rel="stylesheet" />
+        }
+    
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+
+
+
+
+    <!-- Start 遊戲畫面 -->
+    <div class="canvas-container">
+           <div class="gamelayer">
+                <canvas id="Canvaslobby"></canvas>
+                 <div id="CatchaGatCha">
+                   @* <button class="back-main" style="float:left;">返回</button>*@
+                       @* <div class="CatCha轉蛋機">CatCha轉蛋機</div>
+                        <div class="本週加成">本週加成</div>
+                            <img class="cat1_stopR" src="../images/game/gacha/cat_g_sR.gif" />*@
+                    <div class="animation-container">
+                        <img class="catcha SS" src="../images/game/gacha/gacha_Animate_SS.gif" style="display: none;">
+                        <img class="catcha S" src="../images/game/gacha/gacha_Animate_S.gif" style="display: none;">
+                        <img class="catcha A" src="../images/game/gacha/gacha_Animate_A.gif" style="display: none;">
+                    </div>
+                    <div id="summon-buttons">@*轉蛋按鈕*@
+                        <div class="buttonRow">
+                            <button id="CatPointSingleDrow"></button>
+                             <button id="CatPointTenDrows"></button><br>
+                        </div>
+                        <div class="buttonRow">
+                            <button id="RubySingleDrow"></button>
+                            <button id="RubyTenDrows"></button>
+                        </div>
+                    </div>
+                <div id="result" class="result-container">結果:</div>
+                  </div>
+                 <div id="popup">
+                <div class="instructions-container" style=" display:none;">
+                    <!-- 返回鍵 -->
+                    <button id="closeinstruction" class=" btn-secondary" onclick="hideInstructions()">x</button>
+                    <!-- 遊戲說明提示 -->
+                    <div class="text">
+                        <div id="a" class="xx">
+                            遊戲說明
+                            <div style="margin-top: 10px;">
+                                這是 a 的內容xx
+                            </div>
+                        </div>
+                        <div id="b" class="xx">
+                            遊戲說明
+                            <div style="margin-top: 10px;">
+                                這是 b 的內容xx
+                            </div>
+                        </div>
+                        <div id="c" class="xx">
+                            遊戲說明
+                            <div style="margin-top: 10px;">
+                                這是 c 的內容xx<br><br><br><br><br>
+                                <button id="startRunGameBTN" class="btn">Start</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 設定開關鈕 -->
+                </div>
+                <nav class="pagination-container" aria-label="Page navigation example">
+                    <ul class="pagination" style="display:none;">
+                        <li class="page-item"><a class="btn btn-outline-info" href="#" onclick="showPage('a')">1</a></li>
+                        <li class="page-item"><a class="btn btn-outline-info" href="#" onclick="showPage('b')">2</a></li>
+                        <li class="page-item"><a class="btn btn-outline-info" href="#" onclick="showPage('c')">3</a></li>
+                    </ul>
+                </nav>
+            </div>
+                <canvas id="CanvasCheckIn"></canvas>   
+                <canvas id="CanvasRank"></canvas>  
+                <canvas id="Canvasrungame"></canvas>  
+                <canvas id="CanvasGatcha"></canvas>  
+                <canvas id="CanvasStore"></canvas>  
+                <canvas id="CanvasSummonResult"></canvas>
+                <canvas id="CanvasDoubleCheck"></canvas>          
+        </div>
+    <!-- End 遊戲畫面 -->
+        <!-- Start 遊戲按鈕 -->
+        <div class="btn-content">
+            <div class="btns">
+                <input type="submit" value="Lobby" class="btn" id="lobbynBTN" />
+                <input type="submit" value="Run Game" class="btn" id="rungameBTN" />
+                <input type="submit" value="Gatcha" class="btn" id="gatchaBTN" />
+                <!-- <input type="submit" value="Rank" class="btn" id="rankBTN"/>  -->
+            </div>
+        </div>
+        <!-- <div class="btn-content">
+            <div class="btns">
+                <input type="submit" value="Check In" class="btn" id="checkinBTN" />
+                <input type="submit" value="Store" class="btn" id="storeBTN"/>
+                <input type="submit" value="Gatcha" class="btn" id="gatchaBTN"/>
+        </div>   -->
+        <!-- End 遊戲按鈕 -->
+    </div>
+    </div>
+    <!-- End 遊戲畫面 -->
+
+
+
+
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    <!-- ALL JS FILES -->
+        @section Scripts{
+            <script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
+            <script src="~/js/jquery-3.2.1.min.js"></script>
+            <script src="~/js/popper.min.js"></script>
+            <script src="~/js/bootstrap.min.js"></script>
+            <!-- ALL PLUGINS -->
+            <script src="~/js/jquery.superslides.min.js"></script>
+            <script src="~/js/bootstrap-select.js"></script>
+            <script src="~/js/inewsticker.js"></script>
+            <script src="~/js/bootsnav.js"></script>
+            <script src="~/js/images-loded.min.js"></script>
+            <script src="~/js/isotope.min.js"></script>
+            <script src="~/js/owl.carousel.min.js"></script>
+            <script src="~/js/baguetteBox.min.js"></script>
+            <script src="~/js/form-validator.min.js"></script>
+            <script src="~/js/contact-form-script.js"></script>
+            <script src="~/js/custom.js"></script>
+            <script src="~/js/forBooking.js"></script>        
+            <script src="~/js/jquery.nicescroll.min.js"></script>
+            <script src="~/js/jquery-ui.js"></script>
+
+            <!-- 遊戲相關js -->
+            <script src="~/js/game/Main.js"></script> 
+            <script src="~/js/game/function.js"></script>
+            <script src="~/js/game/button.js"></script>
+            <script src="~/js/game/RunGame.js"></script>
+            <script src="~/js/game/Checkin.js"></script>
+            <script src="~/js/game/Rank.js"></script>
+            <script src="~/js/game/doubleCheckWindow.js"></script>
+            <script src="~/js/game/Gacha.js"></script>
+            <script src="~/js/game/Summon.js"></script>
+            <script src="~/js/game/SummonResult.js"></script>
+            <script src="~/js/game/CanvasButton.js"></script>
+            <script src="~/js/game/loadImages.js"></script>
+            <script src="~/js/game/instructions.js"></script>
+            <script src="~/js/game/catFeed.js"></script>
+
+  
+        }
+</body>
+</html>
+
