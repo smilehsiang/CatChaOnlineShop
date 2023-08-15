@@ -12,13 +12,35 @@
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
     <!-- Site CSS -->
     <link rel="stylesheet" href="~/css/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="~/css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="~/css/custom.css">
     <!--myCss-->
     <link rel="stylesheet" href="~/css/myCss.css">
+    <style>
+        .input-group {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 50px;
+        }
 
+            .input-group > .form-control,
+            .input-group > .form-select,
+            .input-group > .form-floating {
+                position: relative;
+                flex: 1 1 auto;
+                width: 1%;
+                min-width: 0;
+                z-index: 1;
+                height: initial !important;
+            }
+
+        .nav-link, .customer_info label {
+            align-self: center;
+            vertical-align: middle;
+
+        }
+
+    </style>
 }
 
 <!-- Start All Title Box -->
@@ -748,17 +770,17 @@
                         <input class="nav-link active" id="nav-credit-tab" type="radio" name="paymentMethod"
                                data-bs-toggle="tab" data-bs-target="#nav-credit" role="tab" aria-controls="nav-credit"
                                aria-selected="true" checked>
-                        <label for="nav-credit-tab">信用卡付款</label>
+                        <label for="nav-credit-tab" class="mb-0">信用卡付款</label>
 
                         <input class="nav-link" id="nav-ATM-tab" type="radio" name="paymentMethod"
                                data-bs-toggle="tab" data-bs-target="#nav-ATM" role="tab" aria-controls="nav-ATM"
                                aria-selected="false">
-                        <label for="nav-ATM-tab">銀行轉帳</label>
+                        <label for="nav-ATM-tab" class="mb-0">銀行轉帳</label>
 
                         <input class="nav-link" id="nav-cashOnDelivery-tab" type="radio" name="paymentMethod"
                                data-bs-toggle="tab" data-bs-target="#nav-cashOnDelivery" role="tab"
                                aria-controls="nav-cashOnDelivery" aria-selected="false">
-                        <label for="nav-cashOnDelivery-tab">貨到付款</label>
+                        <label for="nav-cashOnDelivery-tab" class="mb-0">貨到付款</label>
                     </div>
                 </nav>
                 <!--三種付款方式的分頁-->
@@ -886,12 +908,12 @@
                                                data-bs-toggle="tab" data-bs-target="#nav-mobileBarcode" type="radio"
                                                name="deliveryOption" role="tab" aria-controls="nav-mobileBarcode"
                                                aria-selected="true" checked>
-                                        <label for="nav-mobileBarcode-tab">手機條碼載具</label>
+                                        <label for="nav-mobileBarcode-tab" class="mb-0">手機條碼載具</label>
 
                                         <input class="nav-link" id="nav-IDcode-tab" data-bs-toggle="tab"
                                                data-bs-target="#nav-IDcode" type="radio" name="deliveryOption"
                                                role="tab" aria-controls="nav-IDcode" aria-selected="false">
-                                        <label for="nav-IDcode-tab">自然人憑證載具</label>
+                                        <label for="nav-IDcode-tab" class="mb-0">自然人憑證載具</label>
                                     </div>
                                 </nav>
                                 <div class="tab-content">
@@ -901,13 +923,16 @@
                                         <div class="row">
                                             <div class="col-md-3 mb-3">
                                                 <label for="eInvoiceNum">載具條碼：</label>
-                                                <div class="mb-3">
-                                                    <input type="text" class="form-control" id="eInvoiceNum" placeholder="請輸入載具條碼(包含/)"
-                                                           required>
-                                                    <div class="invalid-feedback">請輸入載具條碼</div>
-                                                </div>                                               
+                                                <div class="input-group">
+
+                                                    <input type="text" class="form-control" id="eInvoiceNum"
+                                                           placeholder="請輸入載具條碼(包含/)" required>
+                                                    <div class="invalid-feedback" style="width: 100%; height:100%">
+                                                        請輸入載具條碼
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-md-3 mt-4 mb-3 d-flex align-items-center">
+                                            <div class="col-md-3 mb-3 d-flex align-items-end">
                                                 <!-- 觸發選擇載具條碼的按鈕 -->
                                                 <button type="button" class="chooseStore_btn" data-bs-toggle="modal"
                                                         data-bs-target="#chooseEinvoice">
@@ -1168,7 +1193,7 @@
         </div>
     </div>
 </div>
-    
+
 <!--中間主畫面End-->
 @section Scripts{
     <!-- ALL JS FILES -->

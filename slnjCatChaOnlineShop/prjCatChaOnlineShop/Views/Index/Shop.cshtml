@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="~/css/shop.css">
     <link rel="stylesheet" href="~/css/custom-home-details-wishlist.css" />
 }
-<!-- Start Categories -->
+
+<!-- Start All Title Box -->
 <div class="categories-shop">
     <div class="container">
         <div class="title-all text-left">
@@ -78,6 +79,8 @@
     </div>
 </div>
 <!-- End Categories -->
+
+
 <!-- Start Shop Page  -->
 <div class="shop-box-inner">
     <div class="container">
@@ -142,7 +145,7 @@
                                                 <div class="type-lb">
                                                     <p class="sale">Sale</p>
                                                 </div>
-                                                <a href="#">
+                                                <a asp-controller="Index" asp-action="ShopDetail">
                                                     <img src="~/images/img-pro-01.jpg" class="img-fluid" alt="Image" />
                                                 </a>
                                             </div>
@@ -360,9 +363,6 @@
 @section Scripts{
     <!-- ALL JS FILES -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
-    <script src="~/js/jquery-3.2.1.min.js"></script>
-    <script src="~/js/popper.min.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
     <!-- ALL PLUGINS -->
     <script src="~/js/jquery.superslides.min.js"></script>
     <script src="~/js/bootstrap-select.js"></script>

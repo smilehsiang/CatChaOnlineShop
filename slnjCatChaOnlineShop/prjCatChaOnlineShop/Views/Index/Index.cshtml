@@ -111,7 +111,7 @@
             <div class="col-md-3 col-6 div-center-custom">
                 <div class="round-box-custome offer-box-products">
                     <img class="text-center rounded-circle img-fluid" src="~/images/shower.png" alt="" />
-                    <a href="#">
+                    <a asp-controller="SalonBooking" asp-action="Booking">
                         <div class="mask rounded-circle">
                         </div>
                     </a>
@@ -418,91 +418,220 @@
     </div>
 </div>
 <!-- End 熱賣商品  -->
-<!-- Start 評論  -->
-<div class="title-all text-center">
-    <h1>商品評論</h1>
+<!-- 開始評論輪播 -->
+<div class="container">
+    <div class="row my-5">
+        <div class="col-lg-12">
+            <div class="title-all text-center">
+                <h1>推薦</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+            </div>
+            <div class="featured-products-box owl-carousel owl-theme">
+                <div class="item">
+                    <div class="products-single fix">
+                        <img src="~/images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                        <div class="why-text">
+                            <div class="d-flex align-items-center justify-content-around mt-3">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                                     class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path fill-rule="evenodd"
+                                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                </svg>
+
+
+                                <span class="slides-span">陳xx東</span>
+
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5" dir="ltr" data-size="lg"
+                                       data-show-clear="false" data-show-caption="false">
+                            </div>
+                            <p>真的非常好用 我也很推薦給其他人 真的非常好用</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="products-single fix">
+                        <img src="~/images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                        <div class="why-text">
+                            <div class="d-flex align-items-center justify-content-around mt-3">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                                     class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path fill-rule="evenodd"
+                                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                </svg>
+
+
+                                <span class="slides-span">陳xx東</span>
+
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5" dir="ltr" data-size="lg"
+                                       data-show-clear="false" data-show-caption="false">
+                            </div>
+                            <p>真的非常好用 我也很推薦給其他人 真的非常好用</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="products-single fix">
+                        <img src="~/images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                        <div class="why-text">
+                            <div class="d-flex align-items-center justify-content-around mt-3">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                                     class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path fill-rule="evenodd"
+                                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                </svg>
+
+
+                                <span class="slides-span">陳xx東</span>
+
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5" dir="ltr" data-size="lg"
+                                       data-show-clear="false" data-show-caption="false">
+                            </div>
+                            <p>真的非常好用 我也很推薦給其他人 真的非常好用</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="products-single fix">
+                        <img src="~/images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                        <div class="why-text">
+                            <div class="d-flex align-items-center justify-content-around mt-3">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                                     class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path fill-rule="evenodd"
+                                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                </svg>
+
+
+                                <span class="slides-span">陳xx東</span>
+
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5" dir="ltr" data-size="lg"
+                                       data-show-clear="false" data-show-caption="false">
+                            </div>
+                            <p>真的非常好用 我也很推薦給其他人 真的非常好用</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="products-single fix">
+                        <img src="~/images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                        <div class="why-text">
+                            <div class="d-flex align-items-center justify-content-around mt-3">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                                     class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path fill-rule="evenodd"
+                                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                </svg>
+
+
+                                <span class="slides-span">陳xx東</span>
+
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5" dir="ltr" data-size="lg"
+                                       data-show-clear="false" data-show-caption="false">
+                            </div>
+                            <p>真的非常好用 我也很推薦給其他人 真的非常好用</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="products-single fix">
+                        <img src="~/images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                        <div class="why-text">
+                            <div class="d-flex align-items-center justify-content-around mt-3">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                                     class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path fill-rule="evenodd"
+                                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                </svg>
+
+
+                                <span class="slides-span">陳xx東</span>
+
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5" dir="ltr" data-size="lg"
+                                       data-show-clear="false" data-show-caption="false">
+                            </div>
+                            <p>真的非常好用 我也很推薦給其他人 真的非常好用</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="products-single fix">
+                        <img src="~/images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                        <div class="why-text">
+                            <div class="d-flex align-items-center justify-content-around mt-3">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                                     class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path fill-rule="evenodd"
+                                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                </svg>
+
+
+                                <span class="slides-span">陳xx東</span>
+
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5" dir="ltr" data-size="lg"
+                                       data-show-clear="false" data-show-caption="false">
+                            </div>
+                            <p>真的非常好用 我也很推薦給其他人 真的非常好用</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="products-single fix">
+                        <img src="~/images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                        <div class="why-text">
+                            <div class="d-flex align-items-center justify-content-around mt-3">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                                     class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path fill-rule="evenodd"
+                                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                </svg>
+
+
+                                <span class="slides-span">陳xx東</span>
+
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5" dir="ltr" data-size="lg"
+                                       data-show-clear="false" data-show-caption="false">
+                            </div>
+                            <p>真的非常好用 我也很推薦給其他人 真的非常好用</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="slider slider-nav">
-    <div class="slides">
-        <div class="container line mt-3">
-            <div class="row mt-2">
-                <div class="col-12 line">
-                    <img src="https://images.chinatimes.com/newsphoto/2022-01-23/656/20220123002048.jpg" class="img-fluid">
-                </div>
-            </div>
-
-            <div class="d-flex align-items-center mt-3">
-                <div class="col-lg-4 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                    </svg>
-                </div>
-                <div class="col"> <span class="slides-span">陳xx東</span></div>
-            </div>
-
-            <div class="d-flex justify-content-center">
-                <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5" dir="ltr" data-size="lg" data-show-clear="false" data-show-caption="false">
-            </div>
-            <p>真的非常好用 我也很推薦給其他人 真的非常好用</p>
-        </div>
-    </div>
-    <div class="slide">
-        <div class="container line mt-3">
-            <div class="row mt-2">
-                <div class="col-12 line">
-                    <img src="https://images.chinatimes.com/newsphoto/2022-01-23/656/20220123002048.jpg" class="img-fluid">
-                </div>
-            </div>
-
-            <div class="d-flex align-items-center mt-3">
-                <div class="col-lg-4 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                    </svg>
-                </div>
-                <div class="col"> <span class="slide-span">陳xx東</span></div>
-            </div>
-
-            <div class="d-flex justify-content-center">
-                <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5" dir="ltr" data-size="lg" data-show-clear="false" data-show-caption="false">
-            </div>
-            <p>真的非常好用 我也很推薦給其他人 真的非常好用</p>
-        </div>
-    </div>
-    <div class="slide">
-        <div class="container line mt-3">
-            <div class="row mt-2">
-                <div class="col-12 line">
-                    <img src="https://images.chinatimes.com/newsphoto/2022-01-23/656/20220123002048.jpg" class="img-fluid">
-                </div>
-            </div>
-
-            <div class="d-flex align-items-center mt-3">
-                <div class="col-lg-4 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                    </svg>
-                </div>
-                <div class="col"> <span class="slide-span">陳xx東</span></div>
-            </div>
-
-            <div class="d-flex justify-content-center">
-                <input name="input-1-ltr-star-xs" class="kv-ltr-theme-fas-star" value="5" dir="ltr" data-size="lg" data-show-clear="false" data-show-caption="false">
-            </div>
-            <p>真的非常好用 我也很推薦給其他人 真的非常好用</p>
-        </div>
-    </div>
-    <div class="slide">
-        <h3>4</h3>
-    </div>
-    <div class="slide">
-        <h3>5</h3>
-    </div>
-</div>
-<!-- End 評論  -->
+<!-- 結束評論輪播 -->
 <!-- start側邊 -->
 <div class="body-font-style" id="go-to-game" title="進入遊戲">
     <a href="/Game/Index">貓貓大進擊<i class="fa-solid fa-gamepad"></i></a>
@@ -542,4 +671,12 @@
     <script src="~/js/form-validator.min.js"></script>
     <script src="~/js/contact-form-script.js"></script>
     <script src="~/js/custom.js"></script>
+    <script>
+        $('.kv-ltr-theme-fas-star').rating({
+            hoverOnClear: false,
+            theme: 'krajee-fas',
+            containerClass: 'is-star',
+            disabled: true
+        });
+    </script>
 }
