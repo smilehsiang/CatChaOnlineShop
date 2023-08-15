@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2>填寫結帳資料</h2>
-                <ul class="breadcrumb">
+                <ul class="mybreadcrumb breadcrumb">
                     <li class="breadcrumb-item"><a href="shop.html">首頁</a></li>
                     <li class="breadcrumb-item active">結帳</li>
                 </ul>
@@ -103,11 +103,11 @@
                     <div class="title-left">
                         <h3>使用優惠券</h3>
                     </div>
-                    <div class="row">
+                    <div class="row"> 
                         <div class="col-md-6 mb-2">
                             <label for="cc-name">優惠券代碼</label>
                             <div class="input-group mb-2">
-                                <input type="text" class="form-control" placeholder="請輸入優惠券代碼(英數字)"
+                                <input type="text" class="forminput-control form-control"  placeholder="請輸入優惠券代碼(英數字)"
                                        aria-label="請輸入優惠券代碼(英數字)" aria-describedby="button-addon2">
                                 <button class="coupon-box-btn ml-auto btn hvr-hover coupon-box" type="button"
                                         id="button-couponCode">
@@ -494,7 +494,7 @@
                                                 <div class="col-md-4 mb-3 mt-2">
                                                     <label for="username">姓名 *</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="username"
+                                                        <input type="text" class="forminput-control form-control" id="username"
                                                                placeholder="請輸入與證件相符的姓名" required>
                                                         <div class="invalid-feedback" style="width: 100%;">
                                                             請輸入姓名
@@ -901,16 +901,13 @@
                                         <div class="row">
                                             <div class="col-md-3 mb-3">
                                                 <label for="eInvoiceNum">載具條碼：</label>
-                                                <div class="input-group">
-
-                                                    <input type="text" class="form-control" id="eInvoiceNum"
-                                                           placeholder="請輸入載具條碼(包含/)" required>
-                                                    <div class="invalid-feedback" style="width: 100%;">
-                                                        請輸入載具條碼
-                                                    </div>
-                                                </div>
+                                                <div class="mb-3">
+                                                    <input type="text" class="form-control" id="eInvoiceNum" placeholder="請輸入載具條碼(包含/)"
+                                                           required>
+                                                    <div class="invalid-feedback">請輸入載具條碼</div>
+                                                </div>                                               
                                             </div>
-                                            <div class="col-md-3 mb-3 d-flex align-items-end">
+                                            <div class="col-md-3 mt-4 mb-3 d-flex align-items-center">
                                                 <!-- 觸發選擇載具條碼的按鈕 -->
                                                 <button type="button" class="chooseStore_btn" data-bs-toggle="modal"
                                                         data-bs-target="#chooseEinvoice">
@@ -1003,20 +1000,29 @@
                     <!--公司用分頁內容-->
                     <div class="tab-pane fade" id="nav-taxIDNum" role="tabpanel" aria-labelledby="nav-taxIDNum-tab">
                         <div class="row">
+
                             <div class="col-md-3 mb-3">
                                 <label for="taxIDNum">統一編號：</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="taxIDNum" placeholder="請輸入統一編號"
+                                <div class="mb-3">
+                                    <input type="text" class="myinputbox form-control" id="taxIDNum" placeholder="請輸入統一編號"
                                            required>
                                     <div class="invalid-feedback" style="width: 100%;"> 請輸入統一編號 </div>
                                 </div>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="invoice-companyName">公司名稱：</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="invoice-companyName"
+                                <div class="mb-3">
+                                    <input type="text" class=" form-control" id="invoice-companyName"
                                            placeholder="請輸入公司名稱" required>
                                     <div class="invalid-feedback" style="width: 100%;"> 請輸入公司名稱 </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="invoice-companyName">寄送地址：</label>
+                                <div class="mb-3">
+                                    <input type="text" class=" form-control" id="invoice-companyAddress"
+                                           placeholder="請輸入寄送地址" required>
+                                    <div class="invalid-feedback" style="width: 100%;"> 請輸入寄送地址  </div>
                                 </div>
                             </div>
                         </div>
@@ -1032,7 +1038,7 @@
                     <!--分頁內容-->
                     <div class="tab-pane fade" id="nav-invoiceDonate" role="tabpanel"
                          aria-labelledby="nav-invoiceDonate-tab">
-                        <div class="row ml-4 mt-2">
+                        <div class="row ml-4 mt-3">
                             <div class="col-md-4 mb-3 ">
                                 <input class="form-check-input" type="radio" name="donateInvoiceCode"
                                        id="InvoiceCode1018" checked>
@@ -1156,8 +1162,8 @@
                 </div>
             </div>
             <div class=" coupon-box-btn col-12 d-flex shopping-box ">
-                <a href="MyCatCha_CheckoutDetails.html"
-                   class=" checkout-btn ml-auto btn hvr-hover">送出訂單</a>
+                <a asp-controller="Cart" asp-action="ConfrimOrder"
+                   class="checkout-btn ml-auto btn hvr-hover">送出訂單</a>
             </div>
         </div>
     </div>

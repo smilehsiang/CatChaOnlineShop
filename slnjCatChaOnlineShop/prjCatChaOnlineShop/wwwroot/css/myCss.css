@@ -152,13 +152,13 @@
     width: 100px;
 }
 
-.coupon-btn,.chooseStore_btn{ 
+.coupon-btn, .chooseStore_btn {
     border-radius: 5px; /* 圓角 */
     background-color: #b4793594; /* 背景顏色 */
     color: white; /* 字體顏色 */
-    border:2px  #b4793594;
+    border: 2px #b4793594;
+    padding: 5px 10px;
     transition: background-color 0.3s ease;
-
     &:hover{
         background-color: #B98046;
       
@@ -208,7 +208,9 @@
     width: 25%;
 }
 
-.form-check-input:checked {
+
+
+.form-check-input:checked ,.form-check-input[type=checkbox]:checked {
     background-color: #b4793594;
     border-style: none;
     box-shadow: none;
@@ -347,3 +349,17 @@ background-color:#EDD8C0 ;
 .checokoutbtn {
  color:#ffffff
 }
+
+.forminput-control {
+    height: calc(2.1em + 0.75rem + 2px);
+}
+
+.mybreadcrumb {
+    padding: 5px 10px;
+}
+
+.myinputbox {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
