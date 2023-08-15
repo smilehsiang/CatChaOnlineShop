@@ -54,10 +54,10 @@ body{
   width: 500px;
 
 }
-.div-center-custom{
+/*.div-center-custom{
   display: flex;
   justify-content: center;
-}
+}*/
 /*-----------------------------首頁:新進商品.熱賣商品分區文字樣式-----------------------------*/
 .home-section-title{
   margin-bottom: 30px;
@@ -760,7 +760,7 @@ background-color: #DE9E4F;
 .cover-slides p {
   
   font-size: 18px;
-  padding-bottom: 30px;  
+  padding-bottom: 40px;  
   font-size: 22px;
   color: #f8f9fa;
   font-weight: bold;
@@ -927,13 +927,13 @@ nav.navbar.bootsnav ul.nav li > a:hover {
     position: relative;
     display: flex;
     justify-content: center;
-    height: 200px;
-    margin-bottom: 10px;
+    height:100%;
+    margin-bottom: 20px;
 }
-/*黑色遮罩上hover文字*/
+/*文字*/
 .round-box-title {
     position: absolute;
-    top: 78%;
+    top: 160px;
     text-align: center;
     font-size: 20px;
     font-weight: 700;
