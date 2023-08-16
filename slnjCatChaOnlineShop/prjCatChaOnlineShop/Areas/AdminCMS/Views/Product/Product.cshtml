@@ -4,6 +4,7 @@
     Layout = "~/Areas/AdminCMS/Views/Shared/CMS_Layout.cshtml";
 }
 
+
 @section Styles{
     <style>
         /* 原始圖片的視窗 */
@@ -138,6 +139,16 @@
         </div>
     </div>
     <!---新增產品 modal-->
+
+    <!---篩選上架日期-->
+    <div class="container">
+        <div class="row">
+            <label>選擇上架日期區間：</label>
+            <input type="text" name="datefilter" value="" />
+        </div>
+    </div>
+    <!---篩選上架日期-->
+
 
     <!---篩選類別-->
     <div class="container">
@@ -339,7 +350,14 @@
 </div>
 
 @section Scripts{
+    @*引用日期插件*@
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
     <script>
+
 
         //篩選類別
         $(document).ready(function () {
@@ -380,6 +398,27 @@
                     imagePopups[index].style.display = "none";
                 });
             });
+        });
+
+
+        //日期篩選器
+        $(function () {
+
+            $('input[name="datefilter"]').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            });
+
+            $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            });
+
+            $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
+                $(this).val('');
+            });
+
         });
 
 
