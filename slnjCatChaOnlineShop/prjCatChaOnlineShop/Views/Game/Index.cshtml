@@ -56,32 +56,33 @@
 
     <!-- Start 遊戲畫面 -->
     <div class="canvas-container">
-           <div class="gamelayer">
-                <canvas id="Canvaslobby"></canvas>
-                 <div id="CatchaGatCha">
-                <div id="data-container"></div>
-                   @* <button class="back-main" style="float:left;">返回</button>*@
-                       @* <div class="CatCha轉蛋機">CatCha轉蛋機</div>
-                        <div class="本週加成">本週加成</div>
-                            <img class="cat1_stopR" src="../images/game/gacha/cat_g_sR.gif" />*@
-                    <div class="animation-container">
-                        <img class="catcha SS" src="../images/game/gacha/gacha_Animate_SS.gif" style="display: none;">
-                        <img class="catcha S" src="../images/game/gacha/gacha_Animate_S.gif" style="display: none;">
-                        <img class="catcha A" src="../images/game/gacha/gacha_Animate_A.gif" style="display: none;">
+        <div class="gamelayer">
+            <canvas id="Canvaslobby"></canvas>
+            <div id="CatchaGatCha">
+                @* <button class="back-main" style="float:left;">返回</button>*@
+                @* <div class="CatCha轉蛋機">CatCha轉蛋機</div>
+                <div class="本週加成">本週加成</div>
+                <img class="cat1_stopR" src="../images/game/gacha/cat_g_sR.gif" />*@
+                <div class="animation-container">
+                    <img class="catcha SS" src="../images/game/gacha/gacha_Animate_SS.gif" style="display: none;">
+                    <img class="catcha S" src="../images/game/gacha/gacha_Animate_S.gif" style="display: none;">
+                    <img class="catcha A" src="../images/game/gacha/gacha_Animate_A.gif" style="display: none;">
+                </div>
+                <div id="summon-buttons">
+                    @*轉蛋按鈕*@
+                    <button id="gachaBack"></button>
+                    <div class="buttonRow">
+                        <button id="CatPointSingleDrow"></button>
+                        <button id="CatPointTenDrows"></button>
+                    </div><br />
+                    <div class="buttonRow">
+                        <button id="RubySingleDrow"></button>
+                        <button id="RubyTenDrows"></button>
                     </div>
-                    <div id="summon-buttons">@*轉蛋按鈕*@
-                        <div class="buttonRow">
-                            <button id="CatPointSingleDrow"></button>
-                             <button id="CatPointTenDrows"></button><br>
-                        </div>
-                        <div class="buttonRow">
-                            <button id="RubySingleDrow"></button>
-                            <button id="RubyTenDrows"></button>
-                        </div>
-                    </div>
+                </div>
                 <div id="result" class="result-container">結果:</div>
-                  </div>
-                 <div id="popup">
+            </div>
+            <div id="popup">
                 <div class="instructions-container" style=" display:none;">
                     <!-- 返回鍵 -->
                     <button id="closeinstruction" class=" btn-secondary" onclick="hideInstructions()">x</button>
@@ -113,26 +114,17 @@
                     </ul>
                 </nav>
             </div>
-                <canvas id="CanvasCheckIn"></canvas>   
-                <canvas id="CanvasRank"></canvas>  
-                <canvas id="Canvasrungame"></canvas>  
-                <canvas id="CanvasGatcha"></canvas>  
-                <canvas id="CanvasStore"></canvas>  
-                <canvas id="CanvasSummonResult"></canvas>
-                <canvas id="CanvasDoubleCheck"></canvas>          
+            <canvas id="CanvasCheckIn"></canvas>
+            <canvas id="CanvasRank"></canvas>
+            <canvas id="Canvasrungame"></canvas>
+            <canvas id="CanvasGatcha"></canvas>
+            <canvas id="CanvasStore"></canvas>
+            <canvas id="CanvasSummonResult"></canvas>
+            <canvas id="CanvasDoubleCheck"></canvas>
         </div>
-    <!-- End 遊戲畫面 -->
-        <!-- Start 遊戲按鈕 -->
-        <div class="btn-content">
-            <div class="btns">
-                <input type="submit" value="Lobby" class="btn" id="lobbynBTN" />
-                <input type="submit" value="Run Game" class="btn" id="rungameBTN" />
-                <input type="submit" value="Gatcha" class="btn" id="gatchaBTN" />
-            </div>
-        </div>
-        <!-- End 遊戲按鈕 -->
+        <!-- End 遊戲畫面 -->
     </div>
-    </div>
+
     <!-- End 遊戲畫面 -->
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>

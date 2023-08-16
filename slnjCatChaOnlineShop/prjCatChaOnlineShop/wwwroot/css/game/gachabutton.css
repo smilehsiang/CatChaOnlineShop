@@ -1,12 +1,30 @@
 #summon-buttons {
 position:absolute;
-top: 80%;
-left: 200px;
+top: 76%;
+left: 0%;
+}
+
+.buttonRow {
+display:flex;
+justify-content:space-around;
+width:400px;
+}
+#gachaBack {
+    background: transparent;
+    width: 57px; /* 設定按鈕寬度 */
+    height: 50px; /* 設定按鈕高度 */
+    background-image: url('/images/game/Icon_ArrowLeft.png'); /* 設定背景圖片路徑 */
+    background-size: cover; /* 設定背景圖片覆蓋整個按鈕 */
+    background-position: center; /* 設定背景圖片居中對齊 */
+    border: none; /* 移除按鈕邊框 */
+    position: absolute;
+    left: 5%;
+    top: -405%;
 }
 
 
-
 #RubySingleDrow {
+    background:transparent;
     width: 120px; /* 設定按鈕寬度 */
     height: 40px; /* 設定按鈕高度 */
     background-image: url('/images/game/rubyBTN.png'); /* 設定背景圖片路徑 */
@@ -15,6 +33,7 @@ left: 200px;
     border: none; /* 移除按鈕邊框 */
 }
 #RubyTenDrows {
+    background: transparent;
     width: 120px; /* 設定按鈕寬度 */
     height: 40px; /* 設定按鈕高度 */
     background-image: url('/images/game/rubyBTN_10.png'); /* 設定背景圖片路徑 */
@@ -25,6 +44,7 @@ left: 200px;
 
 
 #CatPointSingleDrow {
+    background: transparent;
     width: 120px; /* 設定按鈕寬度 */
     height: 40px; /* 設定按鈕高度 */
     background-image: url('/images/game/ccoinBTN.png'); /* 設定背景圖片路徑 */
@@ -35,6 +55,7 @@ left: 200px;
 
 
 #CatPointTenDrows {
+    background: transparent;
     width: 120px; /* 設定按鈕寬度 */
     height: 40px; /* 設定按鈕高度 */
     background-image: url('/images/game/ccoinBTN_10.png'); /* 設定背景圖片路徑 */
