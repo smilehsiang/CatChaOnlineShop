@@ -94,6 +94,14 @@
     </div>
     <!---新增會員 modal-->
 
+    <div class="col d-flex mt-4">
+        <select class="form-select w-25" id="statusList">
+            <option value="" selected>會員狀態篩選</option>
+            <option value="">開放</option>
+            <option value="">凍結</option>
+        </select>
+    </div>
+
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-12 col-xs-12">
@@ -121,7 +129,7 @@
                         <tr>
                             <!-- <td>1</td> -->
                             <td>1</td>
-                            <td>哈哈</td>
+                            <td>bbb</td>
                             <td>2@yahoo.com.tw</td>
                             <td>女</td>
                             <td>1990-01-01</td>
@@ -140,12 +148,10 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="#">
                                     <button class="btn" data-bs-toggle="modal"
                                             href="#exampleModalToggle2" role="button">
                                         <i class="fas fa-edit"></i>
-                                    </button>
-                                </a> | <button class="btn"
+                                    </button>｜<button class="btn"
                                                onclick="userDelete()">
                                     <a href="#" id="b5">
                                         <i class="fas fa-trash-alt"></i>
@@ -153,200 +159,6 @@
                                 </button>
                             </td>
                         </tr>
-
-
-                        <!--編輯彈出視窗-->
-                        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
-                             aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalToggleLabel">編輯會員資料</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body" style="height: 680px;">
-                                        <nav>
-                                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                <button class="nav-link active" id="nav-home-tab"
-                                                        data-bs-toggle="tab"
-                                                        data-bs-target="#member-edit-nav-home" type="button"
-                                                        role="tab">
-                                                    基本資料
-                                                </button>
-                                                <button class="nav-link" id="nav-profile-tab"
-                                                        data-bs-toggle="tab"
-                                                        data-bs-target="#member-edit-nav-profile" type="button"
-                                                        role="tab">
-                                                    遊戲資訊
-                                                </button>
-                                                <button class="nav-link" id="nav-contact-tab"
-                                                        data-bs-toggle="tab"
-                                                        data-bs-target="#member-edit-nav-contact" type="button"
-                                                        role="tab">
-                                                    常用地址
-                                                </button>
-                                                <button class="nav-link" id="nav-contact2-tab"
-                                                        data-bs-toggle="tab"
-                                                        data-bs-target="#member-edit-nav-paper" type="button"
-                                                        role="tab">
-                                                    會員優惠券
-                                                </button>
-                                            </div>
-                                        </nav>
-                                        <div class="tab-content" id="nav-tabContent">
-                                            <div class="tab-pane fade show active"
-                                                 id="member-edit-nav-home">
-
-                                                <form>
-                                                    <div class="form-group">
-                                                        <label>ID：</label>
-                                                        <input type="text" class="form-control" disabled
-                                                               readonly>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>姓名：</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>帳號：</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>性別：</label>
-                                                        <select class="form-control">
-                                                            <option value="男">男</option>
-                                                            <option value="女">女</option>
-                                                            <option value="其他">其他</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>生日：</label>
-                                                        <input type="date" class="form-control">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>E-mail：</label>
-                                                        <input type="email" class="form-control">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>電話：</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>地址：</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>會員狀態：</label>
-                                                        <select class="form-control">
-                                                            <option value="開放">開放</option>
-                                                            <option value="凍結">凍結</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <button class="btn btn-danger btn-block"
-                                                            style="width: 100%;">
-                                                        儲存
-                                                    </button>
-                                                </form>
-                                            </div>
-                                            <div class="tab-pane fade" id="member-edit-nav-profile">
-                                                <form>
-                                                    <div class="form-group">
-                                                        <label>Level ID</label>
-                                                        <input type="text" class="form-control" disabled
-                                                               readonly>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>Character Name</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>Cat Coin Quantity</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Loyalty Points 紅利數量
-                                                        </label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>MyCatNameListID</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>RunGameHighestScore</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <button type="submit" class="btn btn-danger btn-block"
-                                                            style="width: 100%;">
-                                                        儲存
-                                                    </button>
-                                                </form>
-                                            </div>
-                                            <div class="tab-pane fade" id="member-edit-nav-contact">
-
-                                                <form>
-                                                    <div class="form-group">
-                                                        <label>Address ID：</label>
-
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>Recipient Name：</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>Recipient Phone：</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>Recipient Address：</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-
-                                                    <button class="btn btn-danger btn-block"
-                                                            style="width: 100%;">
-                                                        儲存
-                                                    </button>
-                                                </form>
-                                            </div>
-                                            <div class="tab-pane fade" id="member-edit-nav-paper">
-                                                <div style="border: 1px solid #000;">
-                                                    <p>折價券ID：2</p>
-                                                    <p>折價券內容：滿500折10</p>
-                                                    <p>使用狀態：未使用</p>
-                                                    <p>優惠券狀態：_______(此欄待確認)</p>
-                                                    <button class="btn btn-danger btn-block" style="width: 100%"
-                                                            onclick="userDelete()">
-                                                        刪除
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--編輯彈出視窗-->
                     </tbody>
                 </table>
                 <!--表格-->
@@ -425,12 +237,203 @@
                                         <p>優惠券狀態：_______(此欄待確認)</p>
                                     </div>
                                 </div>
-                                <!---詳細資料model-->
                             </div>
                         </div>
                     </div>
-
                 </div>
+                <!--詳細資料model-->
+                <!--編輯彈出視窗-->
+                <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
+                     aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalToggleLabel">編輯會員資料</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" style="height: 680px;">
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <button class="nav-link active" id="nav-home-tab"
+                                                data-bs-toggle="tab"
+                                                data-bs-target="#member-edit-nav-home" type="button"
+                                                role="tab">
+                                            基本資料
+                                        </button>
+                                        <button class="nav-link" id="nav-profile-tab"
+                                                data-bs-toggle="tab"
+                                                data-bs-target="#member-edit-nav-profile" type="button"
+                                                role="tab">
+                                            遊戲資訊
+                                        </button>
+                                        <button class="nav-link" id="nav-contact-tab"
+                                                data-bs-toggle="tab"
+                                                data-bs-target="#member-edit-nav-contact" type="button"
+                                                role="tab">
+                                            常用地址
+                                        </button>
+                                        <button class="nav-link" id="nav-contact2-tab"
+                                                data-bs-toggle="tab"
+                                                data-bs-target="#member-edit-nav-paper" type="button"
+                                                role="tab">
+                                            會員優惠券
+                                        </button>
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active"
+                                         id="member-edit-nav-home">
+
+                                        <form>
+                                            <div class="form-group">
+                                                <label>ID：</label>
+                                                <input type="text" class="form-control" disabled
+                                                       readonly>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>姓名：</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>帳號：</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>性別：</label>
+                                                <select class="form-control">
+                                                    <option value="男">男</option>
+                                                    <option value="女">女</option>
+                                                    <option value="其他">其他</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>生日：</label>
+                                                <input type="date" class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>E-mail：</label>
+                                                <input type="email" class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>電話：</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>地址：</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>會員狀態：</label>
+                                                <select class="form-control">
+                                                    <option value="開放">開放</option>
+                                                    <option value="凍結">凍結</option>
+                                                </select>
+                                            </div>
+
+                                            <button class="btn btn-danger btn-block"
+                                                    style="width: 100%;">
+                                                儲存
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="member-edit-nav-profile">
+                                        <form>
+                                            <div class="form-group">
+                                                <label>Level ID</label>
+                                                <input type="text" class="form-control" disabled
+                                                       readonly>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Character Name</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Cat Coin Quantity</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>
+                                                    Loyalty Points 紅利數量
+                                                </label>
+                                                <input type="text" class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>MyCatNameListID</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>RunGameHighestScore</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+
+                                            <button type="submit" class="btn btn-danger btn-block"
+                                                    style="width: 100%;">
+                                                儲存
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="member-edit-nav-contact">
+
+                                        <form>
+                                            <div class="form-group">
+                                                <label>Address ID：</label>
+
+                                                <input type="text" class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Recipient Name：</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Recipient Phone：</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Recipient Address：</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+
+                                            <button class="btn btn-danger btn-block"
+                                                    style="width: 100%;">
+                                                儲存
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="member-edit-nav-paper">
+                                        <div style="border: 1px solid #000;">
+                                            <p>折價券ID：2</p>
+                                            <p>折價券內容：滿500折10</p>
+                                            <p>使用狀態：未使用</p>
+                                            <p>優惠券狀態：_______(此欄待確認)</p>
+                                            <button class="btn btn-danger btn-block" style="width: 100%"
+                                                    onclick="userDelete()">
+                                                刪除
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--編輯彈出視窗-->
 
             </div>
         </div>
