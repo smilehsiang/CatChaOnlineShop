@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="~/css/review.css" />
     <!-- Site CSS -->
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
-    @* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> *@
+            @* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> *@
     <link rel="stylesheet" href="~/css/style.css" />
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="~/css/responsive.css" />
@@ -32,7 +32,7 @@
             <div class="container">
                 <div class="row d-flex justify-content-center align-items-end mb-5">
                     <div class="col-md-12 ">
-                        <p><a class="btn hvr-hover" asp-controller="Index" asp-action="Shop">來去逛逛</a></p>
+                        <p><a class="btn hvr-hover" href="#">來去逛逛</a></p>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
             <div class="container">
                 <div class="row d-flex justify-content-center align-items-end mb-5">
                     <div class="col-md-12">
-                        <p><a class="btn hvr-hover" asp-controller="Index" asp-action="Shop">來去逛逛</a></p>
+                        <p><a class="btn hvr-hover" href="#">來去逛逛</a></p>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
             <div class="container">
                 <div class="row d-flex justify-content-center align-items-end mb-5">
                     <div class="col-md-12">
-                        <p><a class="btn hvr-hover" asp-controller="Index" asp-action="Shop">來去逛逛</a></p>
+                        <p><a class="btn hvr-hover" href="#">來去逛逛</a></p>
                     </div>
                 </div>
             </div>
@@ -66,13 +66,14 @@
 <!-- End Slider -->
 <!-- start 貓寵補給站區域 -->
 <div class="box-add-products position-relative">
-    <div class="container">
+    <div class="container padding-custom">
         <div class="home-title text-center">
             <h1>貓寵補給站</h1>
         </div>
         <div class="row">
-            <div class="col-md-3 col-6 div-center-custom">
+            <div class="col-lg-3 col-md-3 col-sm-6 div-center-custom">
 
+                <div class="round-box-title">熱賣商品</div>
                 <div class="round-box-custome offer-box-products">
                     <img class="text-center rounded-circle img-fluid" src="~/images/hot.png" alt="" />
                     <a href="#">
@@ -80,11 +81,11 @@
                         </div>
                     </a>
                 </div>
-                <div class="round-box-title">熱賣商品</div>
-                
+
             </div>
-            
-            <div class="col-md-3 col-6 div-center-custom">
+
+            <div class="col-lg-3 col-md-3 col-sm-6 div-center-custom">
+                <div class="round-box-title">貓咪玩具</div>
                 <div class="round-box-custome offer-box-products">
                     <img class="text-center rounded-circle img-fluid" src="~/images/toy.png" alt="" />
                     <a href="#">
@@ -92,11 +93,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="round-box-title">貓咪玩具</div>
-
             </div>
 
-            <div class="col-md-3 col-6 div-center-custom">
+            <div class="col-lg-3 col-md-3 col-sm-6 div-center-custom">
+                <div class="round-box-title">保健食品</div>
                 <div class="round-box-custome offer-box-products">
                     <img class="text-center rounded-circle img-fluid" src="~/images/supplement.png" alt="" />
                     <a href="#">
@@ -104,11 +104,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="round-box-title">保健食品</div>
-
             </div>
 
-            <div class="col-md-3 col-6 div-center-custom">
+            <div class="col-lg-3 col-md-3 col-sm-6 div-center-custom">
+                <div class="round-box-title">寵物美容</div>
                 <div class="round-box-custome offer-box-products">
                     <img class="text-center rounded-circle img-fluid" src="~/images/shower.png" alt="" />
                     <a asp-controller="SalonBooking" asp-action="Booking">
@@ -116,11 +115,22 @@
                         </div>
                     </a>
                 </div>
-                <div class="round-box-title">寵物美容</div>
             </div>
-            
+            <!-- <div class="col-lg-3 col-md-3 col-sm-6 div-center-custom">
+                <div class="offer-box-products rounded-circle">
+                  <a href="#">
+                    <div class="round-box-custome offer-box-products rounded-circle">
+                      <img
+                        class="text-center rounded-circle img-fluid"
+                        src="images/shower.png"
+                        alt=""
+                      />
+                      <span >寵物美容</span>
+                    </div>
+                  </a>
+                </div>
+              </div> -->
         </div>
-        
     </div>
 </div>
 <!-- end 貓寵補給站區域 -->
@@ -142,7 +152,7 @@
             <!-- start prod1  -->
             <div class="col-lg-3 col-md-6 special-grid best-seller">
                 <div class="products-single-custom fix">
-                    <a asp-controller="Index" asp-action="ShopDetail" title="喵洽普 | 貓咪營養肉泥">
+                    <a href="http://127.0.0.1:5500/shop-detail.html" title="喵洽普 | 貓咪營養肉泥">
 
                         <div class="box-img-hover">
                             <div class="type-lb">
@@ -171,7 +181,7 @@
             <!-- start prod2  -->
             <div class="col-lg-3 col-md-6 special-grid best-seller">
                 <div class="products-single-custom fix">
-                    <a asp-controller="Index" asp-action="ShopDetail" title="PETCIRCLE｜寵物繩結胡蘿蔔">
+                    <a href="#" title="PETCIRCLE｜寵物繩結胡蘿蔔">
                         <div class="box-img-hover">
                             <div class="type-lb">
                                 <p class="new">New</p>
@@ -199,7 +209,7 @@
             <!-- start prod3  -->
             <div class="col-lg-3 col-md-6 special-grid best-seller">
                 <div class="products-single-custom fix">
-                    <a asp-controller="Index" asp-action="ShopDetail" title="Pet Candy｜手工貓草玩具">
+                    <a href="#" title="Pet Candy｜手工貓草玩具">
                         <div class="box-img-hover">
                             <div class="type-lb">
                                 <p class="sale">Sale</p>
@@ -228,7 +238,7 @@
             <!-- start prod4 -->
             <div class="col-lg-3 col-md-6 special-grid best-seller">
                 <div class="products-single-custom fix">
-                    <a asp-controller="Index" asp-action="ShopDetail" title="GLADVET｜舒穩安 天然情緒保健品">
+                    <a href="#" title="GLADVET｜舒穩安 天然情緒保健品">
                         <div class="box-img-hover">
                             <div class="type-lb">
                                 <p class="new">New</p>
@@ -271,7 +281,7 @@
                 <p class="card-text">熱賣商品與新進商品都在這裡!</p>
                 <p class="card-text">用甜甜價把寶貝喜歡的帶回家~</p>
                 <div class="go-to-sale-info">
-                    <a asp-controller="Index" asp-action="ShopDetail">
+                    <a href="#">
                         <span>快來看看我!</span>
                     </a>
                 </div>
@@ -302,7 +312,7 @@
             <!-- start prod1  -->
             <div class="col-lg-3 col-md-6 special-grid best-seller">
                 <div class="products-single-custom fix">
-                    <a asp-controller="Index" asp-action="ShopDetail" title="喵洽普 | 貓咪營養肉泥">
+                    <a href="#" title="喵洽普 | 貓咪營養肉泥">
 
                         <div class="box-img-hover">
                             <div class="type-lb">
@@ -331,7 +341,7 @@
             <!-- start prod2  -->
             <div class="col-lg-3 col-md-6 special-grid best-seller">
                 <div class="products-single-custom fix">
-                    <a asp-controller="Index" asp-action="ShopDetail" title="PETCIRCLE｜寵物繩結胡蘿蔔">
+                    <a href="#" title="PETCIRCLE｜寵物繩結胡蘿蔔">
                         <div class="box-img-hover">
                             <div class="type-lb">
                                 <p class="new">New</p>
@@ -359,7 +369,7 @@
             <!-- start prod3  -->
             <div class="col-lg-3 col-md-6 special-grid best-seller">
                 <div class="products-single-custom fix">
-                    <a asp-controller="Index" asp-action="ShopDetail" title="Pet Candy｜手工貓草玩具">
+                    <a href="#" title="Pet Candy｜手工貓草玩具">
                         <div class="box-img-hover">
                             <div class="type-lb">
                                 <p class="sale">Sale</p>
@@ -388,7 +398,7 @@
             <!-- start prod4 -->
             <div class="col-lg-3 col-md-6 special-grid best-seller">
                 <div class="products-single-custom fix">
-                    <a asp-controller="Index" asp-action="ShopDetail" title="GLADVET｜舒穩安 天然情緒保健品">
+                    <a href="#" title="GLADVET｜舒穩安 天然情緒保健品">
                         <div class="box-img-hover">
                             <div class="type-lb">
                                 <p class="new">New</p>
@@ -634,7 +644,7 @@
 <!-- 結束評論輪播 -->
 <!-- start側邊 -->
 <div class="body-font-style" id="go-to-game" title="進入遊戲">
-    <a href="/Game/Index">貓貓大進擊<i class="fa-solid fa-gamepad"></i></a>
+    <a asp-controller="Game" asp-action="Index">貓貓大進擊<i class="fa-solid fa-gamepad"></i></a>
 </div>
 <div>
     <a href="#" id="back-to-top" title="Back to top" style="display: none">&uarr;</a>
@@ -647,7 +657,9 @@
     <!-- 原首頁下拉選單消失問題少了下面這個: -->
     <script src="~/js/jquery-3.2.1.min.js"></script>
     <script src="~/js/popper.min.js"></script>
-    @* <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> *@
+    @*     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+ *@
+    <script src="~/js/review.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -656,7 +668,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-star-rating@4.1.2/js/star-rating.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-fas/theme.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script src="~/js/review.js"></script>
+
     <script src="~/js/custom-home-details-wishlist.js"></script>
 
     <!-- ALL PLUGINS -->

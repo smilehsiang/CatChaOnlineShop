@@ -81,32 +81,32 @@
     <!--導覽列:選單-->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link " id="membership-tab" data-bs-toggle="tab" data-bs-target="#membership" role="tab" type="button" aria-controls="membership-tab-pane"
-               aria-selected="true" >會員基本資料</button>
+            <a class="nav-link" id="membership-tab" data-bs-toggle="tab" href="#membership" role="tab"
+               aria-controls="home" aria-selected="true">會員基本資料</a>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="shoppingsheet-tab" data-bs-toggle="tab" data-bs-target="#shoppingsheet" role="tab" type="button" aria-controls="shoppingsheet-tab-pane"
-               aria-selected="false">消費紀錄</button>
+            <a class="nav-link" id="shoppingsheet-tab" data-bs-toggle="tab" href="#shoppingsheet" role="tab"
+               aria-selected="false">消費紀錄</a>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="return-tab" data-bs-toggle="tab" data-bs-target="#return" role="tab" type="button" aria-controls="return-tab-pane"
-               aria-selected="false">退貨紀錄</button>
+            <a class="nav-link" id="return-tab" data-bs-toggle="tab" href="#return" role="tab"
+               aria-selected="false">退貨紀錄</a>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="booking-tab" data-bs-toggle="tab" data-bs-target="#booking" role="tab" type="button" aria-controls="booking-tab-pane"
-               aria-selected="false">預約紀錄</button>
+            <a class="nav-link" id="booking-tab" data-bs-toggle="tab" href="#booking" role="tab"
+               aria-selected="false">預約紀錄</a>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="collect-tab" data-bs-toggle="tab" data-bs-target="#collect" role="tab" type="button" aria-controls="collect-tab-pane"
-               aria-selected="false">收藏紀錄</button>
+            <a class="nav-link" id="collect-tab" data-bs-toggle="tab" href="#collect" role="tab"
+               aria-selected="false">收藏紀錄</a>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="Complaint-tab" data-bs-toggle="tab" data-bs-target="#Complaint" role="tab" type="button" aria-controls="Complaint-tab-pane"
-               aria-selected="false">客訴紀錄</button>
+            <a class="nav-link" id="Complaint-tab" data-bs-toggle="tab" href="#Complaint" role="tab"
+               aria-selected="false">客訴紀錄</a>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="CustomerService-tab" data-bs-toggle="tab" data-bs-target="#CustomerService" role="tab" type="button" aria-controls="CustomerService-tab-pane"
-               aria-selected="false">客服中心</button>
+            <a class="nav-link" id="CustomerService-tab" data-bs-toggle="tab" href="#CustomerService" role="tab"
+               aria-selected="false">客服中心</a>
         </li>
     </ul>
 
@@ -162,10 +162,10 @@
                                                     </div>
                                                     <!--常用地址-->
                                                     <div class="form-row">
-                                                        <div class="col-md-8">
+                                                        <div class="col-md-7">
                                                             <label>常用地址</label>
                                                             <div class="d-flex align-items-center">
-                                                                <select class="form-select  w-50"
+                                                                <select class="form-select"
                                                                         aria-label="Default select example">
                                                                     <option selected>常用地址1號</option>
                                                                     <option value="1">常用地址2號</option>
@@ -187,55 +187,159 @@
                                                     </div>
                                                     <!--7-11超商取貨地址-->
                                                     <div class="form-row">
-                                                        <div class="col-md-8">
+                                                        <div class="col-md-9">
                                                             <label>7-11超商取貨地址</label>
                                                             <div class="d-flex align-items-center">
-                                                                <select class="form-select w-50"
+                                                                <select class="form-select"
                                                                         aria-label="Default select example">
                                                                     <option selected>桂林門市</option>
                                                                     <option value="1">稻埕門市</option>
                                                                     <option value="2">中興門市</option>
                                                                     <option value="3">北醫門市</option>
                                                                 </select>
-                                                                <button type="button" class="btn add-address"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#storeModal">
-                                                                    查看已儲存門市
-                                                                </button>
-                                                                <button type="button" class="btn add-address"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#NewStoreModal">
-                                                                    新增門市
-                                                                </button>
+                                                                <select id="countySelect" class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option value="">請選擇縣市</option>
+                                                                </select>
+                                                                <select id="townSelect" class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option value="">請選擇鄉鎮</option>
+                                                                </select>
+                                                                <select id="roadSelect" class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option value="">請選擇街道</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <!--全家超商取貨地址-->
                                                     <div class="form-row">
-                                                        <div class="col-md-8">
+                                                        <div class="col-md-9">
                                                             <label>全家超商取貨地址</label>
                                                             <div class="d-flex align-items-center">
-                                                                <select class="form-select w-50"
+                                                                <select class="form-select"
                                                                         aria-label="Default select example">
                                                                     <option selected>松慈店</option>
                                                                     <option value="1">民和店</option>
                                                                     <option value="2">成都店</option>
                                                                     <option value="3">南機場店</option>
                                                                 </select>
-                                                                <button type="button" class="btn add-address"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#familyStoreModal">
-                                                                    查看已儲存門市
-                                                                </button>
-                                                                <button type="button" class="btn add-address"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#NewStoreModal">
-                                                                    新增門市
-                                                                </button>
+                                                                <select id="county2Select" class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option value="">請選擇縣市</option>
+                                                                </select>
+                                                                <select id="town2Select" class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option value="">請選擇鄉鎮</option>
+                                                                </select>
+                                                                <select id="roadSelect" class="form-select"
+                                                                        aria-label="Default select example">
+                                                                    <option value="">請選擇街道</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button class="btn hvr-hover mt-3">
+                                                    <!--導入7-11超商的script，之後可以做address.cshtml導入老師的script.js-->
+                                                    <script>
+                                                        const countySelect = document.getElementById('countySelect');
+                                                        const townSelect = document.getElementById('townSelect');
+
+                                                        // 假設 countyData 是一個包含縣市和鄉鎮資料的物件陣列
+                                                        const countyData = [
+                                                            {
+                                                                county: '台北市',
+                                                                towns: ['中正區', '大同區', '中山區', '松山區', '大安區'] // 這裡只列了部分鄉鎮
+                                                            },
+                                                            {
+                                                                county: '新北市',
+                                                                towns: ['板橋區', '三重區', '新莊區', '永和區', '中和區'] // 這裡只列了部分鄉鎮
+                                                            },
+                                                            {
+                                                                county: '基隆市',
+                                                                towns: ['中正區', '七堵區', '暖暖區', '仁愛區', '安樂區']
+                                                            },
+                                                            {
+                                                                county: '澎湖縣',
+                                                                towns: ['馬公市', '湖西鄉', '白沙鄉', '西嶼鄉', '望安鄉', /* ... */]
+                                                            }
+                                                            // 其他縣市的資料...
+                                                        ];
+
+                                                        // 初始化縣市選單
+                                                        countyData.forEach(item => {
+                                                            const option = document.createElement('option');
+                                                            option.value = item.county;
+                                                            option.textContent = item.county;
+                                                            countySelect.appendChild(option);
+                                                        });
+
+                                                        // 當縣市選項改變時，動態生成鄉鎮選單
+                                                        countySelect.addEventListener('change', () => {
+                                                            const selectedCounty = countySelect.value;
+                                                            const selectedData = countyData.find(item => item.county === selectedCounty);
+
+                                                            townSelect.innerHTML = ''; // 清空鄉鎮選單
+
+                                                            selectedData.towns.forEach(town => {
+                                                                const option = document.createElement('option');
+                                                                option.value = town;
+                                                                option.textContent = town;
+                                                                townSelect.appendChild(option);
+                                                            });
+                                                        });
+
+                                                    </script>
+                                                    <!--導入全家超商的script，之後可以做address.cshtml導入老師的script.js-->
+                                                    <script>
+                                                        const county2Select = document.getElementById('county2Select');
+                                                        const town2Select = document.getElementById('town2Select');
+
+                                                        // 假設 countyData 是一個包含縣市和鄉鎮資料的物件陣列
+                                                        const county2Data = [
+                                                            {
+                                                                county: '台北市',
+                                                                towns: ['中正區', '大同區', '中山區', '松山區', '大安區'] // 這裡只列了部分鄉鎮
+                                                            },
+                                                            {
+                                                                county: '新北市',
+                                                                towns: ['板橋區', '三重區', '新莊區', '永和區', '中和區'] // 這裡只列了部分鄉鎮
+                                                            },
+                                                            {
+                                                                county: '基隆市',
+                                                                towns: ['中正區', '七堵區', '暖暖區', '仁愛區', '安樂區']
+                                                            },
+                                                            {
+                                                                county: '澎湖縣',
+                                                                towns: ['馬公市', '湖西鄉', '白沙鄉', '西嶼鄉', '望安鄉', /* ... */]
+                                                            }
+                                                            // 其他縣市的資料...
+                                                        ];
+
+                                                        // 初始化縣市選單
+                                                        county2Data.forEach(item => {
+                                                            const option = document.createElement('option');
+                                                            option.value = item.county;
+                                                            option.textContent = item.county;
+                                                            county2Select.appendChild(option);
+                                                        });
+
+                                                        // 當縣市選項改變時，動態生成鄉鎮選單
+                                                        county2Select.addEventListener('change', () => {
+                                                            const selected2County = county2Select.value;
+                                                            const selected2Data = county2Data.find(item => item.county === selected2County);
+
+                                                            town2Select.innerHTML = ''; // 清空鄉鎮選單
+
+                                                            selected2Data.towns.forEach(town => {
+                                                                const option = document.createElement('option');
+                                                                option.value = town;
+                                                                option.textContent = town;
+                                                                town2Select.appendChild(option);
+                                                            });
+                                                        });
+
+                                                    </script>
+                                                    <button class="btn-customs btn hvr-hovers ">
                                                         送出
                                                     </button>
                                                 </form>
@@ -257,25 +361,10 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="col-md-9">
-                                            <ol class="mb-4">
-                                                <li class="mb-2">
+                                            <ol>
+                                                <li>
                                                     <input type="text" value="地址一號"><span class="minus-address">
-                                                        <i class="fa-solid fa-circle-minus text-danger"></i>
-                                                    </span>
-                                                </li>
-                                                <li class="mb-2">
-                                                    <input type="text" value="地址二號"><span class="minus-address">
-                                                        <i class="fa-solid fa-circle-minus text-danger"></i>
-                                                    </span>
-                                                </li>
-                                                <li class="mb-2">
-                                                    <input type="text" value="地址三號"><span class="minus-address">
-                                                        <i class="fa-solid fa-circle-minus text-danger"></i>
-                                                    </span>
-                                                </li>
-                                                <li class="mb-2">
-                                                    <input type="text" value="地址四號"><span class="minus-address">
-                                                        <i class="fa-solid fa-circle-minus text-danger"></i>
+                                                        <i class="fa-solid fa-circle-minus"></i>
                                                     </span>
                                                 </li>
                                             </ol>
@@ -318,7 +407,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--彈跳視窗: 查看已儲存7-11超商取貨地址-->
+                        <!--彈跳視窗: 查看已儲存超商取貨地址-->
                         <div class="modal fade" id="storeModal" tabindex="-1" aria-labelledby="storeModalLabel"
                              aria-hidden="true">
                             <div class="modal-dialog">
@@ -330,25 +419,10 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="col-md-9">
-                                            <ol class="mb-4">
-                                                <li class="mb-2">
-                                                    <input type="text" value="桂林門市"><span class="minus-address">
-                                                        <i class="fa-solid fa-circle-minus text-danger"></i>
-                                                    </span>
-                                                </li>
-                                                <li class="mb-2">
-                                                    <input type="text" value="稻埕門市"><span class="minus-address">
-                                                        <i class="fa-solid fa-circle-minus text-danger"></i>
-                                                    </span>
-                                                </li>
-                                                <li class="mb-2">
-                                                    <input type="text" value="中興門市"><span class="minus-address">
-                                                        <i class="fa-solid fa-circle-minus text-danger"></i>
-                                                    </span>
-                                                </li>
-                                                <li class="mb-2">
-                                                    <input type="text" value="北醫門市"><span class="minus-address">
-                                                        <i class="fa-solid fa-circle-minus text-danger"></i>
+                                            <ol>
+                                                <li>
+                                                    <input type="text" value="7-11桂林門市"><span class="minus-address">
+                                                        <i class="fa-solid fa-circle-minus"></i>
                                                     </span>
                                                 </li>
                                             </ol>
@@ -364,54 +438,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--彈跳視窗: 查看已儲存全家超商取貨地址-->
-                        <div class="modal fade" id="familyStoreModal" tabindex="-1" aria-labelledby="familyStoreModalLabel"
-                             aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="storeModalLabel">常用門市一覽</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="col-md-9">
-                                            <ol class="mb-4">
-                                                <!-- 添加底部間距 -->
-                                                <li class="mb-2">
-                                                    <input type="text" value="松慈店"><span class="minus-address">
-                                                        <i class="fa-solid fa-circle-minus text-danger"></i>
-                                                    </span>
-                                                </li>
-                                                <li class="mb-2">
-                                                    <input type="text" value="民和店"><span class="minus-address">
-                                                        <i class="fa-solid fa-circle-minus text-danger"></i>
-                                                    </span>
-                                                </li>
-                                                <li class="mb-2">
-                                                    <input type="text" value="成都店"><span class="minus-address">
-                                                        <i class="fa-solid fa-circle-minus text-danger"></i>
-                                                    </span>
-                                                </li>
-                                                <li class="mb-2">
-                                                    <input type="text" value="南機場店"><span class="minus-address">
-                                                        <i class="fa-solid fa-circle-minus text-danger"></i>
-                                                    </span>
-                                                </li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">
-                                            關閉
-                                        </button>
-                                        <button type="button" class="btn btn-primary">儲存</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--彈跳視窗: 新增超商門市-->
+                        <!--彈跳視窗: 新增門市-->
                         <div class="modal fade" id="NewStoreModal" tabindex="-1"
                              aria-labelledby="NewStoreModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -424,25 +451,8 @@
                                     <div class="modal-body">
                                         <div class="col-md-9">
                                             <ol>
-                                                <li><input type="text" value="" placeholder="請選擇門市"></li>
+                                                <li><input type="text" value="" placeholder="填入店名"></li>
                                             </ol>
-                                            <select id="countySelect" class="form-select my-2"
-                                                    aria-label="Default select example">
-                                                <option value="">請選擇縣市</option>
-                                            </select>
-                                            <select id="townSelect" class="form-select my-2"
-                                                    aria-label="Default select example">
-                                                <option value="">請選擇鄉鎮</option>
-                                            </select>
-                                            <select id="roadSelect" class="form-select my-2"
-                                                    aria-label="Default select example">
-                                                <option selected>請選擇街道</option>
-                                                <option value="1">忠孝東路</option>
-                                                <option value="2">復興南路</option>
-                                                <option value="3">敦化南路</option>
-                                                <option value="4">和平東路</option>
-                                                <option value="5">大安路</option>
-                                            </select>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -470,7 +480,7 @@
                                         <span>您目前持有點數：9點</span><span>/1元</span>
                                     </div>
                                     <div class="text-center ">
-                                        <button class="btn hvr-hover" data-bs-toggle="modal"
+                                        <button class="btn-customs btn hvr-hovers " data-bs-toggle="modal"
                                                 data-bs-target="#couponModal">
                                             查看持有優惠券
                                         </button>
@@ -552,7 +562,7 @@
                                         <input class="form-control" type="text" value=""
                                                placeholder="請輸入關鍵字或訂單編號" id="myKeyWord" />
                                         <div class="text-center mb-2 ">
-                                            <button class="btn hvr-hover mt-3" id="btnQuery" type="button">
+                                            <button class="btn-customs btn hvr-hovers" id="btnQuery" type="button">
                                                 查詢
                                             </button>
                                         </div>
@@ -851,7 +861,7 @@
                                         <input class="form-control" type="text" value=""
                                                placeholder="請輸入關鍵字或訂單編號" id="myKeyWord2" />
                                         <div class="text-center mb-2 ">
-                                            <button class="btn hvr-hover mt-3" id="btnQuery2" type="button">
+                                            <button class="btn-customs btn hvr-hovers" id="btnQuery2" type="button">
                                                 查詢
                                             </button>
                                         </div>
@@ -935,7 +945,7 @@
                                         <input class="form-control" type="text" value=""
                                                placeholder="請輸入關鍵字或訂單編號" id="myKeyWord3" />
                                         <div class="text-center mb-2 ">
-                                            <button class="btn hvr-hover mt-3" id="btnQuery3" type="button">
+                                            <button class="btn-customs btn hvr-hovers" id="btnQuery3" type="button">
                                                 查詢
                                             </button>
                                         </div>
@@ -1165,7 +1175,7 @@
                                         <input class="form-control" type="text" value=""
                                                placeholder="請輸入關鍵字或訂單編號" id="myKeyWord4" />
                                         <div class="text-center mb-2 ">
-                                            <button class="btn hvr-hover mt-3" id="btnQuery4" type="button">
+                                            <button class="btn-customs btn hvr-hovers" id="btnQuery4" type="button">
                                                 查詢
                                             </button>
                                         </div>
@@ -1398,7 +1408,6 @@
 
 
 <!-- 結束公告頁 -->
-
 @section Scripts{
     <!-- ALL JS FILES -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -1452,7 +1461,7 @@
         });
     </script>
 
-    <!--新加入qrcode的cdn   
+    <!--新加入qrcode的cdn
     <script  src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
     <script  src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
     <script>
@@ -1463,7 +1472,6 @@
         });
     </script>
     -->
-
     <!--新加入sweetalert2的cdn-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -1517,107 +1525,6 @@
         initializeDataTable('#example4', '#myKeyWord4', '#btnQuery4');
     </script>
 
-    <!--增加的部分:導入7-11超商的script，之後可改成address.cshtml導入老師的script.js-->
-    <script>
-        const countySelect = document.getElementById('countySelect');
-        const townSelect = document.getElementById('townSelect');
-
-        // 假設 countyData 是一個包含縣市和鄉鎮資料的物件陣列
-        const countyData = [
-            {
-                county: '台北市',
-                towns: ['中正區', '大同區', '中山區', '松山區', '大安區'] // 這裡只列了部分鄉鎮
-            },
-            {
-                county: '新北市',
-                towns: ['板橋區', '三重區', '新莊區', '永和區', '中和區'] // 這裡只列了部分鄉鎮
-            },
-            {
-                county: '基隆市',
-                towns: ['中正區', '七堵區', '暖暖區', '仁愛區', '安樂區']
-            },
-            {
-                county: '澎湖縣',
-                towns: ['馬公市', '湖西鄉', '白沙鄉', '西嶼鄉', '望安鄉', /* ... */]
-            }
-            // 其他縣市的資料...
-        ];
-
-        // 初始化縣市選單
-        countyData.forEach(item => {
-            const option = document.createElement('option');
-            option.value = item.county;
-            option.textContent = item.county;
-            countySelect.appendChild(option);
-        });
-
-        // 當縣市選項改變時，動態生成鄉鎮選單
-        countySelect.addEventListener('change', () => {
-            const selectedCounty = countySelect.value;
-            const selectedData = countyData.find(item => item.county === selectedCounty);
-
-            townSelect.innerHTML = ''; // 清空鄉鎮選單
-
-            selectedData.towns.forEach(town => {
-                const option = document.createElement('option');
-                option.value = town;
-                option.textContent = town;
-                townSelect.appendChild(option);
-            });
-        });
-
-    </script>
-
-    <!--增加的部分:導入全家超商的script，之後可改成address.cshtml導入老師的script.js-->
-    <script>
-        const county2Select = document.getElementById('county2Select');
-        const town2Select = document.getElementById('town2Select');
-
-        // 假設 countyData 是一個包含縣市和鄉鎮資料的物件陣列
-        const county2Data = [
-            {
-                county: '台北市',
-                towns: ['中正區', '大同區', '中山區', '松山區', '大安區'] // 這裡只列了部分鄉鎮
-            },
-            {
-                county: '新北市',
-                towns: ['板橋區', '三重區', '新莊區', '永和區', '中和區'] // 這裡只列了部分鄉鎮
-            },
-            {
-                county: '基隆市',
-                towns: ['中正區', '七堵區', '暖暖區', '仁愛區', '安樂區']
-            },
-            {
-                county: '澎湖縣',
-                towns: ['馬公市', '湖西鄉', '白沙鄉', '西嶼鄉', '望安鄉', /* ... */]
-            }
-            // 其他縣市的資料...
-        ];
-
-        // 初始化縣市選單
-        county2Data.forEach(item => {
-            const option = document.createElement('option');
-            option.value = item.county;
-            option.textContent = item.county;
-            county2Select.appendChild(option);
-        });
-
-        // 當縣市選項改變時，動態生成鄉鎮選單
-        county2Select.addEventListener('change', () => {
-            const selected2County = county2Select.value;
-            const selected2Data = county2Data.find(item => item.county === selected2County);
-
-            town2Select.innerHTML = ''; // 清空鄉鎮選單
-
-            selected2Data.towns.forEach(town => {
-                const option = document.createElement('option');
-                option.value = town;
-                option.textContent = town;
-                town2Select.appendChild(option);
-            });
-        });
-
-    </script>
 }
 
 

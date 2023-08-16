@@ -41,15 +41,13 @@
     <header class="main-header">
         <!-- Start Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <a class="navbar-brand" asp-controller="Index" asp-action="Index"><img src="~/images/logo.png" class="logo" alt=""></a>
+            <button class="navbar-toggler ml-auto mb-auto" type="button" data-toggle="collapse" data-target="#navbar-menu"
+                    aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
             <div class="container-fluid">
                 <!-- Start Header Navigation -->
-                <div class="navbar-header">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
-                            aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand" asp-controller="Index" asp-action="Index"><img src="~/images/logo.png" class="logo" alt=""></a>
-                </div>
                 <!-- End Header Navigation -->
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse start-0" id="navbar-menu">
@@ -69,25 +67,25 @@
                         <li class="nav-item"><a class="nav-link" asp-controller="About" asp-action="About">關於我們</a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Membership" asp-action="Membership">會員中心</a></li>
                         <!-- Mobile view .attr-nav -->
-                            <ul class="d-flex d-lg-none justify-content-evenly">
-                                <li class="heart">
-                                    <a href="membership.html">
-                                        <i class="fa-regular fa-heart"></i>
-                                        <span class="customRule for_header_twoIcon">3</span>
-                                    </a>
-                                </li>
-                                <li class="side-menu">
-                                    <a asp-controller="Cart" asp-action="Cart">
-                                        <i class="fa-solid fa-cart-plus"></i>
-                                        <span class="customRule for_header_twoIcon">3</span>
-                                    </a>
-                                </li>
-                                <li class="Login">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
-                                        <span class="LoginText">登入/註冊</span>
-                                    </a>
-                                </li>
-                            </ul>
+                        <ul class="d-flex d-lg-none justify-content-evenly">
+                            <li class="heart">
+                                <a href="membership.html">
+                                    <i class="fa-regular fa-heart"></i>
+                                    <span class="customRule for_header_twoIcon">3</span>
+                                </a>
+                            </li>
+                            <li class="side-menu">
+                                <a asp-controller="Cart" asp-action="Cart">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                    <span class="customRule for_header_twoIcon">3</span>
+                                </a>
+                            </li>
+                            <li class="Login">
+                                <a asp-controller="MemberLogin" asp-action="Login">
+                                    <span class="LoginText">登入/註冊</span>
+                                </a>
+                            </li>
+                        </ul>
                     </ul>
                 </div>
 
@@ -95,7 +93,7 @@
                 <div class="attr-nav d-none d-lg-block">
                     <ul>
                         <li class="heart">
-                            <a asp-controller="Membership" asp-action="Membership">
+                            <a href="membership.html">
                                 <i class="fa-regular fa-heart"></i>
                                 <span class="customRule for_header_twoIcon">3</span>
                             </a>
@@ -107,15 +105,12 @@
                             </a>
                         </li>
                         <li class="Login">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <a asp-controller="MemberLogin" asp-action="Login">
                                 <span class="LoginText">登入/註冊</span>
                             </a>
                         </li>
                     </ul>
                 </div>
-
-                <!-- End Atribute Navigation -->
-                @Html.Partial("~/Views/Login/Login.cshtml")
         </nav>
     </header>
     @RenderBody()
