@@ -1,0 +1,251 @@
+﻿{
+   "CodeGenerationMode": 3,
+   "ContextClassName": "Ivan貓抓抓Context",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "IvanModels",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "prjCatChaOnlineShop",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[Announcement Type Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.1on1MessageData]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Achievement List]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Achievement Reward List]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Character Info]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Coin Exchange Record]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Friend Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Friend List Chat Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Global Chat Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Item Purchase Record]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Member B Message Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Member Task]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Message Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Pet]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Pet Total]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Product Category]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Product Total]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Rank Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Shop Blog Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.ShopAnnouncement]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.shopArticleType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Task Condition Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Game.Task List]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Message Type Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Appeal Category Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Case Data Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Catcharacter]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.CatStatus]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Common Address Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Complaint Status Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Coupon Total]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Favorite Data Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Game Admin Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Member Complaint Case]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Member Coupon Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Member Info]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.MyCatNameList]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Order Detail Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Order Status Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Order Total Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Payment Method Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Product Category]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Product Discount]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Product Image Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Product Review Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Product Supplier]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Product Total]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Reply Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Return Data Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Return Reason Data Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Return Status Data Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Room]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.Shipping Method]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "test_fang.貓抓抓.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

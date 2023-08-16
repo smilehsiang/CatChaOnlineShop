@@ -10,6 +10,18 @@ const animationImages = animationContainer.querySelectorAll('.catcha');
 const summonbuttons = document.getElementById('summon-buttons');
 
 
+//顯示json數據
+fetch('/api/SummonApi')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        const dataContainer = document.getElementById('data-container');
+        dataContainer.innerHTML = JSON.stringify(data);
+    })
+    .catch(error => {
+        console.error('沒抓到json', error);
+    });
+
 
 
 // Button 4 點擊事件處理

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using prjCatChaOnlineShop.AllunModels;
+using prjCatChaOnlineShop.IvanModels;
 
 namespace prjCatChaOnlineShop.Controllers
 {
@@ -16,12 +17,11 @@ namespace prjCatChaOnlineShop.Controllers
             var datas = from p in db.GameProductTotal
                         select p;
             return View(datas);
-        }
-
+        }   
+        //Allun貓抓抓Context db = new Allun貓抓抓Context();
         public IActionResult 抽卡v2()
         {
-            Allun貓抓抓Context db = new Allun貓抓抓Context();
-            //Allun貓抓抓Context db = new Allun貓抓抓Context();
+            Ivan貓抓抓Context db = new Ivan貓抓抓Context();
             var datas = from p in db.GameProductTotal
                         where p.LotteryProbability != null && p.ProductCategoryId !=2
                         select p;
