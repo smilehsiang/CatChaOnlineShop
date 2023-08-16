@@ -19,7 +19,7 @@
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-fas/theme.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <link rel="stylesheet" href="~/css/membership.css">
+    
     <!-- Site CSS -->
     <link rel="stylesheet" href="~/css/style.css">
     <!-- Responsive CSS -->
@@ -27,6 +27,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="~/css/custom.css">
     <link rel="stylesheet" href="~/css/forNews.css">
+    <link rel="stylesheet" href="~/css/membership.css">
 
     <!--增加的部分:用於圖片放大預覽-->
     <style>
@@ -74,15 +75,30 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
 }
 
+<div class="all-title-box all-title-box-picture">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>會員中心</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">首頁</a></li>
+                    <li class="breadcrumb-item active">會員中心</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- 開始公告頁 -->
 <!-- cart + summary -->
 <div class="container mt-4 mb-4">
 
     <!--導覽列:選單-->
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs justify-content-around" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="membership-tab" data-bs-toggle="tab" href="#membership" role="tab"
-               aria-controls="home" aria-selected="true">會員基本資料</a>
+               aria-controls="home" aria-selected="true">基本資料</a>
         </li>
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="shoppingsheet-tab" data-bs-toggle="tab" href="#shoppingsheet" role="tab"
@@ -162,7 +178,7 @@
                                                     </div>
                                                     <!--常用地址-->
                                                     <div class="form-row">
-                                                        <div class="col-md-7">
+                                                        <div class="col-md-12">
                                                             <label>常用地址</label>
                                                             <div class="d-flex align-items-center">
                                                                 <select class="form-select"
@@ -172,73 +188,45 @@
                                                                     <option value="2">常用地址3號</option>
                                                                     <option value="3">常用地址4號</option>
                                                                 </select>
-                                                                <button type="button" class="btn add-address"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#addressModal">
-                                                                    查看已儲存地址
-                                                                </button>
-                                                                <button type="button" class="btn add-address"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#NewAddressModal">
-                                                                    新增地址
-                                                                </button>
                                                             </div>
+                                                            <button type="button" class="btn add-address"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#addressModal">
+                                                                查看已儲存地址
+                                                            </button>
+                                                            <button type="button" class="btn add-address"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#NewAddressModal">
+                                                                新增地址
+                                                            </button>
                                                         </div>
                                                     </div>
                                                     <!--7-11超商取貨地址-->
                                                     <div class="form-row">
-                                                        <div class="col-md-9">
-                                                            <label>7-11超商取貨地址</label>
+                                                        <div class="col-md-12">
+                                                            <label>超商取貨地址</label>
                                                             <div class="d-flex align-items-center">
                                                                 <select class="form-select"
                                                                         aria-label="Default select example">
-                                                                    <option selected>桂林門市</option>
-                                                                    <option value="1">稻埕門市</option>
-                                                                    <option value="2">中興門市</option>
-                                                                    <option value="3">北醫門市</option>
-                                                                </select>
-                                                                <select id="countySelect" class="form-select"
-                                                                        aria-label="Default select example">
-                                                                    <option value="">請選擇縣市</option>
-                                                                </select>
-                                                                <select id="townSelect" class="form-select"
-                                                                        aria-label="Default select example">
-                                                                    <option value="">請選擇鄉鎮</option>
-                                                                </select>
-                                                                <select id="roadSelect" class="form-select"
-                                                                        aria-label="Default select example">
-                                                                    <option value="">請選擇街道</option>
+                                                                    <option selected>取貨地址1號</option>
+                                                                    <option value="1">取貨地址2號</option>
+                                                                    <option value="2">取貨地址3號</option>
+                                                                    <option value="3">取貨地址4號</option>
                                                                 </select>
                                                             </div>
+                                                            <button type="button" class="btn add-address"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#MarketaddressModal">
+                                                                查看已儲存地址
+                                                            </button>
+                                                            <button type="button" class="btn add-address"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#NewMarketAddressModal">
+                                                                新增超商取貨地址
+                                                            </button>
                                                         </div>
                                                     </div>
-                                                    <!--全家超商取貨地址-->
-                                                    <div class="form-row">
-                                                        <div class="col-md-9">
-                                                            <label>全家超商取貨地址</label>
-                                                            <div class="d-flex align-items-center">
-                                                                <select class="form-select"
-                                                                        aria-label="Default select example">
-                                                                    <option selected>松慈店</option>
-                                                                    <option value="1">民和店</option>
-                                                                    <option value="2">成都店</option>
-                                                                    <option value="3">南機場店</option>
-                                                                </select>
-                                                                <select id="county2Select" class="form-select"
-                                                                        aria-label="Default select example">
-                                                                    <option value="">請選擇縣市</option>
-                                                                </select>
-                                                                <select id="town2Select" class="form-select"
-                                                                        aria-label="Default select example">
-                                                                    <option value="">請選擇鄉鎮</option>
-                                                                </select>
-                                                                <select id="roadSelect" class="form-select"
-                                                                        aria-label="Default select example">
-                                                                    <option value="">請選擇街道</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
                                                     <!--導入7-11超商的script，之後可以做address.cshtml導入老師的script.js-->
                                                     <script>
                                                         const countySelect = document.getElementById('countySelect');
@@ -408,12 +396,12 @@
                             </div>
                         </div>
                         <!--彈跳視窗: 查看已儲存超商取貨地址-->
-                        <div class="modal fade" id="storeModal" tabindex="-1" aria-labelledby="storeModalLabel"
+                        <div class="modal fade" id="MarketaddressModal" tabindex="-1" aria-labelledby="addressModalLabel"
                              aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="storeModalLabel">常用門市一覽</h5>
+                                        <h5 class="modal-title" id="addressModalLabel">常用地址一覽</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                     </div>
@@ -421,7 +409,7 @@
                                         <div class="col-md-9">
                                             <ol>
                                                 <li>
-                                                    <input type="text" value="7-11桂林門市"><span class="minus-address">
+                                                    <input type="text" value="地址一號"><span class="minus-address">
                                                         <i class="fa-solid fa-circle-minus"></i>
                                                     </span>
                                                 </li>
@@ -438,20 +426,47 @@
                                 </div>
                             </div>
                         </div>
-                        <!--彈跳視窗: 新增門市-->
-                        <div class="modal fade" id="NewStoreModal" tabindex="-1"
-                             aria-labelledby="NewStoreModalLabel" aria-hidden="true">
+                        <!--彈跳視窗: 新增超商取貨地址-->
+                        <div class="modal fade" id="NewMarketAddressModal" tabindex="-1"
+                             aria-labelledby="NewAddressModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="NewStoreModalLabel">新增門市</h5>
+                                        <h5 class="modal-title" id="addressModalLabel">新增超商取貨地址</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <div class="col-md-9">
                                             <ol>
-                                                <li><input type="text" value="" placeholder="填入店名"></li>
+                                                <li>
+                                                    <select class="form-select"
+                                                            aria-label="Default select example">
+                                                        <option selected>7-11</option>
+                                                        <option value="1">全家</option>
+                                                        <option value="2">OK</option>
+                                                        <option value="3">萊爾富</option>
+                                                    </select>
+                                                    <select id="county2Select" class="form-select"
+                                                            aria-label="Default select example">
+                                                        <option value="">請選擇縣市</option>
+                                                    </select>
+                                                    <select id="town2Select" class="form-select"
+                                                            aria-label="Default select example">
+                                                        <option value="">請選擇鄉鎮</option>
+                                                    </select>
+                                                    <select id="roadSelect" class="form-select"
+                                                            aria-label="Default select example">
+                                                        <option value="">請選擇街道</option>
+                                                    </select>
+                                                    <select class="form-select"
+                                                            aria-label="Default select example">
+                                                        <option selected>松慈店</option>
+                                                        <option value="1">民和店</option>
+                                                        <option value="2">成都店</option>
+                                                        <option value="3">南機場店</option>
+                                                    </select>
+                                                </li>
                                             </ol>
                                         </div>
                                     </div>
@@ -1035,123 +1050,33 @@
 
                         <div class="col-lg-12 order-3 order-sm-3 order-md-3 order-xs-3">
                             <div class="row gy-3 mb-4">
-                                <div style="height: 350px; overflow: scroll;" class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead class="table-warning text-center">
-                                            <tr>
-                                                <th scope="col">圖片</th>
-                                                <th scope="col">產品名稱</th>
-                                                <th scope="col">售價</th>
-                                                <th scope="col" colspan="2"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="text-left">
-                                            <tr>
-                                                <td class="test">
-                                                    <img src='@Url.Content("~/images/prod-eg-1.png")'
-                                                         style="width: 100px; height: auto;"
-                                                         class="thumbnail-image img-fluid">
-                                                    <!-- 原始圖片的視窗 -->
-                                                    <div class="image-popup">
-                                                        <img src='@Url.Content("~/images/prod-eg-1.png")' alt="Original Image">
-                                                    </div>
-                                                </td>
-                                                <td class="name-pr">
-                                                    <a href="http://127.0.0.1:5500/shop-detail.html">
-                                                        喵洽普 | 貓咪營養肉泥
-                                                    </a>
-                                                </td>
-                                                <td>$ 65</td>
-                                                <td>
-                                                    <span class="quantity-box">剩餘x件</span>
-                                                </td>
-                                                <td>
-                                                    <span class="add-pr">
-                                                        <a class="btn hvr-hover" href="#">
-                                                            <i class="fa-solid fa-cart-plus"></i>
-                                                        </a>
-                                                    </span>
-                                                    <span class="remove-pr">
-                                                        <a href="#">
-                                                            <i class="fas fa-times"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="test">
-                                                    <img src='@Url.Content("~/images/prod-eg-4.png")'
-                                                         style="width: 100px; height: auto;"
-                                                         class="thumbnail-image img-fluid">
-                                                    <!-- 原始圖片的視窗 -->
-                                                    <div class="image-popup">
-                                                        <img src='@Url.Content("~/images/prod-eg-4.png")' alt="Original Image">
-                                                    </div>
-                                                </td>
-                                                <td class="name-pr">
-                                                    <a href="http://127.0.0.1:5500/shop-detail.html">
-                                                        貓抓嚴選｜Solo Toy：呆呆動物園
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <span class="price-pr">
-                                                        $ 30<del>$ 50</del>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span class="quantity-box">剩餘x件</span>
-
-                                                </td>
-                                                <td>
-                                                    <span class="add-pr">
-                                                        <a class="btn hvr-hover" href="#">
-                                                            <i class="fa-solid fa-cart-plus"></i>
-                                                        </a>
-                                                    </span>
-                                                    <span class="remove-pr">
-                                                        <a href="#">
-                                                            <i class="fas fa-times"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="test">
-                                                    <img src='@Url.Content("~/images/prod-eg-3.png")'
-                                                         style="width: 100px; height: auto;"
-                                                         class="thumbnail-image img-fluid">
-                                                    <!-- 原始圖片的視窗 -->
-                                                    <div class="image-popup">
-                                                        <img src='@Url.Content("~/images/prod-eg-3.png")' alt="Original Image">
-                                                    </div>
-                                                </td>
-                                                <td class="name-pr">
-                                                    <a href="http://127.0.0.1:5500/shop-detail.html">
-                                                        Pet Candy｜手工貓草玩具
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <span class="price-pr">$ 240<del>$ 280</del></span>
-                                                </td>
-                                                <td>
-                                                    <span class="quantity-box">剩餘x件</span>
-                                                </td>
-                                                <td>
-                                                    <span class="add-pr">
-                                                        <a class="btn hvr-hover" href="#">
-                                                            <i class="fa-solid fa-cart-plus"></i>
-                                                        </a>
-                                                    </span>
-                                                    <span class="remove-pr">
-                                                        <a href="#">
-                                                            <i class="fas fa-times"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="col-lg-5">
+                                    <div class="me-lg-5">
+                                        <div class="d-flex">
+                                            <img src="~/images/instagram-img-08.jpg" class="border rounded me-3" style="width: 96px; height: 96px;" />
+                                            <div class="mt-auto mb-auto">
+                                                <a href="#" class="nav-link">一個貓罐頭</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
+                                    <div class="mt-auto mb-auto">
+                                        <span class="h6">$1,156</span> <br />
+                                        <small class="text-muted text-nowrap"> $460 / 份 </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg col-sm-6 d-flex flex-column justify-content-center align-items-sm-center align-items-md-start align-items-lg-center align-items-xl-end mb-2">
+                                    <div class="float-md-end">
+                                        <span class="add-pr">
+                                            <a class="btn hvr-hover" href="#">
+                                                <i class="fa-solid fa-cart-plus"></i>
+                                            </a>
+                                        </span>
+                                        <a href="#" class="btn btn-light border  icon-hover-danger"> <i class="fa-solid fa-xmark"></i></a>
+                                    </div>
+                                </div>
+                                <hr class="for-hr">
                             </div>
                         </div>
 
