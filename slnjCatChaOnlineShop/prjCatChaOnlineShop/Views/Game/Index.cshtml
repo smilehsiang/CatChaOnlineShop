@@ -50,10 +50,6 @@
 
 <body>
 
-
-
-
-
     <!-- Start 遊戲畫面 -->
     <div class="canvas-container">
            <div class="gamelayer">
@@ -69,10 +65,11 @@
                         <img class="catcha A" src="../images/game/gacha/gacha_Animate_A.gif" style="display: none;">
                     </div>
                     <div id="summon-buttons">@*轉蛋按鈕*@
+                    <button id="gachaBack"></button>
                         <div class="buttonRow">
                             <button id="CatPointSingleDrow"></button>
-                             <button id="CatPointTenDrows"></button><br>
-                        </div>
+                             <button id="CatPointTenDrows"></button>
+                        </div><br/>
                         <div class="buttonRow">
                             <button id="RubySingleDrow"></button>
                             <button id="RubyTenDrows"></button>
@@ -121,17 +118,8 @@
                 <canvas id="CanvasDoubleCheck"></canvas>          
         </div>
     <!-- End 遊戲畫面 -->
-        <!-- Start 遊戲按鈕 -->
-        <div class="btn-content">
-            <div class="btns">
-                <input type="submit" value="Lobby" class="btn" id="lobbynBTN" />
-                <input type="submit" value="Run Game" class="btn" id="rungameBTN" />
-                <input type="submit" value="Gatcha" class="btn" id="gatchaBTN" />
-            </div>
-        </div>
-        <!-- End 遊戲按鈕 -->
     </div>
-    </div>
+
     <!-- End 遊戲畫面 -->
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>

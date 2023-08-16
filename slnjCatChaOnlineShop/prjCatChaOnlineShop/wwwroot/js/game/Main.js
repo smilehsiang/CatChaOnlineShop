@@ -20,6 +20,8 @@ const ruby = new Image();
 const ccoin = new Image();
 const helpBTNimg = new Image();
 const rankBTNimg = new Image();
+const gotoGachaimg = new Image();
+const gotoRunGameimg = new Image();
 
 const kittenDefault = new Image();
 const kittenBK = new Image();
@@ -362,7 +364,6 @@ class Bag {
 }
 class mainpageButton {
     draw() {
-        c.fillStyle = 'blue';
         c.drawImage(this.image, this.x, this.y, this.width, this.height);
 
     }
@@ -375,7 +376,6 @@ class mainpageButton {
         this.width = width;
         this.height = height;
         this.image = image
-        this.load();
     }
 }
 class Icon {
@@ -408,7 +408,7 @@ const catBB = new Cat('BB');
 const catBK = new Cat('BK');
 const catGY = new Cat('GY');
 const catOG = new Cat('OG');
-
+//背包
 const itm1 = new Item(0, bagItem1)
 const itm2 = new Item(1, bagItem2)
 const itm3 = new Item(2, bagItem3)
@@ -417,6 +417,13 @@ const itm5 = new Item(4, bagItem5)
 const itmMilk = new Item(5, bagItem6, 'food')
 const itmCan = new Item(6, bagItem7, 'food')
 const itm8 = new Item(7, bagItem8)
+//左側按鈕
+const helpBTN =  new mainpageButton(20, 70, 30, 40, helpBTNimg);
+const gotoRunGame =  new mainpageButton(12, 140, 50, 50, gotoRunGameimg);
+const rankBTN =  new mainpageButton(15, 210, 40, 40, rankBTNimg);
+const gotoGacha =  new mainpageButton(15, 280, 40, 40, gotoGachaimg);
+
+
 
 //大廳動畫
 function animate() {
@@ -449,9 +456,12 @@ function animate() {
     itmCan.load();
     itm8.load();
 
-    new mainpageButton(20, 70, 30, 40, helpBTNimg);
-    new mainpageButton(15, 140, 40, 40, rankBTNimg);
+    helpBTN.load();
+    gotoRunGame.load();
+    rankBTN.load();
+    gotoGacha.load();
 
+    
 }
 animate();
 

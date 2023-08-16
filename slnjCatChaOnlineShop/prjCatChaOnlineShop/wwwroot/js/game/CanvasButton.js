@@ -19,7 +19,7 @@ CanvasDoubleCheck.addEventListener('click', (event) => { //跑步遊戲結束後
         if (isInBtnRange(cancelBTN_Pause, x, y)) { //玩家選擇否(結束遊戲)
             CanvasDoubleCheck.style.display = "none"//隱藏詢問視窗
             pagesControl(Canvaslobby); //畫面返回大廳
-            btnsControl(lobbynBTN);//返回大廳按鈕關閉
+            return;
         }
     }
 
@@ -28,11 +28,12 @@ CanvasDoubleCheck.addEventListener('click', (event) => { //跑步遊戲結束後
             console.log("1")
             CanvasDoubleCheck.style.display = "none" //隱藏詢問視窗
             resetRunGame();//重置遊戲+重新開始遊戲
+            return;
         }
         if (isInBtnRange(cancelBTN, x, y)) {//玩家選擇否
             CanvasDoubleCheck.style.display = "none"//隱藏詢問視窗
             pagesControl(Canvaslobby); //畫面返回大廳
-            btnsControl(lobbynBTN);//返回大廳按鈕關閉
+            return;
         }
     }
 }
@@ -49,7 +50,6 @@ CanvasSummonResult.addEventListener('click', (event) => { //轉蛋結果展示�
         arr.length = 0; //清空存放隨機數字的陣列
     }
 });
-
 
 
 Canvasrungame.addEventListener("click", (event) => {//按下暫停
@@ -69,37 +69,61 @@ Canvasrungame.addEventListener("click", (event) => {//按下暫停
 });
 
 
-
-
-
 canvas.addEventListener('click', (event) => {
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
 
     //主功能按鈕
-    if (isInBtnRange(rankBTNimg, x, y)) { //Rank
-        pagesControl(CanvasRank);
 
-        Canvaslobby.style.display = "block"
+    if (isInBtnRange(helpBTN, x, y)) { //問號
+        console.log('幫助');
+        return;
     }
+
+    
+    if (isInBtnRange(gotoRunGame, x, y)) { //小遊戲
+        popup.style.display = "block"
+        showInstructions();
+        return;
+    }
+
+    if (isInBtnRange(gotoGacha, x, y)) { //轉蛋
+        pagesControl(CatchaGatCha);
+        console.log('HI');
+        return;
+    }
+
+    if (isInBtnRange(rankBTN, x, y)) { //Rank
+        pagesControl(CanvasRank);
+        Canvaslobby.style.display = "block"
+        console.log('HI');
+        return;
+    }
+
+    
 
 
     // 功能
     if (isInBtnRange(itm1, x, y)) {//在背包點選Default貓貓
         catDefault.setHidden(!catDefault.isHidden);
+        return;
     }
     if (isInBtnRange(itm2, x, y)) {//在背包點選BB貓貓
         catBB.setHidden(!catBB.isHidden);
+        return;
     }
     if (isInBtnRange(itm3, x, y)) {//在背包點選BK貓貓
         catBK.setHidden(!catBK.isHidden);
+        return;
     }
     if (isInBtnRange(itm4, x, y)) {//在背包點選GY貓貓
         catGY.setHidden(!catGY.isHidden);
+        return;
     }
     if (isInBtnRange(itm5, x, y)) {//在背包點選OG貓貓
         catOG.setHidden(!catOG.isHidden);
+        return;
     }
     if (isInBtnRange(itmMilk, x, y)) {//在背包選取牛奶，一次只能選一個食物
         if (milkCount == 0)
@@ -107,6 +131,7 @@ canvas.addEventListener('click', (event) => {
         itmMilk.setSelected(!itmMilk.isSelected);
         if (itmCan.isSelected) {
             itmCan.setSelected(!itmCan.isSelected);
+            return;
         }
     }
     if (isInBtnRange(itmCan, x, y)) {//在背包選取罐罐，一次只能選一個食物
@@ -115,10 +140,11 @@ canvas.addEventListener('click', (event) => {
         itmCan.setSelected(!itmCan.isSelected);
         if (itmMilk.isSelected) {
             itmMilk.setSelected(!itmMilk.isSelected);
+            return;
         }
     }
     if (isInBtnRange(itm8, x, y)) {
-        console.log('8');
+        return;
     }
 
 });
