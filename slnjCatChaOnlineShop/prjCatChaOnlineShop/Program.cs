@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using prjCatChaOnlineShop.YaolinModels;
+using prjCatChaOnlineShop.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,8 +9,8 @@ builder.Services.AddControllersWithViews();
 
 //讓網頁可以解析DB資料庫
 
-builder.Services.AddDbContext<Yaolin貓抓抓Context>(
- options => options.UseSqlServer(builder.Configuration.GetConnectionString("YaolinConnectoin")));
+builder.Services.AddDbContext<cachaContext>(
+ options => options.UseSqlServer(builder.Configuration.GetConnectionString("CachaConnection")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

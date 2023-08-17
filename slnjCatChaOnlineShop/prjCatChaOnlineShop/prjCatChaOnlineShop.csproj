@@ -9,12 +9,16 @@
   <ItemGroup>
     <Compile Remove="Controllers\NewFolder\**" />
     <Compile Remove="Views\SalonBooking\**" />
+    <Compile Remove="YaolinModels\**" />
     <Content Remove="Controllers\NewFolder\**" />
     <Content Remove="Views\SalonBooking\**" />
+    <Content Remove="YaolinModels\**" />
     <EmbeddedResource Remove="Controllers\NewFolder\**" />
     <EmbeddedResource Remove="Views\SalonBooking\**" />
+    <EmbeddedResource Remove="YaolinModels\**" />
     <None Remove="Controllers\NewFolder\**" />
     <None Remove="Views\SalonBooking\**" />
+    <None Remove="YaolinModels\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,7 +41,6 @@
   <ItemGroup>
     <Folder Include="Areas\AdminCMS\Data\" />
     <Folder Include="Areas\AdminCMS\Models\" />
-    <Folder Include="Services\Functions\" />
   </ItemGroup>
 
 </Project>

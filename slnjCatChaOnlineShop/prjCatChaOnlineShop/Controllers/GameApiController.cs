@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using prjCatChaOnlineShop.YaolinModels;
+using prjCatChaOnlineShop.Models;
 
 
 namespace prjCatChaOnlineShop.Controllers
@@ -9,8 +9,8 @@ namespace prjCatChaOnlineShop.Controllers
     [ApiController]
     public class GameApiController : ControllerBase
     {
-        private readonly Yaolin貓抓抓Context _context;
-        public GameApiController(Yaolin貓抓抓Context context)
+        private readonly cachaContext _context;
+        public GameApiController(cachaContext context)
         {
             _context = context;
         }
