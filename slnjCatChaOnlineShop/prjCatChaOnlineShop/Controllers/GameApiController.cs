@@ -37,10 +37,10 @@ namespace prjCatChaOnlineShop.Controllers
             }
         }
 
-        public IActionResult 轉蛋數據2()
-        {
-            var datas = _context.GameProductTotal.Select(c => c.LotteryProbability).Distinct();
-            return new JsonResult(datas);
-        }
+        //public IActionResult 轉蛋數據2()
+        //{
+        //    var datas = _context.GameProductTotal.Select(c => c.LotteryProbability).Distinct();
+        //    return new JsonResult(datas);
+        //}
     }  
 }

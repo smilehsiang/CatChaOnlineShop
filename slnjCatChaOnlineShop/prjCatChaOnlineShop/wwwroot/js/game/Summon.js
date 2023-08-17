@@ -9,24 +9,33 @@ const animationContainer = document.querySelector('.animation-container');
 const animationImages = animationContainer.querySelectorAll('.catcha');
 const summonbuttons = document.getElementById('summon-buttons');
 // 發起 GET 請求並處理 JSON 數據
-fetch('Api/gameapi')  
+fetch('Api/gameapi')
     .then(response => {
         if (!response.ok) {
             throw new Error('網絡錯誤');
         }
         return response.json();
     })
-const array = 
     .then(data => {
         console.log(data); // 在控制台輸出 JSON 數據
         // 在這裡進行數據處理
-        datas.forEach(data => {
-            const { }
+
+        // 假設 data 是你從 API 獲取的 JSON 數據陣列
+        data.forEach(item => {
+            const { productName, productId, productCategoryId, lotteryProbability } = item;
+            // 在這裡使用解構賦值獲取數據的各個屬性值
+
+            // 進行你的數據處理，例如計算、顯示等
+            console.log(`Product Name: ${productName}`);
+            console.log(`Product ID: ${productId}`);
+            console.log(`Product Category ID: ${productCategoryId}`);
+            console.log(`Lottery Probability: ${lotteryProbability}`);
+        });
     })
     .catch(error => {
         console.error('無法獲取 JSON 數據', error);
     });
-})
+
 
     // Button 4 點擊事件處理
     //button4.addEventListener('click', () => {
