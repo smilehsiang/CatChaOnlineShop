@@ -84,9 +84,10 @@
                         <div class="col-md-6">
                             <label>隸屬主標題</label>
                             <select class="form-control">
-                                <option>主標題1</option>
-                                <option>主標題2</option>
-                                <option>主標題3</option>
+                                <option>所有商品</option>
+                                <option>最新消息</option>
+                                <option>關於我們</option>
+                                <option>會員中心</option>
                             </select>
                         </div>
 
@@ -103,7 +104,7 @@
             <div class="col-12">
                 <!--表格-->
                 <!--子標題-->
-                <table id="GProduct-table" class="table table-striped nowrap" style="width:100%">
+                <table id="Navbar1-table" class="table table-striped nowrap" style="width:100%">
                     <thead>
                         <tr>
                             <!-- <th>序號</th> -->
@@ -118,9 +119,9 @@
                         <tr>
                             <!-- <td>1</td> -->
                             <td>1</td>
-                            <td>子標題1</td>
-                            <td>隱藏</td>
-                            <td>主標題2</td>
+                            <td>熱賣商品</td>
+                            <td>顯示</td>
+                            <td>所有商品</td>
                             <!--用主標題ID連結select內容-->
                             <td>
                                 <a href="#">
@@ -140,9 +141,9 @@
                         <tr>
                             <!-- <td>2</td> -->
                             <td>2</td>
-                            <td>子標題2</td>
+                            <td>優惠商品</td>
                             <td>顯示</td>
-                            <td>主標題1</td>
+                            <td>所有商品</td>
                             <!--用主標題ID連結select內容-->
                             <td>
                                 <a href="#">
@@ -190,9 +191,10 @@
                                             <div class="col-md-6">
                                                 <label>隸屬主標題</label>
                                                 <select class="form-control">
-                                                    <option>主標題1</option>
-                                                    <option>主標題2</option>
-                                                    <option>主標題3</option>
+                                                    <option>所有商品</option>
+                                                    <option>最新消息</option>
+                                                    <option>關於我們</option>
+                                                    <option>會員中心</option>
                                                 </select>
                                             </div>
                                             <button type="submit" class="mt-3 btn btn-primary btn-block"
@@ -210,6 +212,8 @@
                 </table>
                 <!--子標題-->
 
+                <hr>
+                <!--主標題-->
                 <div class="row align-items-center">
                     <div class="col-6">
                         <h2 class="mt-3">主標題管理</h2>
@@ -218,7 +222,7 @@
                         <button class="btn btn-primary" data-bs-toggle="modal" href="#addNavbarModalToggle2" role="button">新增主標題</button>
                     </div>
                 </div>
-
+                <!--主標題-->
                 <!---新增主標題 modal-->
                 <div class="modal fade" id="addNavbarModalToggle2" aria-hidden="true"
                      aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -259,7 +263,7 @@
                 </div>
                 <!---新增主標題 modal-->
                 <!--主標題-->
-                <table id="GProduct-table" class="table table-striped nowrap" style="width:100%">
+                <table id="Navbar2-table" class="table table-striped nowrap" style="width:100%">
                     <thead>
                         <tr>
                             <!-- <th>序號</th> -->
@@ -273,8 +277,8 @@
                         <tr>
                             <!-- <td>1</td> -->
                             <td>1</td>
-                            <td>主標題1</td>
-                            <td>隱藏</td>
+                            <td>所有商品</td>
+                            <td>顯示</td>
                             <!--用主標題ID連結select內容-->
                             <td>
                                 <a href="#">
@@ -294,7 +298,49 @@
                         <tr>
                             <!-- <td>2</td> -->
                             <td>2</td>
-                            <td>主標題2</td>
+                            <td>最新消息</td>
+                            <td>顯示</td>
+                            <!--用主標題ID連結select內容-->
+                            <td>
+                                <a href="#">
+                                    <button class="btn" data-bs-toggle="modal"
+                                            href="#exampleModalToggle" role="button">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </a> | <button class="btn"
+                                               onclick="userDelete()">
+                                    <a href="#" id="b5">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td>2</td> -->
+                            <td>3</td>
+                            <td>關於我們</td>
+                            <td>顯示</td>
+                            <!--用主標題ID連結select內容-->
+                            <td>
+                                <a href="#">
+                                    <button class="btn" data-bs-toggle="modal"
+                                            href="#exampleModalToggle" role="button">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </a> | <button class="btn"
+                                               onclick="userDelete()">
+                                    <a href="#" id="b5">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td>2</td> -->
+                            <td>4</td>
+                            <td>會員中心</td>
                             <td>顯示</td>
                             <!--用主標題ID連結select內容-->
                             <td>
@@ -385,7 +431,10 @@
             });
         });
 
-        new DataTable('#GProduct-table', {
+        new DataTable('#Navbar1-table', {
+            responsive: true,
+        });
+        new DataTable('#Navbar2-table', {
             responsive: true,
         });
 
