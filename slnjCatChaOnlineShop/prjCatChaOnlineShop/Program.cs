@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using prjCatChaOnlineShop.IvanModels;
+using prjCatChaOnlineShop.YaolinModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,9 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //讓網頁可以解析DB資料庫
-builder.Services.AddDbContext<Ivan貓抓抓Context>(options =>
+builder.Services.AddDbContext<Yaolin貓抓抓Context>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("IvanConnectoin"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("YaolinConnectoin"));
 });
 var app = builder.Build();
 
