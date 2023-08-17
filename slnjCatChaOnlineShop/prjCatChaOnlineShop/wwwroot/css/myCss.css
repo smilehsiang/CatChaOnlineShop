@@ -169,6 +169,7 @@
 }
 
 .coupon-btn, .chooseStore_btn {
+    padding: 6px;
     border-radius: 5px; /* 圓角 */
     background-color: #b4793594; /* 背景顏色 */
     color: white; /* 字體顏色 */

@@ -797,6 +797,7 @@ ul.cart-list p .price {
         transition-duration: 0.3s;
         -webkit-transition-timing-function: ease-out;
         transition-timing-function: ease-out;
+        border:none;
     }
 
     .hvr-hover:hover::after {
@@ -876,7 +877,7 @@ ul.cart-list > li.total > .btn:hover {
 }
 
 .slides-navigation a {
-    background: #b0b435;
+    background: #b4793594;
     position: absolute;
     height: 70px;
     width: 70px;
@@ -942,8 +943,8 @@ ul.cart-list > li.total > .btn:hover {
 }
 
     .slides-pagination a.current {
-        background: #b0b435;
-        border: 2px solid #b0b435;
+        background: #b4793594;
+        border: 2px solid #b4793594;
     }
 
 .cover-slides p a {
@@ -1053,7 +1054,7 @@ ul.cart-list > li.total > .btn:hover {
 }
 
     .filter-button-group button {
-        background: #b0b435;
+        background: #b4793594;
         color: #ffffff;
         border: none;
         cursor: pointer;
@@ -2260,7 +2261,7 @@ ul.cart-list > li.total > .btn:hover {
     }
 
         .toolbar-sorter-right .btn-light:hover {
-            background: #b0b435;
+            background: #B98046;
             border-radius: 0px;
             border: none;
         }
@@ -2403,7 +2404,7 @@ ul.cart-list > li.total > .btn:hover {
 }
 
     .quantity-box input:focus {
-        border-color: #b0b435;
+        border-color: #B98046;
     }
 
 .name-pr a {
@@ -2437,7 +2438,7 @@ ul.cart-list > li.total > .btn:hover {
 }
 
     .coupon-box .input-group .input-group-append .btn-theme:hover {
-        background: #b0b435;
+        background: #B98046;
     }
 
 .update-box input[type="submit"] {
@@ -2465,7 +2466,7 @@ ul.cart-list > li.total > .btn:hover {
 }
 
     .update-box input[type="submit"]:hover {
-        background: #b0b435;
+        background: #B98046;
     }
 
 .order-box h3 {
@@ -2486,7 +2487,7 @@ ul.cart-list > li.total > .btn:hover {
 
 .gr-total h5 {
     font-weight: 700;
-    color: #b0b435;
+    color: #b4793594;
     font-size: 18px;
     margin: 0px;
     padding: 0px;
@@ -2547,7 +2548,7 @@ ul.cart-list > li.total > .btn:hover {
 }
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-    background-color: #b0b435;
+    background-color: #B98046;
     box-shadow: none;
 }
 
@@ -3019,7 +3020,7 @@ ul.cart-list > li.total > .btn:hover {
     }
 
         .featured-products-box .owl-nav button.owl-prev {
-            background: #000000;
+            background: #b4793594;
             color: #ffffff;
             width: 38px;
             height: 38px;
@@ -3027,7 +3028,7 @@ ul.cart-list > li.total > .btn:hover {
         }
 
         .featured-products-box .owl-nav button.owl-next {
-            background: #000000;
+            background: #b4793594;
             color: #ffffff;
             width: 38px;
             height: 38px;
