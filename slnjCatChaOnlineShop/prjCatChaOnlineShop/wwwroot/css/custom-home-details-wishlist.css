@@ -146,9 +146,8 @@ body{
   color: #000000;
   -webkit-writing-mode: vertical-rl;
   writing-mode: vertical-rl;
-
-
 }
+
 #go-to-game a:hover{
   position: fixed;
   bottom: 280px;
