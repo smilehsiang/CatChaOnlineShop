@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
+
     <link rel="stylesheet" href="~/css/bootstrap.css">
     <link rel="stylesheet" href="~/css/index.css">
     <link href="~/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,9 +40,9 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-            
+
             <li class="nav-item active">
-            <a class="nav-link" asp-area="AdminCMS" asp-controller="DataAnalysis" asp-action="DataAnalysis">
+                <a class="nav-link" asp-area="AdminCMS" asp-controller="DataAnalysis" asp-action="DataAnalysis">
 
                     <i class="fas fa-chart-pie"></i>
                     <span class="title">數據分析</span>
@@ -73,7 +74,7 @@
                         <div class="center">
                             <ul class="sidebar-detail-ul">
                                 <li><a asp-area="AdminCMS" asp-controller="Order" asp-action="Order">商城訂單管理</a></li>
-                                <li><a asp-area="AdminCMS" asp-controller="Salon" asp-action="Salon">美容訂單管理</a></li>
+                                @*<li><a asp-area="AdminCMS" asp-controller="Salon" asp-action="Salon">美容訂單管理</a></li>*@
                                 <li><a asp-area="AdminCMS" asp-controller="Product" asp-action="Product">產品管理</a></li>
                                 <li><a asp-area="AdminCMS" asp-controller="Grooming" asp-action="Grooming">寵物美容管理</a></li>
                                 <li><a asp-area="AdminCMS" asp-controller="Bonus" asp-action="Bonus">優惠券管理</a></li>
@@ -180,9 +181,9 @@
                 </div>
             </navbar>
 
-            
-                @RenderBody()
-            
+
+            @RenderBody()
+
 
         </div>
     </div>

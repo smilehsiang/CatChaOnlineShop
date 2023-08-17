@@ -4,17 +4,18 @@
 }
 
 @section Styles{
-
+    <style>
+    </style>
 }
 
 <div class="middle-content">
 
-    <div class="row align-items-center">
+    <div class="row  align-items-center">
         <div class="col-6">
             <h2 class="mt-3">會員管理</h2>
         </div>
         <div class="col-6 text-end mt-3">
-            <button class="btn btn-primary" data-bs-toggle="modal" href="#addMemberModalToggle" role="button">新增會員</button>
+            <button class="create_btn" data-bs-toggle="modal" href="#addMemberModalToggle" role="button">新增會員</button>
         </div>
     </div>
 
@@ -94,12 +95,21 @@
     </div>
     <!---新增會員 modal-->
 
-    <div class="col d-flex mt-4">
-        <select class="form-select w-25" id="statusList">
-            <option value="" selected>會員狀態篩選</option>
-            <option value="">開放</option>
-            <option value="">凍結</option>
-        </select>
+    <div class="search-row row mt-3 mb-3">
+        <div class="row align-items-center mb-3">
+            會員狀態：
+            <select class="form-select w-25" id="payList">
+                <option value="" selected>全部資料</option>
+                <option value="">開放</option>
+                <option value="">凍結</option>
+            </select>
+        </div>
+        <div class="row align-items-center mb-3">
+            關鍵字搜尋：
+            <input type="text" class="form-control" style="width:25%;" />
+        </div>
+
+        <button type="button" class="keyword_input col-xl-1">查詢</button>
     </div>
 
     <div class="container-fluid mt-4">
@@ -141,18 +151,18 @@
                             <td>開放</td>
                             <td>
                                 <a href="#">
-                                    <button class="btn btn-success" data-bs-toggle="modal"
+                                    <button class="detail_input" data-bs-toggle="modal"
                                             href="#exampleModalToggle" role="button">
                                         詳細資料
                                     </button>
                                 </a>
                             </td>
                             <td>
-                                    <button class="btn" data-bs-toggle="modal"
-                                            href="#exampleModalToggle2" role="button">
-                                        <i class="fas fa-edit"></i>
-                                    </button>｜<button class="btn"
-                                               onclick="userDelete()">
+                                <button class="btn" data-bs-toggle="modal"
+                                        href="#exampleModalToggle2" role="button">
+                                    <i class="fas fa-edit"></i>
+                                </button>｜<button class="btn"
+                                                  onclick="userDelete()">
                                     <a href="#" id="b5">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
@@ -444,6 +454,7 @@
     <script>
         new DataTable('#member-table', {
             responsive: true,
+            "searching": false, //隱藏搜尋框
 
             //========隱藏某一欄
             // columnDefs: [
@@ -477,12 +488,12 @@
                 }
             })
         }
-                //     $('#myTable').DataTable( {
-                //     responsive: true
-                // } );
-                    //https://codepen.io/SitePoint/pen/xbvWQv
+                        //     $('#myTable').DataTable( {
+                        //     responsive: true
+                        // } );
+                            //https://codepen.io/SitePoint/pen/xbvWQv
 
-                // See:
-                // http://www.sitepoint.com/responsive-data-tables-comprehensive-list-solutions
+                        // See:
+                        // http://www.sitepoint.com/responsive-data-tables-comprehensive-list-solutions
     </script>
 }

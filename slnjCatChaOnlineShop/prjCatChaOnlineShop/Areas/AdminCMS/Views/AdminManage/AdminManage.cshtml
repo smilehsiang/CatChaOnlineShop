@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "AdminManage";
     Layout = "~/Areas/AdminCMS/Views/Shared/CMS_Layout.cshtml";
 }
@@ -16,7 +15,7 @@
             <h2 class="mt-3">管理員</h2>
         </div>
         <div class="col-6 text-end mt-3">
-            <button class="btn btn-primary" data-bs-toggle="modal" href="#addAdminModalToggle" role="button">新增管理員</button>
+            <button class="create_btn" data-bs-toggle="modal" href="#addAdminModalToggle" role="button">新增管理員</button>
         </div>
     </div>
 
@@ -158,6 +157,7 @@
     <script>
         new DataTable('#admin-table', {
             responsive: true,
+            "searching": false, //隱藏搜尋框
 
             //========隱藏某一欄
             // columnDefs: [
