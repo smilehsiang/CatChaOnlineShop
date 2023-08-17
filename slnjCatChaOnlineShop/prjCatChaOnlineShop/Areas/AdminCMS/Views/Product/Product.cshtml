@@ -117,10 +117,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label>停售狀態：</label>
+                            <label>是否停售：</label>
                             <select class="form-control">
-                                <option value="現受">現售</option>
-                                <option value="停售">停售</option>
+                                <option value="是">是</option>
+                                <option value="否">否</option>
                             </select>
                         </div>
 
@@ -141,21 +141,21 @@
     <!---新增產品 modal-->
 
     <!---篩選上架日期-->
-    <div class="container">
-        <div class="row">
-            <label>選擇上架日期區間：</label>
-            <input type="text" name="datefilter" value="" />
+    <div class="container-fluid mt-4 mb-3">
+        <div class="row align-items-center">
+            上架日期區間：<input type="text" class="form-control w-25" name="dates" />
         </div>
     </div>
     <!---篩選上架日期-->
 
 
     <!---篩選類別-->
-    <div class="container">
-        <div class="row">
+    <div class="container-fluid mt-4 mb-3">
+        <div class="row align-items-center">
+            商品類別篩選：
             <div class="col d-flex justify-content-between">
                 <select class="form-select" id="payList">
-                    <option value="" selected disabled>商品類別篩選</option>
+                    <option value="" selected disabled>請選擇商品類別</option>
                     <option value="">全部訂單</option>
                     <option value="食品">食品</option>
                     <option value="零食">零食</option>
@@ -210,7 +210,7 @@
                             <td>一包四入</td>
                             <td></td>
                             <td>1</td>
-                            <td> <a href="#"><i class="fas fa-check-square"></i></a>
+                            <td>是</a>
                             <td>
                                 <a href="#">
                                     <button class="btn" data-bs-toggle="modal"
@@ -247,7 +247,7 @@
                             <td></td>
                             <td>50g</td>
                             <td>1</td>
-                            <td> <a href="#"><i class="fas fa-check-square"></i></a>
+                            <td>否</i></a>
                             <td>
                                 <a href="#">
                                     <button class="btn" data-bs-toggle="modal"
@@ -351,7 +351,6 @@
 
 @section Scripts{
     @*引用日期插件*@
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
@@ -402,23 +401,11 @@
 
 
         //日期篩選器
-        $(function () {
-
-            $('input[name="datefilter"]').daterangepicker({
-                autoUpdateInput: false,
-                locale: {
-                    cancelLabel: 'Clear'
-                }
+        $('input[name="dates"]').daterangepicker();
+        $(document).ready(function () {
+            var table = $('#salon-table').DataTable({
+                responsive: true,
             });
-
-            $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
-                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-            });
-
-            $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-                $(this).val('');
-            });
-
         });
 
 

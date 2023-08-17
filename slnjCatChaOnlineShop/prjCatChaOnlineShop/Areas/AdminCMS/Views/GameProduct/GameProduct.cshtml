@@ -129,12 +129,21 @@
     </div>
     <!---新增遊戲商品 modal-->
 
+    <!---篩選上架日期-->
+    <div class="container-fluid mt-4 mb-3">
+        <div class="row align-items-center">
+            上架日期區間：<input type="text" class="form-control w-25" name="dates" />
+        </div>
+    </div>
+    <!---篩選上架日期-->
+
     <!---篩選類別-->
-    <div class="container">
-        <div class="row">
+    <div class="container-fluid mt-4 mb-3">
+        <div class="row align-items-center">
+            遊戲商品類別篩選：
             <div class="col d-flex justify-content-between">
                 <select class="form-select" id="payList">
-                    <option value="" selected disabled>遊戲商品類別篩選</option>
+                    <option value="" selected disabled>請選擇遊戲商品類別</option>
                     <option value="">全部訂單</option>
                     <option value="貓咪">貓咪</option>
                     <option value="玩具">玩具</option>
@@ -310,6 +319,11 @@
 </div>
 
 @section Scripts{
+    @*引用日期插件*@
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
     <script>
         //篩選類別
         $(document).ready(function () {
@@ -353,6 +367,16 @@
                 });
             });
         });
+
+        //日期篩選器
+        $('input[name="dates"]').daterangepicker();
+        $(document).ready(function () {
+            var table = $('#salon-table').DataTable({
+                responsive: true,
+            });
+        });
+
+
 
         function userDelete() {
             Swal.fire({
