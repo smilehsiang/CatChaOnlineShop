@@ -1,13 +1,13 @@
 /* 開始預約服務按鈕 */
-.booking{
-  background-image: url(https://img.ttshow.tw/images/media/uploads/2020/07/23/746.jpg);
-  height: 50px;
-  display: flex;
-  font-weight: 700;
-  font-size: 2rem;
-  color: #ffff;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
-  animation: pulse 1.5s infinite;
+.booking {
+    background-image: url(https://lh3.googleusercontent.com/pw/AIL4fc-iKw0thr8Kl7xl_pPRvPOYBi07iZ8hvPiZsjBC29R8_XifRtIS91wD5Sva_Tty11kdEqsPfTjR4gsXE6EudOJH-QzRSgJ_JiDk0Ws49XEnCWmJP2g=w1200);
+    height: 50px;
+    display: flex;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #ffff;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+    animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
