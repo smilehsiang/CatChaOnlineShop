@@ -14,13 +14,13 @@
 }
 
 <!-- Start All Title Box -->
-<div class="all-title-box">
+<div class="all-title-box-picture all-title-box">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <h2>產品資訊</h2>
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">首頁</a></li>
+                    <li class="breadcrumb-item"><a asp-controller="Index" asp-action="Index">首頁</a></li>
                     <li class="breadcrumb-item active">產品資訊</li>
                 </ul>
             </div>
@@ -88,7 +88,6 @@
                             <div class="form-group quantity-box">
                                 <label class="control-label">請選擇</label>
                                 <select class="form-control">
-                                    <option value="">請選擇</option>
                                     <option value="1" selected>鮪魚&鮭魚</option>
                                     <option value="2">鮪魚&干貝</option>
                                     <option value="3">鮪魚&蟹肉</option>
@@ -106,8 +105,8 @@
 
                     <div class="price-box-bar">
                         <div class="cart-and-bay-btn">
-                            <a class="btn hvr-hover" data-fancybox-close="" href="#"><i class="fa-solid fa-cart-plus"></i></a>
-                            <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> </a>
+                            <a class="btn hvr-hover" data-fancybox-close="" asp-controller="Cart" asp-action="Cart"><i class="fa-solid fa-cart-plus"></i></a>
+                            <a class="btn hvr-hover" asp-controller="Membership" asp-action="Membership"><i class="fas fa-heart"></i> </a>
                         </div>
                     </div>
                 </div>
@@ -233,7 +232,7 @@
                     <!-- start prod1 -->
                     <div class="item">
                         <div class="products-single-custom fix">
-                            <a href="#" title="喵洽普 | 貓咪營養肉泥">
+                            <a asp-controller="Index" asp-action="ShopDetail" title="喵洽普 | 貓咪營養肉泥">
                                 <div class="box-img-hover">
                                     <div class="type-lb">
                                         <p class="sale">Sale</p>
@@ -245,12 +244,12 @@
                             <div class="why-text">
                                 <h4>喵洽普 | 貓咪營養肉泥</h4>
                                 <h5>$65</h5>
-                                <button type="button" class="add-to-cart-coustom">
+                                <a asp-controller="Cart" asp-action="Cart" type="button" class="add-to-cart-coustom">
                                     <i class="fa-solid fa-cart-plus"></i>
-                                </button>
-                                <button class="add-to-wishlist-coustom" type="button">
+                                </a>
+                                <a asp-controller="Membership" asp-action="Membership" class="add-to-wishlist-coustom" type="button">
                                     <i class="far fa-heart"></i>
-                                </button>
+                                </a>
 
                             </div>
 
@@ -261,7 +260,7 @@
                     <!-- start prod2 -->
                     <div class="item">
                         <div class="products-single-custom fix">
-                            <a href="#" title="PETCIRCLE｜寵物繩結胡蘿蔔">
+                            <a asp-controller="Index" asp-action="ShopDetail" title="PETCIRCLE｜寵物繩結胡蘿蔔">
                                 <div class="box-img-hover">
                                     <div class="type-lb">
                                         <p class="new">New</p>
@@ -273,12 +272,12 @@
                             <div class="why-text">
                                 <h4>PETCIRCLE｜寵物繩結胡蘿蔔</h4>
                                 <h5>$99</h5>
-                                <button type="button" class="add-to-cart-coustom">
+                                <a asp-controller="Cart" asp-action="Cart" type="button" class="add-to-cart-coustom">
                                     <i class="fa-solid fa-cart-plus"></i>
-                                </button>
-                                <button class="add-to-wishlist-coustom" type="button">
+                                </a>
+                                <a asp-controller="Membership" asp-action="Membership" class="add-to-wishlist-coustom" type="button">
                                     <i class="far fa-heart"></i>
-                                </button>
+                                </a>
 
                             </div>
 
@@ -289,7 +288,7 @@
                     <!-- start prod3  -->
                     <div class="item">
                         <div class="products-single-custom fix">
-                            <a href="#" title="Pet Candy｜手工貓草玩具">
+                            <a asp-controller="Index" asp-action="ShopDetail" title="Pet Candy｜手工貓草玩具">
                                 <div class="box-img-hover">
                                     <div class="type-lb">
                                         <p class="sale">Sale</p>
@@ -302,12 +301,12 @@
                                 <h4>Pet Candy｜手工貓草玩具</h4>
                                 <h5>$240</h5>
                                 <del>$280</del>
-                                <button type="button" class="add-to-cart-coustom">
+                                <a asp-controller="Cart" asp-action="Cart" type="button" class="add-to-cart-coustom">
                                     <i class="fa-solid fa-cart-plus"></i>
-                                </button>
-                                <button class="add-to-wishlist-coustom" type="button">
+                                </a>
+                                <a asp-controller="Membership" asp-action="Membership" class="add-to-wishlist-coustom" type="button">
                                     <i class="far fa-heart"></i>
-                                </button>
+                                </a>
 
                             </div>
 
@@ -317,7 +316,7 @@
                     <!-- start prod4 -->
                     <div class="item">
                         <div class="products-single-custom fix">
-                            <a href="#" title="GLADVET｜舒穩安 天然情緒保健品">
+                            <a asp-controller="Index" asp-action="ShopDetail" title="GLADVET｜舒穩安 天然情緒保健品">
                                 <div class="box-img-hover">
                                     <div class="type-lb">
                                         <p class="new">New</p>
@@ -325,21 +324,21 @@
                                     <img src="~/images/prod-eg-5.png" class="img-fluid shop-image" alt="Image" />
 
                                 </div>
-
+                            </a>
                                 <div class="why-text">
                                     <h4>GLADVET｜舒穩安 天然情緒保健品</h4>
                                     <h5>$2200</h5>
 
-                                    <button type="button" class="add-to-cart-coustom">
-                                        <i class="fa-solid fa-cart-plus"></i>
-                                    </button>
-                                    <button class="add-to-wishlist-coustom" type="button">
-                                        <i class="far fa-heart"></i>
-                                    </button>
+                                <a asp-controller="Cart" asp-action="Cart" type="button" class="add-to-cart-coustom">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </a>
+                                <a asp-controller="Membership" asp-action="Membership" class="add-to-wishlist-coustom" type="button">
+                                    <i class="far fa-heart"></i>
+                                </a>
 
                                 </div>
 
-                            </a>
+                            
                         </div>
                     </div>
                     <!-- end prod4  -->

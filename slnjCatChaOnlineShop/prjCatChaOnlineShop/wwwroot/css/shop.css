@@ -71,18 +71,18 @@
     border-radius: 50%;
   }
 
-  .shop-cat-boxs {
-	margin-bottom: 30px;
-	position: relative;
-	padding: 3px;
-	overflow: hidden;
-	border: 0px solid #000000;
-	box-shadow: 9px 9px 30px 0px rgba(0, 0, 0, 0.3);
-	-webkit-transition: all 0.3s ease;
-	transition: all 0.3s ease-in-out 0s;
-	border-radius: 10px;
-    background-color:#b0b435 ;
-	/*增加:邊框圓角*/
+.shop-cat-boxs {
+    margin-bottom: 30px;
+    position: relative;
+    padding: 3px;
+    overflow: hidden;
+    border: 0px solid #000000;
+    box-shadow: 9px 9px 30px 0px rgba(0, 0, 0, 0.3);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out 0s;
+    border-radius: 10px;
+    background-color: #B4793594;
+    /*增加:邊框圓角*/
 }
 
 .shop-cat-boxs img {
