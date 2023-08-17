@@ -1,6 +1,7 @@
 @media only screen {
 
     .result-container { /*設定抽獎格子*/
+       /* padding-top: 50%;*/
         grid-template-columns: repeat(5, 70px); /* 5個70px寬的列 */
         gap: 10px; /* 每個項目之間的間距 */
         max-width: 500px; /* 最大寬度為600px */
@@ -12,6 +13,13 @@
         display: none;
         place-items: center;
     }
+
+    .tendraw-container {
+         padding-top: 50%;
+         display:flex;
+
+    }
+
 
     .gamelayer {
         display: flex;
@@ -173,6 +181,7 @@
         background-image: url('/images/game/gameIndex_BG.png'); /* 設定背景圖片路徑 */
         background-size: cover;
         background-position: center;
+        font-family: monospace !important;
     }
 
 

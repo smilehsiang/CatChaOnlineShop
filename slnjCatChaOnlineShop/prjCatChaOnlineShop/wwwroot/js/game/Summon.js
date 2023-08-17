@@ -34,7 +34,7 @@ fetch('/api/SummonApi')
 function between(x, min, max) {
     return x >= min && x <= max;
 }
-function cheakPirzesTake(rand) {
+function checkPrizeTake(rand) {
     let itemClass = ''; // 獎項等級的CSS類
     let image = ''; // 圖片的路徑
     let name = ''; // 獎項名稱
@@ -46,7 +46,7 @@ function cheakPirzesTake(rand) {
         name = '實體折價券';
     } else if (between(rand, 3, 7)) {
         itemClass = 'SS'; // SS獎項
-        image = '../../images/game/gacha/cat_g_sR.png';
+        image = '../../images/game/gacha/kittenBB.png';
         name = '貓咪';
     } else if (between(rand, 8, 12)) {
         itemClass = 'S'; // S獎項
@@ -63,11 +63,11 @@ function cheakPirzesTake(rand) {
     } else if (between(rand, 31, 55)) {
         itemClass = 'A'; // A獎項
         image = '../../images/game/gacha/P_food.png';
-        name = '飼料';
+        name = '罐罐';
     } else if (between(rand, 56, 80)) {
         itemClass = 'A'; // A獎項
         image = '../../images/game/gacha/P_water.png';
-        name = '水';
+        name = '牛奶';
     } else {
         itemClass = 'A'; // A獎項
         image = '../../images/game/gacha/_catcoin.png';
@@ -77,7 +77,7 @@ function cheakPirzesTake(rand) {
     return `
         <div class="item ${itemClass}">
             <img src="${image}" class="img" style="height: 40px; width: 40px;">
-            <div style="color: gold; font-size: 20px; width: 70px;">${name}</div>
+            <div style="color: white; font-size: 20px; width: 70px;">${name}</div>
         </div>
     `;
 }
@@ -97,12 +97,13 @@ RubyTenDrows.addEventListener('click', function () {
         const rand = Math.floor(Math.random() * 100) + 1;
 
         // 以下判斷是落於哪個區間，以此決定抽中何種卡別
-        display += `<div class="item-container" style=" margin-left=5px;">${cheakPirzesTake(rand)}</div>`;
+        display += `<div class="item-container" style=" margin-left=5px;">${checkPrizeTake(rand)}</div>`;
     }
+   
     showGachaResult(display,tenorsingle);
 });
 
-//紅利十連抽
+//貓幣十連抽
 CatPointTenDrows.addEventListener('click', function () {
     // 先將所有動畫隱藏
     animationImages.forEach(image => {
@@ -117,7 +118,7 @@ CatPointTenDrows.addEventListener('click', function () {
         const rand = Math.floor(Math.random() * 100) + 1;
 
         // 以下判斷是落於哪個區間，以此決定抽中何種卡別
-        display += `<div class="item-container"style=" margin-left=5px;" >${cheakPirzesTake(rand)}</div>`;
+        display += `<div class="item-container"style=" margin-left=5px;" >${checkPrizeTake(rand)}</div>`;
     }
     showGachaResult(display,tenorsingle);
 });
@@ -129,7 +130,7 @@ RubySingleDrow.addEventListener('click',function(){
     let display = '';
     let tenorsingle = 1;
     const rand = Math.floor(Math.random()*100)+1;
-    display =`<div class="item-container" style="margin-left:320px;">${cheakPirzesTake(rand)}</div>`;
+    display =`<div class="item-container" style="margin-left:320px;">${checkPrizeTake(rand)}</div>`;
     showGachaResult(display,tenorsingle);
 })
 //貓幣單抽
@@ -140,7 +141,7 @@ CatPointSingleDrow.addEventListener('click',function(){
     let display = '';
     let tenorsingle = 1;
     const rand = Math.floor(Math.random()*100)+1;
-    display = `<div class="item-container" style="margin-left:320px;">${cheakPirzesTake(rand)}</div>`;
+    display = `<div class="item-container" style="margin-left:320px;">${checkPrizeTake(rand)}</div>`;
     showGachaResult(display,tenorsingle);
 })
 
@@ -178,14 +179,14 @@ function showGachaResult(display,tenorsingle) {
         //判斷10抽或1抽 調整版型
 
         if (x == 0 | x == 0) {
-            confirmButton.textContent = '十抽'
+            confirmButton.textContent = '確認'
             confirmButton.style.fontSize = '20px'; // 設定文字大小為20px
             confirmButton.style.width = '70px'; // 設定寬度為70px
             confirmButton.style.height = '50px'; // 設定高度為50px
             confirmButton.style.marginLeft = '320px';
             confirmButton.style.marginBottom='250px';
         } else if (x == 1 | x == 1) {
-            confirmButton.textContent = '單抽';
+            confirmButton.textContent = '確認';
             confirmButton.style.fontSize = '20px'; // 設定文字大小為20px
             confirmButton.style.width = '70px'; // 設定寬度為70px
             confirmButton.style.height = '50px'; // 設定高度為50px
