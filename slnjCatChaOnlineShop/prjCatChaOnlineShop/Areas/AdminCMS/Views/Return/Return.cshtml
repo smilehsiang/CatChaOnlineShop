@@ -12,36 +12,40 @@
     <h2 class="mt-3">退換貨管理</h2>
 
     <div class="container-fluid mt-4 mb-3">
-        <div class="row align-items-center">
-            退換貨日期區間：<input type="text" class="form-control w-25" name="dates" />
+        <div class="row align-items-center mb-2">
+            退換貨日期區間：
+            <input type="text" class="form-control w-25" name="dates" />
         </div>
-    </div>
-
-    <div class="col d-flex">
-        <select class="form-select w-25" id="payList">
-            <option value="" selected disabled>原因類別篩選</option>
-            <option value="">商品品質問題</option>
-            <option value="">不符合期望</option>
-            <option value="">送錯商品</option>
-            <option value="">重複運送商品</option>
-            <option value="">訂單問題</option>
-            <option value="">售後服務問題</option>
-            <option value="">改變主意</option>
-            <option value="">其他原因</option>
-        </select>
-
-        <select class="form-select w-25" id="statusList">
-            <option value="" selected>退換貨狀態篩選</option>
-            <option value="">待處理</option>
-            <option value="">審核中</option>
-            <option value="">已批准</option>
-            <option value="">待退貨</option>
-            <option value="">待換貨</option>
-            <option value="">退貨中</option>
-            <option value="">換貨中</option>
-            <option value="">已完成</option>
-            <option value="">取消</option>
-        </select>
+        <div class="row align-items-center mb-2">
+            原因類別篩選：
+            <select class="form-select w-25" id="statusList">
+                <option value="" selected>全部訂單</option>
+                <option value="">商品品質問題</option>
+                <option value="">不符合期望</option>
+                <option value="">送錯商品</option>
+                <option value="">重複運送商品</option>
+                <option value="">訂單問題</option>
+                <option value="">售後服務問題</option>
+                <option value="">改變主意</option>
+                <option value="">其他原因</option>
+            </select>
+        </div>
+        <div class="row align-items-center mb-2">
+            退換貨狀態篩選：
+            <select class="form-select w-25" id="statusList">
+                <option value="" selected>全部訂單</option>
+                <option value="">待處理</option>
+                <option value="">審核中</option>
+                <option value="">已批准</option>
+                <option value="">待退貨</option>
+                <option value="">待換貨</option>
+                <option value="">退貨中</option>
+                <option value="">換貨中</option>
+                <option value="">已完成</option>
+                <option value="">取消</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-primary">查詢</button>
     </div>
 
 

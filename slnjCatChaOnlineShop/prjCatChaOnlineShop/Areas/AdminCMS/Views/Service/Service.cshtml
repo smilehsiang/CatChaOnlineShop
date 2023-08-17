@@ -11,9 +11,12 @@
 
     <h2 class="mt-3">客服回覆管理</h2>
 
-    <div class="col d-flex mt-4">
-        <select class="form-select w-25" id="payList">
-            <option value="" selected disabled>申訴類別篩選</option>
+
+    <div class="container-fluid mt-4 mb-3">
+        <div class="row align-items-center mb-2">
+            申訴類別：
+            <select class="form-select w-25" id="payList">
+                <option value="" selected>全部訂單</option>
                 <option>運送問題</option>
                 <option>產品問題</option>
                 <option>付款問題</option>
@@ -23,13 +26,17 @@
                 <option>隱私保護</option>
                 <option>獎勵活動</option>
                 <option>其它事項</option>
-        </select>
-
-        <select class="form-select w-25" id="deliveryList">
-            <option value="" selected disabled>狀態篩選</option>
-            <option>待處理</option>
-            <option>已解決</option>
-        </select>
+            </select>
+        </div>
+        <div class="row align-items-center mb-2">
+            狀態篩選：
+            <select class="form-select w-25" id="deliveryList">
+                <option value="" selected>全部訂單</option>
+                <option>待處理</option>
+                <option>已解決</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-primary">查詢</button>
     </div>
 
 
