@@ -11,27 +11,29 @@
     <h2 class="mt-3">美容訂單管理</h2>
 
     <div class="container-fluid mt-4 mb-3">
-        <div class="row align-items-center">
-            預約日期區間：<input type="text" class="form-control w-25" name="dates" />
+        <div class="row align-items-center mb-2">
+            預約日期區間：
+            <input type="text" class="form-control w-25" name="dates" />
         </div>
-    </div>
-
-    <div class="col d-flex">
-
-        <select class="form-select w-25" id="statusList">
-            <option value="" selected disabled>時段篩選</option>
-            <option value="">14:00~15:00</option>
-            <option value="">15:00~16:00</option>
-            <option value="">16:00~17:00</option>
-        </select>
-
-        <select class="form-select w-25" id="statusList">
-            <option value="" selected disabled>狀態篩選</option>
-            <option value="">預約成功</option>
-            <option value="">預約失敗</option>
-            <option value="">已完成</option>
-        </select>
-
+        <div class="row align-items-center mb-2">
+            時段篩選：
+            <select class="form-select w-25" id="statusList">
+                <option value="" selected>全部訂單</option>
+                <option value="">14:00~15:00</option>
+                <option value="">15:00~16:00</option>
+                <option value="">16:00~17:00</option>
+            </select>
+        </div>
+        <div class="row align-items-center mb-2">
+            狀態篩選：
+            <select class="form-select w-25" id="deliveryList">
+                <option value="" selected disabled>全部訂單</option>
+                <option value="">預約成功</option>
+                <option value="">預約失敗</option>
+                <option value="">已完成</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-primary">查詢</button>
     </div>
 
 

@@ -52,13 +52,42 @@
         </div>
     </div>*@
 
-    <div class="col d-flex mt-4">
-
-        <select class="form-select w-25" id="statusList">
-            <option value="" selected>狀態篩選</option>
-            <option value="">公開</option>
-            <option value="">隱藏</option>
-        </select>
+    <div class="container-fluid mt-4 mb-3">
+        <div class="row align-items-center mb-2">
+            產品類別：
+            <select class="form-select w-25" id="payList">
+                <option value="" selected>全部訂單</option>
+                <option value="">零食</option>
+                <option value="">玩具</option>
+                <option value="">貓跳台</option>
+                <option value="">貓窩</option>
+                <option value="">情緒輔助</option>
+                <option value="">保健食品</option>
+                <option value="">貓飼料</option>
+                <option value="">貓砂</option>
+                <option value="">貓砂盆</option>
+            </select>
+        </div>
+        <div class="row align-items-center mb-2">
+            評分篩選：
+            <select class="form-select w-25" id="deliveryList">
+                <option value="" selected>全部訂單</option>
+                <option value="">5顆星</option>
+                <option value="">4顆星</option>
+                <option value="">3顆星</option>
+                <option value="">2顆星</option>
+                <option value="">1顆星</option>
+            </select>
+        </div>
+        <div class="row align-items-center mb-2">
+            狀態篩選：
+            <select class="form-select w-25" id="statusList">
+                <option value="" selected>全部訂單</option>
+                <option value="">公開</option>
+                <option value="">隱藏</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-primary">查詢</button>
     </div>
 
 
@@ -71,6 +100,7 @@
                         <tr>
                             <!-- <th>序號</th> -->
                             <th>ID</th>
+                            <th>產品類別</th>
                             <th>產品名稱</th>
                             <th>圖片</th>
                             <th>評分</th>
@@ -85,6 +115,7 @@
                         <tr>
                             <!-- <td>1</td> -->
                             <td>1</td>
+                            <td>貓咪用品</td>
                             <td>好好用貓砂</td>
                             <td class="test">
                                 <img src="https://www.costco.com.tw/medias/sys_master/images/hb4/h77/28534423486494.jpg"
@@ -95,7 +126,7 @@
                                          alt="Original Image">
                                 </div>
                             </td>
-                            <td>10</td>
+                            <td>5 顆星</td>
                             <td>001</td>
                             <td>A小姐</td>
                             <td>2023/08/16 17:58:29</td>
