@@ -149,12 +149,12 @@
     <!---篩選上架日期-->
 
 
-    <!---篩選類別-->
+    <!---篩選類別/是否停售-->
     <div class="container-fluid mt-4 mb-3">
         <div class="row align-items-center">
             商品類別篩選：
             <div class="col d-flex justify-content-between">
-                <select class="form-select" id="payList">
+                <select class="form-select" id="CpayList">
                     <option value="" selected disabled>請選擇商品類別</option>
                     <option value="">全部訂單</option>
                     <option value="食品">食品</option>
@@ -162,7 +162,19 @@
                 </select>
             </div>
         </div>
-    </div>
+
+@*        <div class="row align-items-center">
+            停售狀態篩選：
+            <div class="col d-flex justify-content-between">
+                <select class="form-select" id="DpayList">
+                    <option value="" selected disabled>請選擇狀態</option>
+                    <option value="">全部訂單</option>
+                    <option value="是">是</option>
+                    <option value="否">否</option>
+                </select>
+            </div>
+        </div>
+    </div>*@
     <!---篩選類別-->
 
     <div class="container-fluid mt-4">
@@ -365,16 +377,23 @@
                 // 在這裡指定需要過濾的列，商品類別為第六列->索引5
                 columnDefs: [
                     { targets: 5, searchable: true }
+                    //{ targets: 11, searchable: true }
                 ]
             });
 
             // 綁定select元素的change事件，當選擇條件改變時，重新過濾表格資料
-            $('#payList').on('change', function () {
+            $('#CpayList').on('change', function () {
                 var filterOption1 = $(this).val();
 
                 // 使用DataTable的column().search()方法進行過濾
                 table.column(5).search(filterOption1).draw();
             });
+
+            //$('#DpayList').on('change', function () {
+            //    var filterOption2 = $(this).val();
+            //    table.column(11).search(filterOption2).draw();
+            //});
+
         });
 
         // 當頁面載入完成後執行

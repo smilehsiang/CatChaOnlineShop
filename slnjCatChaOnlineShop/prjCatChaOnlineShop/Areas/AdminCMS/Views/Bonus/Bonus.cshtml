@@ -35,6 +35,11 @@
         .test {
             position: relative;
         }
+
+        .form-select {
+            width: 200px;
+            height: 40px;
+        }
     </style>
 }
 
@@ -105,11 +110,27 @@
     </div>
     <!---新增優惠券 modal-->
 
+    <!---篩選優惠券狀態-->
+    <div class="container-fluid mt-4 mb-3">
+        <div class="row align-items-center mb-2">
+            狀態篩選：
+            <div class="col d-flex justify-content-between">
+                <select class="form-select" id="payList">
+                    <option value="" selected disabled>請選擇狀態</option>
+                    <option value="">全部</option>
+                    <option value="可使用">可使用</option>
+                    <option value="已停用">已停用</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <!---篩選優惠券狀態-->
+
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-12">
                 <!--表格-->
-                <table id="GProduct-table" class="table table-striped nowrap" style="width:100%">
+                <table id="Bonus-table" class="table table-striped nowrap" style="width:100%">
                     <thead>
                         <tr>
                             <!-- <th>序號</th> -->
@@ -117,7 +138,7 @@
                             <th>優惠券名稱</th>
                             <th>優惠券折扣碼</th>
                             <th>優惠券折扣內容</th>
-                            <th>優惠券狀態ID</th>
+                            <th>優惠券狀態</th>
                             <th>發送至會員</th>
                             <th>編輯/刪除</th>
                         </tr>
@@ -129,7 +150,7 @@
                             <td>優惠券1</td>
                             <td>123123</td>
                             <td>9折</td>
-                            <td>1</td>
+                            <td>可使用</td>
                             <td>
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" href="#sendtoMember"
                                         role="button">
@@ -157,7 +178,7 @@
                             <td>優惠券2</td>
                             <td>456456</td>
                             <td>8折</td>
-                            <td>2</td>
+                            <td>已停用</td>
                             <td>
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" href="#sendtoMember"
                                         role="button">
@@ -211,10 +232,10 @@
                                                 <input type="text" class="form-control">
                                             </div>
                                             <div class="col-md-6">
-                                                <label>狀態ID</label>
+                                                <label>狀態</label>
                                                 <select>
-                                                    <option>1</option>
-                                                    <option>2</option>
+                                                    <option>可使用</option>
+                                                    <option>已停用</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-12">
@@ -294,6 +315,26 @@
 
 @section Scripts{
     <script>
+        //篩選狀態
+        $(document).ready(function () {
+            var table = $('#Bonus-table').DataTable({
+                responsive: true,
+                // 在這裡指定需要過濾的列，狀態為第五列->索引4
+                columnDefs: [
+                    { targets: 4, searchable: true }
+                ]
+            });
+            // 綁定select元素的change事件，當選擇條件改變時，重新過濾表格資料
+            $('#payList').on('change', function () {
+                var filterOption1 = $(this).val();
+
+                // 使用DataTable的column().search()方法進行過濾
+                table.column(4).search(filterOption1).draw();
+            });
+        });
+
+
+
         // 當頁面載入完成後執行
         document.addEventListener("DOMContentLoaded", function () {
             // 獲取所有包含縮略圖片和視窗的元素
@@ -314,10 +355,6 @@
                     imagePopups[index].style.display = "none";
                 });
             });
-        });
-
-        new DataTable('#GProduct-table', {
-            responsive: true,
         });
 
         function userDelete() {
