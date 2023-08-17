@@ -1,3 +1,5 @@
+//這邊放的是Canvas製作的按鈕的功能
+
 function isInBtnRange(btn, x, y)//判斷滑鼠點到哪一個按鈕，參數btn是new Button出來的按鈕，x y照填即可必填
 {
     return x >= btn.x && x <= btn.x + btn.width && y >= btn.y && y <= btn.y + btn.height;
@@ -77,7 +79,22 @@ canvas.addEventListener('click', (event) => {
     //主功能按鈕
 
     if (isInBtnRange(helpBTN, x, y)) { //問號
-        console.log('幫助');
+        // 發起 GET 請求並處理 JSON 數據
+        fetch('Api/gameapi')  // 請確保這個路徑是正確的
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('網絡錯誤');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data); // 在控制台輸出 JSON 數據
+                // 在這裡進行數據處理
+            })
+            .catch(error => {
+                console.error('無法獲取 JSON 數據', error);
+            });
+
         return;
     }
 

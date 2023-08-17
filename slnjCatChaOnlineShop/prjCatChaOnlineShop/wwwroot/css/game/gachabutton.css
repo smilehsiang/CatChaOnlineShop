@@ -9,18 +9,7 @@ display:flex;
 justify-content:space-around;
 width:400px;
 }
-#gachaBack {
-    background: transparent;
-    width: 57px; /* 設定按鈕寬度 */
-    height: 50px; /* 設定按鈕高度 */
-    background-image: url('/images/game/Icon_ArrowLeft.png'); /* 設定背景圖片路徑 */
-    background-size: cover; /* 設定背景圖片覆蓋整個按鈕 */
-    background-position: center; /* 設定背景圖片居中對齊 */
-    border: none; /* 移除按鈕邊框 */
-    position: absolute;
-    left: 5%;
-    top: -405%;
-}
+
 
 
 #RubySingleDrow {

@@ -3,7 +3,13 @@ let Ccoin = 12000
 let Ruby = 10000
 let milkCount = 3
 let canCount = 2
-
+let userCatData = {
+    catDefault: 1,
+    catBK: 1,
+    catOG: 0,
+    catGY: 1,
+    catBB: 0
+};
 
 //遊戲本體RWD方法
 function resizeCanvas() {

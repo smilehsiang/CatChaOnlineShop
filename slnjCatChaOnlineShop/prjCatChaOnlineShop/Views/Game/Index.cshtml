@@ -23,7 +23,7 @@
                 </div>
                 <div id="summon-buttons">
                     @*轉蛋按鈕*@
-                    <button id="gachaBack"></button>
+                    <button id="commonbackBTN"></button>
                     <div class="buttonRow">
                         <button id="CatPointSingleDrow"></button>
                         <button id="CatPointTenDrows"></button>
@@ -36,11 +36,7 @@
                 <div id="result" class="result-container">結果:</div>
             </div>
             <!-- End 轉蛋 -->
-            <!-- Start 小遊戲排行榜 -->
-            <div id="RankView">
-
-            </div>
-            <!-- End 小遊戲排行榜 -->
+           
             <!-- Start 小遊戲說明提示 -->
             <div id="popup">
                 <div class="instructions-container" style=" display:none;">
@@ -74,7 +70,10 @@
             <!-- End 小遊戲說明提示 -->
             <!-- Start Canvas遊戲畫布 -->
             <canvas id="CanvasCheckIn"></canvas>
-            <canvas id="CanvasRank"></canvas>
+            <div id="CanvasRank">
+                    <button id="commonbackBTN"></button>
+                <!-- End 小遊戲排行榜 -->
+            </div>
             <canvas id="Canvasrungame"></canvas>
             <canvas id="CanvasGatcha"></canvas>
             <canvas id="CanvasStore"></canvas>
