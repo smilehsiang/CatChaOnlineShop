@@ -35,6 +35,11 @@
     .test {
         position: relative;
     }
+
+        .form-select {
+            width: 200px;
+            height: 40px;
+        }
 </style>
 }
 
@@ -79,8 +84,8 @@
                                 <div class="form-group">
                                     <label>類型：</label>
                                     <select class="form-control">
-                                        <option value="BannerCatgory1">1</option>
-                                        <option value="BannerCatgory2">2</option>
+                                        <option value="BannerCatgory1">主頁</option>
+                                        <option value="BannerCatgory2">促銷</option>
                                     </select>
                                 </div>
 
@@ -97,17 +102,33 @@
             </div>
             <!---新增Banner modal-->
 
+            <!---篩選Banner類型-->
+    <div class="container-fluid mt-4 mb-3">
+        <div class="row align-items-center mb-2">
+            類別篩選：
+            <div class="col d-flex justify-content-between">
+                <select class="form-select" id="payList">
+                    <option value="" selected disabled>請選擇類別</option>
+                    <option value="">全部</option>
+                    <option value="主頁">主頁</option>
+                    <option value="促銷">促銷</option>
+                </select>
+            </div>
+        </div>
+    </div>
+            <!---篩選Banner類型-->
+
             <div class="container-fluid mt-4">
                 <div class="row">
                     <div class="col-12">
                         <!--表格-->
-                        <table id="GProduct-table" class="table table-striped nowrap" style="width:100%">
+                <table id="Banner-table" class="table table-striped nowrap" style="width:100%">
                             <thead>
                                 <tr>
                                     <!-- <th>序號</th> -->
                                     <th>ID</th>
                                     <th>名稱</th>
-                                    <th>類型ID</th>
+                                    <th>類型</th>
                                     <th>圖片</th>
                                     <th>編輯/刪除</th>
                                 </tr>
@@ -117,7 +138,7 @@
                                     <!-- <td>1</td> -->
                                     <td>1</td>
                                     <td>Banner1</td>
-                                    <td>1</td>
+                                    <td>主頁</td>
                                     <td class="test">
                                         <img src="~/images/banner-01.jpg"
                                              width="200" height="100" class="thumbnail-image">
@@ -146,7 +167,7 @@
                                     <!-- <td>2</td> -->
                                     <td>2</td>
                                     <td>Banner2</td>
-                                    <td>2</td>
+                                    <td>促銷</td>
                                     <td class="test">
                                 <img src="~/images/banner-02.jpg"
                                              width="200" height="100" class="thumbnail-image">
@@ -195,10 +216,10 @@
                                                         <input type="text" class="form-control">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label>類型ID</label>
+                                                        <label>類型</label>
                                                         <select class="form-control">
-                                                            <option value="BannerCatgory1">1</option>
-                                                            <option value="BannerCatgory2">2</option>
+                                                            <option value="BannerCatgory1">主頁</option>
+                                                            <option value="BannerCatgory2">促銷</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-12">
@@ -232,6 +253,27 @@
 @section Scripts{
 
     <script>
+
+        //篩選類別
+        $(document).ready(function () {
+            var table = $('#Banner-table').DataTable({
+                responsive: true,
+                // 在這裡指定需要過濾的列，商品類別為第三列->索引2
+                columnDefs: [
+                    { targets: 2, searchable: true }
+                ]
+            });
+            // 綁定select元素的change事件，當選擇條件改變時，重新過濾表格資料
+            $('#payList').on('change', function () {
+                var filterOption1 = $(this).val();
+
+                // 使用DataTable的column().search()方法進行過濾
+                table.column(2).search(filterOption1).draw();
+            });
+        });
+
+
+
         // 當頁面載入完成後執行
         document.addEventListener("DOMContentLoaded", function () {
             // 獲取所有包含縮略圖片和視窗的元素
@@ -252,10 +294,6 @@
                     imagePopups[index].style.display = "none";
                 });
             });
-        });
-
-        new DataTable('#GProduct-table', {
-            responsive: true,
         });
 
         function userDelete() {
