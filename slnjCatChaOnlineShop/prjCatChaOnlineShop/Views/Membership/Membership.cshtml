@@ -108,10 +108,7 @@
             <a class="nav-link" id="return-tab" data-bs-toggle="tab" href="#return" role="tab"
                aria-selected="false">退貨紀錄</a>
         </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="booking-tab" data-bs-toggle="tab" href="#booking" role="tab"
-               aria-selected="false">預約紀錄</a>
-        </li>
+
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="collect-tab" data-bs-toggle="tab" href="#collect" role="tab"
                aria-selected="false">收藏紀錄</a>
@@ -179,7 +176,7 @@
                                                     <!--常用地址-->
                                                     <div class="form-row">
                                                         <div class="col-md-12">
-                                                            <label>常用地址</label>
+                                                            <label>常用宅配地址</label>
                                                             <div class="d-flex align-items-center">
                                                                 <select class="form-select"
                                                                         aria-label="Default select example">
@@ -934,103 +931,6 @@
                                                 <td>商品規格過大，家中擺不下</td>
                                                 <td>已退還款項並完成退貨</td>
                                                 <td>2023/06/29 12:00</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!--預約紀錄的內容-->
-        <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="booking-tab">
-            <section class="my-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 order-2 order-sm-2 order-md-2 order-xs-2">
-                            <div class="card mb-3 border shadow-0">
-                                <form>
-                                    <div class="col">
-                                        <label>選擇日期區間</label>
-                                        <input class="dateRange form-control" type="text" />
-                                        <label>關鍵字搜尋</label>
-                                        <input class="form-control" type="text" value=""
-                                               placeholder="請輸入關鍵字或訂單編號" id="myKeyWord3" />
-                                        <div class="text-center mb-2 ">
-                                            <button class="btn-customs btn hvr-hovers" id="btnQuery3" type="button">
-                                                查詢
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-9 order-3 order-sm-3 order-md-3 order-xs-3">
-                            <div class="row gy-3 mb-4">
-                                <div style="height: 350px; overflow: scroll;" class="table-responsive">
-                                    <table class="table table-bordered table-hover " id="example3">
-                                        <thead class="table-warning text-center">
-                                            <tr>
-                                                <th scope="col">訂單編號</th>
-                                                <th scope="col">預約時間</th>
-                                                <th scope="col">服務數量</th>
-                                                <th scope="col">服務費用</th>
-                                                <th scope="col">服務狀態</th>
-                                                <th scope="col">完成時間</th>
-                                                <th scope="col"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="text-left">
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>2023/07/26</td>
-                                                <td>1</td>
-                                                <td>1000</td>
-                                                <td>完成</td>
-                                                <td>2023/07/27 12:00</td>
-                                                <td>
-                                                    <div class="d-flex flex-column">
-                                                        <button type="button"
-                                                                class="btn btn-outline-dark mb-2 btn-sm" id="cancelBooking1">
-                                                            取消預約
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>2023/07/26</td>
-                                                <td>1</td>
-                                                <td>1000</td>
-                                                <td>尚未完成</td>
-                                                <td>2023/07/27 12:00</td>
-                                                <td>
-                                                    <div class="d-flex flex-column">
-                                                        <button type="button"
-                                                                class="btn btn-outline-dark mb-2 btn-sm" id="cancelBooking2">
-                                                            取消預約
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>2023/07/26</td>
-                                                <td>1</td>
-                                                <td>1000</td>
-                                                <td>完成</td>
-                                                <td>2023/07/27 12:00</td>
-                                                <td>
-                                                    <div class="d-flex flex-column">
-                                                        <button type="button"
-                                                                class="btn btn-outline-dark mb-2 btn-sm" id="cancelBooking3">
-                                                            取消預約
-                                                        </button>
-                                                    </div>
-                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

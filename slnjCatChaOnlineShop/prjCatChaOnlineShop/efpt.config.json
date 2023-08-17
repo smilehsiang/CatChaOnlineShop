@@ -1,13 +1,13 @@
 ﻿{
    "CodeGenerationMode": 3,
-   "ContextClassName": "Ivan貓抓抓Context",
+   "ContextClassName": "cachaContext",
    "ContextNamespace": null,
    "DefaultDacpacSchema": null,
    "FilterSchemas": false,
    "IncludeConnectionString": true,
    "ModelNamespace": null,
    "OutputContextPath": null,
-   "OutputPath": "IvanModels",
+   "OutputPath": "Models",
    "PreserveCasingWithRegex": true,
    "ProjectRootNamespace": "prjCatChaOnlineShop",
    "Schemas": null,
@@ -228,7 +228,7 @@
          "ObjectType": 0
       }
    ],
-   "UiHint": "test_fang.貓抓抓.dbo",
+   "UiHint": "msit150team02resouce.catcha.dbo",
    "UncountableWords": null,
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,

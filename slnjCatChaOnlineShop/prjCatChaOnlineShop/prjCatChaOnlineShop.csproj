@@ -8,9 +8,13 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\NewFolder\**" />
+    <Compile Remove="Views\SalonBooking\**" />
     <Content Remove="Controllers\NewFolder\**" />
+    <Content Remove="Views\SalonBooking\**" />
     <EmbeddedResource Remove="Controllers\NewFolder\**" />
+    <EmbeddedResource Remove="Views\SalonBooking\**" />
     <None Remove="Controllers\NewFolder\**" />
+    <None Remove="Views\SalonBooking\**" />
   </ItemGroup>
 
   <ItemGroup>
