@@ -14,7 +14,7 @@ function feedcat(cat){
         if (isInBtnRange(cat,x,y)) { 
             if(itmMilk.isSelected||itmCan.isSelected)
             {
-                cat.foodSelected=true;
+                cat.foodSelected=true;//觸發Main裡面Class cat的drawheart方法
                 selectFood()
             }     
           }   

@@ -1,14 +1,15 @@
-//遊戲畫面外的六個按鈕
+//這邊放的是HTML製作的按鈕的功能
 
-const gachaBack = document.getElementById('gachaBack');//轉蛋返回按鈕
+
+const commonbackBTN = document.getElementById('commonbackBTN');//轉蛋返回按鈕
 const CatchaGatCha = document.getElementById('CatchaGatCha');//開轉蛋畫面
-const startRunGameBTN = document.getElementById('startRunGameBTN');//遊戲說明最後一頁的開始遊戲
+const startRunGameBTN = document.getElementById('startRunGameBTN');//遊戲說明最後一頁的開始遊戲按鈕
 const closeinstruction = document.getElementById('closeinstruction');//遊戲說明右上角叉叉
 const popup = document.getElementById('popup');//開啟跑步遊戲說明視窗
 const allPages = [Canvaslobby, Canvasrungame, CatchaGatCha,CanvasRank]//主要遊戲畫面存放區
 
 
-function pagesControl(blockpage)//參數blockpage填入當前需要顯示的畫面，其他隱藏
+function pagesControl(blockpage)//參數blockpage填入當前需要顯示的畫面，並隱藏其他頁面
 {
   for(const p of allPages)
   {
@@ -17,10 +18,9 @@ function pagesControl(blockpage)//參數blockpage填入當前需要顯示的畫�
   blockpage.style.display = "block"
 }
 
-
 //==========================
 
-gachaBack.addEventListener("click", () => { //回首頁
+commonbackBTN.addEventListener("click", () => { //回首頁
   pagesControl(Canvaslobby);
   });
 

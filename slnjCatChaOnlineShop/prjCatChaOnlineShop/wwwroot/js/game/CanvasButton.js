@@ -1,3 +1,5 @@
+//這邊放的是Canvas製作的按鈕的功能
+
 function isInBtnRange(btn, x, y)//判斷滑鼠點到哪一個按鈕，參數btn是new Button出來的按鈕，x y照填即可必填
 {
     return x >= btn.x && x <= btn.x + btn.width && y >= btn.y && y <= btn.y + btn.height;

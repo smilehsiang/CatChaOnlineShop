@@ -75,8 +75,8 @@ class UserInfo {
 }
 class Cat {
 
-    setHidden(hidden) {
-        this.isHidden = hidden; // 設定貓是否隱藏
+    setHidden(hidden) {// 從背包設定貓是否隱藏
+        this.isHidden = hidden; 
     }
 
     setFrameCount() {
@@ -307,7 +307,7 @@ class Floor {
     }
 }
 class Item {
-    constructor(n, image, isItem) {
+    constructor(n, image, isItem) { //n代表第幾個物品，最小是0
         this.x = bagX + 18 + (n * fixedRange);
         this.y = bagAndBtnY + (bagAndBtnHigh / 2) - (itemWidthAndHeight / 2);
         this.width = itemWidthAndHeight;
@@ -320,16 +320,17 @@ class Item {
         this.isSelected = selected; // 設定物品是否被選擇
     }
     draw() {
+        //加入新邏輯，如果使用者擁有的東西(資料表)沒有某隻貓，要把貓換成黑圖
 
         c.drawImage(this.image, this.x, this.y, this.width, this.height);
-        if (this.isItem == 'food' && this.image == bagItem6)//牛奶
+        if (this.isItem == 'food' && this.image == bagItem6)//牛奶數量
         {
             c.fillText(`${milkCount}`, this.x, this.y + 40);
             if (this.isSelected) {
                 c.drawImage(itemSelected, this.x - 6, this.y - 5, 50, 50);
             }
         }
-        if (this.isItem == 'food' && this.image == bagItem7)//罐罐
+        if (this.isItem == 'food' && this.image == bagItem7)//罐罐數量
         {
             c.fillText(`${canCount}`, this.x, this.y + 40);
             if (this.isSelected) {
