@@ -802,16 +802,16 @@ background-color: #DE9E4F;
   color: #DE9E4F;
   font-weight: bold;
 }
-.all-title-box .breadcrumb {
+/*.all-title-box .breadcrumb {
   background: #DE9E4F;
   margin: 0px;
   display: inline-block;
   border-radius: 0px;
   float: right;
-}
-.all-title-box {
+}*/
+/*.all-title-box {
   background: url(../images/title-eg.jpg);
-}
+}*/
 nav.navbar.bootsnav ul.nav li > a:hover {
   color: #DE9E4F;
 }
@@ -946,3 +946,13 @@ nav.navbar.bootsnav ul.nav li > a:hover {
 }
 /* -------------------end補給站/商品遮罩------------------*/
 
+.breadcrumb{
+    padding:0px;
+}
+.btn-custom {
+    margin-top: 20px;
+    background-color: #DE9E4F !important;
+    border: 2px solid #ddd;
+    padding: 12px 40px;
+    font-size: 16px;
+}
