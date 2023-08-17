@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using prjCatChaOnlineShop.IvanModels;
 using prjCatChaOnlineShop.YaolinModels;
 
 var builder = WebApplication.CreateBuilder(args);

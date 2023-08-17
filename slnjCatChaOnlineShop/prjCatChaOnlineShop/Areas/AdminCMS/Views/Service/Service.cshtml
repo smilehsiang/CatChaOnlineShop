@@ -12,8 +12,8 @@
     <h2 class="mt-3">客服回覆管理</h2>
 
 
-    <div class="container-fluid mt-4 mb-3">
-        <div class="row align-items-center mb-2">
+    <div class="search-row row mt-3 mb-3">
+        <div class="row align-items-center mb-3">
             申訴類別：
             <select class="form-select w-25" id="payList">
                 <option value="" selected>全部訂單</option>
@@ -28,7 +28,7 @@
                 <option>其它事項</option>
             </select>
         </div>
-        <div class="row align-items-center mb-2">
+        <div class="row align-items-center mb-3">
             狀態篩選：
             <select class="form-select w-25" id="deliveryList">
                 <option value="" selected>全部訂單</option>
@@ -36,7 +36,12 @@
                 <option>已解決</option>
             </select>
         </div>
-        <button type="button" class="btn btn-primary">查詢</button>
+        <div class="row align-items-center mb-3">
+            關鍵字搜尋：
+            <input type="text" class="form-control" style="width:25%;" />
+        </div>
+
+        <button type="button" class="keyword_input col-xl-1">查詢</button>
     </div>
 
 
@@ -71,7 +76,7 @@
                             <td>82</td>
                             <td>待處理</td>
                             <td>
-                                <button class="btn btn-primary" data-bs-toggle="modal"
+                                <button class="detail_input" data-bs-toggle="modal"
                                         href="#exampleModalToggle" role="button">
                                     詳細資料
                                 </button>
@@ -108,8 +113,7 @@
                                         <form>
 
                                             <div class="form-group">
-                                                <label
-                                                       class="form-label">申訴標題	Complaint Title：</label>
+                                                <label class="form-label">申訴標題	Complaint Title：</label>
                                                 <input class="form-control" type="text" value="請問線上付款的步驟說明?" readonly disabled />
                                             </div>
 
@@ -254,11 +258,11 @@
                     </div>
                 </div>
                 <!---詳細資料model-->
-
                 @section Scripts{
                     <script>
                         new DataTable('#service-table', {
                             responsive: true,
+                            "searching": false, //隱藏搜尋框
 
                             //========隱藏某一欄
                             // columnDefs: [

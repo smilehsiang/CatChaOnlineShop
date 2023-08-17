@@ -31,11 +31,11 @@ body {
     overflow-x: hidden;
 }
 
-.right-content navbar {
-    background-color: #FFF;
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, .15);
-    padding: 10px;
-}
+    .right-content navbar {
+        background-color: #FFF;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, .15);
+        padding: 10px;
+    }
 
 .img-profile {
     height: 50px;
@@ -104,35 +104,35 @@ body {
     color: rgba(255, 255, 255, .8);
 }
 
-.nav-item .nav-link:hover {
-    color: rgba(255, 255, 255, 1);
-}
+    .nav-item .nav-link:hover {
+        color: rgba(255, 255, 255, 1);
+    }
 
 .sidebar-detail-ul {
     list-style: none;
     padding-left: 0;
 }
 
-.sidebar-detail-ul li {
-    margin: 0 0.5rem;
-}
+    .sidebar-detail-ul li {
+        margin: 0 0.5rem;
+    }
 
-.sidebar-detail-ul li a {
-    color: #3a3b45;
-    text-decoration: none;
-    /*讓a標籤可以不是點文字才導去別的頁面，整個區塊點擊*/
-    display: block;
-    padding: 0.5rem 1rem;
-}
+        .sidebar-detail-ul li a {
+            color: #3a3b45;
+            text-decoration: none;
+            /*讓a標籤可以不是點文字才導去別的頁面，整個區塊點擊*/
+            display: block;
+            padding: 0.5rem 1rem;
+        }
 
-.sidebar-detail-ul li:hover {
-    background-color: #ededed;
-    cursor: pointer;
-}
+        .sidebar-detail-ul li:hover {
+            background-color: #ededed;
+            cursor: pointer;
+        }
 
-.sidebar-detail-ul li:hover a {
-    color: #b95756;
-}
+            .sidebar-detail-ul li:hover a {
+                color: #b95756;
+            }
 
 /*font-awasome click - icon切換*/
 [data-toggle="collapse"] .fa-angle-up:before {
@@ -196,4 +196,50 @@ body {
         /*滑動效果*/
         transition: left 0.3s ease;
     }
+}
+
+.search-row {
+    padding-left: 15px;
+}
+
+.keyword-input-test {
+    background-color: #b95756;
+}
+
+.keyword_input {
+    background-color: #b95756;
+    color: #FFF;
+    border: unset;
+    padding: 12px;
+    border-radius: 7px;
+}
+
+.create_btn {
+    background-color: #b95756;
+    color: #FFF;
+    border: unset;
+    padding: 15px;
+    border-radius: 7px;
+}
+
+.detail_input {
+    background-color: #ffffff;
+    color: #b95756;
+    border: unset;
+    padding: 5px;
+    border-radius: 7px;
+    border: 1px solid #b95756;
+    font-weight: bold;
+}
+
+td .fas {
+    color: #b95756;
+}
+
+.sorting {
+    background-color: #f2d6d6 !important;
+}
+
+.active > .page-link, .page-link.active {
+    background-color: #000 !important;
 }

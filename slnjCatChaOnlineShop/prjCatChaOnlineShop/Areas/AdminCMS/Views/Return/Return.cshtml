@@ -11,13 +11,13 @@
 
     <h2 class="mt-3">退換貨管理</h2>
 
-    <div class="container-fluid mt-4 mb-3">
-        <div class="row align-items-center mb-2">
-            退換貨日期區間：
+    <div class="search-row row mt-3 mb-3">
+        <div class="row align-items-center mb-3">
+            退換貨日期：
             <input type="text" class="form-control w-25" name="dates" />
         </div>
-        <div class="row align-items-center mb-2">
-            原因類別篩選：
+        <div class="row align-items-center mb-3">
+            原因類別：
             <select class="form-select w-25" id="statusList">
                 <option value="" selected>全部訂單</option>
                 <option value="">商品品質問題</option>
@@ -30,8 +30,8 @@
                 <option value="">其他原因</option>
             </select>
         </div>
-        <div class="row align-items-center mb-2">
-            退換貨狀態篩選：
+        <div class="row align-items-center mb-3">
+            退換貨狀態：
             <select class="form-select w-25" id="statusList">
                 <option value="" selected>全部訂單</option>
                 <option value="">待處理</option>
@@ -45,7 +45,12 @@
                 <option value="">取消</option>
             </select>
         </div>
-        <button type="button" class="btn btn-primary">查詢</button>
+        <div class="row align-items-center mb-3">
+            關鍵字搜尋：
+            <input type="text" class="form-control" style="width:25%;" />
+        </div>
+
+        <button type="button" class="keyword_input col-xl-1">查詢</button>
     </div>
 
 
@@ -74,7 +79,7 @@
                             <td>處理中</td>
                             <td>
                                 <a href="#">
-                                    <button class="btn btn-success" data-bs-toggle="modal"
+                                    <button class="detail_input" data-bs-toggle="modal"
                                             href="#orderDetailModalToggle" role="button">
                                         訂單明細
                                     </button>
@@ -92,7 +97,6 @@
                     </tbody>
                 </table>
                 <!--表格-->
-
                 <!--編輯彈出視窗-->
                 <div class="modal fade" id="returnEditModalToggle" aria-hidden="true"
                      aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -264,6 +268,7 @@
                         $('input[name="dates"]').daterangepicker();
                         new DataTable('#SReturn-table', {
                             responsive: true,
+                            "searching": false, //隱藏搜尋框
                         });
                     </script>
                 }
