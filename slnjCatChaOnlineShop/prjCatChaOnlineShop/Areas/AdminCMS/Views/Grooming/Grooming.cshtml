@@ -103,6 +103,12 @@
                             <input type="text" class="form-control">
                         </div>
 
+                        <div class="form-group">
+                            <label>不開放預約的日期：</label>
+                            <input type="date" class="form-control">
+                            <button id="addSelectButton" class="btn btn-secondary">新增日期</button>
+                        </div>
+                        
                         <div class="col-md-12">
                             <label>圖片</label>
                             <input type="file" class="form-control">
@@ -127,6 +133,7 @@
                             <th>美容名稱</th>
                             <th>月份</th>
                             <th>時段</th>
+                            <th>不開放預約的日期</th>
                             <th>名額數</th>
                             <th>圖片</th>
                             <th>編輯/刪除</th>
@@ -155,6 +162,10 @@
                                     15:00~16:00<br>
                                     16:00~17:00
                                 </label>
+                            </td>
+                            <td>
+                                8/2<br>
+                                8/3<br>
                             </td>
                             <td>5</td>
                             <td></td>
@@ -196,6 +207,10 @@
                                     16:00~17:00
                                 </label>
                             </td>
+                            <td>
+                                8/2<br>
+                                8/3<br>
+                            </td>
                             <td>3</td>
                             <td></td>
                             <td>
@@ -235,6 +250,10 @@
                                     15:00~16:00<br>
                                     16:00~17:00
                                 </label>
+                            </td>
+                            <td>
+                                8/2<br>
+                                8/3<br>
                             </td>
                             <td>1</td>
                             <td></td>
@@ -347,14 +366,21 @@
                                                     </select>
                                                     <button id="addSelectButton" class="btn btn-info">刪除</button>
                                                 </div>
-                                            </div>
                                                 <button id="addSelectButton" class="btn btn-secondary">新增時段</button>
+                                            </div>
+                                                
                                         </div>
 
                                             <div class="form-group">
                                                 <label>名額數：</label>
                                                 <input type="text" class="form-control">
                                             </div>
+
+                                        <div class="form-group">
+                                            <label>不開放預約的日期：</label>
+                                            <input type="date" class="form-control">
+                                            <button id="addSelectButton" class="btn btn-secondary">新增日期</button>
+                                        </div>
 
                                             <div class="col-md-12">
                                                 <label>圖片</label>
