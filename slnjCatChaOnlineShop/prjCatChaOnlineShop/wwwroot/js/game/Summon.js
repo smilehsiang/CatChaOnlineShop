@@ -8,15 +8,32 @@ const gachaContainer = document.querySelector('.gacha-container');
 const animationContainer = document.querySelector('.animation-container');
 const animationImages = animationContainer.querySelectorAll('.catcha');
 const summonbuttons = document.getElementById('summon-buttons');
-
-
+// 發起 GET 請求並處理 JSON 數據
+fetch('Api/gameapi')  
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('網絡錯誤');
+        }
+        return response.json();
+    })
+const array = 
+    .then(data => {
+        console.log(data); // 在控制台輸出 JSON 數據
+        // 在這裡進行數據處理
+        datas.forEach(data => {
+            const { }
+    })
+    .catch(error => {
+        console.error('無法獲取 JSON 數據', error);
+    });
+})
 
     // Button 4 點擊事件處理
     //button4.addEventListener('click', () => {
     //    // 顯示轉蛋頁面
     //    gachaContainer.style.display = 'block';
-    //});
-    console.log(RubySingleDrow, RubyTenDrows, CatPointSingleDrow, CatPointTenDrows, result);
+    ////});
+    //console.log(RubySingleDrow, RubyTenDrows, CatPointSingleDrow, CatPointTenDrows, result);
 
     function between(x, min, max) {
         return x >= min && x <= max;
