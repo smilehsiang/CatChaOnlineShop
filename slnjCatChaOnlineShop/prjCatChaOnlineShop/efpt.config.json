@@ -1,13 +1,13 @@
 ﻿{
    "CodeGenerationMode": 3,
-   "ContextClassName": "Ivan貓抓抓Context",
+   "ContextClassName": "Yaolin貓抓抓Context",
    "ContextNamespace": null,
    "DefaultDacpacSchema": null,
    "FilterSchemas": false,
    "IncludeConnectionString": true,
    "ModelNamespace": null,
    "OutputContextPath": null,
-   "OutputPath": "IvanModels",
+   "OutputPath": "YaolinModels",
    "PreserveCasingWithRegex": true,
    "ProjectRootNamespace": "prjCatChaOnlineShop",
    "Schemas": null,
@@ -228,7 +228,7 @@
          "ObjectType": 0
       }
    ],
-   "UiHint": "test_fang.貓抓抓.dbo",
+   "UiHint": "desktop-rae7e6c.貓抓抓.dbo",
    "UncountableWords": null,
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using prjCatChaOnlineShop.IvanModels;
+using prjCatChaOnlineShop.YaolinModels;
 
 namespace prjCatChaOnlineShop.Controllers
 {
@@ -8,12 +8,13 @@ namespace prjCatChaOnlineShop.Controllers
     [ApiController]
     public class GameApiController : ControllerBase
     {
-        private readonly Ivan貓抓抓Context _context;
-        public GameApiController(Ivan貓抓抓Context context)
+        private readonly Yaolin貓抓抓Context _context;
+        public GameApiController(Yaolin貓抓抓Context context)
         {
             _context = context;
         }
         [HttpGet]
+        //http://localhost:5090/Api/gameapi
         public IActionResult 轉蛋數據()
         {
             var datas = from p in _context.GameProductTotal
@@ -22,7 +23,6 @@ namespace prjCatChaOnlineShop.Controllers
                         {
                             p.ProductName,
                             p.ProductId,
-                            p.ProductImage,
                             p.ProductCategoryId,
                             p.LotteryProbability
                         };

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using prjCatChaOnlineShop.IvanModels;
+using prjCatChaOnlineShop.YaolinModels;
 
 namespace prjCatChaOnlineShop.Controllers.Home
 {
@@ -9,8 +9,8 @@ namespace prjCatChaOnlineShop.Controllers.Home
     [ApiController]
     public class GameapitestController : ControllerBase
     {
-        private readonly Ivan貓抓抓Context _context;
-        public GameapitestController(Ivan貓抓抓Context context)
+        private readonly Yaolin貓抓抓Context _context;
+        public GameapitestController(Yaolin貓抓抓Context context)
         {
             _context = context;
         }
