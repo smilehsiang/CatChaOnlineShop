@@ -28,13 +28,8 @@
         <ul class="SideBar text-white">
 
             <div class="mb-3">
-                <h5>
-                    CatCha 貓抓抓
-                    <span class="close-icon" onclick="closeSideBar()">
-                        <i class="far fa-times-circle d-md-none"></i>
-                    </span>
-                </h5>
-                <h5>後台管理中心</h5>
+                <img src="~/images/logo.png" class="dashboard-logo-img" />
+                <h5 class="dashboard-title">後台管理中心</h5>
 
             </div>
 
@@ -76,7 +71,7 @@
                                 <li><a asp-area="AdminCMS" asp-controller="Order" asp-action="Order">商城訂單管理</a></li>
                                 @*<li><a asp-area="AdminCMS" asp-controller="Salon" asp-action="Salon">美容訂單管理</a></li>*@
                                 <li><a asp-area="AdminCMS" asp-controller="Product" asp-action="Product">產品管理</a></li>
-                                <li><a asp-area="AdminCMS" asp-controller="Grooming" asp-action="Grooming">寵物美容管理</a></li>
+                                @*<li><a asp-area="AdminCMS" asp-controller="Grooming" asp-action="Grooming">寵物美容管理</a></li>*@
                                 <li><a asp-area="AdminCMS" asp-controller="Bonus" asp-action="Bonus">優惠券管理</a></li>
                                 <li><a asp-area="AdminCMS" asp-controller="Return" asp-action="Return">退換貨管理</a></li>
                                 <li><a asp-area="AdminCMS" asp-controller="ProductReview" asp-action="ProductReview">產品評論管理</a></li>

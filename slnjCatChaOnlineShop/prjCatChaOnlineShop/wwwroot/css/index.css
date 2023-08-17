@@ -243,3 +243,19 @@ td .fas {
 .active > .page-link, .page-link.active {
     background-color: #000 !important;
 }
+
+.dashboard-logo-img {
+    background-color: #FFF;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
+.dashboard-title {
+    background-color: #FFF;
+    color: #de9e4f;
+    text-align: center;
+    font-weight: bolder;
+    padding-bottom: 5px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
