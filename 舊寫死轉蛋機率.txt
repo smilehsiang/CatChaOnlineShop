@@ -1,0 +1,59 @@
+    // Button 4 點擊事件處理
+    //button4.addEventListener('click', () => {
+    //    // 顯示轉蛋頁面
+    //    gachaContainer.style.display = 'block';
+    ////});
+    //console.log(RubySingleDrow, RubyTenDrows, CatPointSingleDrow, CatPointTenDrows, result);
+
+    //function between(x, min, max) {
+    //    return x >= min && x <= max;
+    //}
+    //function checkPrizeTake(rand) {
+    //    let itemClass = ''; // 獎項等級的CSS類
+    //    let image = ''; // 圖片的路徑
+    //    let name = ''; // 獎項名稱
+
+    //    // 根據機率判斷獲得的獎項
+    //    if (between(rand, 1, 2)) {
+    //        itemClass = 'SS'; // SS獎項
+    //        image = '../../images/game/gacha/P_coupon.png';
+    //        name = '實體折價券';
+    //    } else if (between(rand, 3, 7)) {
+    //        itemClass = 'SS'; // SS獎項
+    //        image = '../../images/game/gacha/kittenBB.png';
+    //        name = '貓咪';
+    //    } else if (between(rand, 8, 12)) {
+    //        itemClass = 'S'; // S獎項
+    //        image = '../../images/game/gacha/P_background.png';
+    //        name = '背景';
+    //    } else if (between(rand, 13, 25)) {
+    //        itemClass = 'S'; // A獎項
+    //        image = '../../images/game/gacha/P_bowl.png';
+    //        name = '飯盆';
+    //    } else if (between(rand, 26, 30)) {
+    //        itemClass = 'S'; // A獎項
+    //        image = '../../images/game/gacha/P_lamp.png';
+    //        name = '家具';
+    //    } else if (between(rand, 31, 55)) {
+    //        itemClass = 'A'; // A獎項
+    //        image = '../../images/game/gacha/P_food.png';
+    //        name = '罐罐';
+    //    } else if (between(rand, 56, 80)) {
+    //        itemClass = 'A'; // A獎項
+    //        image = '../../images/game/gacha/P_water.png';
+    //        name = '牛奶';
+    //    } else {
+    //        itemClass = 'A'; // A獎項
+    //        image = '../../images/game/gacha/_catcoin.png';
+    //        name = '貓幣';
+    //    }
+
+    //    return `
+    //    <div class="item ${itemClass}">
+    //        <img src="${image}" class="img" style="height: 40px; width: 40px;">
+    //        <div style="color: white; font-size: 20px; width: 70px;">${name}</div>
+    //    </div>
+    //`;
+    //}
+
+    //紅利十連抽

@@ -25,7 +25,8 @@ namespace prjCatChaOnlineShop.Controllers
                             p.ProductName,
                             p.ProductId,
                             p.ProductCategoryId,
-                            p.LotteryProbability
+                            p.LotteryProbability,
+                            p.ProductImage
                         };
             if (datas.Any())
             {

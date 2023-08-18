@@ -8,35 +8,115 @@ const gachaContainer = document.querySelector('.gacha-container');
 const animationContainer = document.querySelector('.animation-container');
 const animationImages = animationContainer.querySelectorAll('.catcha');
 const summonbuttons = document.getElementById('summon-buttons');
-// 發起 GET 請求並處理 JSON 數據
-fetch('Api/gameapi')
-    .then(response => {
+//建立一個空陣列接值
+let processedData = []; // 在外部聲明一個變數
+
+async function fetchData() {
+    try {
+        const response = await fetch('Api/gameapi');
         if (!response.ok) {
             throw new Error('網絡錯誤');
         }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data); // 在控制台輸出 JSON 數據
-        // 在這裡進行數據處理
+        const data = await response.json(); // 解析 JSON 格式的回應內容
 
-        // 假設 data 是你從 API 獲取的 JSON 數據陣列
+        // 計算總概率
+        const totalProbability = data.reduce((sum, item) => sum + item.lotteryProbability, 0);
+
+        // 計算縮放因子
+        const scalingFactor = totalProbability <= 100 ? 100 / totalProbability : 1;
+
+        // 創建一個空陣列來儲存處理後的資料
+        const processedData = [];
+
+        // 對每個項目進行處理
         data.forEach(item => {
-            const { productName, productId, productCategoryId, lotteryProbability } = item;
-            // 在這裡使用解構賦值獲取數據的各個屬性值
+            const { productName, productId, productImage, lotteryProbability } = item;
 
-            // 進行你的數據處理，例如計算、顯示等
-            console.log(`Product Name: ${productName}`);
-            console.log(`Product ID: ${productId}`);
-            console.log(`Product Category ID: ${productCategoryId}`);
-            console.log(`Lottery Probability: ${lotteryProbability}`);
+            // 將原始機率乘以縮放因子，得到縮放後的機率
+            const scaledProbability = lotteryProbability * scalingFactor;
+
+            // 將處理後的資料添加到 processedData 陣列中
+            processedData.push({
+                productName,
+                productId,
+                productImage,
+                scaledProbability
+            });
         });
-    })
-    .catch(error => {
-        console.error('無法獲取 JSON 數據', error);
+
+        return processedData; // 返回處理後的資料
+    } catch (error) {
+        console.error('錯誤:', error);
+    }
+}
+
+    RubyTenDrows.addEventListener('click', async function () {
+    try {
+        const gachaData = await fetchData(); // 取得轉蛋資料
+        const numDraws = 1000; // 設定抽獎次數，這裡設定為 1 次
+        for (let i = 0; i < numDraws; i++) {
+            const randomIndex = Math.floor(Math.random() * gachaData.scaledProbability);
+            const drawnItem = gachaData[randomIndex];
+            console.log(`第 ${i + 1} 次轉蛋：你獲得了 ${drawnItem.productName}`);
+        }
+    } catch (error) {
+        console.error('轉蛋時發生錯誤:', error);
+        }
+    }); 
+    CatPointTenDrows.addEventListener('click', async function () {
+        try {
+            const gachaData = await fetchData(); // 取得轉蛋資料
+            const numDraws = 10; // 設定抽獎次數
+
+            for (let i = 0; i < numDraws; i++) {
+                const randomValue = Math.floor(Math.random() * 100) + 1; // 隨機整數 1 到 100
+                let drawnItem = null;
+                let cumulativeRangeEnd = 0;
+
+                // 在區間累加過程中找到對應的項目
+                for (const item of gachaData) {
+                    cumulativeRangeEnd += item.rangeEnd;
+                    if (randomValue <= cumulativeRangeEnd) {
+                        drawnItem = item;
+                        break;
+                    }
+                }
+
+                if (drawnItem) {
+                    console.log(`第 ${i + 1} 次轉蛋：你獲得了 ${drawnItem.productName}`);
+                }
+            }
+        } catch (error) {
+            console.error('轉蛋時發生錯誤:', error);
+        }
     });
 
-
+    RubySingleDrow.addEventListener('click', async function () {
+            try {
+                const gachaData = await fetchData(); // 取得轉蛋資料
+                const numDraws = 1; // 設定抽獎次數，這裡設定為 1 次
+                for (let i = 0; i < numDraws; i++) {
+                    const randomIndex = Math.floor(Math.random() * gachaData.length);
+                    const drawnItem = gachaData[randomIndex];
+                    console.log(`第 ${i + 1} 次轉蛋：你獲得了 ${drawnItem.productName}`);
+                }
+            } catch (error) {
+                console.error('轉蛋時發生錯誤:', error);
+            }
+        });
+    CatPointSingleDrow.addEventListener('click', async function () {
+            try {
+                const gachaData = await fetchData(); // 取得轉蛋資料
+                const numDraws = 1; // 設定抽獎次數，這裡設定為 1 次
+                for (let i = 0; i < numDraws; i++) {
+                    const randomIndex = Math.floor(Math.random() * gachaData.length);
+                    const drawnItem = gachaData[randomIndex];
+                    console.log(`第 ${i + 1} 次轉蛋：你獲得了 ${drawnItem.productName}`);
+                }
+            } catch (error) {
+                console.error('轉蛋時發生錯誤:', error);
+            }
+        });
     // Button 4 點擊事件處理
     //button4.addEventListener('click', () => {
     //    // 顯示轉蛋頁面
@@ -44,119 +124,118 @@ fetch('Api/gameapi')
     ////});
     //console.log(RubySingleDrow, RubyTenDrows, CatPointSingleDrow, CatPointTenDrows, result);
 
-    function between(x, min, max) {
-        return x >= min && x <= max;
-    }
-    function checkPrizeTake(rand) {
-        let itemClass = ''; // 獎項等級的CSS類
-        let image = ''; // 圖片的路徑
-        let name = ''; // 獎項名稱
+    //function between(x, min, max) {
+    //    return x >= min && x <= max;
+    //}
+    //function checkPrizeTake(rand) {
+    //    let itemClass = ''; // 獎項等級的CSS類
+    //    let image = ''; // 圖片的路徑
+    //    let name = ''; // 獎項名稱
 
-        // 根據機率判斷獲得的獎項
-        if (between(rand, 1, 2)) {
-            itemClass = 'SS'; // SS獎項
-            image = '../../images/game/gacha/P_coupon.png';
-            name = '實體折價券';
-        } else if (between(rand, 3, 7)) {
-            itemClass = 'SS'; // SS獎項
-            image = '../../images/game/gacha/kittenBB.png';
-            name = '貓咪';
-        } else if (between(rand, 8, 12)) {
-            itemClass = 'S'; // S獎項
-            image = '../../images/game/gacha/P_background.png';
-            name = '背景';
-        } else if (between(rand, 13, 25)) {
-            itemClass = 'S'; // A獎項
-            image = '../../images/game/gacha/P_bowl.png';
-            name = '飯盆';
-        } else if (between(rand, 26, 30)) {
-            itemClass = 'S'; // A獎項
-            image = '../../images/game/gacha/P_lamp.png';
-            name = '家具';
-        } else if (between(rand, 31, 55)) {
-            itemClass = 'A'; // A獎項
-            image = '../../images/game/gacha/P_food.png';
-            name = '罐罐';
-        } else if (between(rand, 56, 80)) {
-            itemClass = 'A'; // A獎項
-            image = '../../images/game/gacha/P_water.png';
-            name = '牛奶';
-        } else {
-            itemClass = 'A'; // A獎項
-            image = '../../images/game/gacha/_catcoin.png';
-            name = '貓幣';
-        }
+    //    // 根據機率判斷獲得的獎項
+    //    if (between(rand, 1, 2)) {
+    //        itemClass = 'SS'; // SS獎項
+    //        image = '../../images/game/gacha/P_coupon.png';
+    //        name = '實體折價券';
+    //    } else if (between(rand, 3, 7)) {
+    //        itemClass = 'SS'; // SS獎項
+    //        image = '../../images/game/gacha/kittenBB.png';
+    //        name = '貓咪';
+    //    } else if (between(rand, 8, 12)) {
+    //        itemClass = 'S'; // S獎項
+    //        image = '../../images/game/gacha/P_background.png';
+    //        name = '背景';
+    //    } else if (between(rand, 13, 25)) {
+    //        itemClass = 'S'; // A獎項
+    //        image = '../../images/game/gacha/P_bowl.png';
+    //        name = '飯盆';
+    //    } else if (between(rand, 26, 30)) {
+    //        itemClass = 'S'; // A獎項
+    //        image = '../../images/game/gacha/P_lamp.png';
+    //        name = '家具';
+    //    } else if (between(rand, 31, 55)) {
+    //        itemClass = 'A'; // A獎項
+    //        image = '../../images/game/gacha/P_food.png';
+    //        name = '罐罐';
+    //    } else if (between(rand, 56, 80)) {
+    //        itemClass = 'A'; // A獎項
+    //        image = '../../images/game/gacha/P_water.png';
+    //        name = '牛奶';
+    //    } else {
+    //        itemClass = 'A'; // A獎項
+    //        image = '../../images/game/gacha/_catcoin.png';
+    //        name = '貓幣';
+    //    }
 
-        return `
-        <div class="item ${itemClass}">
-            <img src="${image}" class="img" style="height: 40px; width: 40px;">
-            <div style="color: white; font-size: 20px; width: 70px;">${name}</div>
-        </div>
-    `;
-    }
+    //    return `
+    //    <div class="item ${itemClass}">
+    //        <img src="${image}" class="img" style="height: 40px; width: 40px;">
+    //        <div style="color: white; font-size: 20px; width: 70px;">${name}</div>
+    //    </div>
+    //`;
+    //}
 
     //紅利十連抽
-    RubyTenDrows.addEventListener('click', function () {
-        // 先將所有動畫隱藏
-        animationImages.forEach(image => {
-            image.style.display = 'none';
-        });
-        let display = '';
-        let tenorsingle = 0;
+    //RubyTenDrows.addEventListener('click', function () {
+    //    // 先將所有動畫隱藏
+    //    animationImages.forEach(image => {
+    //        image.style.display = 'none';
+    //    });
+    //    let display = '';
 
-        for (let i = 0; i < 10; i++) {
-            // 產生隨機整數(1~100)
-            // Math.floor(Math.random() * (max - min + 1)) + min
-            const rand = Math.floor(Math.random() * 100) + 1;
+    //    for (let i = 0; i < 10; i++) {
+    //        // 產生隨機整數(1~100)
+    //        // Math.floor(Math.random() * (max - min + 1)) + min
+    //        const rand = Math.floor(Math.random() * 100) + 1;
 
-            // 以下判斷是落於哪個區間，以此決定抽中何種卡別
-            display += `<div class="item-container" style=" margin-left=5px;">${checkPrizeTake(rand)}</div>`;
-        }
+    //        // 以下判斷是落於哪個區間，以此決定抽中何種卡別
+    //        display += `<div class="item-container" style=" margin-left=5px;">${checkPrizeTake(rand)}</div>`;
+    //    }
 
-        showGachaResult(display, tenorsingle);
-    });
+    //    showGachaResult(display);
+    //});
 
     //貓幣十連抽
-    CatPointTenDrows.addEventListener('click', function () {
-        // 先將所有動畫隱藏
-        animationImages.forEach(image => {
-            image.style.display = 'none';
-        });
-        let display = '';
-        let tenorsingle = 0;
+    //CatPointTenDrows.addEventListener('click', function () {
+    //    // 先將所有動畫隱藏
+    //    animationImages.forEach(image => {
+    //        image.style.display = 'none';
+    //    });
+    //    let display = '';
+    //    let tenorsingle = 0;
 
-        for (let i = 0; i < 10; i++) {
-            // 產生隨機整數(1~100)
-            // Math.floor(Math.random() * (max - min + 1)) + min
-            const rand = Math.floor(Math.random() * 100) + 1;
+    //    for (let i = 0; i < 10; i++) {
+    //        // 產生隨機整數(1~100)
+    //        // Math.floor(Math.random() * (max - min + 1)) + min
+    //        const rand = Math.floor(Math.random() * 100) + 1;
 
-            // 以下判斷是落於哪個區間，以此決定抽中何種卡別
-            display += `<div class="item-container"style=" margin-left=5px;" >${checkPrizeTake(rand)}</div>`;
-        }
-        showGachaResult(display, tenorsingle);
-    });
-    //紅利單抽
-    RubySingleDrow.addEventListener('click', function () {
-        animationImages.forEach(image => {
-            image.style.display = 'none';
-        })
-        let display = '';
-        let tenorsingle = 1;
-        const rand = Math.floor(Math.random() * 100) + 1;
-        display = `<div class="item-container" style="margin-left:320px;">${checkPrizeTake(rand)}</div>`;
-        showGachaResult(display, tenorsingle);
-    })
-    //貓幣單抽
-    CatPointSingleDrow.addEventListener('click', function () {
-        animationImages.forEach(image => {
-            image.style.display = 'none';
-        })
-        let display = '';
-        let tenorsingle = 1;
-        const rand = Math.floor(Math.random() * 100) + 1;
-        display = `<div class="item-container" style="margin-left:320px;">${checkPrizeTake(rand)}</div>`;
-        showGachaResult(display, tenorsingle);
-    })
+    //        // 以下判斷是落於哪個區間，以此決定抽中何種卡別
+    //        display += `<div class="item-container"style=" margin-left=5px;" >${checkPrizeTake(rand)}</div>`;
+    //    }
+    //    showGachaResult(display, tenorsingle);
+    //});
+    ////紅利單抽
+    //RubySingleDrow.addEventListener('click', function () {
+    //    animationImages.forEach(image => {
+    //        image.style.display = 'none';
+    //    })
+    //    let display = '';
+    //    let tenorsingle = 1;
+    //    const rand = Math.floor(Math.random() * 100) + 1;
+    //    display = `<div class="item-container" style="margin-left:320px;">${checkPrizeTake(rand)}</div>`;
+    //    showGachaResult(display, tenorsingle);
+    //})
+    ////貓幣單抽
+    //CatPointSingleDrow.addEventListener('click', function () {
+    //    animationImages.forEach(image => {
+    //        image.style.display = 'none';
+    //    })
+    //    let display = '';
+    //    let tenorsingle = 1;
+    //    const rand = Math.floor(Math.random() * 100) + 1;
+    //    display = `<div class="item-container" style="margin-left:320px;">${checkPrizeTake(rand)}</div>`;
+    //    showGachaResult(display, tenorsingle);
+    //})
 
 
 
