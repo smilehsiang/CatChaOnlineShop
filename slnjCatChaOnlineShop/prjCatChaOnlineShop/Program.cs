@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using prjCatChaOnlineShop.Models;
-
+using prjCatChaOnlineShop.Services.Function;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<ImageService>();
 
 
 //註冊session要加這個
