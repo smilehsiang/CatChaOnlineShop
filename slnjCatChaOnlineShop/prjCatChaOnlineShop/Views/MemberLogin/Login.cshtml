@@ -55,24 +55,25 @@
                 <div class="row justify-content-md-center">
                     <div class="col-10">
                         <div class="container-fluid">
-                            <form class="needs-validation" novalidate>
+                             @using (Html.BeginForm("Login", "MemberLogin", FormMethod.Post))
+                            {
                                 <div class="row">
                                     <div>
-                                        <label for="login-name">電子信箱：</label>
-                                        <input type="text" class="form-control" id="login-name"
-                                               placeholder="email" required>
+                                        <label for="txtEmail">電子信箱：</label>
+                                        <input type="text" class="form-control" name="txtEmail"
+                                               placeholder="email" value="seoari@gmail.com" required>
                                         <div class="invalid-feedback"> 請輸入電子信箱</div>
                                     </div>
                                     <div>
-                                        <label for="login-password">密碼：</label>
-                                        <input type="text" class="form-control" id="login-password"
-                                               placeholder="password" required>
+                                        <label for="txtPassword">密碼：</label>
+                                        <input type="text" class="form-control" name="txtPassword"
+                                               placeholder="password" value="123" required>
                                         <div class="invalid-feedback"> 請輸入密碼 </div>
                                     </div>
                                 </div>
 
                                 <div class="d-grid gap-2 mt-3">
-                                    <button class="btn btn-light" type="button">登入</button>
+                                    <input class="btn btn-light" type="submit" value="登入">
                                 </div>
                                 <div>
                                     <div class="d-flex justify-content-between align-items-center mb-4 mt-2">
@@ -107,7 +108,7 @@
                                         <span> <img src="~/images/CatCha/twitter.png"></span>
                                     </a>
                                 </div>
-                            </form>
+                            }
                         </div>
                     </div>
                 </div>
