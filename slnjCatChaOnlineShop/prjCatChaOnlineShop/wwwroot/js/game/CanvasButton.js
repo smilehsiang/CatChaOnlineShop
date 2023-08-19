@@ -69,7 +69,16 @@ Canvasrungame.addEventListener("click", (event) => {//按下暫停
     rcat.jump();
 
 });
-
+function clickBagAndShowCat(cat, color) { //從背包控制收放貓貓的方法
+    if (cat == null) {
+        cat = new Cat(`${color}`)
+        return cat
+    }
+    else {
+        cat = null
+        return cat
+    }
+}
 
 canvas.addEventListener('click', (event) => {
     const rect = canvas.getBoundingClientRect();
@@ -123,25 +132,25 @@ canvas.addEventListener('click', (event) => {
 
     // 功能
     if (isInBtnRange(itm1, x, y)) {//在背包點選Default貓貓
-        catDefault.setHidden(!catDefault.isHidden);
-        return;
+        if (userBagData.catDefault === true)
+            catDefault = clickBagAndShowCat(catDefault, 'Default')
     }
     if (isInBtnRange(itm2, x, y)) {//在背包點選BB貓貓
-        catBB.setHidden(!catBB.isHidden);
-        return;
+        if (userBagData.catBB === true)
+            catBB = clickBagAndShowCat(catBB, 'BB')
     }
     if (isInBtnRange(itm3, x, y)) {//在背包點選BK貓貓
-        catBK.setHidden(!catBK.isHidden);
-        return;
+        if (userBagData.catBK === true)
+            catBK = clickBagAndShowCat(catBK, 'BK')
     }
     if (isInBtnRange(itm4, x, y)) {//在背包點選GY貓貓
-        catGY.setHidden(!catGY.isHidden);
-        return;
+        if (userBagData.catGY === true)
+            catGY = clickBagAndShowCat(catGY, 'GY')
     }
     if (isInBtnRange(itm5, x, y)) {//在背包點選OG貓貓
-        catOG.setHidden(!catOG.isHidden);
-        return;
-    }
+        if (userBagData.catOG === true)
+            catOG = clickBagAndShowCat(catOG, 'OG')
+    }  
     if (isInBtnRange(itmMilk, x, y)) {//在背包選取牛奶，一次只能選一個食物
         if (milkCount == 0)
             return;

@@ -6,7 +6,8 @@ const CatchaGatCha = document.getElementById('CatchaGatCha');//開轉蛋畫面
 const startRunGameBTN = document.getElementById('startRunGameBTN');//遊戲說明最後一頁的開始遊戲按鈕
 const closeinstruction = document.getElementById('closeinstruction');//遊戲說明右上角叉叉
 const popup = document.getElementById('popup');//開啟跑步遊戲說明視窗
-const allPages = [Canvaslobby, Canvasrungame, CatchaGatCha,CanvasRank]//主要遊戲畫面存放區
+const allPages = [Canvaslobby, Canvasrungame, CatchaGatCha, CanvasRank]//主要遊戲畫面存放區
+const testlogin = document.getElementById('testlogin');
 
 
 function pagesControl(blockpage)//參數blockpage填入當前需要顯示的畫面，並隱藏其他頁面
@@ -39,3 +40,6 @@ closeinstruction.addEventListener("click", () => {
     pagesControl(Canvaslobby); //畫面返回大廳
 });
  
+testlogin.addEventListener("click", () => {
+    initialize();
+});

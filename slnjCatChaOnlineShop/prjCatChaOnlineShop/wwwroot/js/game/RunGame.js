@@ -20,7 +20,6 @@ const ScoreBK = new Image();
 let isPause = false;//判斷遊戲暫停狀態
 
 
-let hightestScore = 0
 let userScore = 0
 let blockCycle = 0;
 const speedupPara = 5

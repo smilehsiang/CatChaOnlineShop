@@ -60,22 +60,3 @@ function gamePause() { //載入確認視窗方法
     cancelBTN_Pause.load();
     ctxrdoublecheck.fillText('Continue?', winX + 85, winY + 150);
 }
-
-$('#page3').click(function () {
-    //   console.log('test');
-    //   $('#popup').css('height', '500px');
-
-    //   var rectangle = $('<div></div>');
-
-    //   rectangle.css({
-    //     'width': '406px',
-    //     'height': '100px',
-    //     'background-color': 'transparent',
-    //     'position': 'relative',  // 這個屬性可以使矩形相對於父元素的位置
-    //     'left': '0px',
-    //     'top': '500px'
-    // });
-
-    // // 將矩形添加到指定的範圍內（這裡使用 id 為 "container" 的元素作為範圍）
-    // $('#popup').append(rectangle);
-})

@@ -75,22 +75,15 @@ class UserInfo {
 }
 class Cat {
 
-    setHidden(hidden) {// 從背包設定貓是否隱藏
-        this.isHidden = hidden; 
-    }
-
     setFrameCount() {
         this.lobbyframecount++;
     }
 
     drawHeart() {
-        if (this.foodSelected == false) //沒有選擇食物的時候，不會產生愛心
-            return;
-        if (this.foodSelected == true) {
-            setTimeout(() => { //持續三秒後
-                this.foodSelected = false;
-            }, 3000);
 
+        if (this.selected == false) //沒有被選擇時候，不會產生愛心
+            return;
+        else {
             this.heart.src = '../../images/game/thought_bubble.png'
             c.drawImage(this.heart, 32 * this.heartframe, 0, 32, 32, this.x + 30, this.y, 60, 60)
 
@@ -98,6 +91,7 @@ class Cat {
             {
                 this.heartframe++;
                 if (this.heartframe > 2) this.heartframe = 0
+
             }
 
             //餵食後，取消背包食物選取
@@ -109,11 +103,9 @@ class Cat {
             }
         }
     }
-
+//動態替換貓貓動畫圖片
     draw() {
-        if (!this.isHidden) {
-            return; // 如果貓被設為隱藏，則不執行繪製
-        }
+
         this.drawHeart()
         if ((this.direction == 0 && !this.isMoving) || (this.direction > 0 && !this.isMoving)) {
             switch (this.catcolor) {
@@ -230,7 +222,7 @@ class Cat {
             }
         }
     }
-
+//貓貓隨機移動方法
     action() {
         if (!this.isMoving) {
 
@@ -253,10 +245,7 @@ class Cat {
         }
     }
 
-
     update() {
-
-
         this.draw();
         this.action();
         this.setFrameCount();
@@ -285,8 +274,8 @@ class Cat {
         this.lobbyframecount = 0;
         this.catcolor = color;
         this.heartframe = 0;
-        this.foodSelected = false;
         this.heart = new Image();
+        this.selected = false;
     }
 
 
@@ -404,11 +393,11 @@ class Icon {
 
 
 //貓
-const catDefault = new Cat('Default');
-const catBB = new Cat('BB');
-const catBK = new Cat('BK');
-const catGY = new Cat('GY');
-const catOG = new Cat('OG');
+let catDefault = null;
+let catBB = null;
+let catBK = null;
+let catGY = null;
+let catOG = null;
 //背包
 const itm1 = new Item(0, bagItem1)
 const itm2 = new Item(1, bagItem2)
@@ -418,6 +407,12 @@ const itm5 = new Item(4, bagItem5)
 const itmMilk = new Item(5, bagItem6, 'food')
 const itmCan = new Item(6, bagItem7, 'food')
 const itm8 = new Item(7, bagItem8)
+//呼叫貓咪方法
+function showCat(cat) {
+    if (cat != null) {
+        cat.update();
+    }
+}
 //左側按鈕
 const helpBTN =  new mainpageButton(20, 70, 30, 40, helpBTNimg);
 const gotoRunGame =  new mainpageButton(12, 140, 50, 50, gotoRunGameimg);
@@ -439,12 +434,12 @@ function animate() {
     new Floor()
     new Icon();
 
-    //貓
-    catDefault.update();
-    catBB.update();
-    catBK.update();
-    catGY.update();
-    catOG.update();
+    //呼叫貓咪
+    showCat(catDefault);
+    showCat(catBB);
+    showCat(catBK);
+    showCat(catGY);
+    showCat(catOG);
 
     //背包
     new Bag();
@@ -465,6 +460,3 @@ function animate() {
     
 }
 animate();
-
-
-

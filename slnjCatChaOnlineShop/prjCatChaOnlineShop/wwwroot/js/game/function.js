@@ -1,15 +1,57 @@
-let UserName = '喵咪貓咪貓貓'
-let Ccoin = 12000
-let Ruby = 10000
-let milkCount = 3
-let canCount = 2
-let userCatData = {
-    catDefault: 1,
-    catBK: 1,
-    catOG: 0,
-    catGY: 1,
-    catBB: 0
-};
+//定義初始變數
+let UserName = "未登入"
+let Ccoin = "N/A";
+let Ruby = "N/A";
+let milkCount = 0;
+let canCount = 0;
+let hightestScore = 0;
+
+//模擬資料庫資料
+let userInfo = {
+    name: "小貓貓貓貓",
+    CCoin: 11000,
+    Ruby: 5000,
+    runGameHighestScore: 61
+}
+let userBagData = {
+    catDefault: true,
+    catBB: true,
+    catBK: true,
+    catGY: false,
+    catOG: false,
+    milk: 66,
+    can: 40
+}
+
+//載入資料庫資訊
+function initialize() {
+    UserName = userInfo.name;
+    Ccoin = userInfo.CCoin;
+    Ruby = userInfo.Ruby;
+    milkCount = userBagData.milk;
+    canCount = userBagData.can;
+    hightestScore = userInfo.runGameHighestScore
+    loadUserBagCatInfo();
+}
+
+//使用者背包貓咪資訊
+function loadUserBagCatInfo() {
+    if (userBagData.catDefault != true) {
+        bagItem1.src = '../../images/game/staticCats/kitten_lock.png'
+    }
+    if (userBagData.catBB != true) {
+        bagItem2.src = '../../images/game/staticCats/kitten_lock.png'
+    }
+    if (userBagData.catBK != true) {
+        bagItem3.src = '../../images/game/staticCats/kitten_lock.png'
+    }
+    if (userBagData.catGY != true) {
+        bagItem4.src = '../../images/game/staticCats/kitten_lock.png'
+    }
+    if (userBagData.catOG != true) {
+        bagItem5.src = '../../images/game/staticCats/kitten_lock.png'
+    }
+}
 
 //遊戲本體RWD方法
 function resizeCanvas() {

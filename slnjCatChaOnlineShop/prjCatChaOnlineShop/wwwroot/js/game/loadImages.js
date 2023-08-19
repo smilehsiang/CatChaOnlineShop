@@ -25,13 +25,7 @@ itemSelected.src = '../../images/game/Inventory_select.png'
 // Beach:'/LAYOUT/images/game/lobbyBK_beach.png'
 // };
 
-//轉蛋用圖片
-rubyG.src = '../../images/game/ruby.png';
-ccoinG.src = '../../images/game/catcoin.png';
-rubySingleBTN.src = '../../images/game/ccoinBTN.png';
-ccoinSingleBTN.src = '../../images/game/ccoinBTN_10.png';
-rubyTenBTN.src = '../../images/game/rubyBTN.png';
-ccoinTenBTN.src = '../../images/game/rubyBTN_10.png';
+
 
 
 //貓圖片
@@ -100,13 +94,6 @@ const RunCatData = {
     },
 };
 
-// 轉蛋用圖片
-rubyG.src = '../../images/game/ruby.png';
-ccoinG.src = '../../images/game/catcoin.png';
-rubySingleBTN.src = '../../images/game/rubyBTN.png';
-ccoinSingleBTN.src = '../../images/game/ccoinBTN.png';
-rubyTenBTN.src = '../../images/game/rubyBTN_10.png';
-ccoinTenBTN.src = '../../images/game/ccoinBTN_10.png';
 
 const GachaData = {
     coupon: '../../images/game/gacha/P_coupon.png',
