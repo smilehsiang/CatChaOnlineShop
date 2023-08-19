@@ -73,6 +73,8 @@
 
     <!--增加的部分:用於搜尋關鍵字採ajax-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+
+
 }
 
 <div class="all-title-box all-title-box-picture">
@@ -141,35 +143,35 @@
                                                     <div class="form-row">
                                                         <div class="col-md-6">
                                                             <label>帳號</label>
-                                                            <input type="text" placeholder="帳號"
+                                                            <input type="text" placeholder="帳號" id="memberAccountInput"
                                                                    class="form-control" />
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label>密碼</label>
-                                                            <input type="password" placeholder="密碼"
+                                                            <input type="password" placeholder="密碼" id="passwordInput"
                                                                    class="form-control" />
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="col-md-6">
                                                             <label>姓名</label>
-                                                            <input type="text" placeholder="姓名"
+                                                            <input type="text" placeholder="姓名" id="nameInput"
                                                                    class="form-control" />
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label>生日</label>
-                                                            <input type="date" class="form-control" />
+                                                            <input type="date" class="form-control" id="birthdayInput" />
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="col-md-6">
                                                             <label>電子信箱</label>
-                                                            <input type="email" class="form-control"
+                                                            <input type="email" class="form-control" id="emailInput"
                                                                    placeholder="電子信箱" />
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label>手機號碼</label>
-                                                            <input type="tel" pattern="^\d{10}$" placeholder="手機號碼"
+                                                            <input type="tel" pattern="^\d{10}$" placeholder="手機號碼" id="phoneNumberInput"
                                                                    class="form-control" />
                                                         </div>
                                                     </div>
@@ -223,107 +225,6 @@
                                                             </button>
                                                         </div>
                                                     </div>
-
-                                                    <!--導入7-11超商的script，之後可以做address.cshtml導入老師的script.js-->
-                                                    <script>
-                                                        const countySelect = document.getElementById('countySelect');
-                                                        const townSelect = document.getElementById('townSelect');
-
-                                                        // 假設 countyData 是一個包含縣市和鄉鎮資料的物件陣列
-                                                        const countyData = [
-                                                            {
-                                                                county: '台北市',
-                                                                towns: ['中正區', '大同區', '中山區', '松山區', '大安區'] // 這裡只列了部分鄉鎮
-                                                            },
-                                                            {
-                                                                county: '新北市',
-                                                                towns: ['板橋區', '三重區', '新莊區', '永和區', '中和區'] // 這裡只列了部分鄉鎮
-                                                            },
-                                                            {
-                                                                county: '基隆市',
-                                                                towns: ['中正區', '七堵區', '暖暖區', '仁愛區', '安樂區']
-                                                            },
-                                                            {
-                                                                county: '澎湖縣',
-                                                                towns: ['馬公市', '湖西鄉', '白沙鄉', '西嶼鄉', '望安鄉', /* ... */]
-                                                            }
-                                                            // 其他縣市的資料...
-                                                        ];
-
-                                                        // 初始化縣市選單
-                                                        countyData.forEach(item => {
-                                                            const option = document.createElement('option');
-                                                            option.value = item.county;
-                                                            option.textContent = item.county;
-                                                            countySelect.appendChild(option);
-                                                        });
-
-                                                        // 當縣市選項改變時，動態生成鄉鎮選單
-                                                        countySelect.addEventListener('change', () => {
-                                                            const selectedCounty = countySelect.value;
-                                                            const selectedData = countyData.find(item => item.county === selectedCounty);
-
-                                                            townSelect.innerHTML = ''; // 清空鄉鎮選單
-
-                                                            selectedData.towns.forEach(town => {
-                                                                const option = document.createElement('option');
-                                                                option.value = town;
-                                                                option.textContent = town;
-                                                                townSelect.appendChild(option);
-                                                            });
-                                                        });
-
-                                                    </script>
-                                                    <!--導入全家超商的script，之後可以做address.cshtml導入老師的script.js-->
-                                                    <script>
-                                                        const county2Select = document.getElementById('county2Select');
-                                                        const town2Select = document.getElementById('town2Select');
-
-                                                        // 假設 countyData 是一個包含縣市和鄉鎮資料的物件陣列
-                                                        const county2Data = [
-                                                            {
-                                                                county: '台北市',
-                                                                towns: ['中正區', '大同區', '中山區', '松山區', '大安區'] // 這裡只列了部分鄉鎮
-                                                            },
-                                                            {
-                                                                county: '新北市',
-                                                                towns: ['板橋區', '三重區', '新莊區', '永和區', '中和區'] // 這裡只列了部分鄉鎮
-                                                            },
-                                                            {
-                                                                county: '基隆市',
-                                                                towns: ['中正區', '七堵區', '暖暖區', '仁愛區', '安樂區']
-                                                            },
-                                                            {
-                                                                county: '澎湖縣',
-                                                                towns: ['馬公市', '湖西鄉', '白沙鄉', '西嶼鄉', '望安鄉', /* ... */]
-                                                            }
-                                                            // 其他縣市的資料...
-                                                        ];
-
-                                                        // 初始化縣市選單
-                                                        county2Data.forEach(item => {
-                                                            const option = document.createElement('option');
-                                                            option.value = item.county;
-                                                            option.textContent = item.county;
-                                                            county2Select.appendChild(option);
-                                                        });
-
-                                                        // 當縣市選項改變時，動態生成鄉鎮選單
-                                                        county2Select.addEventListener('change', () => {
-                                                            const selected2County = county2Select.value;
-                                                            const selected2Data = county2Data.find(item => item.county === selected2County);
-
-                                                            town2Select.innerHTML = ''; // 清空鄉鎮選單
-
-                                                            selected2Data.towns.forEach(town => {
-                                                                const option = document.createElement('option');
-                                                                option.value = town;
-                                                                option.textContent = town;
-                                                                town2Select.appendChild(option);
-                                                            });
-                                                        });
-
-                                                    </script>
                                                     <button class="btn-customs btn hvr-hovers ">
                                                         送出
                                                     </button>
@@ -479,15 +380,15 @@
                         </div>
 
                         <!-- cart -->
-                        <!-- summary -->
+                        <!-- 概括summary -->
                         <div class="col-lg-3 order-1 order-sm-1 order-md-1 order-xs-1">
                             <div class="card mb-3 border shadow-0">
                                 <div class="card-body text-center">
                                     <div class="avatar text-center">
                                         <img class="avatar-img mx-auto"
-                                             src="https://randomuser.me/api/portraits/women/17.jpg" alt="">
+                                             src='@Url.Content("~/images/toy.png")' alt="">
                                     </div>
-                                    <span>陳XX</span>
+                                    <span id="summonName" >會員</span>
                                     <div class="d-flex justify-content-center">
                                         <span>您目前持有點數：9點</span><span>/1元</span>
                                     </div>
@@ -585,6 +486,8 @@
                         <div class="col-lg-9 order-3 order-sm-3 order-md-3 order-xs-3">
                             <div class="row gy-3 mb-4">
                                 <div style="height: 350px; overflow: auto;" class="table-responsive">
+                                    <!--下為切版先把資料寫死-->
+                                    <!--
                                     <table class="table  table-bordered table-hover " id="example">
                                         <thead class="table-warning text-center">
                                             <tr>
@@ -701,6 +604,24 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                        </tbody>
+                                    </table>
+                                    -->
+
+                                    <table class="table  table-bordered table-hover" id="orderTable">
+                                        <thead class="table-warning text-center">
+                                            <tr>
+                                                <th scope="col">訂單編號</th>
+                                                <th scope="col">訂單成立日期</th>
+                                                <th scope="col">收件人</th>
+                                                <th scope="col">收件地址</th>
+                                                <th scope="col">收件電話</th>
+                                                <th scope="col">付款方式</th>
+                                                <th scope="col">訂單狀態</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-left">
                                         </tbody>
                                     </table>
                                 </div>
@@ -1261,6 +1182,9 @@
     <script src="~/js/custom.js"></script>
     <script src="~/js/forNews.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
     <!--增加的部分:用於圖片放大預覽-->
     <script>
         // 當頁面載入完成後執行
@@ -1326,9 +1250,221 @@
         document.getElementById("cancelBooking3").addEventListener("click", showCancelConfirmation);
     </script>
 
-    <!--增加的部分:用於dataTables搜尋關鍵字採ajax-->
+
+    <!--導入7-11超商的script，之後可以做address.cshtml導入老師的script.js-->
+    <script>
+        const countySelect = document.getElementById('countySelect');
+        const townSelect = document.getElementById('townSelect');
+
+        // 假設 countyData 是一個包含縣市和鄉鎮資料的物件陣列
+        const countyData = [
+            {
+                county: '台北市',
+                towns: ['中正區', '大同區', '中山區', '松山區', '大安區'] // 這裡只列了部分鄉鎮
+            },
+            {
+                county: '新北市',
+                towns: ['板橋區', '三重區', '新莊區', '永和區', '中和區'] // 這裡只列了部分鄉鎮
+            },
+            {
+                county: '基隆市',
+                towns: ['中正區', '七堵區', '暖暖區', '仁愛區', '安樂區']
+            },
+            {
+                county: '澎湖縣',
+                towns: ['馬公市', '湖西鄉', '白沙鄉', '西嶼鄉', '望安鄉', /* ... */]
+            }
+            // 其他縣市的資料...
+        ];
+
+        // 初始化縣市選單
+        countyData.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.county;
+            option.textContent = item.county;
+            countySelect.appendChild(option);
+        });
+
+        // 當縣市選項改變時，動態生成鄉鎮選單
+        countySelect.addEventListener('change', () => {
+            const selectedCounty = countySelect.value;
+            const selectedData = countyData.find(item => item.county === selectedCounty);
+
+            townSelect.innerHTML = ''; // 清空鄉鎮選單
+
+            selectedData.towns.forEach(town => {
+                const option = document.createElement('option');
+                option.value = town;
+                option.textContent = town;
+                townSelect.appendChild(option);
+            });
+        });
+
+    </script>
+    <!--導入全家超商的script，之後可以做address.cshtml導入老師的script.js-->
+    <script>
+        const county2Select = document.getElementById('county2Select');
+        const town2Select = document.getElementById('town2Select');
+
+        // 假設 countyData 是一個包含縣市和鄉鎮資料的物件陣列
+        const county2Data = [
+            {
+                county: '台北市',
+                towns: ['中正區', '大同區', '中山區', '松山區', '大安區'] // 這裡只列了部分鄉鎮
+            },
+            {
+                county: '新北市',
+                towns: ['板橋區', '三重區', '新莊區', '永和區', '中和區'] // 這裡只列了部分鄉鎮
+            },
+            {
+                county: '基隆市',
+                towns: ['中正區', '七堵區', '暖暖區', '仁愛區', '安樂區']
+            },
+            {
+                county: '澎湖縣',
+                towns: ['馬公市', '湖西鄉', '白沙鄉', '西嶼鄉', '望安鄉', /* ... */]
+            }
+            // 其他縣市的資料...
+        ];
+
+        // 初始化縣市選單
+        county2Data.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.county;
+            option.textContent = item.county;
+            county2Select.appendChild(option);
+        });
+
+        // 當縣市選項改變時，動態生成鄉鎮選單
+        county2Select.addEventListener('change', () => {
+            const selected2County = county2Select.value;
+            const selected2Data = county2Data.find(item => item.county === selected2County);
+
+            town2Select.innerHTML = ''; // 清空鄉鎮選單
+
+            selected2Data.towns.forEach(town => {
+                const option = document.createElement('option');
+                option.value = town;
+                option.textContent = town;
+                town2Select.appendChild(option);
+            });
+        });
+
+    </script>
+
+
+
+    <!--導入基本資料-->
+    <script>
+        $(document).ready(function () {
+            $.getJSON('@Url.Content("~/membership/getmemberinfo")', function (data) {
+                $('#memberAccountInput').val(data.memberAccount);
+                $('#passwordInput').val(data.password);
+                $('#nameInput').val(data.name);
+                $('#emailInput').val(data.email);
+                $('#phoneNumberInput').val(data.phoneNumber);
+                $('#summonName').text(data.name);
+
+                var dateParts = data.birthday.split('-');
+                var year = parseInt(dateParts[0], 10);
+                var month = parseInt(dateParts[1], 10) - 1;
+                var day = parseInt(dateParts[2], 10);
+                var utcDate = new Date(Date.UTC(year, month, day));
+                var formattedDate = utcDate.toISOString().split('T')[0];
+                $('#birthdayInput').val(formattedDate);
+            });
+        });
+    </script>
+
+
+
+    <!--導入消費紀錄-->
+    <script>
+
+        $(document).ready(function () {
+            $.getJSON('@Url.Content("~/membership/GetOrders")', function (data) {
+                var tbody = document.querySelector('#orderTable tbody');
+
+                // 清空表格內容
+                tbody.innerHTML = '';
+
+                // 遍歷 JSON 資料並建立表格列
+                data.forEach(function (item) {
+                    var row = tbody.insertRow();
+                    row.insertCell().textContent = item.orderId;
+
+                    //將日期格式化為 "yyyy-mm-dd"
+                    var formattedDate = new Date(item.orderCreationDate).toISOString().split('T')[0];
+                    row.insertCell().textContent = formattedDate;
+
+                    row.insertCell().textContent = item.recipientName;
+                    row.insertCell().textContent = item.recipientAddress;
+                    row.insertCell().textContent = item.recipientPhone;
+                    row.insertCell().textContent = item.paymentMethodName;
+                    row.insertCell().textContent = item.statusName;
+
+                    // 創建 "訂單明細" 按鈕
+                    var detailButton = document.createElement('button');
+                    detailButton.textContent = '訂單明細';
+                    detailButton.classList.add('btn', 'btn-outline-dark', 'btn-sm', 'mb-2');
+
+                    // 為按鈕添加點擊事件處理程序
+                    detailButton.addEventListener('click', function () {
+                        // 在這裡添加訂單明細的處理邏輯，例如彈出模態或導向到訂單詳細頁面
+                        alert('顯示訂單明細：' + item.orderId);
+                    });
+
+                    // 創建 "申請退換貨" 按鈕
+                    var applyReturnButton = document.createElement('button');
+                    applyReturnButton.textContent = '申請退換貨';
+                    applyReturnButton.classList.add('btn', 'btn-outline-dark', 'btn-sm', 'mb-2');
+
+                    // 為按鈕添加點擊事件處理程序
+                    applyReturnButton.addEventListener('click', function () {
+                        // 在這裡添加申請退換貨的處理邏輯
+                        alert('申請退換貨：' + item.orderId);
+                    });
+
+                    // 創建 "評論" 按鈕
+                    var commentButton = document.createElement('button');
+                    commentButton.textContent = '評論';
+                    commentButton.classList.add('btn', 'btn-warning', 'btn-sm', 'mb-2', 'flex-fill');
+
+                    // 為按鈕添加點擊事件處理程序
+                    commentButton.addEventListener('click', function () {
+                        // 在這裡添加評論的處理邏輯
+                        alert('評論：' + item.orderId);
+                    });
+
+                    // 創建包含按鈕的 div 元素並設置樣式
+                    var buttonContainer = document.createElement('div');
+                    buttonContainer.classList.add('d-flex', 'flex-column', 'align-items-center');
+                    buttonContainer.appendChild(detailButton);
+                    buttonContainer.appendChild(applyReturnButton);
+                    buttonContainer.appendChild(commentButton);
+
+                    // 在表格中插入包含按鈕的單元格
+                    var buttonCell = row.insertCell();
+                    buttonCell.appendChild(buttonContainer);
+
+
+
+
+                });
+
+                initializeDataTable('#orderTable', '#myKeyWord', '#btnQuery');
+
+            });
+        });
+        
+    </script>
+
+    <!--用於dataTables搜尋關鍵字採ajax-->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script>
+        
+
+
         var dataTableConfig = {
             language: {
                 url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/zh-HANT.json',
@@ -1343,12 +1479,24 @@
             });
         }
 
-        //以下分別是標記[消費紀錄、退貨紀錄、預約紀錄、客訴紀錄]
-        initializeDataTable('#example', '#myKeyWord', '#btnQuery');
         initializeDataTable('#example2', '#myKeyWord2', '#btnQuery2');
         initializeDataTable('#example3', '#myKeyWord3', '#btnQuery3');
         initializeDataTable('#example4', '#myKeyWord4', '#btnQuery4');
+
+
     </script>
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
