@@ -23,11 +23,14 @@ let userBagData = {
     can: 40
 }
 
+let gachaTextCCoin = document.getElementById('gachaTextCCoin')
+let gachaTextRuby = document.getElementById('gachaTextRuby')
+
 //載入資料庫資訊
 function initialize() {
     UserName = userInfo.name;
-    Ccoin = userInfo.CCoin;
-    Ruby = userInfo.Ruby;
+    Ccoin = gachaTextCCoin.innerHTML =   userInfo.CCoin;
+    Ruby = gachaTextRuby.innerHTML =  userInfo.Ruby;
     milkCount = userBagData.milk;
     canCount = userBagData.can;
     hightestScore = userInfo.runGameHighestScore
@@ -99,7 +102,7 @@ function resizeCanvas() {
   CanvasRank.height = 
   CanvasDoubleCheck.height =
   CanvasSummonResult.height=600;
-  c.font = "25px monospace";
+   
 
 }
 

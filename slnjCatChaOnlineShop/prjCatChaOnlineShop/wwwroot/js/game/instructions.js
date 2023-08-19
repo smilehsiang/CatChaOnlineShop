@@ -23,7 +23,7 @@ function showInstructions() {
 //內容開關
 function showPage(page) {
     var instructions = document.querySelectorAll('.xx');
-    var pagination = document.querySelector('.pagination');
+ 
 
     for (var i = 0; i < instructions.length; i++) {
         instructions[i].style.display = 'none';
@@ -33,7 +33,7 @@ function showPage(page) {
         var targetPage = document.getElementById(page);
         targetPage.style.display = 'block';
     }
-    pagination.scrollIntoView({ behavior: 'smooth' }); // 捲動至 pagination 元素位置
+
 }
 //右上角X的關閉
 function hideInstructions() {

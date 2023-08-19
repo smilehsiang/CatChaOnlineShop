@@ -10,10 +10,48 @@ justify-content:space-around;
 width:400px;
 }
 
+#gachaCCoinIcon {
+    position: absolute;
+    background: transparent;
+    width: 30px; /* 設定按鈕寬度 */
+    background-image: url('/images/game/catcoin.png'); /* 設定背景圖片路徑 */
+    background-size: cover; /* 設定背景圖片覆蓋整個按鈕 */
+    background-position: center; /* 設定背景圖片居中對齊 */
+    height: 30px; /* 設定按鈕高度 */
+    left: 164px;
+    top: 25px;
+}
+#gachaRubyIcon {
+    position: absolute;
+    background: transparent;
+    background-image: url('/images/game/ruby.png'); /* 設定背景圖片路徑 */
+    background-size: cover; /* 設定背景圖片覆蓋整個按鈕 */
+    background-position: center; /* 設定背景圖片居中對齊 */
+    width: 30px; /* 設定按鈕寬度 */
+    height: 30px; /* 設定按鈕高度 */
+    left: 282px;
+    top: 25px;
+}
+#gachaTextCCoin {
+    position: absolute;
+    font-size: 25px;
+    font-family: fantasy ;
+    left: 200px;
+    top: 20px;
+    color: black;
+}
 
+#gachaTextRuby {
+    position: absolute;
+    font-size: 25px;
+    font-family: fantasy;
+    left: 318px;
+    top: 20px;
+    color: black;
+}
 
 #RubySingleDrow {
-    background:transparent;
+    background: transparent;
     width: 120px; /* 設定按鈕寬度 */
     height: 40px; /* 設定按鈕高度 */
     background-image: url('/images/game/rubyBTN.png'); /* 設定背景圖片路徑 */

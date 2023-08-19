@@ -48,17 +48,17 @@ const itemSelected = new Image();
 class UserInfo {
 
     loadName() {
-        c.font = "20px monospace";
+        c.font = "20px fantasy";
         c.fillStyle = "black";
         c.fillText(`${UserName}`, this.x + 10, this.y);
     }
     loadCatCoin() {
-        c.font = "25px monospace";
+        c.font = "25px fantasy";
         c.fillStyle = "black";
         c.fillText(`${Ccoin}`, this.x + 180, this.y);
     }
     loadRuby() {
-        c.font = "25px monospace";
+        c.font = "25px fantasy";
         c.fillStyle = "black";
         c.fillText(`${Ruby}`, this.x + 300, this.y);
     }
