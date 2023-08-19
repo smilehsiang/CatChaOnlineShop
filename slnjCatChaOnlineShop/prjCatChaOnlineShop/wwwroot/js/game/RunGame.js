@@ -6,7 +6,7 @@ const ctxrungame = Canvasrungame.getContext('2d');
 let isAnimationRunning = true; //遊戲停止與否
 let checkmachine = false;//加分檢查點
 const gravity = 0.5;
-ctxrungame.font = "20px monospace";
+ctxrungame.font = "20px fantasy";
 const rungameBK = new Image();
 const kittenRun = new Image();
 const floorR = new Image();
@@ -33,12 +33,12 @@ class ScoreDisplay {
     loadHightestScore() {
         ctxrungame.fillStyle = "black";
         ctxrungame.drawImage(ScoreBK, 20, 20, 150, 40);
-        ctxrungame.fillText(`Highest:${hightestScore}`, this.x, this.y);
+        ctxrungame.fillText(`Highest: ${hightestScore}`, this.x, this.y);
     }
     loadCurrentScore() {
         ctxrungame.fillStyle = "black";
         ctxrungame.drawImage(ScoreBK, 190, 20, 150, 40);
-        ctxrungame.fillText(`Score:${userScore}`, this.x + 170, this.y);
+        ctxrungame.fillText(`Score: ${userScore}`, this.x + 170, this.y);
     }
     load() {
         this.loadHightestScore();

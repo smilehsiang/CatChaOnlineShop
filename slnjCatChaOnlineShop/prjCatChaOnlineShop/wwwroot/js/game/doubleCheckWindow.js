@@ -1,6 +1,6 @@
 const CanvasDoubleCheck = document.getElementById("CanvasDoubleCheck");
 const ctxrdoublecheck = CanvasDoubleCheck.getContext('2d');
-ctxrdoublecheck.font = "37px monospace";
+ctxrdoublecheck.font = "37px fantasy";
 
 //按鈕
 const yesBTNimg = new Image(); //是
@@ -44,7 +44,7 @@ function doubleCheckLoad() { //載入確認視窗方法
     ctxrdoublecheck.fillStyle = "black";
     yesBTN.load();
     cancelBTN.load();
-    ctxrdoublecheck.fillText(`Your Score:${userScore}`, winX + 60, winY + 120);
+    ctxrdoublecheck.fillText(`Your Score: ${userScore}`, winX + 60, winY + 120);
     ctxrdoublecheck.fillText('Again?', winX + 120, winY + 220);
 }
 
