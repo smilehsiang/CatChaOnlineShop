@@ -16,6 +16,7 @@ canvas.addEventListener('click', (event) => {
         setTimeout(() => { // 計時器
             foodSelected = false;
             closestCat.selected = false;
+            confirmWin.style.display = 'block';
         }, 3000);
     }
 })

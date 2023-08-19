@@ -1,0 +1,46 @@
+#confirmWin {
+    position: absolute;
+    text-align: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 406px; /* 維持canvas的寬度為406px */
+    height: 600px; /* 維持canvas的高度為600px */
+    z-index: 99;
+    display: none;
+}
+
+.confirmWin-container {
+    left: 15%;
+    top: 35%;
+    background-color: white;
+    height: 200px;
+    width: 280px;
+    display: flex;
+    /* justify-content:first baseline; */
+    align-items: center;
+    flex-direction: column;
+    position: relative; /* 設定 .container 為相對定位 */
+    border-radius: 20px; /* 設置圓角半徑為 20px */
+    font-family: 微軟正黑體;
+    font-size: 20px;
+    padding-top:13px;
+    color: black;
+}
+
+#confirmWinBTN {
+    position: absolute;
+    top: 61%;
+    left: 42%;
+    border-radius: 7px;
+    border: 2px black solid;
+    background: #f0cf75;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-family: 微軟正黑體;
+    
+}
+.confirmWin-text {
+    position: absolute;
+    top: 30%;
+    font-size: 14px;
+}

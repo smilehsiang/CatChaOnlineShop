@@ -7,7 +7,8 @@
  @section Styles{
 <link href="~/css/game/Mainstyle.css" rel="stylesheet" />
 <link href="~/css/game/gameinstructions.css" rel="stylesheet" />
- <link href="~/css/game/gachabutton.css" rel="stylesheet" />
+<link href="~/css/game/gachabutton.css" rel="stylesheet" />
+<link href="~/css/game/confirmWin.css" rel="stylesheet" />
 }
 
     <!-- Start 遊戲畫面 -->
@@ -73,6 +74,17 @@
                 </nav>
             </div>
             <!-- End 小遊戲說明提示 -->
+            <!-- Start 獲得物品確認視窗 -->
+            <div id="confirmWin">
+            <div class="confirmWin-container" >
+                獲得物品
+                <div class="confirmWin-text">
+                        獲得貓幣 100
+                </div>
+             </div>
+            <button id="confirmWinBTN"  onclick="closeConfirmWin()">確認</button>
+            </div>
+            <!-- End 獲得物品確認視窗 -->
             <!-- Start Canvas遊戲畫布 -->
             <canvas id="CanvasCheckIn"></canvas>
             <div id="CanvasRank">
