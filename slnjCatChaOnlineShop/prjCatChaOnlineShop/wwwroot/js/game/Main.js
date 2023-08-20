@@ -97,9 +97,11 @@ class Cat {
             //餵食後，取消背包食物選取
             if (itmMilk.isSelected) {
                 itmMilk.setSelected(!itmMilk.isSelected);
+                feedAndGetReward();
             }
             if (itmCan.isSelected) {
                 itmCan.setSelected(!itmCan.isSelected);
+                feedAndGetReward();
             }
         }
     }
@@ -262,7 +264,7 @@ class Cat {
         return Math.floor(Math.random() * maxNum + 1);
     }
     constructor(color) {
-        this.x = this.getRanNum(canvas.width - 60);
+        this.x = this.getRanNum(canvas.width - 128);
         this.y = 380;
         this.width = 128;
         this.height = 128;

@@ -14,11 +14,12 @@ canvas.addEventListener('click', (event) => {
     if (closestCat) {
         feedcat(closestCat, x, y);
         setTimeout(() => { // 計時器
-            foodSelected = false;
             closestCat.selected = false;
-            confirmWin.style.display = 'block';
+           /* confirmWin.style.display = 'block';*/
         }, 3000);
     }
+
+   
 })
 
 function findClosestCat(x, y) {//找到最接近滑鼠位置的貓
@@ -69,9 +70,32 @@ function consumeFood() { //扣除食物數量邏輯，數量為0就不能被扣
     }
 }
 
-function getCCoin() {//隨機獲得貓幣方法
+let confirmWin_text = document.getElementById('confirmWin-text');
+function feedAndGetReward() {//隨機獲得貓幣方法
+    //只要有餵食就一定會獲得200貓幣
+    //小機率會獲得紅利10
+    //小機率會獲得商城折價券
+    const num = Math.floor(Math.random() * 100) + 1
+    console.log(num);
+    switch (true) {
+        case num <= 2:
+            confirmWin_text.innerHTML = '貓抓抓商城 50元折價券*1'
+            break;
+        case num <= 10 && num > 2:
+            confirmWin_text.innerHTML = '紅利 50'
+            userInfo.Ruby += 50;
+            break;
+        default:
+            confirmWin_text.innerHTML = '貓幣 200'
+            userInfo.CCoin += 200;
+            break;
+    }
 
+    setTimeout(() => { // 計時器  
+        confirmWin.style.display = 'block';
+    }, 3000);
 }
+
 
 
  
