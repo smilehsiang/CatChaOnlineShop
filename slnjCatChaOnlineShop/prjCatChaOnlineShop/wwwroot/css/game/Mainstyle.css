@@ -1,8 +1,8 @@
 @media only screen {
 
     .result-container { /*設定抽獎格子*/
-       /* padding-top: 50%;*/
-        grid-template-columns: repeat(5, 70px); /* 5個70px寬的列 */
+        padding: 20px;
+        /*grid-template-columns: repeat(5, 70px);*/ /* 5個70px寬的列 */
         gap: 10px; /* 每個項目之間的間距 */
         max-width: 500px; /* 最大寬度為600px */
         width: 100%; /* 使用100%寬度以適應父容器的大小 */
