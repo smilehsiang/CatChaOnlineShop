@@ -70,7 +70,9 @@ function consumeFood() { //扣除食物數量邏輯，數量為0就不能被扣
     }
 }
 
-let confirmWin_text = document.getElementById('confirmWin-text');
+const confirmWin_title = document.getElementById('confirmWin-title'); //視窗標題
+const confirmWin_text = document.getElementById('confirmWin-text');//視窗內文
+
 function feedAndGetReward() {//隨機獲得貓幣方法
     //只要有餵食就一定會獲得200貓幣
     //小機率會獲得紅利10
@@ -80,22 +82,32 @@ function feedAndGetReward() {//隨機獲得貓幣方法
     switch (true) {
         case num <= 2:
             confirmWin_text.innerHTML = '貓抓抓商城 50元折價券*1'
+
             break;
         case num <= 10 && num > 2:
             confirmWin_text.innerHTML = '紅利 50'
             userInfo.Ruby += 50;
+
             break;
         default:
+
             confirmWin_text.innerHTML = '貓幣 200'
             userInfo.CCoin += 200;
+
             break;
     }
-
+    confirmWin_title.innerHTML = '恭喜獲得'
     setTimeout(() => { // 計時器  
         confirmWin.style.display = 'block';
     }, 3000);
 }
 
+function chooseCatBeforeGame() {
+
+
+
+
+}
 
 
  
