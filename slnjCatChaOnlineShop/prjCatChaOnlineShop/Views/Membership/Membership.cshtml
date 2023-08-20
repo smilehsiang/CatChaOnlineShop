@@ -139,40 +139,40 @@
                                     <div class="row gy-3 mb-4">
                                         <div class="container">
                                             <div class="card-body">
-                                                <form>
+                                                <form id="memberInfoForm">
                                                     <div class="form-row">
                                                         <div class="col-md-6">
                                                             <label>帳號</label>
-                                                            <input type="text" placeholder="帳號" id="memberAccountInput"
-                                                                   class="form-control" />
+                                                            <input type="text" placeholder="帳號" id="memberAccountInput" name="MemberAccount"
+                                                                   class="form-control" readonly/>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label>密碼</label>
-                                                            <input type="password" placeholder="密碼" id="passwordInput"
-                                                                   class="form-control" />
+                                                            <input type="password" placeholder="密碼" id="passwordInput" name="Password" pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$"
+                                                                   class="form-control" required />
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="col-md-6">
                                                             <label>姓名</label>
-                                                            <input type="text" placeholder="姓名" id="nameInput"
-                                                                   class="form-control" />
+                                                            <input type="text" placeholder="姓名" id="nameInput" name="Name"
+                                                                   class="form-control" required="required" />
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label>生日</label>
-                                                            <input type="date" class="form-control" id="birthdayInput" />
+                                                            <input type="date" class="form-control" id="birthdayInput" name="Birthday" required />
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="col-md-6">
                                                             <label>電子信箱</label>
-                                                            <input type="email" class="form-control" id="emailInput"
-                                                                   placeholder="電子信箱" />
+                                                            <input type="email" class="form-control" id="emailInput" name="Email"
+                                                                   placeholder="電子信箱" required />
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label>手機號碼</label>
-                                                            <input type="tel" pattern="^\d{10}$" placeholder="手機號碼" id="phoneNumberInput"
-                                                                   class="form-control" />
+                                                            <input type="tel" pattern="^\d{10}$" placeholder="手機號碼" id="phoneNumberInput" name="PhoneNumber"
+                                                                   class="form-control" required />
                                                         </div>
                                                     </div>
                                                     <!--常用地址-->
@@ -200,6 +200,7 @@
                                                             </button>
                                                         </div>
                                                     </div>
+                                                    
                                                     <!--7-11超商取貨地址-->
                                                     <div class="form-row">
                                                         <div class="col-md-12">
@@ -225,7 +226,8 @@
                                                             </button>
                                                         </div>
                                                     </div>
-                                                    <button class="btn-customs btn hvr-hovers ">
+                                                    
+                                                    <button class="btn-customs btn hvr-hovers " id="memberInfoButton" type="submit">
                                                         送出
                                                     </button>
                                                 </form>
@@ -384,10 +386,12 @@
                         <div class="col-lg-3 order-1 order-sm-1 order-md-1 order-xs-1">
                             <div class="card mb-3 border shadow-0">
                                 <div class="card-body text-center">
-                                    <div class="avatar text-center">
-                                        <img class="avatar-img mx-auto"
-                                             src='@Url.Content("~/images/toy.png")' alt="">
-                                    </div>
+                                    <form method="post" enctype="multipart/form-data" action="/ImageTest/UploadImage">
+                                        <div class="avatar text-center" id="headShotDiv">
+                                            <img class="avatar-img mx-auto"
+                                                 src='@Url.Content("~/images/toy.png")' alt="">
+                                        </div>
+                                    </form>
                                     <span id="summonName" >會員</span>
                                     <div class="d-flex justify-content-center">
                                         <span>您目前持有點數：9點</span><span>/1元</span>
@@ -1014,35 +1018,34 @@
             <section class="my-5">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>請選擇申訴類型</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
+                        <form id="complaintForm">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <select class="form-select" aria-label="Default select example" id="appealCategorySelect">
+                                        <option value="" selected>請選擇申訴類型</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="subject" name="name" placeholder="標題"
-                                       required data-error="請輸入您的標題">
-                                <div class="help-block with-errors"></div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="ComplaintTitle" name="ComplaintTitle" placeholder="標題"
+                                           required data-error="請輸入您的標題">
+                                    <div class="help-block with-errors"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <textarea class="form-control" id="message" placeholder="內容" rows="4"
-                                          data-error="請輸入您的內容" required></textarea>
-                                <div class="help-block with-errors"></div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="ComplaintContent" placeholder="內容" rows="4" name="ComplaintContent"
+                                              data-error="請輸入您的內容" required></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="submit-button text-center">
+                                    <button class="btn hvr-hover" id="complaintSubmit" type="submit">送出訊息</button>
+                                    <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                    <div class="clearfix"></div>
+                                </div>
                             </div>
-                            <div class="submit-button text-center">
-                                <button class="btn hvr-hover" id="submit" type="submit">送出訊息</button>
-                                <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </section>
@@ -1354,9 +1357,10 @@
 
 
 
-    <!--導入基本資料-->
+    <!--1.載入時，導入基本資料-->
     <script>
         $(document).ready(function () {
+            //拿取基本資料數據
             $.getJSON('@Url.Content("~/membership/getmemberinfo")', function (data) {
                 $('#memberAccountInput').val(data.memberAccount);
                 $('#passwordInput').val(data.password);
@@ -1373,12 +1377,54 @@
                 var formattedDate = utcDate.toISOString().split('T')[0];
                 $('#birthdayInput').val(formattedDate);
             });
+            //送出修改後的基本資料
+            $('#memberInfoButton').click(function (event) {
+                /*
+                var passwordValue = $('#passwordInput').val();
+                var nameValue = $('#nameInput').val();
+                var emailValue = $('#emailInput').val();
+                var phoneNumberValue = $('#phoneNumberInput').val();
+                var birthdayValue = $('#birthdayInput').val();
+                */
+                event.preventDefault();
+
+                const formData = new FormData(document.querySelector('#memberInfoForm'));
+
+                fetch('@Url.Content("/Membership/UpdateMemberInfo")', {
+                    body: formData,
+                    method: 'POST'
+
+                })
+                .then(response => {
+                    if (response.ok) {
+                        //這裡要放入新資料
+                        //像是 $('#summonName').text(data.name);
+                        return response.text();
+                    } else {
+                        throw new Error('連線有誤，請向客服人員聯繫');
+                    }
+                })
+                .then(data => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '修改成功',
+                        // text: '感謝您來信'
+                    });
+                })
+                .catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '錯誤',
+                        text: error.message
+                    });
+                });
+            });
         });
     </script>
 
 
 
-    <!--導入消費紀錄-->
+    <!--2.載入時，導入消費紀錄-->
     <script>
 
         $(document).ready(function () {
@@ -1486,18 +1532,99 @@
 
     </script>
 
+    <!--上傳大頭照-->
+    <script>
+
+        $(document).ready(function () {
+
+            $('#headShotDiv').on('click', function () {
+               
+
+            });
+        });
+
+    </script>
+
+    <!--6.載入: 導入客服中心。點擊: 送出填寫資料到控制台-->
+    <script>
+        $(document).ready(function () {
+            //拿取客訴類型數據
+            var selectElement = document.getElementById('appealCategorySelect');
+            $.getJSON('@Url.Content("~/membership/GetAppealCategory")', function (data) {
+                data.forEach(function (item) {
+                    var option = document.createElement('option');
+                    option.value = item.appealCategoryId;
+                    option.textContent = item.categoryName;
+                    selectElement.appendChild(option);
+                });
+            });
+            //送出客訴內容
+            $('#complaintSubmit').click(function (event) {
+                var selectedValue = $('#appealCategorySelect').val();
+                var subjectValue = $('#ComplaintTitle').val();
+                var messageValue = $('#ComplaintContent').val();
+
+                if (!selectedValue) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '請選擇申訴類型',
+                    });
+                    event.preventDefault();
+                } else if (!subjectValue || subjectValue.trim() === "") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '請輸入標題',
+                    });
+                    event.preventDefault();
+                } else if (!messageValue || messageValue.trim() === "") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '請輸入內容',
+                    });
+                    event.preventDefault();
+                } else {
+                    event.preventDefault();
+
+                    const formData = new FormData(document.querySelector('#complaintForm'));
+                    formData.append("selectedValue", selectedValue);
+
+                    fetch('@Url.Content("/Membership/SaveComplaint")', {
+                        body: formData,
+                        method: 'POST'
+
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                                $('#appealCategorySelect').val('');  // 清空select的值
+                                $('#ComplaintTitle').val('');         // 清空input的值
+                                $('#ComplaintContent').val('');       // 清空textarea的值
+
+                            return response.text();
+                        } else {
+                            throw new Error('連線有誤，請向客服人員聯繫');
+                        }
+                    })
+                    .then(data => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '送出成功',
+                            text: '感謝您來信'
+                        });
 
 
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '錯誤',
+                            text: error.message
+                        });
+                    });
+                }
+            });
+        });
 
-
-
-
-
-
-
-
-
-
+    </script>
 }
 
 
