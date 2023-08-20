@@ -5,6 +5,11 @@ using prjCatChaOnlineShop.Models.ViewModels;
 using prjCatChaOnlineShop.Models.CModels;
 using prjCatChaOnlineShop.Services.Function;
 using System.Security.Policy;
+using PagedList;
+using DataTables.AspNet.Core;
+using Microsoft.EntityFrameworkCore;
+using DataTables.AspNet.AspNetCore;
+using System.Data;
 
 namespace prjCatChaOnlineShop.Controllers.CMS
 {
@@ -22,6 +27,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
 
         public IActionResult News()
         {
+
             var NewsViewModel = new CNewsModel
             {
                 NewsType = _cachaContext.AnnouncementTypeData.ToList(),
@@ -96,5 +102,15 @@ namespace prjCatChaOnlineShop.Controllers.CMS
 
             return Ok(new { imageUrl = $"{imageUrl}" });
         }
+
+
+        public IActionResult tableData()
+        {
+            var data = _cachaContext.GameShopAnnouncement.ToList();
+
+            return Json(new { data });
+        }
+
+
     }
 }
