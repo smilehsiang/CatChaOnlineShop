@@ -30,7 +30,7 @@ const kittenGY = new Image();
 const kittenBB = new Image();
 const floorImg = new Image();
 const lobbyBK = new Image();//TODO把圖片改成動態
-
+const heart = new Image();
 // 背包
 const bagbk = new Image();
 const bagItem1 = new Image();
@@ -84,14 +84,11 @@ class Cat {
         if (this.selected == false) //沒有被選擇時候，不會產生愛心
             return;
         else {
-            this.heart.src = '../../images/game/thought_bubble.png'
-            c.drawImage(this.heart, 32 * this.heartframe, 0, 32, 32, this.x + 30, this.y, 60, 60)
-
+            c.drawImage(heart, 32 * this.heartframe, 0, 32, 32, this.x + 30, this.y, 60, 60)
             if (this.lobbyframecount > 11)//愛心動畫影格
             {
                 this.heartframe++;
                 if (this.heartframe > 2) this.heartframe = 0
-
             }
 
             //餵食後，取消背包食物選取
@@ -276,7 +273,6 @@ class Cat {
         this.lobbyframecount = 0;
         this.catcolor = color;
         this.heartframe = 0;
-        this.heart = new Image();
         this.selected = false;
     }
 

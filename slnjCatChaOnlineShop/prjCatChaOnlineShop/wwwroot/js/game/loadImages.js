@@ -9,6 +9,7 @@ helpBTNimg.src = '../../images/game/Icon_Question.png';
 rankBTNimg.src = '../../images/game/Icon_Stats.png';
 gotoGachaimg.src = '../../images/game/gachaIcon.png';
 gotoRunGameimg.src = '../../images/game/runGameIcon.png';
+heart.src = '../../images/game/thought_bubble.png'
 
 //大廳背包格子
 bagItem1.src = '../../images/game/staticCats/kittenDefault_stopR.png'
