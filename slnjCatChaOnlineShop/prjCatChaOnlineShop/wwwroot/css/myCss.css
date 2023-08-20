@@ -296,7 +296,7 @@ background-color:#EDD8C0 ;
 }
 
 /* -------------------start footer部分顏色------------------*/
-.footer-top-box h3::before {
+/*.footer-top-box h3::before {
     border-bottom: 2px solid #f8f9fa;
     content: "";
     height: 3px;
@@ -358,9 +358,17 @@ background-color:#EDD8C0 ;
     border: 1px #000000 dashed;
     margin-bottom: 30px;
     padding-bottom: 10px;
-}
+}*/
 /* -------------------end footer部分顏色------------------*/
 
 .checokoutbtn {
     color: #ffffff
+}
+
+/* 自訂錯誤訊息的文字顏色 */
+.error-message {
+    color: red !important;
+    font-size: 15px;
+    font-family: 'Dosis', sans-serif;
+    line-height: 1.80857;
 }

@@ -6,22 +6,23 @@
 
 <html>
 <head>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--myCss-->
+    <link rel="stylesheet" href="~/css/myCss.css">
     <!-- Site CSS -->
     <link rel="stylesheet" href="~/css/style.css">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="~/css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="~/css/custom.css">
-    <!--myCss-->
-    <link rel="stylesheet" href="~/css/myCss.css">
+
     <!--日期選擇-->
-    
+
 
 
     <style>
@@ -53,65 +54,61 @@
                 <div class="text-center mt-3" style="font-size:40px">
                     <a id="loginModalLabel">註冊會員</a>
                 </div>
-                      <div class=" row justify-content-md-center">
-                                    <div class="col-10">
-                                        <div class="">
-                                            <form class="needs-validation" novalidate>
-                                                <div class="row ">
-                                                    <div class="mb-2">
-                                                        <label for="register-name">姓名：</label>
-                                                        <input type="text" class="form-control" id="register-name"
-                                                               placeholder="姓名" required>
-                                                        <div class="invalid-feedback"> 請輸入姓名</div>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <label for="register-birth">生日：</label>
+                <div class=" row justify-content-md-center">
+                    <div class="col-10">
+                        <div class="">
+                            <form id="registerForm">
+                                <div class="row ">
+                                    <div class="mb-2 form-group">
+                                        <label for="Name">姓名：</label>
+                                        <input type="text" class="form-control " name="Name"
+                                               placeholder="姓名" required>
+                                    </div>
+                                    <div class="mb-2 form-group">
+                                        <label for="Birthday">生日：</label>
                                         <div class="input-group date" id="datepicker">
-                                            <input type="text" class="form-control" id="date" placeholder="請輸入生日"/>
+                                            <input type="text" class="form-control " name="Birthday" placeholder="請輸入生日" />
                                             <span class="input-group-append">
                                                 <span class="input-group-text bg-light d-block">
                                                     <i class="fa-solid fa-calendar-days"></i>
                                                 </span>
                                             </span>
                                         </div>
-                                                        <div class="invalid-feedback"> 請輸入生日</div>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <label for="register-email">電子信箱：</label>
-                                                        <input type="text" class="form-control" id="register-email"
-                                                               placeholder="email" required>
-                                                        <div class="invalid-feedback"> 請輸入電子信箱</div>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <label for="register-phone">手機號碼：</label>
-                                                        <input type="text" class="form-control" id="register-phone"
-                                                               placeholder="手機號碼" required>
-                                                        <div class="invalid-feedback"> 請輸入手機號碼</div>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <label for="register-password">設定密碼：</label>
-                                                        <input type="text" class="form-control" id="register-password"
-                                                               placeholder="請設定6-15位英數字混合密碼,英文需區分大小寫" required>
-                                                        <div class="invalid-feedback"> 請設定符合規則的密碼</div>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <label for="register-passwordcheck">再次確認密碼：</label>
-                                                        <input type="text" class="form-control" id="register-passwordcheck"
-                                                               placeholder="請再輸入一次密碼" required>
-                                                        <div class="invalid-feedback"> 請再輸入一次密碼</div>
-                                                    </div>
-                                                </div>
-                                                <div class="d-grid gap-2 mt-3">
-                                                    <button class="mb-3 btn btn-light" type="button">註冊</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <!--<div class="modal-footer" class="row gy-4"></div>-->
+                                    </div>
+                                    <div class="mb-2 form-group">
+                                        <label for="Email">電子信箱：</label>
+                                        <input type="email" class="form-control" name="Email" id="emailInput"
+                                               placeholder="email" required>
+                                        <div id="emailError" class="invalid-feedback error-message">此信箱已被註冊過</div>
+                                    </div>
+                                    <div class="mb-2 form-group">
+                                        <label for="PhoneNumber">手機號碼：</label>
+                                        <input type="text" class="form-control memberPhoneNum" name="PhoneNumber"
+                                               placeholder="手機號碼" required>
+                                    </div>
+                                    <div class="mb-2 form-group">
+                                        <label for="passwordInput">設定密碼：</label>
+                                        <input type="text" class="form-control memberPassword" name="Password" id="passwordInput"
+                                               placeholder="請設定6-15位英數字混合密碼,英文需區分大小寫" required>
+                                    </div>
+                                    <div class="mb-2 form-group">
+                                        <label for="passwordCheck">再次確認密碼：</label>
+                                        <input type="text" class="form-control memberPasswordCheck" name="PasswordCheck" id="passwordCheck"
+                                               placeholder="請再輸入一次密碼" required>
+                                        <div class="invalid-feedback"> 請再輸入一次密碼</div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="d-grid gap-2 mt-3">
+                                    <button class="mb-3 btn btn-light" id="registerbutton" type="submit">註冊</button>
+                                </div>
+                            </form>
                         </div>
+                        <!--<div class="modal-footer" class="row gy-4"></div>-->
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Start Footer  -->
     <footer>
         <div class="footer-main mt-3">
@@ -214,13 +211,94 @@
             integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
             crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-    <!--引用Bundle，這樣nav導覽與頁籤就可以使用-->
-    <!---->
-    <!-- ALL PLUGINS -->
+    <!--驗證欄位-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="~/js/registerValidate.js"></script>
+
+    <!--選擇生日-->
     <script>
         $(function () {
             $('#datepicker').datepicker();
         });
     </script>
+
+    <script type="text/javascript">
+        var emailAlreadyRegistered = false; // 添加變數以追蹤是否已經註冊
+
+        $(document).ready(function () {
+            // 當輸入完電子信箱點選到其他地方(移開焦點)時執行信箱驗證
+            $("#emailInput").blur(function () {
+                var email = $(this).val();
+                validateEmail(email);
+            });
+
+            // 表單驗證
+            $("#registerForm").validate({
+                errorClass: "error-message",
+                submitHandler: function (form) {
+                    if (!emailAlreadyRegistered) { // 檢查是否已經註冊
+                        event.preventDefault(); // 防止預設行為的發生
+                        const formData = new FormData(form);
+                        registerMember(formData);
+                    }
+                },
+                errorPlacement: function (error, element) {
+                    element.closest('.form-group').append(error);
+                },
+                rules: {
+                    // 可以加上特殊的規則
+                    PasswordCheck: {
+                        equalTo: "#passwordInput"
+                    }
+                },
+                messages: {
+                    PasswordCheck: {
+                        equalTo: "密碼不相符，請再重新輸入一次"
+                    }
+                }
+            });
+        });
+
+        // 驗證電子信箱是否存在的函數
+        function validateEmail(email) {
+            $.ajax({
+                url: '@Url.Content("~/MemberLogin/CheckEmailExist")',
+                method: 'POST',
+                data: { email: email },
+                success: function (response) {
+                    if (response) {
+                        $("#emailError").show();
+                        emailAlreadyRegistered = true; // 設定為已註冊
+                    } else {
+                        $("#emailError").hide();
+                        emailAlreadyRegistered = false; // 設定為未註冊
+                    }
+                }
+            }).catch(function (error) {
+                console.error(error); // 處理Ajax錯誤
+            });
+        }
+
+        // 註冊會員的函數
+        function registerMember(formData) {
+            fetch('@Url.Content("~/MemberLogin/RegisterMember")', {
+                body: formData,
+                method: 'POST'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert("註冊會員成功");
+                        location.href = '@Url.Content("~/MemberLogin/Login")';
+                    } else {
+                        alert("註冊會員失敗");
+                    }
+                }).catch(function (error) {
+                    console.error(error); // 處理Ajax錯誤
+                });
+        }
+
+    </script>
+
+   
 </body>
 </html>
