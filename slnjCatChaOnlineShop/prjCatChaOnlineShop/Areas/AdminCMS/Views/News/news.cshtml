@@ -1,5 +1,6 @@
 ﻿@model prjCatChaOnlineShop.Models.ViewModels.CNewsModel
 
+
 @{
     ViewData["Title"] = "News";
     Layout = "~/Areas/AdminCMS/Views/Shared/CMS_Layout.cshtml";
@@ -98,13 +99,13 @@
                         <label for="date">
                             選擇發布時間：
                         </label>
-                        <input type="datetime-local" id="PublishTime" name="PublishTime" min="" />
+                        <input type="datetime-local" class="PublishTime" id="PublishTime" name="PublishTime" min="" />
                     </div>
                     <div class="d-flex mt-2 ">
                         <label for="date">
                             選擇結束時間：
                         </label>
-                        <input type="datetime-local" id="PublishEndTime" name="PublishEndTime" min="" />
+                        <input type="datetime-local" class="PublishEndTime" id="PublishEndTime" name="PublishEndTime" min="" />
                     </div>
                     <div class="d-flex mt-2 ">
                         <label for="form-check-input">是否置頂：</label>
@@ -153,31 +154,15 @@
     </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div id="hhhh"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <!--編輯彈出視窗-->
-@* <div class="modal fade" id="exampleModal" aria-hidden="true"
+<div class="modal fade" id="exampleModal" aria-hidden="true"
      aria-labelledby="exampleModalLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalToggleLabel">編輯 Edit</h5>
+                <h5 class="modal-title" id="exampleModalToggleLabel">編輯</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
@@ -187,30 +172,23 @@
                     <label class="col-form-label">公告標題：</label>
                     <div class="d-inline-flex">
                         <input type="text" id="newsTitle" class="form-control w-100" name="AnnouncementTitle">
-                        <select class="form-select" id="announcementTypeSelect" name="AnnouncementTypeId ">
-                            <option selected>請選擇公告類型</option>
-                            @foreach (var News in Model.NewsType)
-                            {
-                                <option value="@News.AnnouncementTypeId">@News.AnnouncementTypeName</option>
-                            }
-                        </select>
                     </div>
                 </div>
                 <div class="col">
                     <label>公告內文：</label>
-                    <div id="summernote"></div>
+                    <div id="summernote-for-editor"></div>
                 </div>
                 <div class="d-flex mt-2 ">
                     <label for="date">
                         選擇發布時間：
                     </label>
-                    <input type="datetime-local" id="PublishTime" name="PublishTime" min="" />
+                    <input type="datetime-local" id="PublishTime-editor" name="PublishTime" min="" />
                 </div>
                 <div class="d-flex mt-2 ">
                     <label for="date">
                         選擇結束時間：
                     </label>
-                    <input type="datetime-local" id="PublishEndTime" name="PublishEndTime" min="" />
+                    <input type="datetime-local" id="PublishEndTime-editor" name="PublishEndTime" min="" />
                 </div>
                 <div class="d-flex mt-2 ">
                     <label for="form-check-input">是否置頂：</label>
@@ -230,7 +208,7 @@
             </div>
         </div>
     </div>
-</div> *@
+</div>
 
 <!--編輯彈出視窗-->
 <!--表格-->
@@ -298,7 +276,9 @@
                     "render": function (data, type, row) {
                         var deleteUrl = '@Url.Action("Delete", "News", new { area = "AdminCMS", id = "announcementTypeId" })';
                         deleteUrl = deleteUrl.replace('announcementTypeId', row.announcementId);
-                        return `<button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit"></i></button> |
+                        var editorUrl = '@Url.Action("EditorNews","News",new { area = "AdminCMS", id = "announcementTypeId" })';
+                        editorUrl = editorUrl.replace('announcementTypeId', row.announcementId);
+                        return `<a href="${editorUrl}" role="button"><button data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit"></i></button></a> |
                                         <a href="${deleteUrl}" onclick="return confirm('確定要刪除嗎?')"><i class="fas fa-trash-alt"></i></a>`;
                     }
                 }
@@ -324,11 +304,12 @@
                 }
             })
         }
-            $('#hhhh').summernote();
+        
 
         $(document).ready(function () {
 
             $('#summernote').summernote({
+                height: 300,
                 callbacks: {
                     onImageUpload: function (files) {
                         var editor = $(this);
@@ -389,6 +370,9 @@
                     }
                 });
             });
+            $('#summernote-for-editor').summernote({
+                height: 300
+            });
         });
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -399,8 +383,10 @@
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const dateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
-            document.getElementById("PublishTime").min = dateTime;
-            document.getElementById("PublishEndTime").min = dateTime;
+            document.querySelector("#PublishTime").min = dateTime;
+            document.querySelector("#PublishEndTime").min = dateTime;
+            document.querySelector("#PublishTime-editor").min = dateTime;
+            document.querySelector("#PublishEndTime-editor").min = dateTime;
         });
 
     </script>

@@ -158,6 +158,20 @@ namespace prjCatChaOnlineShop.Controllers.CMS
             }
             return RedirectToAction("news" , "News", new {area="AdminCMS" });
         }
+        [HttpGet]
+        public IActionResult EditorNews(int? id)
+        {
+            if (id == null)
+            {
+                return Json(new { success = false, message = "Invalid ID" });
+            }
+            GameShopAnnouncement cAnnounce = _cachaContext.GameShopAnnouncement.FirstOrDefault(p => p.AnnouncementId == id);
+            if (cAnnounce == null)
+            {
+                return Json(new { success = false, message = "Item not found" });
+            }
+            return Json(new { success = true, data = cAnnounce });
+        }
 
     }
 }
