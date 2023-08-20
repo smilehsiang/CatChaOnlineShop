@@ -46,5 +46,5 @@ function hideInstructions() {
 
 function closeConfirmWin() {
     confirmWin.style.display = 'none';
-
+    initialize();
 }
