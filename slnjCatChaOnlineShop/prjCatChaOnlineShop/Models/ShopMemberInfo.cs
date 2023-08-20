@@ -63,11 +63,15 @@ public partial class ShopMemberInfo
 
     public virtual GameRankData Level { get; set; }
 
+    public virtual ShopMemberStatus MemberStatus { get; set; }
+
     public virtual ShopMyCatNameList MyCatNameList { get; set; }
 
     public virtual ICollection<ShopCatStatus> ShopCatStatus { get; set; } = new List<ShopCatStatus>();
 
     public virtual ICollection<ShopCommonAddressData> ShopCommonAddressData { get; set; } = new List<ShopCommonAddressData>();
+
+    public virtual ICollection<ShopCommonShop> ShopCommonShop { get; set; } = new List<ShopCommonShop>();
 
     public virtual ICollection<ShopFavoriteDataTable> ShopFavoriteDataTable { get; set; } = new List<ShopFavoriteDataTable>();
 

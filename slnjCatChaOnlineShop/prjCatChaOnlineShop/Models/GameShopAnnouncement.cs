@@ -19,7 +19,7 @@ public partial class GameShopAnnouncement
 
     public DateTime? EditTime { get; set; }
 
-    public DateTime? PublishTime { get; set; }
+    public string PublishTime { get; set; }
 
     public bool? DisplayOrNot { get; set; }
 
@@ -34,6 +34,8 @@ public partial class GameShopAnnouncement
     public int? AnnouncementTypeId { get; set; }
 
     public string AnnouncementImageContent { get; set; }
+
+    public string PublishEndTime { get; set; }
 
     public virtual ShopGameAdminData Admin { get; set; }
 

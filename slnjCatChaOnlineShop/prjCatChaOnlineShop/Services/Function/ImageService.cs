@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using Azure.Storage.Blobs;
-
+using prjCatChaOnlineShop.Models.CModels;
 
 namespace prjCatChaOnlineShop.Services.Function
 {

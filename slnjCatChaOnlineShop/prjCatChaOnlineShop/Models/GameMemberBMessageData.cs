@@ -12,4 +12,6 @@ public partial class GameMemberBMessageData
     public string 訊息發送者內容 { get; set; }
 
     public DateTime? SentTime { get; set; }
+
+    public virtual ICollection<GameMessageData> GameMessageData { get; set; } = new List<GameMessageData>();
 }

@@ -1,4 +1,5 @@
-﻿
+﻿@model prjCatChaOnlineShop.Models.ViewModels.CNewsModel
+
 @{
     ViewData["Title"] = "News";
     Layout = "~/Areas/AdminCMS/Views/Shared/CMS_Layout.cshtml";
@@ -7,16 +8,12 @@
 @section Styles{
     <!--SCEditor-->
     <!-- 引入SCEditor的CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/newsEditor/minified/themes/default.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
     <!-- 引入jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.x.x/jquery.min.js"></script>
-
     <!-- 引入SCEditor的JavaScript -->
-    <script src="~/newsEditor/minified/sceditor.min.js"></script>
-    <script src="~/newsEditor/minified/formats/bbcode.js"></script>
-    <script src="~/newsEditor/minified/formats/xhtml.js"></script>
-    <script src="~/newsEditor/languages/de.js"></script>
 
     <style>
         /* 原始圖片的視窗 */
@@ -76,43 +73,55 @@
                             aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <!-- <label>ID：</label> -->
-                            <input type="hidden" class="form-control" disabled readonly>
-                        </div>
+                    <div class="form-group">
+                        <!-- <label>ID：</label> -->
+                        <input type="hidden" class="form-control" disabled readonly>
+                    </div>
 
-                        <div class="col-md-6">
-                            <label>公告標題：</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-md-6">
-                            <label>公告類型ID：</label>
-                            <select class="form-control">
-                                <option value="貓">1</option>
-                                <option value="狗">2</option>
+                    <div class="d-flex">
+                        <label class="col-form-label">公告標題：</label>
+                        <div class="d-inline-flex">
+                            <input type="text" id="newsTitle" class="form-control w-100" name="AnnouncementTitle">
+                            <select class="form-select" id="announcementTypeSelect" name="AnnouncementTypeId ">
+                                <option selected>請選擇公告類型</option>
+                                @foreach (var News in Model.NewsType)
+                                {
+                                    <option value="@News.AnnouncementTypeId">@News.AnnouncementTypeName</option>
+                                }
                             </select>
                         </div>
-                        <div class="col-md-6">
-                            <label>公告內文：</label>
-                            <textarea id="sceditor-textarea" rows="20" cols="50"></textarea>
+                    </div>
+                    <div class="col">
+                        <label>公告內文：</label>
+                        <div id="summernote"></div>
+                    </div>
+                    <div class="d-flex mt-2 ">
+                        <label for="date">
+                            選擇發布時間：
+                        </label>
+                        <input type="datetime-local" id="PublishTime" name="PublishTime" min="" />
+                    </div>
+                    <div class="d-flex mt-2 ">
+                        <label for="date">
+                            選擇結束時間：
+                        </label>
+                        <input type="datetime-local" id="PublishEndTime" name="PublishEndTime" min="" />
+                    </div>
+                    <div class="d-flex mt-2 ">
+                        <label for="form-check-input">是否置頂：</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="PinToTop" name="PinToTop">
                         </div>
-                        <div class="col-md-6">
-                            <label>是否隱藏</label>
-                            <a href="#"><i class="fas fa-check-square"></i></a>
+                    </div>
+                    <div class="d-flex mb-3 align-items-center mt-3">
+                        <label>標題圖片：</label>
+                        <div class="d-inline-flex">
+                            <input type="file" id="AnnouncementImageHeader" class="form-control" name="ImageHeader">
                         </div>
+                    </div>
 
-                        <div class="col-md-6">
-                            <label>是否設定為彈出視窗</label>
-                            <a href="#"><i class="fas fa-check-square"></i></a>
-                        </div>
-                        <div class="col-md-12">
-                            <label>公告圖片：</label>
-                            <input type="file" class="form-control">
-                        </div>
 
-                        <button class="btn btn-danger btn-block" style="width: 100%;">儲存</button>
-                    </form>
+                    <button class="btn btn-danger btn-block" style="width: 100%;" id="submitButton">儲存</button>
                 </div>
             </div>
         </div>
@@ -127,33 +136,30 @@
                     <thead>
                         <tr>
                             <!-- <th>序號</th> -->
-                            <th>ID</th>
+                            <th>公告ID</th>
                             <th>公告標題</th>
-                            <th>公告內文</th>
-                            <th>公告圖片</th>
-                            <th>公告類型ID</th>
+                            <th>標題圖片</th>
+                            <th>公告類型</th>
                             <th>是否隱藏</th>
-                            <th>是否設定為彈出視窗</th>
+                            <th>公告時間</th>
+                            <th>結束時間</th>
                             <th>編輯/刪除</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <!-- <td>1</td> -->
-                            <td>1</td>
-                            <td>標題1</td>
-                            <td>內文1</td>
-                            <td class="test">
+                            <td class="align-middle text-center">1</td>
+                            <td class="align-middle text-center">標題1</td>
+                            <td class="align-middle text-center">
                                 <img src="~/images/add-img-01.jpg"
                                      width="200" height="100" class="thumbnail-image">
-                                <!-- 原始圖片的視窗 -->
-                                <div class="image-popup">
-                                    <img src="~/images/add-img-01.jpg"
-                                         alt="Original Image">
-                            <td>1</td>
-                            <td>是</td>
-                            <td>是</td>
-                            <td>
+                            </td>
+                            <td class="align-middle text-center">1</td>
+                            <td class="align-middle text-center">是</td>
+                            <td class="align-middle text-center">是</td>
+                            <td class="align-middle text-center">是</td>
+                            <td class="align-middle text-center">
                                 <a href="#">
                                     <button class="btn" data-bs-toggle="modal"
                                             href="#exampleModalToggle" role="button">
@@ -168,37 +174,7 @@
                             </td>
                         </tr>
 
-                        <tr>
-                            <!-- <td>2</td> -->
-                            <td>2</td>
-                            <td>標題2</td>
-                            <td>內文2</td>
-                            <td class="test">
-                                <img src="~/images/add-img-02.jpg"
-                                     width="200" height="100" class="thumbnail-image">
-                                <!-- 原始圖片的視窗 -->
-                                <div class="image-popup">
-                                    <img src="~/images/add-img-02.jpg"
-                                         alt="Original Image">
-                                </div>
-                            </td>
-                            <td>2</td>
-                            <td>否</td>
-                            <td>否</td>
-                            <td>
-                                <a href="#">
-                                    <button class="btn" data-bs-toggle="modal"
-                                            href="#exampleModalToggle" role="button">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                </a> | <button class="btn"
-                                               onclick="userDelete()">
-                                    <a href="#" id="b5">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </a>
-                                </button>
-                            </td>
-                        </tr>
+
 
 
 
@@ -270,6 +246,8 @@
 
 
 @section Scripts{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
         // 當頁面載入完成後執行
         document.addEventListener("DOMContentLoaded", function () {
@@ -316,24 +294,84 @@
             })
         }
 
+        $(document).ready(function () {
 
-    </script>
-    <!--初始化SCEditor-->
-    <script>
-        var textarea = document.getElementById('sceditor-textarea');
-        sceditor.create(textarea, {
-            format: 'bbcode',
-            icons: 'monocons',
-            style: '~/newsEditor/minified/themes/content/default.min.css'
+            $('#summernote').summernote({
+                callbacks: {
+                    onImageUpload: function (files) {
+                        var editor = $(this);
+                        for (var i = 0; i < files.length; i++) {
+                            var formData = new FormData();
+                            formData.append("image", files[i]);
+
+
+                            $.ajax({
+                                url: "@Url.Action("UploadImage","News" , new { area="AdminCMS" })",
+                                type: "POST",
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                success: function (response) {
+                                    editor.summernote('insertImage', response.imageUrl, 'image');
+                                },
+                                error: function () {
+                                    console.log("上傳失敗");
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+            let Type;
+            $('#announcementTypeSelect').on('change', function () {
+                Type = parseInt($(this).val(), 10);
+            })
+
+            $('#submitButton').click(function () {
+                var content = $('#summernote').summernote('code');
+                var newsTitle = $('#newsTitle').val();
+                const PublishTime = $('#PublishTime').val();
+                const PublishEndTime = $('#PublishEndTime').val();
+                const PinToTop = $('#PinToTop').is(':checked');
+                var fileInput = $('#AnnouncementImageHeader')[0];
+                var file = fileInput.files[0];
+
+                var formData = new FormData();
+                formData.append("AnnouncementTitle", newsTitle);
+                formData.append("AnnouncementContent", content);
+                formData.append("PublishTime", PublishTime);
+                formData.append("PublishEndTime", PublishEndTime);
+                formData.append("PinToTop", PinToTop);
+                formData.append("AnnouncementTypeId", Type);
+                formData.append("ImageHeader", file);
+
+                $.ajax({
+                    url: "@Url.Action("editorUploadImage","News" , new { area="AdminCMS" })",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        alert("Content saved successfully!");
+                        window.location.reload();
+                    }
+                });
+            });
         });
 
+        document.addEventListener("DOMContentLoaded", function () {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const dateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+            document.getElementById("PublishTime").min = dateTime;
+            document.getElementById("PublishEndTime").min = dateTime;
+        });
 
-        var themeInput = document.getElementById('theme');
-        themeInput.onchange = function () {
-            var theme = '~/newsEditor/minified/themes/' + themeInput.value + '.min.css';
-
-            document.getElementById('theme-style').href = theme;
-        };
     </script>
 }
+
 

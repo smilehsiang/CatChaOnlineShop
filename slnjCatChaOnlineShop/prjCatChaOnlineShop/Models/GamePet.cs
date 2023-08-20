@@ -15,5 +15,7 @@ public partial class GamePet
 
     public int? PetRarityId { get; set; }
 
+    public int Id { get; set; }
+
     public virtual GameProductTotal Product { get; set; }
 }

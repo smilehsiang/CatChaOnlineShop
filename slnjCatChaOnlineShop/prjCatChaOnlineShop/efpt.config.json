@@ -1,13 +1,13 @@
 ﻿{
    "CodeGenerationMode": 3,
-   "ContextClassName": "Yaolin貓抓抓Context",
+   "ContextClassName": "cachaContext",
    "ContextNamespace": null,
    "DefaultDacpacSchema": null,
    "FilterSchemas": false,
    "IncludeConnectionString": true,
    "ModelNamespace": null,
    "OutputContextPath": null,
-   "OutputPath": "YaolinModels",
+   "OutputPath": "Models",
    "PreserveCasingWithRegex": true,
    "ProjectRootNamespace": "prjCatChaOnlineShop",
    "Schemas": null,
@@ -92,6 +92,10 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Game.Shop.Banner]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Game.ShopAnnouncement]",
          "ObjectType": 0
       },
@@ -132,6 +136,14 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Shop.CommonShop]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.CommonshopName]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Shop.Complaint Status Data]",
          "ObjectType": 0
       },
@@ -160,7 +172,19 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Shop.MemberStatus]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Shop.MyCatNameList]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.NavbarChild]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.NavbarList]",
          "ObjectType": 0
       },
       {
@@ -226,9 +250,13 @@
       {
          "Name": "[dbo].[Shop.Shipping Method]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[uploadsuccess]",
+         "ObjectType": 0
       }
    ],
-   "UiHint": "desktop-rae7e6c.貓抓抓.dbo",
+   "UiHint": "msit150team02resouce.catcha.dbo",
    "UncountableWords": null,
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,

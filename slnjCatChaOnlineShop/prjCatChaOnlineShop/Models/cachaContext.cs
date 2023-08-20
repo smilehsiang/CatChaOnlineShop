@@ -57,6 +57,8 @@ public partial class cachaContext : DbContext
 
     public virtual DbSet<GameShopArticleType> GameShopArticleType { get; set; }
 
+    public virtual DbSet<GameShopBanner> GameShopBanner { get; set; }
+
     public virtual DbSet<GameShopBlogData> GameShopBlogData { get; set; }
 
     public virtual DbSet<GameTaskConditionData> GameTaskConditionData { get; set; }
@@ -75,6 +77,10 @@ public partial class cachaContext : DbContext
 
     public virtual DbSet<ShopCommonAddressData> ShopCommonAddressData { get; set; }
 
+    public virtual DbSet<ShopCommonShop> ShopCommonShop { get; set; }
+
+    public virtual DbSet<ShopCommonshopName> ShopCommonshopName { get; set; }
+
     public virtual DbSet<ShopComplaintStatusData> ShopComplaintStatusData { get; set; }
 
     public virtual DbSet<ShopCouponTotal> ShopCouponTotal { get; set; }
@@ -89,7 +95,13 @@ public partial class cachaContext : DbContext
 
     public virtual DbSet<ShopMemberInfo> ShopMemberInfo { get; set; }
 
+    public virtual DbSet<ShopMemberStatus> ShopMemberStatus { get; set; }
+
     public virtual DbSet<ShopMyCatNameList> ShopMyCatNameList { get; set; }
+
+    public virtual DbSet<ShopNavbarChild> ShopNavbarChild { get; set; }
+
+    public virtual DbSet<ShopNavbarList> ShopNavbarList { get; set; }
 
     public virtual DbSet<ShopOrderDetailTable> ShopOrderDetailTable { get; set; }
 
@@ -122,6 +134,8 @@ public partial class cachaContext : DbContext
     public virtual DbSet<ShopRoom> ShopRoom { get; set; }
 
     public virtual DbSet<ShopShippingMethod> ShopShippingMethod { get; set; }
+
+    public virtual DbSet<Uploadsuccess> Uploadsuccess { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -357,36 +371,34 @@ public partial class cachaContext : DbContext
 
         modelBuilder.Entity<GameMessageData>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Game.Message Data");
+            entity.ToTable("Game.Message Data");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.ChatRoomId).HasColumnName("Chat Room ID");
             entity.Property(e => e.MemberBId).HasColumnName("Member (B) ID");
 
-            entity.HasOne(d => d.ChatRoom).WithMany()
+            entity.HasOne(d => d.ChatRoom).WithMany(p => p.GameMessageData)
                 .HasForeignKey(d => d.ChatRoomId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Game.訊息資料表_Game.好友列表聊天室資料表");
 
-            entity.HasOne(d => d.MemberB).WithMany()
+            entity.HasOne(d => d.MemberB).WithMany(p => p.GameMessageData)
                 .HasForeignKey(d => d.MemberBId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Game.訊息資料表_Game.會員B訊息資料表");
         });
 
         modelBuilder.Entity<GamePet>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Game.Pet");
+            entity.HasKey(e => e.Id).HasName("PK_Game.Pet_1");
 
+            entity.ToTable("Game.Pet");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.PetLevelId).HasColumnName("Pet Level ID");
             entity.Property(e => e.PetRarityId).HasColumnName("Pet Rarity ID");
             entity.Property(e => e.PetSkillId).HasColumnName("Pet Skill ID");
             entity.Property(e => e.ProductId).HasColumnName("Product ID");
 
-            entity.HasOne(d => d.Product).WithMany()
+            entity.HasOne(d => d.Product).WithMany(p => p.GamePet)
                 .HasForeignKey(d => d.ProductId)
                 .HasConstraintName("FK_Game.寵物_Game.商品總表");
         });
@@ -482,7 +494,6 @@ public partial class cachaContext : DbContext
             entity.Property(e => e.AnnouncementTypeId).HasColumnName("AnnouncementType ID");
             entity.Property(e => e.EditTime).HasColumnType("datetime");
             entity.Property(e => e.HideInGameDisplay).HasColumnName("HideIn-gameDisplay");
-            entity.Property(e => e.PublishTime).HasColumnType("datetime");
 
             entity.HasOne(d => d.Admin).WithMany(p => p.GameShopAnnouncement)
                 .HasForeignKey(d => d.AdminId)
@@ -500,6 +511,17 @@ public partial class cachaContext : DbContext
             entity.ToTable("Game.shopArticleType");
 
             entity.Property(e => e.ArticleTypeId).HasColumnName("ArticleTypeID");
+        });
+
+        modelBuilder.Entity<GameShopBanner>(entity =>
+        {
+            entity.HasKey(e => e.BannerId);
+
+            entity.ToTable("Game.Shop.Banner");
+
+            entity.Property(e => e.BannerId).HasColumnName("BannerID");
+            entity.Property(e => e.Link).HasColumnName("link");
+            entity.Property(e => e.PublishDate).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<GameShopBlogData>(entity =>
@@ -663,6 +685,35 @@ public partial class cachaContext : DbContext
                 .HasConstraintName("FK_Shop.常用地址資料表_Shop.會員資訊");
         });
 
+        modelBuilder.Entity<ShopCommonShop>(entity =>
+        {
+            entity.ToTable("Shop.CommonShop");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.CommShopId).HasColumnName("CommShopID");
+            entity.Property(e => e.MemberId).HasColumnName("Member ID");
+
+            entity.HasOne(d => d.CommShop).WithMany(p => p.ShopCommonShop)
+                .HasForeignKey(d => d.CommShopId)
+                .HasConstraintName("FK_Shop.CommonShop_Shop.CommonshopName");
+
+            entity.HasOne(d => d.Member).WithMany(p => p.ShopCommonShop)
+                .HasForeignKey(d => d.MemberId)
+                .HasConstraintName("FK_Shop.CommonShop_Shop.Member Info");
+        });
+
+        modelBuilder.Entity<ShopCommonshopName>(entity =>
+        {
+            entity.HasKey(e => e.ShopId);
+
+            entity.ToTable("Shop.CommonshopName");
+
+            entity.Property(e => e.ShopId).HasColumnName("shopID");
+            entity.Property(e => e.CityName).HasMaxLength(50);
+            entity.Property(e => e.DiscitcName).HasMaxLength(50);
+            entity.Property(e => e.ShopName).HasMaxLength(50);
+        });
+
         modelBuilder.Entity<ShopComplaintStatusData>(entity =>
         {
             entity.HasKey(e => e.ComplaintStatusId).HasName("PK_Shop.客訴狀態資料表");
@@ -811,9 +862,23 @@ public partial class cachaContext : DbContext
                 .HasForeignKey(d => d.LevelId)
                 .HasConstraintName("FK_Shop.會員資訊_Game.等級排位資料表");
 
+            entity.HasOne(d => d.MemberStatus).WithMany(p => p.ShopMemberInfo)
+                .HasForeignKey(d => d.MemberStatusId)
+                .HasConstraintName("FK_Shop.Member Info_Shop.MemberStatus");
+
             entity.HasOne(d => d.MyCatNameList).WithMany(p => p.ShopMemberInfo)
                 .HasForeignKey(d => d.MyCatNameListId)
                 .HasConstraintName("FK_Shop.Member Info_Shop.MyCatNameList");
+        });
+
+        modelBuilder.Entity<ShopMemberStatus>(entity =>
+        {
+            entity.HasKey(e => e.StatusId);
+
+            entity.ToTable("Shop.MemberStatus");
+
+            entity.Property(e => e.StatusId).HasColumnName("StatusID");
+            entity.Property(e => e.Status).HasMaxLength(50);
         });
 
         modelBuilder.Entity<ShopMyCatNameList>(entity =>
@@ -829,6 +894,34 @@ public partial class cachaContext : DbContext
                 .HasForeignKey(d => d.MemberId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Shop.MyCatNameList_Shop.Member Info");
+        });
+
+        modelBuilder.Entity<ShopNavbarChild>(entity =>
+        {
+            entity.HasKey(e => e.NavbarChildId);
+
+            entity.ToTable("Shop.NavbarChild");
+
+            entity.Property(e => e.NavbarChildId)
+                .ValueGeneratedNever()
+                .HasColumnName("NavbarChildID");
+            entity.Property(e => e.NavText).HasMaxLength(50);
+            entity.Property(e => e.NavbarId).HasColumnName("NavbarID");
+
+            entity.HasOne(d => d.Navbar).WithMany(p => p.ShopNavbarChild)
+                .HasForeignKey(d => d.NavbarId)
+                .HasConstraintName("FK_Shop.NavbarChild_Shop.NavbarList");
+        });
+
+        modelBuilder.Entity<ShopNavbarList>(entity =>
+        {
+            entity.HasKey(e => e.NavbarId);
+
+            entity.ToTable("Shop.NavbarList");
+
+            entity.Property(e => e.NavbarId).HasColumnName("NavbarID");
+            entity.Property(e => e.NavbarText).HasMaxLength(50);
+            entity.Property(e => e.PublishTime).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<ShopOrderDetailTable>(entity =>
@@ -1006,6 +1099,7 @@ public partial class cachaContext : DbContext
 
             entity.Property(e => e.ProductId).HasColumnName("Product ID");
             entity.Property(e => e.Attributes).HasMaxLength(50);
+            entity.Property(e => e.Discount).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.DiscountId).HasColumnName("Discount ID");
             entity.Property(e => e.OffDay)
                 .HasColumnType("datetime")
@@ -1026,7 +1120,7 @@ public partial class cachaContext : DbContext
             entity.Property(e => e.SupplierId).HasColumnName("Supplier ID");
             entity.Property(e => e.Weight).HasMaxLength(50);
 
-            entity.HasOne(d => d.Discount).WithMany(p => p.ShopProductTotal)
+            entity.HasOne(d => d.DiscountNavigation).WithMany(p => p.ShopProductTotal)
                 .HasForeignKey(d => d.DiscountId)
                 .HasConstraintName("FK_Shop.Product Total_Shop.Product Discount");
 
@@ -1068,10 +1162,9 @@ public partial class cachaContext : DbContext
 
         modelBuilder.Entity<ShopReturnDataTable>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Shop.Return Data Table");
+            entity.ToTable("Shop.Return Data Table");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.OrderId).HasColumnName("Order ID");
             entity.Property(e => e.ProcessingStatusId).HasColumnName("Processing Status ID");
             entity.Property(e => e.ReturnDate)
@@ -1079,11 +1172,11 @@ public partial class cachaContext : DbContext
                 .HasColumnName("Return Date");
             entity.Property(e => e.ReturnReasonId).HasColumnName("Return Reason ID");
 
-            entity.HasOne(d => d.ProcessingStatus).WithMany()
+            entity.HasOne(d => d.ProcessingStatus).WithMany(p => p.ShopReturnDataTable)
                 .HasForeignKey(d => d.ProcessingStatusId)
                 .HasConstraintName("FK_Shop.退換貨資料表_Shop.退換貨處理狀態資料表");
 
-            entity.HasOne(d => d.ReturnReason).WithMany()
+            entity.HasOne(d => d.ReturnReason).WithMany(p => p.ShopReturnDataTable)
                 .HasForeignKey(d => d.ReturnReasonId)
                 .HasConstraintName("FK_Shop.退換貨資料表_Shop.退換貨原因資料表");
         });
@@ -1140,6 +1233,19 @@ public partial class cachaContext : DbContext
                 .IsFixedLength()
                 .HasColumnName("Shipping Method Name");
             entity.Property(e => e.Shippment).HasColumnType("decimal(18, 0)");
+        });
+
+        modelBuilder.Entity<Uploadsuccess>(entity =>
+        {
+            entity.HasKey(e => e.Uploaded);
+
+            entity.ToTable("uploadsuccess");
+
+            entity.Property(e => e.Uploaded).HasColumnName("uploaded");
+            entity.Property(e => e.FileName)
+                .HasMaxLength(50)
+                .HasColumnName("fileName");
+            entity.Property(e => e.Url).HasColumnName("url");
         });
 
         OnModelCreatingPartial(modelBuilder);
