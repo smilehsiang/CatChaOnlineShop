@@ -19,7 +19,7 @@ namespace prjCatChaOnlineShop.Controllers
         public IActionResult 轉蛋數據()
         {
             var datas = from p in _context.GameProductTotal
-                        where p.LotteryProbability != null && p.ProductCategoryId != 2
+                        where p.LotteryProbability != null && p.ProductCategoryId != 2 &&p.ProductImage!=null
                         select new
                         {
                             p.ProductName,
