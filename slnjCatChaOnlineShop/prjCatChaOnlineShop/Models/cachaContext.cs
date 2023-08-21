@@ -331,6 +331,7 @@ public partial class cachaContext : DbContext
             entity.Property(e => e.PurchaseTime)
                 .HasMaxLength(50)
                 .HasColumnName("Purchase Time");
+            entity.Property(e => e.QuantityOfInGameItems).HasColumnName("Quantity Of In Game Items");
 
             entity.HasOne(d => d.Product).WithMany(p => p.GameItemPurchaseRecord)
                 .HasForeignKey(d => d.ProductId)

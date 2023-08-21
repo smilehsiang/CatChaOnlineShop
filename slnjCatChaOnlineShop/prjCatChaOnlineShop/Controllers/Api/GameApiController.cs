@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using prjCatChaOnlineShop.Models;
 
 
-namespace prjCatChaOnlineShop.Controllers
+namespace prjCatChaOnlineShop.Controllers.Api
 {
-    [Route("api/[controller]")]
+    [Route("api/Api/[controller]")]
     [ApiController]
     public class GameApiController : ControllerBase
     {
@@ -15,11 +15,11 @@ namespace prjCatChaOnlineShop.Controllers
             _context = context;
         }
         [HttpGet]
-        //http://localhost:5090/Api/gameapi
+        //http://localhost:5090/Api/Api/gameapi
         public IActionResult 轉蛋數據()
         {
             var datas = from p in _context.GameProductTotal
-                        where p.LotteryProbability != null && p.ProductCategoryId != 2 &&p.ProductImage!=null
+                        where p.LotteryProbability != null && p.ProductCategoryId != 2 && p.ProductImage != null
                         select new
                         {
                             p.ProductName,
@@ -43,5 +43,5 @@ namespace prjCatChaOnlineShop.Controllers
         //    var datas = _context.GameProductTotal.Select(c => c.LotteryProbability).Distinct();
         //    return new JsonResult(datas);
         //}
-    }  
+    }
 }

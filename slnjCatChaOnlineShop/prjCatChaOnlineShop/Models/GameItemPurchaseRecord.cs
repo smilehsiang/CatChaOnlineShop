@@ -19,5 +19,7 @@ public partial class GameItemPurchaseRecord
 
     public int GameItemPurchaseRecordId { get; set; }
 
+    public int? QuantityOfInGameItems { get; set; }
+
     public virtual GameProductTotal Product { get; set; }
 }

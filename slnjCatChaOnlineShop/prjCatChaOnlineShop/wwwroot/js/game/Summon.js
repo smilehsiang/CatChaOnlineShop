@@ -10,10 +10,9 @@ const summonbuttons = document.getElementById('summon-buttons');
 
 let processedData = []; //建立一個空陣列接Data資料
 
-async function fetchData()
-{ 
+async function fetchData() {
     try {
-        const response = await fetch('Api/gameapi');
+        const response = await fetch('/api/Api/GameApi');
         if (!response.ok) {
             throw new Error('網絡錯誤');
         }
