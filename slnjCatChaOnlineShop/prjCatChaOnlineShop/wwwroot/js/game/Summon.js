@@ -10,44 +10,6 @@ const summonbuttons = document.getElementById('summon-buttons');
 
 let processedData = []; //建立一個空陣列接Data資料
 
-async function fetchData() {
-    try {
-        const response = await fetch('/api/Api/GameApi');
-        if (!response.ok) {
-            throw new Error('網絡錯誤');
-        }
-        const data = await response.json(); // 解析 JSON 格式的回應內容
-
-        // 計算總概率
-        const totalProbability = data.reduce((sum, item) => sum + item.lotteryProbability, 0);
-
-        // 計算縮放因子
-        const scalingFactor = totalProbability <= 100 ? 100 / totalProbability : 1;
-
-        // 創建一個空陣列來儲存處理後的資料
-        const processedData = [];
-
-        // 對每個項目進行處理
-        data.forEach(item => {
-            const { productName, productId, productImage, lotteryProbability } = item;
-
-            // 將原始機率乘以縮放因子，得到縮放後的機率
-            const scaledProbability = lotteryProbability * scalingFactor;
-
-            // 將處理後的資料添加到 processedData 陣列中
-            processedData.push({
-                productName,
-                productId,
-                productImage,
-                scaledProbability
-            });
-        });
-        return processedData; // 返回處理後的資料
-    } catch (error) {
-        console.error('錯誤:', error);
-    }
-}
-
 CatPointTenDrows.addEventListener('click', async function () {
     try {
         const gachaData = await fetchData(); // 取得轉蛋資料
