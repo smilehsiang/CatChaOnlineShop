@@ -86,10 +86,17 @@ function closeConfirmWin() {
     confirmWin.style.display = 'none';
     initialize();
 }
-
+// 初始化目前被選擇的貓咪
+let selectedCatName = null;
 //選擇完貓貓之後開始遊戲的方法
 function startGame() {
+    if (selectedCatName === null) {
+        confirmWin_title.innerHTML = '尚未選擇貓貓'
+        return;
+    }
+    else   
     confirmWin.style.display = 'none';
+    selectedCatName = null
     resetRunGame();
     pagesControl(Canvasrungame);
     showPage('a'); //下次開啟時從第一頁開始
@@ -123,8 +130,7 @@ function chooseCatBeforeGame() {
     confirmWin.style.display = 'block';
 
 
-    // 初始化目前被選擇的貓咪
-    let selectedCatName = null;
+    
 
     // 貓貓點擊事件
     catNames.forEach(catName => {
