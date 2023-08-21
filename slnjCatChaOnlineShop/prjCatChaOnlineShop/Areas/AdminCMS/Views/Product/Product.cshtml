@@ -312,12 +312,12 @@
                         { "data": "productId" },
                         { "data": "productName" },
                         {"data":  "productDescription"},
-                        { "data": "shopProductCategory" },
+                        { "data": "productCategory" },
                         { "data": "shopProductImageTable" },
                         { "data": "releaseDate" },
                         { "data": "size" },
                         { "data": "weight" },
-                        { "data": "shopProductSupplier" },
+                        { "data": "supplier" },
                         { "data": "discontinued" },
                         {
                             "data": null,
@@ -385,10 +385,6 @@
             });
         });
 
-
-
-
-
         //刪除按鈕
         function userDelete() {
             Swal.fire({
@@ -408,6 +404,16 @@
                 }
             })
         }
+
+        //編輯按鈕
+            $(document).on('click', '.edit-button', function () {
+                const id = $(this).data('id')
+                console.log(id)
+            })
+
+
+
+
 
     </script>
 }
