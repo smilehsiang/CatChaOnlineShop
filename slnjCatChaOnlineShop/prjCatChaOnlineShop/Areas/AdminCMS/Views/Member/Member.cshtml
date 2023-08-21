@@ -40,7 +40,7 @@
 
                     <div class="form-group mb-3">
                         <label>帳號</label><span class="RequiredText"> *必填</span>
-                        <input type="email" class="form-control" id="CreatMemberAccount" name="MemberAccount" onblur="checkDuplicateName()" onfocus="hideErrorMessage()" placeholder="請輸入電子信箱" required>
+                        <input type="email" class="form-control" id="CreatMemberAccount" name="MemberAccount" onblur="checkDuplicateName()" onfocus="hideErrorMessage()" placeholder="請輸入電子信箱">
                         <span id="duplicateMessage" style="display:none;color:red;" class="alert alert-danger"></span>
                         <span id="error1" class="error-message"></span>
                     </div>
@@ -56,18 +56,18 @@
 
                     <div class="form-group mb-3">
                         <label>生日</label><span class="RequiredText"> *必填</span>
-                        <input type="date" class="form-control" id="CreatBirthday" name="Birthday" required>
+                        <input type="date" class="form-control" id="CreatBirthday" name="Birthday" onfocus="this.showPicker()">
                     </div>
 
                     <div class="form-group mb-3">
                         <label>E-mail</label><span class="RequiredText"> *必填</span>
-                        <input type="email" class="form-control" id="CreatEmail" name="Email" required>
+                        <input type="email" class="form-control" id="CreatEmail" name="Email">
                         <span id="error2" class="error-message"></span>
                     </div>
 
                     <div class="form-group mb-3">
                         <label>電話</label><span class="RequiredText"> *必填</span>
-                        <input type="text" class="form-control" id="CreatPhoneNumber" name="PhoneNumber" required>
+                        <input type="text" class="form-control" id="CreatPhoneNumber" name="PhoneNumber">
                     </div>
 
                     <div class="form-group mb-3">
@@ -78,8 +78,8 @@
                     <div class="form-group">
                         <label>會員狀態：</label>
                         <select class="form-control" id="CreatMemberStatus" name="MemberStatus">
-                            <option value="1">開放</option>
-                            <option value="0">凍結</option>
+                            <option value="true">開放</option>
+                            <option value="false">凍結</option>
                         </select>
                     </div>
 
@@ -263,7 +263,7 @@
 
                                         <div class="form-group mb-2">
                                             <label>生日：</label>
-                                            <input type="date" class="form-control" id="birthday_edit">
+                                            <input type="date" class="form-control" id="birthday_edit" onfocus="this.showPicker()">
                                         </div>
 
                                         <div class="form-group mb-2">
@@ -392,7 +392,26 @@
                     console.log(error);
                 }
             });
+            //==========丟資料給DataTables前先console.log json 出來看結構是長怎樣
 
+            //==========禁止使用者選擇生日為未來日期
+            // 獲取現在日期
+            var currentDate = new Date();
+            // 將日期格式化為YYYY-MM-DD格式
+            var formattedDate = currentDate.toISOString().split('T')[0];
+            // 設置MaxDate属性
+            $("#CreatBirthday").attr("max", formattedDate);
+            $('#birthday_edit').attr("max", formattedDate);
+
+            // 監聽輸入事件，攔截輸入過程
+            $("#CreatBirthday, #birthday_edit").on("input", function () {
+                var inputDate = new Date($(this).val());
+
+                if (inputDate > currentDate) {
+                    // 如果輸入的日期大於當前日期，重置輸入框的值為最大日期
+                    $(this).val(formattedDate);
+                }
+            });
 
             function validateEmail(input, error) {
                 input.on("blur", function () {
@@ -416,7 +435,7 @@
             validateEmail($("#CreatEmail"), $("#error2"));
             validateEmail($("#email_edit"), $("#error3"));
         });
-        //==========丟資料給DataTables前先console.log json 出來看結構是長怎樣
+
 
         //==================datatable
         $('#member-table').DataTable({
@@ -712,7 +731,7 @@
 
 
         //====================新增會員
-        $('#CreatMember').click(async function () {
+        $('#CreatMember').click(function () {
 
             var Name = $('#CreatName').val();
             var MemberAccount = $('#CreatMemberAccount').val();
@@ -721,16 +740,7 @@
             var Email = $('#CreatEmail').val();
             var PhoneNumber = $('#CreatPhoneNumber').val();
             var Address = $('#CreatAddress').val();
-            var MemberStatus = $('#CreatMemberStatus').val(); //會員狀態這一欄一直有問題沒辦法insert
-
-            console.log(Name + "、" + MemberAccount + "、" + Gender + "、" + Birthday + "、" + Email + "、" + PhoneNumber + "、" + Address + "、" + MemberStatus);
-
-            console.log("驗證：" + isVaild);
-
-            // 檢查帳號是否已存在
-            if (CheckAccResult == true || isVaild == false) {
-                return; // 不執行後續動作
-            }
+            var MemberStatus = $('#CreatMemberStatus').val();
 
             // 檢查必填欄位是否有值
             if (!Name || !MemberAccount || !Gender || !Birthday || !Email || !PhoneNumber) {
@@ -742,6 +752,11 @@
                 return; // 不執行後續動作
             }
 
+            // 檢查帳號是否已存在
+            if (CheckAccResult == true || isVaild == false) {
+                return; // 不執行後續動作
+            }
+
             var newMember = {
                 Name: Name,
                 MemberAccount: MemberAccount,
@@ -750,39 +765,45 @@
                 Email: Email,
                 PhoneNumber: PhoneNumber,
                 Address: Address,
-                MemberStatus: MemberStatus, //會員狀態這一欄一直有問題沒辦法insert
+                MemberStatus: MemberStatus,
             };
 
             try {
                 //============要驗證帳號是否重複，以及格式欄位是否正確，後端前端都要驗證才可新增
-                const response = await fetch('@Url.Action("AddMember", "Member")', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
+                $.ajax({
+                    url: '/AdminCMS/Member/AddMember',
+                    type: 'POST',
+                    data: { newMember: newMember },
+                    success: function (response) {
+                        // console.log(result)
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: '新增成功',
+                                text: response.message
+                            });
+
+                            // 關閉modal
+                            $('#addMemberModalToggle').modal('hide');
+
+                            // 重新整理dataTable
+                            $('#member-table').DataTable().ajax.reload(); // 這將重新載入dataTable的資料
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: '錯誤',
+                                text: response.message
+                            });
+                        }
                     },
-                    body: JSON.stringify(newMember)
+                    error: function (xhr, status, error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '錯誤',
+                            text: "An error occurred: " + xhr.responseText
+                        });
+                    }
                 });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    // 會員新增成功，顯示成功訊息
-                    Swal.fire({
-                        icon: 'success',
-                        title: '成功',
-                        text: data.message
-                    });
-
-                    // 關閉modal
-                    $('#addMemberModalToggle').modal('hide');
-                } else {
-                    // 會員新增失敗，顯示錯誤訊息
-                    Swal.fire({
-                        icon: 'error',
-                        title: '失敗',
-                        text: data.message
-                    });
-                }
             } catch (error) {
                 console.error('Error:', error);
             }

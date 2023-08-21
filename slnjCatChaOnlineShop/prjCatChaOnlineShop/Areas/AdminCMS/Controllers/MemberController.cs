@@ -70,21 +70,29 @@ namespace prjCatChaOnlineShop.Controllers.CMS
         //=============檢查姓名是否重複
         public IActionResult CheckDuplicateName(string account)
         {
-            bool result = _context.ShopMemberInfo.Where(c => c.MemberAccount == account).Count() >= 1 ? true : false;
+            bool result = _context.ShopMemberInfo != null && _context.ShopMemberInfo.Where(c => c.MemberAccount == account).Count() >= 1;
+
 
             return Json(new { IsDuplicate = result });
         }
         [HttpPost]
-        public async Task<IActionResult> AddMember([FromBody] ShopMemberInfo newMember)
+        public IActionResult AddMember(ShopMemberInfo newMember)
         {
-            //後端待補-檢查信箱&帳號格式，及檢查帳號是否已存在；前端驗證信箱&帳號格式，生日不可為未來
+            // 後端待補-檢查信箱&帳號格式，及檢查帳號是否已存在；前端驗證信箱&帳號格式，生日不可為未來
             try
             {
-                // 將newMember存入DbContext
-                _context.ShopMemberInfo.Add(newMember);
-                await _context.SaveChangesAsync();
+                if (newMember != null) // 檢查 newMember 是否為空
+                {
+                    // 將 newMember 存入 DbContext
+                    _context.ShopMemberInfo.Add(newMember);
+                    _context.SaveChanges();
 
-                return Json(new { success = true, message = "會員新增成功！" });
+                    return Json(new { success = true, message = "會員新增成功！" });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "新增的會員資訊為空。" });
+                }
             }
             catch (Exception ex)
             {
