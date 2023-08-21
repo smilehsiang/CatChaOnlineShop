@@ -272,13 +272,11 @@
                 { "data": "publishTime" },
                 { "data": "publishEndTime" },
                 {
-                    "data": null,
+                    "data": "announcementId",
                     "render": function (data, type, row) {
-                        var deleteUrl = '@Url.Action("Delete", "News", new { area = "AdminCMS", id = "announcementTypeId" })';
-                        deleteUrl = deleteUrl.replace('announcementTypeId', row.announcementId);
-                        var editorUrl = '@Url.Action("EditorNews","News",new { area = "AdminCMS", id = "announcementTypeId" })';
-                        editorUrl = editorUrl.replace('announcementTypeId', row.announcementId);
-                        return `<a href="${editorUrl}" role="button"><button data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit"></i></button></a> |
+                        var deleteUrl = '@Url.Action("Delete", "News", new { area = "AdminCMS", id = "announcementId" })';
+                        deleteUrl = deleteUrl.replace('announcementId', row.announcementId);
+                        return `<button class="edit-button" data-id="${row.announcementId}" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit"></i></button> |
                                         <a href="${deleteUrl}" onclick="return confirm('確定要刪除嗎?')"><i class="fas fa-trash-alt"></i></a>`;
                     }
                 }
@@ -304,6 +302,10 @@
                 }
             })
         }
+        $(document).on('click', '.edit-button', function () {
+            const id = $(this).data('id')
+            console.log(id)
+        })
         
 
         $(document).ready(function () {
@@ -373,6 +375,7 @@
             $('#summernote-for-editor').summernote({
                 height: 300
             });
+
         });
 
         document.addEventListener("DOMContentLoaded", function () {
