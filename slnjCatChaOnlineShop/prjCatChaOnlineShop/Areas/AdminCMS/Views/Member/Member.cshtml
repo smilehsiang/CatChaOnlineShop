@@ -1,10 +1,13 @@
 ﻿@{
-    ViewData["Title"] = "Member";
+    ViewData["Title"] = "ShowMemeberInfo";
     Layout = "~/Areas/AdminCMS/Views/Shared/CMS_Layout.cshtml";
 }
 
 @section Styles{
     <style>
+        .RequiredText, .error-message {
+            color: #b95756;
+        }
     </style>
 }
 
@@ -30,65 +33,60 @@
                             aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <!-- <label>ID：</label> -->
-                            <input type="hidden" class="form-control" disabled
-                                   readonly>
-                        </div>
+                    <div class="form-group mb-3">
+                        <label>姓名</label><span class="RequiredText"> *必填</span>
+                        <input type="text" class="form-control" id="CreatName" name="Name">
+                    </div>
 
-                        <div class="form-group">
-                            <label>姓名：</label>
-                            <input type="text" class="form-control">
-                        </div>
+                    <div class="form-group mb-3">
+                        <label>帳號</label><span class="RequiredText"> *必填</span>
+                        <input type="email" class="form-control" id="CreatMemberAccount" name="MemberAccount" onblur="checkDuplicateName()" onfocus="hideErrorMessage()" placeholder="請輸入電子信箱" required>
+                        <span id="duplicateMessage" style="display:none;color:red;" class="alert alert-danger"></span>
+                        <span id="error1" class="error-message"></span>
+                    </div>
 
-                        <div class="form-group">
-                            <label>帳號：</label>
-                            <input type="text" class="form-control">
-                        </div>
+                    <div class="form-group mb-3">
+                        <label>性別</label><span class="RequiredText"> *必填</span>
+                        <select class="form-control" id="CreatGender" name="Gender">
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </div>
 
-                        <div class="form-group">
-                            <label>性別：</label>
-                            <select class="form-control">
-                                <option value="男">男</option>
-                                <option value="女">女</option>
-                                <option value="其他">其他</option>
-                            </select>
-                        </div>
+                    <div class="form-group mb-3">
+                        <label>生日</label><span class="RequiredText"> *必填</span>
+                        <input type="date" class="form-control" id="CreatBirthday" name="Birthday" required>
+                    </div>
 
-                        <div class="form-group">
-                            <label>生日：</label>
-                            <input type="date" class="form-control">
-                        </div>
+                    <div class="form-group mb-3">
+                        <label>E-mail</label><span class="RequiredText"> *必填</span>
+                        <input type="email" class="form-control" id="CreatEmail" name="Email" required>
+                        <span id="error2" class="error-message"></span>
+                    </div>
 
-                        <div class="form-group">
-                            <label>E-mail：</label>
-                            <input type="email" class="form-control">
-                        </div>
+                    <div class="form-group mb-3">
+                        <label>電話</label><span class="RequiredText"> *必填</span>
+                        <input type="text" class="form-control" id="CreatPhoneNumber" name="PhoneNumber" required>
+                    </div>
 
-                        <div class="form-group">
-                            <label>電話：</label>
-                            <input type="text" class="form-control">
-                        </div>
+                    <div class="form-group mb-3">
+                        <label>地址</label>
+                        <input type="text" class="form-control" id="CreatAddress" name="Address">
+                    </div>
 
-                        <div class="form-group">
-                            <label>地址：</label>
-                            <input type="text" class="form-control">
-                        </div>
+                    <div class="form-group">
+                        <label>會員狀態：</label>
+                        <select class="form-control" id="CreatMemberStatus" name="MemberStatus">
+                            <option value="1">開放</option>
+                            <option value="0">凍結</option>
+                        </select>
+                    </div>
 
-                        <div class="form-group">
-                            <label>會員狀態：</label>
-                            <select class="form-control">
-                                <option value="開放">開放</option>
-                                <option value="凍結">凍結</option>
-                            </select>
-                        </div>
-
-                        <button class="btn btn-danger btn-block"
-                                style="width: 100%;">
-                            儲存
-                        </button>
-                    </form>
+                    <button id="CreatMember" class="btn btn-danger btn-block"
+                            style="width: 100%;">
+                        儲存
+                    </button>
                 </div>
             </div>
         </div>
@@ -119,64 +117,23 @@
                 <table id="member-table" class="table table-striped nowrap" style="width:100%">
                     <thead>
                         <tr>
-                            <!-- <th>序號</th> -->
                             <th>ID</th>
                             <th>姓名</th>
                             <th>帳號</th>
                             <th>性別</th>
-                            <th>生日</th>
                             <th>E-mail</th>
                             <th>電話</th>
-                            <th>地址</th>
-                            <th>註冊日期</th>
-                            <th>最後登入</th>
                             <th>狀態</th>
                             <th>詳細資料</th>
-                            <th>編輯/刪除</th>
+                            <th>編輯</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <!-- <td>1</td> -->
-                            <td>1</td>
-                            <td>bbb</td>
-                            <td>2@yahoo.com.tw</td>
-                            <td>女</td>
-                            <td>1990-01-01</td>
-                            <td>bbb@gmail.com</td>
-                            <td>1911234567</td>
-                            <td>台北市大安區復興南路一段390號2樓</td>
-                            <td>2023-06-29</td>
-                            <td>2023-06-29</td>
-                            <td>開放</td>
-                            <td>
-                                <a href="#">
-                                    <button class="detail_input" data-bs-toggle="modal"
-                                            href="#exampleModalToggle" role="button">
-                                        詳細資料
-                                    </button>
-                                </a>
-                            </td>
-                            <td>
-                                <button class="btn" data-bs-toggle="modal"
-                                        href="#exampleModalToggle2" role="button">
-                                    <i class="fas fa-edit"></i>
-                                </button>｜<button class="btn"
-                                                  onclick="userDelete()">
-                                    <a href="#" id="b5">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </a>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
                 </table>
                 <!--表格-->
                 <!---詳細資料model-->
-                <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
-                     aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                <div class="modal fade" id="DetailModalToggle" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content" style="height: 650px;">
+                        <div class="modal-content" style="height: 650px;overflow: auto;">
                             <div class="modal-header">
                                 <h5 class="modal-title bg-dark text-white" id="exampleModalToggleLabel">
                                     其他資訊
@@ -212,39 +169,30 @@
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                                          aria-labelledby="nav-home-tab">
-                                        <p>ID</p>
-                                        <p>姓名：</p>
-                                        <p>帳號：</p>
-                                        <p>性別：</p>
-                                        <p>生日：</p>
-                                        <p>E-mail：</p>
-                                        <p>電話：</p>
-                                        <p>地址：</p>
-                                        <p>註冊日期：</p>
-                                        <p>最後登入：</p>
-                                        <p>會員狀態：</p>
+                                        <p id="memberId"></p>
+                                        <p id="name"></p>
+                                        <p id="memberAccount"></p>
+                                        <p id="gender"></p>
+                                        <p id="birthday"></p>
+                                        <p id="email"></p>
+                                        <p id="phoneNumber"></p>
+                                        <p id="address"></p>
+                                        <p id="registrationTime"></p>
+                                        <p id="lastLoginTime"></p>
+                                        <p id="memberStatus"></p>
                                     </div>
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel">
-                                        <p>Level ID 等級ID：1</p>
-                                        <p>Character Name 遊戲角色名稱：小仙</p>
-                                        <p>Cat Coin Quantity 貓幣數量：9999</p>
-                                        <p>Loyalty Points 紅利數量：35835303</p>
-                                        <p>MyCatNameListID：_______(此欄待確認)</p>
-                                        <p>RunGameHighestScore：100分</p>
-
+                                        <p id="levelId"></p>
+                                        <p id="characterName"></p>
+                                        <p id="catCoinQuantity"></p>
+                                        <p id="loyaltyPoints"></p>
+                                        <p id="runGameHighestScore"></p>
                                     </div>
                                     <div class="tab-pane fade" id="nav-contact" role="tabpanel">
-                                        <p>Member ID</p>
-                                        <p>Address ID</p>
-                                        <p>Recipient Name 收件人姓名</p>
-                                        <p>Recipient Phone</p>
-                                        <p>Recipient Address</p>
+                                        <div id="commonaddressContainer"></div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-paper" role="tabpanel">
-                                        <p>折價券ID：2</p>
-                                        <p>折價券內容：滿500折10</p>
-                                        <p>使用狀態：未使用</p>
-                                        <p>優惠券狀態：_______(此欄待確認)</p>
+                                        <div id="couponContainer"></div>
                                     </div>
                                 </div>
                             </div>
@@ -253,8 +201,7 @@
                 </div>
                 <!--詳細資料model-->
                 <!--編輯彈出視窗-->
-                <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
-                     aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                <div class="modal fade" id="EditModalToggle" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -262,7 +209,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                             </div>
-                            <div class="modal-body" style="height: 680px;">
+                            <div class="modal-body">
                                 <nav>
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                         <button class="nav-link active" id="nav-home-tab"
@@ -277,167 +224,142 @@
                                                 role="tab">
                                             遊戲資訊
                                         </button>
-                                        <button class="nav-link" id="nav-contact-tab"
-                                                data-bs-toggle="tab"
-                                                data-bs-target="#member-edit-nav-contact" type="button"
-                                                role="tab">
-                                            常用地址
-                                        </button>
-                                        <button class="nav-link" id="nav-contact2-tab"
-                                                data-bs-toggle="tab"
-                                                data-bs-target="#member-edit-nav-paper" type="button"
-                                                role="tab">
-                                            會員優惠券
-                                        </button>
+                                        @* <button class="nav-link" id="nav-contact-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#member-edit-nav-contact" type="button"
+                                        role="tab">
+                                        常用地址
+                                        </button> *@
+                                        @*                                         <button class="nav-link" id="nav-contact2-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#member-edit-nav-paper" type="button"
+                                        role="tab">
+                                        會員優惠券
+                                        </button> *@
                                     </div>
                                 </nav>
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active"
                                          id="member-edit-nav-home">
+                                        <input type="hidden" class="form-control" id="memberId_edit" disabled readonly>
 
-                                        <form>
-                                            <div class="form-group">
-                                                <label>ID：</label>
-                                                <input type="text" class="form-control" disabled
-                                                       readonly>
-                                            </div>
+                                        <div class="form-group mb-2">
+                                            <label>姓名：</label>
+                                            <input type="text" class="form-control" id="name_edit">
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label>姓名：</label>
-                                                <input type="text" class="form-control">
-                                            </div>
+                                        <div class="form-group mb-2">
+                                            <input type="hidden" class="form-control" id="memberAccount_edit" disabled readonly>
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label>帳號：</label>
-                                                <input type="text" class="form-control">
-                                            </div>
+                                        <div class="form-group mb-2">
+                                            <label>性別：</label>
+                                            <select class="form-control" id="gender_edit">
+                                                <option value="男">男</option>
+                                                <option value="女">女</option>
+                                                <option value="其他">其他</option>
+                                            </select>
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label>性別：</label>
-                                                <select class="form-control">
-                                                    <option value="男">男</option>
-                                                    <option value="女">女</option>
-                                                    <option value="其他">其他</option>
-                                                </select>
-                                            </div>
+                                        <div class="form-group mb-2">
+                                            <label>生日：</label>
+                                            <input type="date" class="form-control" id="birthday_edit">
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label>生日：</label>
-                                                <input type="date" class="form-control">
-                                            </div>
+                                        <div class="form-group mb-2">
+                                            <label>E-mail：</label>
+                                            <input type="email" class="form-control" id="email_edit">
+                                            <span id="error3" class="error-message"></span>
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label>E-mail：</label>
-                                                <input type="email" class="form-control">
-                                            </div>
+                                        <div class="form-group mb-2">
+                                            <label>電話：</label>
+                                            <input type="text" class="form-control" id="phoneNumber_edit">
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label>電話：</label>
-                                                <input type="text" class="form-control">
-                                            </div>
+                                        <div class="form-group mb-2">
+                                            <label>地址：</label>
+                                            <input type="text" class="form-control" id="address_edit">
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label>地址：</label>
-                                                <input type="text" class="form-control">
-                                            </div>
+                                        @* <div class="form-group mb-2">
+                                        <label>會員狀態（待確認）：</label>
+                                        <select class="form-control" id="memberStatus_edit">
+                                        <option value="開放">開放</option>
+                                        <option value="凍結">凍結</option>
+                                        </select>
+                                        </div> *@
 
-                                            <div class="form-group">
-                                                <label>會員狀態：</label>
-                                                <select class="form-control">
-                                                    <option value="開放">開放</option>
-                                                    <option value="凍結">凍結</option>
-                                                </select>
-                                            </div>
-
-                                            <button class="btn btn-danger btn-block"
-                                                    style="width: 100%;">
-                                                儲存
-                                            </button>
-                                        </form>
+                                        <button class="btn btn-danger btn-block mt-2 EditMember_Save"
+                                                style="width: 100%;">
+                                            儲存
+                                        </button>
                                     </div>
                                     <div class="tab-pane fade" id="member-edit-nav-profile">
-                                        <form>
-                                            <div class="form-group">
-                                                <label>Level ID</label>
-                                                <input type="text" class="form-control" disabled
-                                                       readonly>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Character Name</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Cat Coin Quantity</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>
-                                                    Loyalty Points 紅利數量
-                                                </label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>MyCatNameListID</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>RunGameHighestScore</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <button type="submit" class="btn btn-danger btn-block"
-                                                    style="width: 100%;">
-                                                儲存
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <div class="tab-pane fade" id="member-edit-nav-contact">
-
-                                        <form>
-                                            <div class="form-group">
-                                                <label>Address ID：</label>
-
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Recipient Name：</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Recipient Phone：</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Recipient Address：</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <button class="btn btn-danger btn-block"
-                                                    style="width: 100%;">
-                                                儲存
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <div class="tab-pane fade" id="member-edit-nav-paper">
-                                        <div style="border: 1px solid #000;">
-                                            <p>折價券ID：2</p>
-                                            <p>折價券內容：滿500折10</p>
-                                            <p>使用狀態：未使用</p>
-                                            <p>優惠券狀態：_______(此欄待確認)</p>
-                                            <button class="btn btn-danger btn-block" style="width: 100%"
-                                                    onclick="userDelete()">
-                                                刪除
-                                            </button>
+                                        <div class="form-group">
+                                            <label>等級：</label>
+                                            <input type="text" class="form-control" id="levelId_edit">
                                         </div>
+
+                                        <div class="form-group">
+                                            <label>遊戲角色名稱：</label>
+                                            <input type="text" class="form-control" id="characterName_edit">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>貓幣數量：</label>
+                                            <input type="text" class="form-control" id="catCoinQuantity_edit">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>紅利數量：</label>
+                                            <input type="text" class="form-control" id="loyaltyPoints_edit">
+                                        </div>
+
+                                        <button type="submit" class="btn btn-danger btn-block EditMember_Save"
+                                                style="width: 100%;">
+                                            儲存
+                                        </button>
                                     </div>
+                                    @* <div class="tab-pane fade" id="member-edit-nav-contact">
+                                    <div class="form-group">
+                                    <label>Address ID：</label>
+
+                                    <input type="text" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label>Recipient Name：</label>
+                                    <input type="text" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label>Recipient Phone：</label>
+                                    <input type="text" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label>Recipient Address：</label>
+                                    <input type="text" class="form-control">
+                                    </div>
+
+                                    <button class="btn btn-danger btn-block"
+                                    style="width: 100%;">
+                                    儲存
+                                    </button>
+                                    </div> *@
+                                    @*                                     <div class="tab-pane fade" id="member-edit-nav-paper">
+                                    <div style="border: 1px solid #000;">
+                                    <p>折價券ID：2</p>
+                                    <p>折價券內容：滿500折10</p>
+                                    <p>使用狀態：未使用</p>
+                                    <p>優惠券狀態：_______(此欄待確認)</p>
+                                    <button class="btn btn-danger btn-block" style="width: 100%"
+                                    onclick="userDelete()">
+                                    刪除
+                                    </button>
+                                    </div>
+                                    </div> *@
                                 </div>
                             </div>
                         </div>
@@ -451,49 +373,438 @@
 </div>
 
 @section Scripts{
-    <script>
-        new DataTable('#member-table', {
-            responsive: true,
-            "searching": false, //隱藏搜尋框
 
-            //========隱藏某一欄
-            // columnDefs: [
-            // {
-            //     target: 10,
-            //     visible: false,
-            //     searchable: false
-            // },
-            // {
-            //     target: 11,
-            //     visible: false
-            // }
-            // ]
+    <!--Moment.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+
+    <script>
+        var isVaild = "";
+        //==========丟資料給DataTables前先console.log json 出來看結構是長怎樣
+        $(document).ready(function () {
+            $.ajax({
+                url: '@Url.Action("ShowMemeberInfo", "Member")',
+                type: 'GET',
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+
+
+            function validateEmail(input, error) {
+                input.on("blur", function () {
+                    if (!isValidEmail(input.val())) {
+                        error.text("Email格式不正確");
+                        isVaild = false;
+                    } else {
+                        error.text("");
+                        isVaild = true;
+                    }
+                });
+            }
+
+            //==================驗證帳號信箱格式是否正確
+            function isValidEmail(email) {
+                const emailRegex = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+                return emailRegex.test(email);
+            }
+
+            validateEmail($("#CreatMemberAccount"), $("#error1"));
+            validateEmail($("#CreatEmail"), $("#error2"));
+            validateEmail($("#email_edit"), $("#error3"));
+        });
+        //==========丟資料給DataTables前先console.log json 出來看結構是長怎樣
+
+        //==================datatable
+        $('#member-table').DataTable({
+            "ajax": '@Url.Action("ShowMemeberInfo", "Member")',
+            "columns": [
+                //這裡要注意json裡面是大寫還是小寫
+                { data: 'memberId' },
+                { data: 'name' },
+                { data: 'memberAccount' },
+                { data: 'gender' },
+                { data: 'email' },
+                { data: 'phoneNumber' },
+                { data: 'memberStatus' },
+                {
+                    data: null, // 這裡設置為 null，因為我們會在 render 中創建按鈕
+                    render: function (data, type, row, meta) {
+                        return '<button class="detail_input" data-bs-toggle="modal" href="#DetailModalToggle" role="button" data-memberid="' + row.memberId + '">詳細資料</button>';
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row, meta) {
+                        var editButton = '<button class="btn edit_memberbtn" data-bs-toggle="modal" href="#EditModalToggle" role="button" data-memberid="' + row.memberId + '"><i class="fas fa-edit"></i></button>';
+                        // var deleteButton = '<button class="btn" onclick="userDelete(' + row.memberId + ')"><a href="#" id="b5"><i class="fas fa-trash-alt"></i></a></button>';
+                        return editButton;
+                        // return editButton + ' | ' + deleteButton;
+                    }
+                },
+            ],
+            "paging": true, //分頁功能
+            responsive: true, //RWD
+            "searching": false, //隱藏搜尋框
         });
 
-        function userDelete() {
-            Swal.fire({
-                title: '確定要刪除嗎?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
-                }
-            })
-        }
-                        //     $('#myTable').DataTable( {
-                        //     responsive: true
-                        // } );
-                            //https://codepen.io/SitePoint/pen/xbvWQv
+        //==================按下「詳細資料」按鈕的點擊事件處理
+        $('#member-table').on('click', '.detail_input', function () {
+            var memberId = $(this).data('memberid'); // 從按鈕的 data-memberid 屬性中獲取 memberId
+            // console.log('Clicked on "詳細資料" button for memberId:', memberId);
 
-                        // See:
-                        // http://www.sitepoint.com/responsive-data-tables-comprehensive-list-solutions
+            //----------------AJAX
+            $.ajax({
+                url: '@Url.Action("GetMemberDetails", "Member")',
+                type: 'GET',
+                data: { id: memberId }, // id=>這個名稱要確保欄位跟controller的參數名稱相同（傳遞會員ID或其他必要的參數）
+                success: function (data) {
+                    // console.log(data);
+
+                    //============基本資料
+                    $('#memberId').text("ID：" + data.data.memberId);
+                    $('#name').text("姓名：" + data.data.name);
+                    $('#memberAccount').text("帳號：" + data.data.memberAccount);
+                    $('#gender').text("性別：" + data.data.gender);
+                    $('#birthday').text("生日：" + data.data.birthday);
+                    $('#email').text("E-mail：" + data.data.email);
+                    $('#phoneNumber').text("電話：" + data.data.phoneNumber);
+                    $('#address').text("地址：" + data.data.address);
+                    $('#registrationTime').text("註冊日期：" + data.data.registrationTime);
+                    $('#lastLoginTime').text("最後登入：" + data.data.lastLoginTime);
+                    $('#memberStatus').text("會員狀態：" + data.data.memberStatus);
+
+                    //============遊戲資料
+                    $('#levelId').text("等級：" + data.data.levelId);
+                    $('#characterName').text("遊戲角色名稱：" + data.data.characterName);
+                    $('#catCoinQuantity').text("貓幣數量：" + data.data.catCoinQuantity);
+                    $('#loyaltyPoints').text("紅利數量：" + data.data.loyaltyPoints);
+                    $('#runGameHighestScore').text("遊戲最高分數：" + data.data.runGameHighestScore);
+
+                    //===========常用地址
+                    var CAContainer = $("#commonaddressContainer");
+                    CAContainer.text(""); // 每次抓都要reset掉，讓之前append的地址才不會存在
+
+                    if (data.data.shopCommonAddressData.length != 0) {
+                        for (var i = 0; i < data.data.shopCommonAddressData.length; i++) {
+
+                            var item = data.data.shopCommonAddressData[i];
+
+                            var itemDiv = document.createElement("div");
+                            var addressNumber = i + 1; //計算幾筆資料的數字
+
+                            itemDiv.innerHTML = `
+                                                                                                                        <h5><b>常用地址－${addressNumber}</b></h5>
+                                                                                                                        <p>收件人姓名: ${item.recipientName}</p>
+                                                                                                                        <p>連絡電話: ${item.recipientPhone}</p>
+                                                                                                                        <p>收件地址: ${item.recipientAddress}</p>
+                                                                                                                <hr>
+                                                                                                            `;
+                            CAContainer.append(itemDiv);
+                        }
+                    } else {
+                        CAContainer.text("此會員尚未新增任何常用地址");
+                    }
+
+
+                    //===========優惠券專區
+                    var couponContainer = $("#couponContainer");
+                    couponContainer.text("");
+
+                    if (data.data.shopCommonAddressData.length != 0) {
+                        for (var i = 0; i < data.data.shopMemberCouponData.length; i++) {
+
+                            var item = data.data.shopMemberCouponData[i];
+
+                            var itemDiv = document.createElement("div");
+                            var couponNumber = i + 1; //計算幾筆資料的數字
+
+                            itemDiv.innerHTML = `
+                                                                                                                                <h5><b>優惠券－${couponNumber}</b></h5>
+                                                                                                                                        <p>優惠券ID: ${item.couponId}</p>
+                                                                                                                                                <p>優惠券內容: ${item.coupon.couponContent}</p>
+                                                                                                                                                        <p>有效日期: ${item.coupon.expiryDate}</p>
+                                                                                                                                        <p>優惠券狀態: ${item.couponStatusId}</p>
+                                                                                                                <hr>
+                                                                                                            `;
+                            couponContainer.append(itemDiv);
+                        }
+                    } else {
+                        couponContainer.text("此會員未持有優惠券");
+                    }
+                },
+                error: function (error, a, b) {
+                    console.log(error);
+                    console.log(a);
+                    console.log(b);
+                    console.log("Error retrieving member details.");
+                }
+            });
+        });
+
+        //==================按下「編輯」按鈕的點擊事件處理
+        $('#member-table').on('click', '.edit_memberbtn', function () {
+            var memberId = $(this).data('memberid'); // 從按鈕的 data-memberid 屬性中獲取 memberId
+
+            //----------------AJAX
+            $.ajax({
+                url: '@Url.Action("EditMemeber", "Member")',
+                type: 'GET',
+                data: { id: memberId }, // id=>這個名稱要確保欄位跟controller的參數名稱相同（傳遞會員ID或其他必要的參數）
+                success: function (data) {
+                    console.log(data);
+
+                    //==================基本資料
+                    $('#memberId_edit').val(data.data.memberId);
+                    $('#name_edit').val(data.data.name);
+                    $('#memberAccount_edit').val(data.data.memberAccount);
+                    $('#gender_edit').val(data.data.gender);
+
+                    //生日日期轉換：use Moment.js
+                    var date = moment(data.data.birthday);
+                    // 格式化日期為 yyyy-MM-dd 格式
+                    var formattedDate = date.format("YYYY-MM-DD");
+                    $('#birthday_edit').val(formattedDate);
+
+                    $('#email_edit').val(data.data.email);
+                    $('#phoneNumber_edit').val(data.data.phoneNumber);
+                    $('#address_edit').val(data.data.address);
+                    $('#memberStatus_edit').val(data.data.memberStatus); //會員狀態待確認
+
+                    //==================遊戲資料
+                    $('#levelId_edit').val(data.data.levelId);
+                    $('#characterName_edit').val(data.data.characterName);
+                    $('#catCoinQuantity_edit').val(data.data.catCoinQuantity);
+                    $('#loyaltyPoints_edit').val(data.data.loyaltyPoints);
+                }
+            });
+        });
+
+        //==================編輯資料後，按下「儲存」按鈕的點擊事件處理
+        $('.EditMember_Save').click(function () {
+
+            //==================基本資料
+            var MemberId = $('#memberId_edit').val();
+            var Name = $('#name_edit').val();
+            var MemberAccount = $('#memberAccount_edit').val();
+            var Gender = $('#gender_edit').val();
+            var Birthday = $('#birthday_edit').val();
+
+            var Email = $('#email_edit').val();
+            var PhoneNumber = $('#phoneNumber_edit').val();
+            var Address = $('#address_edit').val();
+            var MemberStatus = ('#memberStatus_edit').val(data.data.memberStatus); //會員狀態待確認
+
+            //==================遊戲資料
+            var LevelId = $('#levelId_edit').val();
+            var CharacterName = $('#characterName_edit').val();
+            var CatCoinQuantity = $('#catCoinQuantity_edit').val();
+            var LoyaltyPoints = $('#loyaltyPoints_edit').val();
+
+            var memberData = {
+                MemberId: MemberId,
+                Name: Name,
+                MemberAccount: MemberAccount,
+                Gender: Gender,
+                Birthday: Birthday,
+                Email: Email,
+                PhoneNumber: PhoneNumber,
+                Address: Address,
+                MemberStatus: MemberStatus,
+                LevelId: LevelId,
+                CharacterName: CharacterName,
+                CatCoinQuantity: CatCoinQuantity,
+                LoyaltyPoints: LoyaltyPoints
+            };
+
+            //================先驗證格式是否正確才跑ajax
+            //================驗證信箱&帳號格式是否正確
+
+            console.log("驗證：" + isVaild);
+
+            if (!isVaild) {
+                $.ajax({
+                    url: '/AdminCMS/Member/UpdateMember',
+                    type: 'POST',
+                    data: JSON.stringify(memberData),
+                    contentType: 'application/json',
+                    success: function (response) {
+                        if (response.success) {
+                            // 更新成功的處理
+                            // 顯示成功訊息
+                            Swal.fire({
+                                icon: 'success',
+                                title: '成功',
+                                text: data.message
+                            });
+
+                            // 關閉modal
+                            $('#addMemberModalToggle').modal('hide');
+                        } else {
+                            // 更新失敗
+                            Swal.fire({
+                                icon: 'error',
+                                title: '失敗',
+                                text: data.message
+                            });
+                        }
+                    },
+                    error: function (error) {
+                        // 錯誤處理
+                        // 會員新增失敗，顯示錯誤訊息
+                        console.log(error);
+                    }
+                });
+            } else {
+                console.log("驗證沒過");
+                return;
+            }
+
+
+        })
+
+
+        var CheckAccResult = ""; //將帳號是否已存在的結果，設成全域變數給儲存按鈕做驗證
+
+        //====================離開input 驗證帳號是否重複
+        function checkDuplicateName() {
+            var account = $('#CreatMemberAccount').val(); //抓到使用者輸入的帳號
+
+            if (account === "") { //當輸入框為空時，隱藏錯誤消息
+                hideErrorMessage();
+                CheckAccResult = "";
+                return;
+            }
+
+            //===============打API驗證姓名是否已存在
+            //資料庫有的帳號：catCha2、catCha
+            $.ajax({
+                url: '/AdminCMS/Member/CheckDuplicateName',
+                type: 'GET',
+                data: { account: account },
+                success: function (result) {
+                    // console.log(result)
+                    CheckAccResult = result.isDuplicate;
+
+                    if (result.isDuplicate) { //如果等於true
+                        CheckAccResult = result.isDuplicate;
+                        $('#duplicateMessage').text("此帳號已存在");
+                        $('#duplicateMessage').css("display", "block"); //顯示錯誤訊息
+
+                    } else {
+                        CheckAccResult = result.isDuplicate;
+                        $('#duplicateMessage').text("");
+                        $('#duplicateMessage').css("display", "none"); //顯示錯誤訊息
+                    }
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        function hideErrorMessage() {
+            $('#duplicateMessage').css("display", "none");
+        }
+
+
+        //====================新增會員
+        $('#CreatMember').click(async function () {
+
+            var Name = $('#CreatName').val();
+            var MemberAccount = $('#CreatMemberAccount').val();
+            var Gender = $('#CreatGender').val();
+            var Birthday = $('#CreatBirthday').val();
+            var Email = $('#CreatEmail').val();
+            var PhoneNumber = $('#CreatPhoneNumber').val();
+            var Address = $('#CreatAddress').val();
+            var MemberStatus = $('#CreatMemberStatus').val(); //會員狀態這一欄一直有問題沒辦法insert
+
+            console.log(Name + "、" + MemberAccount + "、" + Gender + "、" + Birthday + "、" + Email + "、" + PhoneNumber + "、" + Address + "、" + MemberStatus);
+
+            console.log("驗證：" + isVaild);
+
+            // 檢查帳號是否已存在
+            if (CheckAccResult == true || isVaild == false) {
+                return; // 不執行後續動作
+            }
+
+            // 檢查必填欄位是否有值
+            if (!Name || !MemberAccount || !Gender || !Birthday || !Email || !PhoneNumber) {
+                Swal.fire({
+                    icon: 'error',
+                    title: '錯誤',
+                    text: '請填寫所有必填欄位。'
+                });
+                return; // 不執行後續動作
+            }
+
+            var newMember = {
+                Name: Name,
+                MemberAccount: MemberAccount,
+                Gender: Gender,
+                Birthday: Birthday,
+                Email: Email,
+                PhoneNumber: PhoneNumber,
+                Address: Address,
+                MemberStatus: MemberStatus, //會員狀態這一欄一直有問題沒辦法insert
+            };
+
+            try {
+                //============要驗證帳號是否重複，以及格式欄位是否正確，後端前端都要驗證才可新增
+                const response = await fetch('@Url.Action("AddMember", "Member")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newMember)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // 會員新增成功，顯示成功訊息
+                    Swal.fire({
+                        icon: 'success',
+                        title: '成功',
+                        text: data.message
+                    });
+
+                    // 關閉modal
+                    $('#addMemberModalToggle').modal('hide');
+                } else {
+                    // 會員新增失敗，顯示錯誤訊息
+                    Swal.fire({
+                        icon: 'error',
+                        title: '失敗',
+                        text: data.message
+                    });
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+
+                                                                                    // function userDelete() {
+                                                                                    //     Swal.fire({
+                                                                                    //         title: '確定要刪除嗎?',
+                                                                                    //         icon: 'warning',
+                                                                                    //         showCancelButton: true,
+                                                                                    //         confirmButtonColor: '#3085d6',
+                                                                                    //         cancelButtonColor: '#d33',
+                                                                                    //         confirmButtonText: 'Yes, delete it!'
+                                                                                    //     }).then((result) => {
+                                                                                    //         if (result.isConfirmed) {
+                                                                                    //             Swal.fire(
+                                                                                    //                 'Deleted!',
+                                                                                    //                 'Your file has been deleted.',
+                                                                                    //                 'success'
+                                                                                    //             )
+                                                                                    //         }
+                                                                                    //     })
+                                                                                    // }
     </script>
 }

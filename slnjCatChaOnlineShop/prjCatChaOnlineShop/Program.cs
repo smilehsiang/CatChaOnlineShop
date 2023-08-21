@@ -1,11 +1,21 @@
 using Microsoft.EntityFrameworkCore;
 using prjCatChaOnlineShop.Models;
 using prjCatChaOnlineShop.Services.Function;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//==============解決 json too big 問題（Mandy需要的請勿刪~桑Q）
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    options.JsonSerializerOptions.WriteIndented = true;
+});
+//==============解決 json too big 問題（Mandy需要的請勿刪~桑Q）
+
 builder.Services.AddScoped<ImageService>();
 
 
