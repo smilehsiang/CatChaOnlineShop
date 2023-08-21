@@ -10,6 +10,4 @@ public partial class ShopMemberStatus
     public int StatusId { get; set; }
 
     public string Status { get; set; }
-
-    public virtual ICollection<ShopMemberInfo> ShopMemberInfo { get; set; } = new List<ShopMemberInfo>();
 }

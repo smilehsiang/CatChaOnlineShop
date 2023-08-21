@@ -45,7 +45,9 @@ public partial class ShopMemberInfo
 
     public int? RunGameHighestScore { get; set; }
 
-    public int? MemberStatusId { get; set; }
+    public bool? MemberStatus { get; set; }
+
+    public string MemberImage { get; set; }
 
     public virtual ICollection<Game1on1MessageData> Game1on1MessageDataReceiver { get; set; } = new List<Game1on1MessageData>();
 
@@ -62,8 +64,6 @@ public partial class ShopMemberInfo
     public virtual ICollection<GameMemberTask> GameMemberTask { get; set; } = new List<GameMemberTask>();
 
     public virtual GameRankData Level { get; set; }
-
-    public virtual ShopMemberStatus MemberStatus { get; set; }
 
     public virtual ShopMyCatNameList MyCatNameList { get; set; }
 
