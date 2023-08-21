@@ -106,11 +106,72 @@ namespace prjCatChaOnlineShop.Controllers.CMS
 
         public IActionResult tableData()
         {
-            var data = _cachaContext.GameShopAnnouncement.ToList();
+            var rawData = _cachaContext.GameShopAnnouncement.ToList();
 
+            var data = rawData.Select(x =>
+            {
+                DateTime parsedDateTime;
+                string formattedDateTime = DateTime.TryParse(x.PublishEndTime, out parsedDateTime)
+                                            ? parsedDateTime.ToString("yyyy-MM-dd HH:mm")
+                                            : "未設定時間";
+                string publishDateTime = DateTime.TryParse(x.PublishTime, out parsedDateTime)
+                            ? parsedDateTime.ToString("yyyy-MM-dd HH:mm")
+                            : "未設定時間";
+                return new
+                {
+                    AnnouncementId = x.AnnouncementId,
+                    AnnouncementTitle = x.AnnouncementTitle,
+                    AnnouncementContent = x.AnnouncementContent,
+                    AnnouncementImageHeader = x.AnnouncementImageHeader,
+                    AdminId = x.AdminId,
+                    EditTime = x.EditTime,
+                    PublishTime = publishDateTime,
+                    SyncWithGameAndShopDisplay = x.SyncWithGameAndShopDisplay,
+                    HideInGameDisplay = x.HideInGameDisplay,
+                    ConvertToMarquee = x.ConvertToMarquee,
+                    PinToTop = x.PinToTop == null ? "未設定" :
+                                x.PinToTop == true ? "是" : "否",
+                    AnnouncementTypeId = x.AnnouncementTypeId == null ? "未設定" :
+                         x.AnnouncementTypeId.Value == 1 ? "商城公告" :
+                         x.AnnouncementTypeId.Value == 2 ? "遊戲公告" :
+                         x.AnnouncementTypeId.ToString(),
+                    AnnouncementType = x.AnnouncementType,
+                    AnnouncementImageContent = x.AnnouncementImageContent,
+                    PublishEndTime = formattedDateTime,
+                    displayOrNot = x.DisplayOrNot == null ? "未設定" :
+                                   x.DisplayOrNot == true ? "是" : "否",
+                };
+        }).ToList();
             return Json(new { data });
         }
 
+        public IActionResult Delete(int? id)
+        {
+            if (id != null)
+            {
+                GameShopAnnouncement cAnnounce = _cachaContext.GameShopAnnouncement.FirstOrDefault(p => p.AnnouncementId == id);
+                if (cAnnounce != null)
+                {
+                    _cachaContext.GameShopAnnouncement.Remove(cAnnounce);
+                    _cachaContext.SaveChanges();
+                }
+            }
+            return RedirectToAction("news" , "News", new {area="AdminCMS" });
+        }
+        [HttpGet]
+        public IActionResult EditorNews(int? id)
+        {
+            if (id == null)
+            {
+                return Json(new { success = false, message = "Invalid ID" });
+            }
+            GameShopAnnouncement cAnnounce = _cachaContext.GameShopAnnouncement.FirstOrDefault(p => p.AnnouncementId == id);
+            if (cAnnounce == null)
+            {
+                return Json(new { success = false, message = "Item not found" });
+            }
+            return Json(new { success = true, data = cAnnounce });
+        }
 
     }
 }

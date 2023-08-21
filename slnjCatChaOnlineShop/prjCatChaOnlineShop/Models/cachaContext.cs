@@ -849,7 +849,6 @@ public partial class cachaContext : DbContext
             entity.Property(e => e.MemberAccount)
                 .HasMaxLength(50)
                 .HasColumnName("Member Account");
-            entity.Property(e => e.MemberStatusId).HasColumnName("MemberStatusID");
             entity.Property(e => e.MyCatNameListId).HasColumnName("MyCatNameListID");
             entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.PhoneNumber)
@@ -862,10 +861,6 @@ public partial class cachaContext : DbContext
             entity.HasOne(d => d.Level).WithMany(p => p.ShopMemberInfo)
                 .HasForeignKey(d => d.LevelId)
                 .HasConstraintName("FK_Shop.會員資訊_Game.等級排位資料表");
-
-            entity.HasOne(d => d.MemberStatus).WithMany(p => p.ShopMemberInfo)
-                .HasForeignKey(d => d.MemberStatusId)
-                .HasConstraintName("FK_Shop.Member Info_Shop.MemberStatus");
 
             entity.HasOne(d => d.MyCatNameList).WithMany(p => p.ShopMemberInfo)
                 .HasForeignKey(d => d.MyCatNameListId)
