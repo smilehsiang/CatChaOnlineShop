@@ -73,23 +73,23 @@ pauseBTNimg.src = '../../images/game/runGame/pause.png';
 ScoreBK.src = '../../images/game/runGame/scoreBK.png'
 
 const RunCatData = {
-    Default: {
+    catDefault: {
         walk: '../../images/game/kittenDefault_walkR.png',
         jump: '../../images/game/runGame/kittenDefault_jump.png',
     },
-    BK: {
+    catBK: {
         walk: '../../images/game/kittenBK_walkR.png',
         jump: '../../images/game/runGame/kittenBK_jump.png',
     },
-    OG: {
+    catOG: {
         walk: '../../images/game/kittenOG_walkR.png',
         jump: '../../images/game/runGame/kittenOG_jump.png',
     },
-    GY: {
+    catGY: {
         walk: '../../images/game/kittenGY_walkR.png',
         jump: '../../images/game/runGame/kittenGY_jump.png',
     },
-    BB: {
+    catBB: {
         walk: '../../images/game/kittenBB_walkR.png',
         jump: '../../images/game/runGame/kittenBB_jump.png',
     },
