@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<prjCatChaOnlineShop.Models.GameShopBanner>
+
 @{
     ViewData["Title"] = "Banner";
     Layout = "~/Areas/AdminCMS/Views/Shared/CMS_Layout.cshtml";
@@ -125,22 +126,26 @@
                 <table id="Banner-table" class="table table-striped nowrap" style="width:100%">
                             <thead>
                                 <tr>
-                                    <!-- <th>序號</th> -->
-                                    <th>ID</th>
-                                    <th>名稱</th>
-                                    <th>類型</th>
-                                    <th>圖片</th>
+                                    <th>序號</th>
+                                    <th>@Html.DisplayNameFor(model => model.Banner)</th>
+                                    <th>@Html.DisplayNameFor(model => model.PublishDate)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Link)</th>
                                     <th>編輯/刪除</th>
                                 </tr>
                             </thead>
                             <tbody>
+                        @if (Model != null)
+                            {
+                            int count = 0;
+                            foreach (var item in Model)
+                            {
+                                count++;
                                 <tr>
-                                    <!-- <td>1</td> -->
-                                    <td>1</td>
-                                    <td>Banner1</td>
-                                    <td>主頁</td>
+                                    <td>@count</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Banner)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.PublishDate)</td>
                                     <td class="test">
-                                <img src="~/images/home-slide-2.jpg"
+                                    <img src="~/images/home-slide-2.jpg"
                                              width="200" height="100" class="thumbnail-image">
                                         <!-- 原始圖片的視窗 -->
                                         <div class="image-popup">
@@ -162,35 +167,8 @@
                                         </button>
                                     </td>
                                 </tr>
-
-                                <tr>
-                                    <!-- <td>2</td> -->
-                                    <td>2</td>
-                                    <td>Banner2</td>
-                                    <td>促銷</td>
-                                    <td class="test">
-                                <img src="~/images/home-slide-1.jpg"
-                                             width="200" height="100" class="thumbnail-image">
-                                        <!-- 原始圖片的視窗 -->
-                                        <div class="image-popup">
-                                    <img src="~/images/home-slide-1.jpg"
-                                                 alt="Original Image">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="#">
-                                            <button class="btn" data-bs-toggle="modal"
-                                                    href="#exampleModalToggle" role="button">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                        </a> | <button class="btn"
-                                                       onclick="userDelete()">
-                                            <a href="#" id="b5">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
-                                        </button>
-                                    </td>
-                                </tr>
+                                }
+                        }
 
 
 

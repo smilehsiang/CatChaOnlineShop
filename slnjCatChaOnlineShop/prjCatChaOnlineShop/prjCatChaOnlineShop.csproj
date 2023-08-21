@@ -46,7 +46,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\AdminCMS\Data\" />
-    <Folder Include="Areas\AdminCMS\Models\" />
   </ItemGroup>
 
 </Project>
