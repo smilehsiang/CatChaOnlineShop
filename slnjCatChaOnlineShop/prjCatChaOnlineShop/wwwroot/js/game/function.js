@@ -1,10 +1,4 @@
-//定義初始變數
-let UserName = "未登入"
-let Ccoin = "N/A";
-let Ruby = "N/A";
-let milkCount = 0;
-let canCount = 0;
-let hightestScore = 0;
+
 
 //模擬資料庫資料
 let userInfo = {
@@ -17,8 +11,8 @@ let userBagData = {
     catDefault: true,
     catBB: true,
     catBK: true,
-    catGY: false,
-    catOG: false,
+    catGY: true,
+    catOG: true,
     milk: 66,
     can: 40
 }
@@ -28,8 +22,9 @@ let gachaTextRuby = document.getElementById('gachaTextRuby')
 
 //載入資料庫資訊
 function initialize() {
-    UserName = userInfo.name;
-    Ccoin = gachaTextCCoin.innerHTML =   userInfo.CCoin;
+    //UserName = userInfo.name;
+    
+    /*Ccoin = gachaTextCCoin.innerHTML =   userInfo.CCoin;*/
     Ruby = gachaTextRuby.innerHTML =  userInfo.Ruby;
     milkCount = userBagData.milk;
     canCount = userBagData.can;

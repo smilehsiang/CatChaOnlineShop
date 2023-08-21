@@ -43,7 +43,13 @@ const bagItem7 = new Image();
 const bagItem8 = new Image();
 const itemSelected = new Image();
 
-
+//定義初始變數
+let UserName = "未登入"
+let Ccoin = "N/A";
+let Ruby = "N/A";
+let milkCount = 0;
+let canCount = 0;
+let hightestScore = 0;
 //類別
 class UserInfo {
 

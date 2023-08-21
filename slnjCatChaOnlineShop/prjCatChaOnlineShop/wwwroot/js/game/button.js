@@ -39,5 +39,24 @@ closeinstruction.addEventListener("click", () => {
 });
  
 testlogin.addEventListener("click", () => {
-    initialize();
+
+    // 使用 AJAX 請求呼叫 API
+    $.ajax({
+        url: '/Api/Api/TestDBLogin',
+        type: 'GET',
+        success: function (data) {
+            if (data.length > 0) {
+                UserName = data[0].characterName; //登入時載入使用者名稱
+                Ccoin = gachaTextCCoin.innerHTML = data[0].catCoinQuantity; //貓幣數量
+                Ruby = gachaTextRuby.innerHTML = data[0].loyaltyPoints; //紅利數量
+                milkCount = userBagData.milk; //這一行還沒改
+                canCount = userBagData.can;//這一行還沒改
+                hightestScore = data[0].runGameHighestScore
+            }
+        },
+        error: function () {
+            console.error('載入資料失敗');
+        }
+    });
+
 });
