@@ -291,10 +291,48 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <script>
-        //篩選類別
+        //初始化表格
         $(document).ready(function () {
             var table = $('#Product-table').DataTable({
                 responsive: true,
+                    "searching": true,
+                    "processing": true,
+                    "serverSide": false,
+                    "paging": true,
+                    "pagingType": "full_numbers",
+                    "pageLength": 10,
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "全部"]],
+                    "info": true,
+                    "ajax": {
+                        "url": "@Url.Action("tableData", "News" , new{ area="AdminCMS"})",
+                        type: 'GET',
+                    },
+                    //載入欄位資料庫資料
+                    "columns": [
+                        { "data": "productId" },
+                        { "data": "productName" },
+                        {"data":  "productDescription"},
+                        { "data": "shopProductCategory" },
+                        { "data": "shopProductImageTable" },
+                        { "data": "releaseDate" },
+                        { "data": "size" },
+                        { "data": "weight" },
+                        { "data": "shopProductSupplier" },
+                        { "data": "discontinued" },
+                        {
+                            "data": null,
+                            "render": function (data, type, row) {
+                                var deleteUrl = '@Url.Action("Delete", "News", new { area = "AdminCMS", id = "announcementTypeId" })';
+                                deleteUrl = deleteUrl.replace('announcementTypeId', row.announcementId);
+                                var editorUrl = '@Url.Action("EditorNews","News",new { area = "AdminCMS", id = "announcementTypeId" })';
+                                editorUrl = editorUrl.replace('announcementTypeId', row.announcementId);
+                                return `<a href="${editorUrl}" role="button"><button data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit"></i></button></a> |
+                                                    <a href="${deleteUrl}" onclick="return confirm('確定要刪除嗎?')"><i class="fas fa-trash-alt"></i></a>`;
+                            }
+                        }
+                    ]
+                });
+                 //篩選類別
                 // 在這裡指定需要過濾的列，商品類別為第六列->索引5
                 columnDefs: [
                     { targets: 5, searchable: true }
