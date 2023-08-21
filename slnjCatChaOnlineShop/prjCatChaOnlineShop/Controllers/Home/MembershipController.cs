@@ -48,6 +48,39 @@ namespace prjCatChaOnlineShop.Controllers.Home
             }
         }
 
+        //取得帳戶優惠券資料
+        public IActionResult GetMemberCouponData()
+        {
+            try
+            {
+                var query = from coupons in _context.ShopMemberCouponData
+                            where coupons.MemberId == 1 & coupons.CouponStatusId == true
+                            orderby coupons.Coupon.ExpiryDate
+                            select new
+                            {
+                                coupons.Coupon.CouponName,
+                                coupons.Coupon.CouponContent,
+                                coupons.Coupon.ExpiryDate
+                            };
+
+                var datas = query.ToList();
+
+                if (datas != null)
+                {
+                    return new JsonResult(datas);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+        }
+
+
         //更新帳戶基本資料到資料庫
         public IActionResult UpdateMemberInfo(ShopMemberInfo member)
         {

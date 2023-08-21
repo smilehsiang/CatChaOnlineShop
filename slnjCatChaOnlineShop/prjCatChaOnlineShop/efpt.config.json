@@ -116,7 +116,15 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Shop.AdminBooking]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Shop.Appeal Category Data]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.BookingStatus]",
          "ObjectType": 0
       },
       {
@@ -149,6 +157,10 @@
       },
       {
          "Name": "[dbo].[Shop.Coupon Total]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.CustomerBooking]",
          "ObjectType": 0
       },
       {
@@ -185,6 +197,14 @@
       },
       {
          "Name": "[dbo].[Shop.NavbarList]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.NoserviceDate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shop.OpenBookingTime]",
          "ObjectType": 0
       },
       {

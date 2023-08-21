@@ -1,4 +1,7 @@
-﻿@{
+﻿@* @model prjCatChaOnlineShop.Models.ViewModels.CMembershipModel  *@
+
+
+@{
     ViewData["Title"] = "Membership";
 }
 
@@ -141,6 +144,7 @@
                                                 <form id="memberInfoForm">
                                                     <div class="form-row">
                                                         <div class="col-md-6">
+                                                            @* <input type="hidden" name="MemberId" value="@Model." /> *@
                                                             <label>帳號</label>
                                                             <input type="text" placeholder="帳號" id="memberAccountInput" name="MemberAccount"
                                                                    class="form-control" readonly/>
@@ -391,12 +395,14 @@
                                                  src='@Url.Content("~/images/toy.png")' alt="">
                                         </div>
                                     </form>
-                                    <span id="summonName" >會員</span>
+                                    @* <span id="summonName" >會員</span> *@
+                                    <h1 id="summonName">會員</h1>
+
                                     <div class="d-flex justify-content-center">
-                                        <span>您目前持有點數：9點</span><span>/1元</span>
+                                        <span id="coinPointShow">您目前持有貓幣和紅利點數：0元/0點</span>
                                     </div>
                                     <div class="text-center ">
-                                        <button class="btn-customs btn hvr-hovers " data-bs-toggle="modal"
+                                        <button class="btn-customs btn hvr-hovers " data-bs-toggle="modal" id="searchCoupon"
                                                 data-bs-target="#couponModal">
                                             查看持有優惠券
                                         </button>
@@ -429,6 +435,8 @@
                         </div>
                     </div>
                     <div class="modal-body">
+                        <!--下為切版時先把資料寫死的內容-->
+                        <!--
                         <table class="table table-condensed">
                             <thead class="table-warning">
                                 <tr>
@@ -455,7 +463,18 @@
                                 </tr>
                             </tbody>
                         </table>
-
+                        -->
+                        <table class="table table-bordered table-hover" id="couponTable">
+                            <thead class="table-warning  text-center">
+                                <tr>
+                                    <th style ="white-space: nowrap;">優惠名稱</th>
+                                    <th style ="white-space: nowrap;">適用範圍</th>
+                                    <th style ="white-space: nowrap;">使用期限</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-left">
+                            </tbody>
+                        </table>
                     </div>
                     <div class="modal-footer">
                     </div>
@@ -610,7 +629,6 @@
                                         </tbody>
                                     </table>
                                     -->
-
                                     <table class="table  table-bordered table-hover" id="orderTable">
                                         <thead class="table-warning text-center">
                                             <tr>
@@ -1366,7 +1384,8 @@
                 $('#nameInput').val(data.name);
                 $('#emailInput').val(data.email);
                 $('#phoneNumberInput').val(data.phoneNumber);
-                $('#summonName').text(data.name);
+                $('#summonName').text(`會員：${data.name}`);
+                $('#coinPointShow').text(`您目前持有貓幣和紅利點數：${data.catCoinQuantity}元/${data.loyaltyPoints}點`);
 
                 var dateParts = data.birthday.split('-');
                 var year = parseInt(dateParts[0], 10);
@@ -1415,6 +1434,30 @@
                         icon: 'error',
                         title: '錯誤',
                         text: error.message
+                    });
+                });
+            });
+
+            //拿取優惠券數據
+            $('#searchCoupon').click(function (event) {
+                $.getJSON('@Url.Content("~/membership/GetMemberCouponData")', function (data) {
+                    var tbody = document.querySelector('#couponTable tbody');
+                    
+                    // 清空表格內容
+                    tbody.innerHTML = '';
+
+                    // 遍歷 JSON 資料並建立表格列
+                    data.forEach(function (item) {
+                        var row = tbody.insertRow();
+                        row.insertCell().textContent = item.couponName;
+                        row.insertCell().textContent = item.couponContent;
+
+                        //將日期格式化為 "yyyy-mm-dd"
+                        var formattedDate = new Date(item.expiryDate).toISOString().split('T')[0];
+                        var dateCell = row.insertCell();
+                        dateCell.textContent = formattedDate;
+                        dateCell.style.whiteSpace = 'nowrap';
+
                     });
                 });
             });
