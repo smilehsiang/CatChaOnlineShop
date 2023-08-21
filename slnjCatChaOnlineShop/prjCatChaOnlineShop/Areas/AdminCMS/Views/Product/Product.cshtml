@@ -1,4 +1,4 @@
-﻿
+﻿@model prjCatChaOnlineShop.Areas.AdminCMS.Models.CShopProductTotalWrap
 @{
     ViewData["Title"] = "Product";
     Layout = "~/Areas/AdminCMS/Views/Shared/CMS_Layout.cshtml";
@@ -184,177 +184,100 @@
                 <table id="Product-table" class="table table-striped nowrap" style="width:100%">
                     <thead>
                         <tr>
-                            <!-- <th>序號</th> -->
-                            <th>ID</th>
-                            <th>商品名稱</th>
-                            <th>商品描述</th>
-                            <th>商品價格</th>
-                            <th>剩餘數量</th>
-                            <th>商品類別</th>
-                            <th>商品圖片</th>
-                            <th>上架日期</th>
-                            <th>尺寸</th>
-                            <th>重量</th>
-                            <th>供應商</th>
-                            <th>是否停售</th>
-                            <th>編輯/刪除</th>
+                            <th>序號</th>
+                                <th>@Html.DisplayNameFor(model => model.ProductName)</th>
+                                <th>@Html.DisplayNameFor(model => model.ProductDescription)</th>
+                                <th>@Html.DisplayNameFor(model => model.ProductPrice)</th>
+                                <th>@Html.DisplayNameFor(model => model.RemainingQuantity)</th>
+                                <th>@Html.DisplayNameFor(model => model.ProductCategory)</th>
+                                <th>@Html.DisplayNameFor(model => model.ShopProductImageTable)</th>
+                                <th>@Html.DisplayNameFor(model => model.ReleaseDate)</th>
+                                <th>@Html.DisplayNameFor(model => model.Size)</th>
+                                <th>@Html.DisplayNameFor(model => model.Weight)</th>
+                                <th>@Html.DisplayNameFor(model => model.Supplier)</th>
+                                <th>@Html.DisplayNameFor(model => model.Discontinued)</th>
+                                 <th>編輯/刪除</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <!-- <td>1</td> -->
-                            <td>1</td>
-                            <td>喵洽普｜貓咪營養肉泥</td>
-                            <td>◆無穀物、無抗生素、無防腐劑</td>
-                            <td>65.00</td>
-                            <td>500</td>
-                            <td>食品</td>
-                            <td class="test">
-                                <img src="~/images/prod-eg-7.jpg"
-                                     width="100" height="100" class="thumbnail-image">
-                                <!-- 原始圖片的視窗 -->
-                                <div class="image-popup">
-                                    <img src="~/images/prod-eg-7.jpg"
-                                         alt="Original Image">
-                                </div>
-                            </td>
-                            <td>2023-07-02</td>
-                            <td>一包四入</td>
-                            <td></td>
-                            <td>1</td>
-                             <td>是</td>
-                            <td>
-                                <a href="#">
-                                    <button class="btn" data-bs-toggle="modal"
-                                            href="#exampleModalToggle" role="button">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                </a> | <button class="btn"
-                                               onclick="userDelete()">
-                                    <a href="#" id="b5">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </a>
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <!-- <td>2</td> -->
-                            <td>2</td>
-                            <td>寵物派對｜凍乾零食</td>
-                            <td>◆嚴格篩選人類食用等級的頂級食材</td>
-                            <td>266.00</td>
-                            <td>500</td>
-                            <td>零食</td>
-                            <td class="test">
-                                <img src="~/images/prod-eg-6.jpg"
-                                     width="100" height="100" class="thumbnail-image">
-                                <!-- 原始圖片的視窗 -->
-                                <div class="image-popup">
-                                    <img src="~/images/prod-eg-6.jpg"
-                                         alt="Original Image">
-                                </div>
-                            </td>
-                            <td>2023-07-03</td>
-                            <td></td>
-                            <td>50g</td>
-                            <td>1</td>
-                            <td>否</td>
-                            <td>
-                                <a href="#">
-                                    <button class="btn" data-bs-toggle="modal"
-                                            href="#exampleModalToggle" role="button">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                </a> | <button class="btn"
-                                               onclick="userDelete()">
-                                    <a href="#" id="b5">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </a>
-                                </button>
-                            </td>
-                        </tr>
-
-
-
-                        <!--編輯彈出視窗-->
-                        <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
-                             aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalToggleLabel">編輯 Edit</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!--內容表單-->
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>ID</label>
-                                                <input type="text" class="form-control" readonly disabled>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>名稱</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>價格</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>剩餘數量</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>商品類別</label>
-                                                <select class="form-control">
-                                                    <option value="ProductCatgory1">零食</option>
-                                                    <option value="ProductCatgory2">玩具</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>上架日期</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>尺寸</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>重量</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>供應商</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>是否停售</label>
-                                                <select class="form-control">
-                                                    <option value="是">是</option>
-                                                    <option value="否">否</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>圖片</label>
-                                                <input type="file" class="form-control">
-                                            </div>
-
-                                            <button type="submit" class="mt-3 btn btn-primary btn-block"
-                                                    style="width: 100%;">
-                                                儲存
-                                            </button>
-                                        </div>
-                                        <!--內容表單-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--編輯彈出視窗-->
                     </tbody>
                 </table>
                 <!--表格-->
+                    <!--編輯彈出視窗-->
+                    <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                         aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalToggleLabel">編輯 Edit</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!--內容表單-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>ID</label>
+                                            <input type="text" class="form-control" readonly disabled>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>名稱</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>價格</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>剩餘數量</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>商品類別</label>
+                                            <select class="form-control">
+                                                <option value="ProductCatgory1">零食</option>
+                                                <option value="ProductCatgory2">玩具</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>上架日期</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>尺寸</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>重量</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>供應商</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>是否停售</label>
+                                            <select class="form-control">
+                                                <option value="是">是</option>
+                                                <option value="否">否</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label>圖片</label>
+                                            <input type="file" class="form-control">
+                                        </div>
+
+                                        <button type="submit" class="mt-3 btn btn-primary btn-block"
+                                                style="width: 100%;">
+                                            儲存
+                                        </button>
+                                    </div>
+                                    <!--內容表單-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--編輯彈出視窗-->
             </div>
         </div>
     </div>
@@ -368,8 +291,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <script>
-
-
         //篩選類別
         $(document).ready(function () {
             var table = $('#Product-table').DataTable({
@@ -396,7 +317,7 @@
 
         });
 
-        // 當頁面載入完成後執行
+        //圖片預覽-當頁面載入完成後執行
         document.addEventListener("DOMContentLoaded", function () {
             // 獲取所有包含縮略圖片和視窗的元素
             const thumbnailImages = document.querySelectorAll(".thumbnail-image");
@@ -418,7 +339,6 @@
             });
         });
 
-
         //日期篩選器
         $('input[name="dates"]').daterangepicker();
         $(document).ready(function () {
@@ -429,6 +349,9 @@
 
 
 
+
+
+        //刪除按鈕
         function userDelete() {
             Swal.fire({
                 title: '確定要刪除嗎?',
