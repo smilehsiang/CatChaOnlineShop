@@ -39,7 +39,7 @@
                         <button id="RubyTenDrows"></button>
                     </div>
                 </div>
-                <div id="result" class="result-container">結果:</div>
+                <div id="result" class="result-container"></div>
             </div>
             <!-- End 轉蛋 -->
            
@@ -74,18 +74,22 @@
                 </nav>
             </div>
             <!-- End 小遊戲說明提示 -->
-            <!-- Start 獲得物品確認視窗 -->
-            <div id="confirmWin">
-            <div class="confirmWin-container" >
-                獲得物品
-                <div id="confirmWin-text">
-                        獲得貓幣 200
+        <!-- Start 獲得物品確認視窗 -->
+        <div id="confirmWin">
+            <div id="confirmWin-container">
+                <div id="confirmWin-title">
+                    N/A
                 </div>
-             </div>
-            <button id="confirmWinBTN"  onclick="closeConfirmWin()">確認</button>
+                <div id="confirmWin-text">
+                    N/A
+                </div>
             </div>
-            <!-- End 獲得物品確認視窗 -->
-            <!-- Start Canvas遊戲畫布 -->
+            <button id="confirmWinBTN" onclick="closeConfirmWin()">確認</button>
+        </div>
+    </div>
+    <!-- End 獲得物品確認視窗 -->
+    <!-- Start Canvas遊戲畫布 -->
+
             <canvas id="CanvasCheckIn"></canvas>
             <div id="CanvasRank">
                     <button id="commonbackBTN"></button>
@@ -98,13 +102,16 @@
             <canvas id="CanvasDoubleCheck"></canvas>
             <!-- End Canvas遊戲畫布 -->
         </div>
-    </div>
+
     <button type="submit" id="testlogin">測試登入</button>
+    <button type="submit" id="testDBlogin">測試資料庫登入</button>
     <!-- End 遊戲畫面 -->
 
 
 <!-- 遊戲相關js -->
         @section Scripts{
+            <script src="~/js/game/DBIformation.js"></script>
+            <script src="jquery.loading.js"></script>
             <script src="~/js/game/Main.js"></script> 
             <script src="~/js/game/function.js"></script>
             <script src="~/js/game/button.js"></script>

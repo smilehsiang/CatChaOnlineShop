@@ -9,6 +9,7 @@ helpBTNimg.src = '../../images/game/Icon_Question.png';
 rankBTNimg.src = '../../images/game/Icon_Stats.png';
 gotoGachaimg.src = '../../images/game/gachaIcon.png';
 gotoRunGameimg.src = '../../images/game/runGameIcon.png';
+heart.src = '../../images/game/thought_bubble.png'
 
 //大廳背包格子
 bagItem1.src = '../../images/game/staticCats/kittenDefault_stopR.png'
@@ -72,23 +73,23 @@ pauseBTNimg.src = '../../images/game/runGame/pause.png';
 ScoreBK.src = '../../images/game/runGame/scoreBK.png'
 
 const RunCatData = {
-    Default: {
+    catDefault: {
         walk: '../../images/game/kittenDefault_walkR.png',
         jump: '../../images/game/runGame/kittenDefault_jump.png',
     },
-    BK: {
+    catBK: {
         walk: '../../images/game/kittenBK_walkR.png',
         jump: '../../images/game/runGame/kittenBK_jump.png',
     },
-    OG: {
+    catOG: {
         walk: '../../images/game/kittenOG_walkR.png',
         jump: '../../images/game/runGame/kittenOG_jump.png',
     },
-    GY: {
+    catGY: {
         walk: '../../images/game/kittenGY_walkR.png',
         jump: '../../images/game/runGame/kittenGY_jump.png',
     },
-    BB: {
+    catBB: {
         walk: '../../images/game/kittenBB_walkR.png',
         jump: '../../images/game/runGame/kittenBB_jump.png',
     },

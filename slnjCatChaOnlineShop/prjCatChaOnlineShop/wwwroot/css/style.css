@@ -26,7 +26,7 @@
 @import url(bootsnav.css);
 @import url(owl.carousel.min.css);
 @import url(jquery-ui.css);
-@import url(nice-select.css);
+/*@import url(nice-select.css);*//*Yaolin:暫時拿掉因為沒東西會報錯新增css後可以打開*/
 @import url(baguetteBox.min.css);
 
 /*------------------------------------------------------------------

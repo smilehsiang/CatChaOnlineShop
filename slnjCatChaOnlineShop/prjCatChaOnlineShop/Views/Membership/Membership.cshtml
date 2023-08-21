@@ -74,7 +74,6 @@
     <!--增加的部分:用於搜尋關鍵字採ajax-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
 
-
 }
 
 <div class="all-title-box all-title-box-picture">
@@ -490,7 +489,7 @@
                         <div class="col-lg-9 order-3 order-sm-3 order-md-3 order-xs-3">
                             <div class="row gy-3 mb-4">
                                 <div style="height: 350px; overflow: auto;" class="table-responsive">
-                                    <!--下為切版先把資料寫死-->
+                                    <!--下為切版時先把資料寫死的內容-->
                                     <!--
                                     <table class="table  table-bordered table-hover " id="example">
                                         <thead class="table-warning text-center">
@@ -1422,7 +1421,18 @@
         });
     </script>
 
+    <!--上傳大頭照-->
+    <script>
 
+        $(document).ready(function () {
+
+            $('#headShotDiv').on('click', function () {
+
+
+            });
+        });
+
+    </script>
 
     <!--2.載入時，導入消費紀錄-->
     <script>
@@ -1449,57 +1459,35 @@
                     row.insertCell().textContent = item.paymentMethodName;
                     row.insertCell().textContent = item.statusName;
 
-                    // 創建 "訂單明細" 按鈕
+
+                    var buttonContainer = document.createElement('div');
+                    buttonContainer.classList.add('d-flex', 'flex-column');
+
                     var detailButton = document.createElement('button');
                     detailButton.textContent = '訂單明細';
                     detailButton.classList.add('btn', 'btn-outline-dark', 'btn-sm', 'mb-2');
 
-                    // 為按鈕添加點擊事件處理程序
-                    detailButton.addEventListener('click', function () {
-                        // 在這裡添加訂單明細的處理邏輯，例如彈出模態或導向到訂單詳細頁面
-                        alert('顯示訂單明細：' + item.orderId);
-                    });
+                    buttonContainer.appendChild(detailButton);
 
-                    // 創建 "申請退換貨" 按鈕
                     var applyReturnButton = document.createElement('button');
                     applyReturnButton.textContent = '申請退換貨';
                     applyReturnButton.classList.add('btn', 'btn-outline-dark', 'btn-sm', 'mb-2');
 
-                    // 為按鈕添加點擊事件處理程序
-                    applyReturnButton.addEventListener('click', function () {
-                        // 在這裡添加申請退換貨的處理邏輯
-                        alert('申請退換貨：' + item.orderId);
-                    });
+                    buttonContainer.appendChild(applyReturnButton);
 
-                    // 創建 "評論" 按鈕
                     var commentButton = document.createElement('button');
                     commentButton.textContent = '評論';
-                    commentButton.classList.add('btn', 'btn-warning', 'btn-sm', 'mb-2', 'flex-fill');
+                    commentButton.classList.add('btn', 'btn-warning', 'btn-sm', 'mb-2');
 
-                    // 為按鈕添加點擊事件處理程序
-                    commentButton.addEventListener('click', function () {
-                        // 在這裡添加評論的處理邏輯
-                        alert('評論：' + item.orderId);
-                    });
-
-                    // 創建包含按鈕的 div 元素並設置樣式
-                    var buttonContainer = document.createElement('div');
-                    buttonContainer.classList.add('d-flex', 'flex-column', 'align-items-center');
-                    buttonContainer.appendChild(detailButton);
-                    buttonContainer.appendChild(applyReturnButton);
                     buttonContainer.appendChild(commentButton);
 
-                    // 在表格中插入包含按鈕的單元格
                     var buttonCell = row.insertCell();
                     buttonCell.appendChild(buttonContainer);
-
-
-
-
+                
                 });
 
                 initializeDataTable('#orderTable', '#myKeyWord', '#btnQuery');
-
+                
             });
         });
         
@@ -1532,18 +1520,7 @@
 
     </script>
 
-    <!--上傳大頭照-->
-    <script>
 
-        $(document).ready(function () {
-
-            $('#headShotDiv').on('click', function () {
-               
-
-            });
-        });
-
-    </script>
 
     <!--6.載入: 導入客服中心。點擊: 送出填寫資料到控制台-->
     <script>

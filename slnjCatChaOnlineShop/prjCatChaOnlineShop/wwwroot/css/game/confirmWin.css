@@ -9,7 +9,7 @@
     display: none;
 }
 
-.confirmWin-container {
+#confirmWin-container {
     left: 15%;
     top: 35%;
     background-color: white;
@@ -21,10 +21,6 @@
     flex-direction: column;
     position: relative; /* 設定 .container 為相對定位 */
     border-radius: 20px; /* 設置圓角半徑為 20px */
-    font-family: 微軟正黑體;
-    font-size: 20px;
-    padding-top:13px;
-    color: black;
 }
 
 #confirmWinBTN {
@@ -37,10 +33,22 @@
     padding-right: 15px;
     padding-left: 15px;
     font-family: 微軟正黑體;
-    
 }
-#confirmWin-text {
+
+#confirmWin-title {
+    width: 280px;
     position: absolute;
-    top: 30%;
+    font-family: 微軟正黑體;
+    font-size: 20px;
+    padding-top: 13px;
+    color: black;
+}
+
+#confirmWin-text {
+    width: 280px;
+    position: absolute;
+    top: 32%;
     font-size: 14px;
+    color: rgba(17, 5, 5, 0.575);
+    font-family: 微軟正黑體;
 }

@@ -44,7 +44,3 @@ function hideInstructions() {
     pagination.style.display = 'none';
 }
 
-function closeConfirmWin() {
-    confirmWin.style.display = 'none';
-    initialize();
-}

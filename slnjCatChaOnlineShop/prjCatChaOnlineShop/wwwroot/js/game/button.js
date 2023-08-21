@@ -28,10 +28,8 @@ commonbackBTN.addEventListener("click", () => { //回首頁
 //跑步遊戲說明
 
 startRunGameBTN.addEventListener("click", () => {
+    chooseCatBeforeGame()
     hideInstructions()
-    resetRunGame();
-    pagesControl(Canvasrungame);
-    showPage('a'); //下次開啟時從第一頁開始
 });
 
 

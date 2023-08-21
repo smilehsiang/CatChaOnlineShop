@@ -229,7 +229,7 @@ function checkPoint() {//檢查是否符合得分條件
 
 
 //---------------------------------------------------------------   
-const rcat = new runCat('BK');
+const rcat = new runCat('catDefault');
 const rfloor = new RFloor(0, 480, 720, 30);//x座標，y座標，寬，高
 const rfloor2 = new RFloor(720, 480, 720, 30);//x座標，y座標，寬，高
 const scoredisplay = new ScoreDisplay(30, 46)
