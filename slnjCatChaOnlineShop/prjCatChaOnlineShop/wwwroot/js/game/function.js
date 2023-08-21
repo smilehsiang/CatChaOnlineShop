@@ -56,48 +56,38 @@ function loadUserBagCatInfo() {
     }
 }
 
-//使用者背包貓咪資訊
-function loadUserBagCatInfo() {
-    if (userBagData.catDefault != true) {
-        bagItem1.src = '../../images/game/staticCats/kitten_lock.png'
-    }
-    if (userBagData.catBB != true) {
-        bagItem2.src = '../../images/game/staticCats/kitten_lock.png'
-    }
-    if (userBagData.catBK != true) {
-        bagItem3.src = '../../images/game/staticCats/kitten_lock.png'
-    }
-    if (userBagData.catGY != true) {
-        bagItem4.src = '../../images/game/staticCats/kitten_lock.png'
-    }
-    if (userBagData.catOG != true) {
-        bagItem5.src = '../../images/game/staticCats/kitten_lock.png'
-    }
-}
+
 //把確認視窗按鈕功能跟文字換掉的方法
 function alterConfirmWinBTN(text,func) {
     confirmWinBTN.innerHTML = text;
     confirmWinBTN.onclick = func; 
 }
 
-
 //確認視窗關閉方法
 function closeConfirmWin() {
-    confirmWin.style.display = 'none';
-    initialize();
+    confirmWin.style.display = 'none';//關閉確認視窗
+    initialize();//初始化使用者資料
 }
 
+// 初始化目前被選擇的貓咪
+let selectedCatName = null;
 //選擇完貓貓之後開始遊戲的方法
 function startGame() {
-    confirmWin.style.display = 'none';
-    resetRunGame();
-    pagesControl(Canvasrungame);
-    showPage('a'); //下次開啟時從第一頁開始
-    alterConfirmWinBTN('確認', closeConfirmWin)
+    if (selectedCatName === null) { //如果使用者沒有選擇貓貓
+        confirmWin_title.innerHTML = '尚未選擇貓貓'
+        return;
+    }
+    else   
+    confirmWin.style.display = 'none';//關閉確認視窗
+    selectedCatName = null //開始遊戲之後把選擇的貓貓清空
+    resetRunGame(); //重設小遊戲設定
+    pagesControl(Canvasrungame);//開啟小遊戲畫面
+    showPage('a'); //說明視窗下次開啟時從第一頁開始
+    alterConfirmWinBTN('確認', closeConfirmWin)//變更確認視窗按鈕內容
 }
 function chooseCatBeforeGame() {
 
-    alterConfirmWinBTN('開始', startGame);
+    alterConfirmWinBTN('開始', startGame);//變更確認視窗按鈕內容
     //先根據使用者擁有的貓貓載入圖片
     let userCats = `<div id="catSelectWin"  style="display:flex;  justify-content: center;">`;
     let allCat = ['catDefault', 'catBB', 'catBK', 'catGY', 'catOG']; //先列出全部的貓貓種類
@@ -123,8 +113,7 @@ function chooseCatBeforeGame() {
     confirmWin.style.display = 'block';
 
 
-    // 初始化目前被選擇的貓咪
-    let selectedCatName = null;
+    
 
     // 貓貓點擊事件
     catNames.forEach(catName => {
@@ -162,32 +151,6 @@ function resizeCanvas() {
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
 
-  // 設定只在特定螢幕尺寸下套用
-  // if (screenWidth <= 767 ) {
-  //   canvas.width = 
-  //   Canvasrungame.width = 
-  //   CanvasGatcha.width= 
-  //   CanvasCheckIn.width =  
-  //   CanvasRank.width =
-  //   CanvasDoubleCheck.width=
-  //   CanvasSummonResult.width= 406;
-
-  //   canvas.height = 
-  //   Canvasrungame.height = 
-  //   CanvasGatcha.height = 
-  //   CanvasCheckIn.height =  
-  //   CanvasRank.height = 
-  //   CanvasDoubleCheck.height =
-  //   CanvasSummonResult.height=600;
-  //   c.font = "25px monospace";
-    
-  // } else {
-  //     // 在其他螢幕尺寸下套用不同的寬高
-  //     canvas.width = 1280;
-  //     canvas.height = 600;
-  //     Canvasrungame.width = 1280;
-  //     Canvasrungame.height = 600;
-  // }
   canvas.width = 
   Canvasrungame.width = 
   CanvasGatcha.width= 
@@ -203,7 +166,6 @@ function resizeCanvas() {
   CanvasRank.height = 
   CanvasDoubleCheck.height =
   CanvasSummonResult.height=600;
-   
 
 }
 
