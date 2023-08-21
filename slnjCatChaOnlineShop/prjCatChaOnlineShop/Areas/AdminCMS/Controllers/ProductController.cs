@@ -26,7 +26,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> editorUploadImage([FromForm] CShopProductTotalWrap cShopproduct )
         {
-            var image = cShopproduct.ShopProductImageTable;
+            var image = cShopproduct.Image;
 
             if( image == null )
             {
@@ -36,7 +36,6 @@ namespace prjCatChaOnlineShop.Controllers.CMS
             //try
             //{
             //    imageURL = await _imageService.UploadImageAsync(image);
-
             //}
             //catch
             //{
@@ -49,7 +48,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
                 ProductName = cShopproduct.ProductName,
                 ProductDescription = cShopproduct.ProductDescription,
                 ProductCategory = cShopproduct.ProductCategory,
-                ShopProductImageTable = cShopproduct.ShopProductImageTable,
+                Image = cShopproduct.Image,
                 ReleaseDate = cShopproduct.ReleaseDate,
                 Size = cShopproduct.Size,
                 Weight = cShopproduct.Weight,
@@ -94,25 +93,23 @@ namespace prjCatChaOnlineShop.Controllers.CMS
 
 
         //db載入資料表
-        public IActionResult Datatable()
+        public IActionResult LoadDatatable()
         {
-            var rawdata = _cachaContext.ShopProductTotal.ToList();
-            var data = rawdata.Select(x =>
+            var data = _cachaContext.ShopProductTotal.Select(x => new
             {
-                return new
-                {
-                    ProductId = x.ProductId,
-                    ProductName = x.ProductName,
-                    ProductDescription = x.ProductDescription,
-                    ProductCategory = x.ProductCategory,
-                    ShopProductImageTable = x.ShopProductImageTable,
-                    ReleaseDate = x.ReleaseDate,
-                    Size = x.Size,
-                    Weight = x.Weight,
-                    Supplier = x.Supplier,
-                    Discontinued = x.Discontinued
-                };
-            }).ToList();
+                ProductId = x.ProductId,
+                ProductName = x.ProductName,
+                ProductDescription = x.ProductDescription.Length > 20 ? x.ProductDescription.Substring(0, 20) : x.ProductDescription,
+                ProductPrice = x.ProductPrice,
+                RemainingQuantity = x.RemainingQuantity,
+                ProductCategory = x.ProductCategory,
+                ShopProductImageTable = x.ShopProductImageTable,
+                ReleaseDate = x.ReleaseDate,
+                Size = x.Size,
+                Weight = x.Weight,
+                Supplier = x.Supplier,
+                Discontinued = x.Discontinued
+            });
             return Json(new { data });
         }
 

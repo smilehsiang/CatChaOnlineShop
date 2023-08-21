@@ -37,6 +37,8 @@ public partial class ShopProductTotal
 
     public decimal? Discount { get; set; }
 
+    public string Image { get; set; }
+
     public virtual ShopProductDiscount DiscountNavigation { get; set; }
 
     public virtual ShopProductCategory ProductCategory { get; set; }
