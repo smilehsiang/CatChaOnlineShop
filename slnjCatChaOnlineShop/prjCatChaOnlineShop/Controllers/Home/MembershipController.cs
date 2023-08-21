@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using NuGet.Protocol;
 using prjCatChaOnlineShop.Models;
 
 namespace prjCatChaOnlineShop.Controllers.Home
@@ -178,18 +179,18 @@ namespace prjCatChaOnlineShop.Controllers.Home
         //取得退貨紀錄:待處理
         public IActionResult GetReturnRecord()
         {
+
             try
             {
-                var datas = from p in _context.ShopOrderTotalTable
-                            where p.MemberId == 1
+                var datas = from p in _context.ShopReturnDataTable
+                            join q in _context.ShopOrderTotalTable on p.OrderId equals q.OrderId
+                            where q.MemberId == 1
                             select new
                             {
-                                p.OrderId, //訂單編號
-                                p.OrderCreationDate,  //訂單成立日期
-                                p.Address, //收款地址
-                                p.RecipientName, //收款人
-                                p.RecipientPhone,  //收款電話
-                                p.ShippingMethod, //付款方式
+                                p.OrderId,
+                                p.ProcessingStatus.StatusName,
+                                p.ReturnDate,
+                                p.ReturnReason.ReturnReason,
                             };
 
                 if (datas.Any())
@@ -204,10 +205,12 @@ namespace prjCatChaOnlineShop.Controllers.Home
             catch (Exception ex)
             {
                 return Content(ex.Message);
-            }
-        }
+            } 
 
+        }
+           
         /*6.客服中心*/
+
 
         //取得申訴類型放到客服中心的頁面
         public IActionResult GetAppealCategory()

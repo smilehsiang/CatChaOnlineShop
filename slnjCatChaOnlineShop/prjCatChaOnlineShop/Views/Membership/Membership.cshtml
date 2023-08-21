@@ -826,6 +826,7 @@
                         <div class="col-lg-9 order-3 order-sm-3 order-md-3 order-xs-3">
                             <div class="row gy-3 mb-4">
                                 <div style="height: 350px; overflow: scroll;" class="table-responsive">
+                                    <!--下為切版時先把資料寫死的內容
                                     <table class="table table-bordered table-hover" id="example2">
                                         <thead class="table-warning text-center">
                                             <tr>
@@ -874,6 +875,19 @@
                                                 <td>已退還款項並完成退貨</td>
                                                 <td>2023/06/29 12:00</td>
                                             </tr>
+                                        </tbody>
+                                    </table>
+                                    -->
+                                    <table class="table table-bordered table-hover" id="returnRecordTable">
+                                        <thead class="table-warning text-center">
+                                            <tr>
+                                                <th scope="col">訂單編號</th>
+                                                <th scope="col">退貨日期</th>
+                                                <th scope="col">退貨理由</th>
+                                                <th scope="col">退貨狀態</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-left">
                                         </tbody>
                                     </table>
                                 </div>
@@ -1556,13 +1570,41 @@
             });
         }
 
-        initializeDataTable('#example2', '#myKeyWord2', '#btnQuery2');
+        
         initializeDataTable('#example3', '#myKeyWord3', '#btnQuery3');
         initializeDataTable('#example4', '#myKeyWord4', '#btnQuery4');
 
 
     </script>
 
+    <!--3.載入時，導入退貨紀錄-->
+    <script>
+
+        $(document).ready(function () {
+            $.getJSON('@Url.Content("~/membership/GetReturnRecord")', function (data) {
+                var tbody = document.querySelector('#returnRecordTable tbody');
+
+                // 清空表格內容
+                tbody.innerHTML = '';
+
+                // 遍歷 JSON 資料並建立表格列
+                data.forEach(function (item) {
+                    var row = tbody.insertRow();
+                    row.insertCell().textContent = item.orderId;
+
+                    //將日期格式化為 "yyyy-mm-dd"
+                    var formattedDate = new Date(item.returnDate).toISOString().split('T')[0];
+                    row.insertCell().textContent = formattedDate;
+                    row.insertCell().textContent = item.returnReason;
+                    row.insertCell().textContent = item.statusName;
+                });
+
+                initializeDataTable('#returnRecordTable', '#myKeyWord2', '#btnQuery2');
+
+            });
+        });
+
+    </script>
 
 
     <!--6.載入: 導入客服中心。點擊: 送出填寫資料到控制台-->
