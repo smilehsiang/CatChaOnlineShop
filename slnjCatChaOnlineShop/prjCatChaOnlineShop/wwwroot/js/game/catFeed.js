@@ -60,13 +60,13 @@ function consumeFood() { //扣除食物數量邏輯，數量為0就不能被扣
         if (milkCount === 0) {
             return;
         }
-        milkCount--;
+        userBagData.milk--;
     }
     if (itmCan.isSelected) {
         if (canCount === 0) {
             return;
         }
-        canCount--;
+        userBagData.can--;
     }
 }
 
@@ -102,13 +102,7 @@ function feedAndGetReward() {//隨機獲得貓幣方法
     }, 3000);
 }
 
-function chooseCatBeforeGame() {
 
-
-
-
-
-}
 
 
  
