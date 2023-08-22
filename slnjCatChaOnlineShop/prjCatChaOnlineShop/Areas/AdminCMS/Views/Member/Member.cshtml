@@ -40,7 +40,7 @@
 
                     <div class="form-group mb-3">
                         <label>帳號</label><span class="RequiredText"> *必填</span>
-                        <input type="email" class="form-control" id="CreatMemberAccount" name="MemberAccount" onblur="checkDuplicateName()" onfocus="hideErrorMessage()" placeholder="請輸入電子信箱">
+                        <input type="email" class="form-control" id="CreatMemberAccount" name="MemberAccount" onblur="CheckDuplicateAccount()" onfocus="hideErrorMessage()" placeholder="請輸入電子信箱">
                         <span id="duplicateMessage" style="display:none;color:red;" class="alert alert-danger"></span>
                         <span id="error1" class="error-message"></span>
                     </div>
@@ -98,8 +98,8 @@
             會員狀態：
             <select class="form-select w-25" id="payList">
                 <option value="" selected>全部資料</option>
-                <option value="">開放</option>
-                <option value="">凍結</option>
+                <option value="true">開放</option>
+                <option value="false">凍結</option>
             </select>
         </div>
         <div class="row align-items-center mb-3">
@@ -282,13 +282,13 @@
                                             <input type="text" class="form-control" id="address_edit">
                                         </div>
 
-                                        @* <div class="form-group mb-2">
-                                        <label>會員狀態（待確認）：</label>
+                                         <div class="form-group mb-2">
+                                        <label>會員狀態：</label>
                                         <select class="form-control" id="memberStatus_edit">
-                                        <option value="開放">開放</option>
-                                        <option value="凍結">凍結</option>
+                                        <option value="true">開放</option>
+                                        <option value="false">凍結</option>
                                         </select>
-                                        </div> *@
+                                        </div> 
 
                                         <button class="btn btn-danger btn-block mt-2 EditMember_Save"
                                                 style="width: 100%;">
@@ -298,7 +298,7 @@
                                     <div class="tab-pane fade" id="member-edit-nav-profile">
                                         <div class="form-group">
                                             <label>等級：</label>
-                                            <input type="text" class="form-control" id="levelId_edit">
+                                            <input type="number" class="form-control" id="levelId_edit">
                                         </div>
 
                                         <div class="form-group">
@@ -308,12 +308,12 @@
 
                                         <div class="form-group">
                                             <label>貓幣數量：</label>
-                                            <input type="text" class="form-control" id="catCoinQuantity_edit">
+                                            <input type="number" class="form-control" id="catCoinQuantity_edit">
                                         </div>
 
                                         <div class="form-group">
                                             <label>紅利數量：</label>
-                                            <input type="text" class="form-control" id="loyaltyPoints_edit">
+                                            <input type="number" class="form-control" id="loyaltyPoints_edit">
                                         </div>
 
                                         <button type="submit" class="btn btn-danger btn-block EditMember_Save"
@@ -591,7 +591,12 @@
                     $('#email_edit').val(data.data.email);
                     $('#phoneNumber_edit').val(data.data.phoneNumber);
                     $('#address_edit').val(data.data.address);
-                    $('#memberStatus_edit').val(data.data.memberStatus); //會員狀態待確認
+
+                    if (data.data.memberStatus == null) {
+                        $('#memberStatus_edit').val("true");
+                    } else {
+                    $('#memberStatus_edit').val(data.data.memberStatus.toString());
+                    }
 
                     //==================遊戲資料
                     $('#levelId_edit').val(data.data.levelId);
@@ -615,7 +620,7 @@
             var Email = $('#email_edit').val();
             var PhoneNumber = $('#phoneNumber_edit').val();
             var Address = $('#address_edit').val();
-            var MemberStatus = ('#memberStatus_edit').val(data.data.memberStatus); //會員狀態待確認
+            var MemberStatus = $('#memberStatus_edit').val();
 
             //==================遊戲資料
             var LevelId = $('#levelId_edit').val();
@@ -623,7 +628,7 @@
             var CatCoinQuantity = $('#catCoinQuantity_edit').val();
             var LoyaltyPoints = $('#loyaltyPoints_edit').val();
 
-            var memberData = {
+            var editMember = {
                 MemberId: MemberId,
                 Name: Name,
                 MemberAccount: MemberAccount,
@@ -639,57 +644,54 @@
                 LoyaltyPoints: LoyaltyPoints
             };
 
-            //================先驗證格式是否正確才跑ajax
-            //================驗證信箱&帳號格式是否正確
+            console.log(editMember);
 
-            console.log("驗證：" + isVaild);
+            //return;
+            //console.log("驗證：" + isVaild);
 
-            if (!isVaild) {
+            //if (!isVaild) {
                 $.ajax({
                     url: '/AdminCMS/Member/UpdateMember',
                     type: 'POST',
-                    data: JSON.stringify(memberData),
-                    contentType: 'application/json',
+                    data: { editMember: editMember },
                     success: function (response) {
                         if (response.success) {
                             // 更新成功的處理
                             // 顯示成功訊息
                             Swal.fire({
                                 icon: 'success',
-                                title: '成功',
-                                text: data.message
+                                title: '編輯成功',
+                                text: response.message
                             });
 
                             // 關閉modal
-                            $('#addMemberModalToggle').modal('hide');
+                        $('#EditModalToggle').modal('hide');
                         } else {
                             // 更新失敗
                             Swal.fire({
                                 icon: 'error',
                                 title: '失敗',
-                                text: data.message
+                                text: response.message
                             });
                         }
                     },
                     error: function (error) {
                         // 錯誤處理
-                        // 會員新增失敗，顯示錯誤訊息
+                        // 會員編輯失敗，顯示錯誤訊息
                         console.log(error);
                     }
                 });
-            } else {
-                console.log("驗證沒過");
-                return;
-            }
-
-
+            //} else {
+            //    console.log("驗證沒過");
+            //    return;
+            //}
         })
 
 
         var CheckAccResult = ""; //將帳號是否已存在的結果，設成全域變數給儲存按鈕做驗證
 
         //====================離開input 驗證帳號是否重複
-        function checkDuplicateName() {
+        function CheckDuplicateAccount() {
             var account = $('#CreatMemberAccount').val(); //抓到使用者輸入的帳號
 
             if (account === "") { //當輸入框為空時，隱藏錯誤消息
@@ -701,7 +703,7 @@
             //===============打API驗證姓名是否已存在
             //資料庫有的帳號：catCha2、catCha
             $.ajax({
-                url: '/AdminCMS/Member/CheckDuplicateName',
+                url: '/AdminCMS/Member/CheckDuplicateAccount',
                 type: 'GET',
                 data: { account: account },
                 success: function (result) {
