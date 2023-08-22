@@ -126,6 +126,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
             return Json(new { data });
         }
 
+        //刪除
         public IActionResult Delete(int? id)
         {
             if (id != null)
@@ -140,9 +141,12 @@ namespace prjCatChaOnlineShop.Controllers.CMS
             return RedirectToAction("Product", "Product", new { area = "AdminCMS" });
         }
 
+
+        //編輯
         [HttpGet]
         public IActionResult EditShopProducts(int? id)
         {
+            Console.WriteLine($"Received id: {id}");
             if (id == null)
             {
                 return Json(new { success = false, message = "ID不存在" });
@@ -193,7 +197,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
                 editProduct.Discontinued= cShopproduct.Discontinued;
                 _cachaContext.SaveChanges();
             }
-            return RedirectToAction("product", "Product", new { area = "AdminCMS" });
+            return RedirectToAction("Product", "Product", new { area = "AdminCMS" });
         }
 
 
