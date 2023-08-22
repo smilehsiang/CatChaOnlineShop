@@ -1,4 +1,6 @@
-﻿@{
+﻿@model prjCatChaOnlineShop.Models.ViewModels.CNewsModel
+
+@{
     ViewData["Title"] = "News";
 }
 
@@ -47,53 +49,63 @@
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane show active" id="catcha" role="tabpanel" aria-labelledby="catcha-tab">
 
-            <div class="container mt-4">
-                <a asp-controller="ShopNews" asp-action="NewsContent">
-                    <div class="row  justify-content-between clickable-row pt-3 pb-3">
-                        <div class="col">
-                            <div class="d-flex align-items-center thumbanil-p ">
-                                <img src="https://s1.pearlcdn.com/NAEU/Upload/thumbnail/2021/357BNSVET5PK6LX820210331143820744.400x225.jpg"
-                                     alt="..." class="img-thumbnail">
-                                <div class="d-flex flex-column ms-5 text-start ">
-                                    <h1>Hello</h1>
-                                    <p>hahaha</p>
+            @foreach(var group in Model.NewsContentGroupedByType)
+            {
+                if (group.Key == 1)
+                {
+                    @foreach (var content in group.Value)
+                    {
+                        <div class="container mt-4 ">
+                            <a asp-controller="ShopNews" asp-action="NewsContent" asp-route-id="@content.AnnouncementId">
+                                <div class="clickable-row w-100 position-relative">
+                                    <img class="w-25 m-2 rounded shadow" src="@content.AnnouncementImageHeader"
+                                         alt="...">
+                                    <div class="title-News">
+                                        <h1>@content.AnnouncementTitle</h1>
+                                    </div>
+                                    <div class="content-News">
+                                        <p id="shopNewContent">@content.AnnouncementContent</p>
+                                    </div>
+                                    <div class="pulishtime-News">
+                                        <h3>@content.PublishTime</h3>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
-                        <div class="col align-self-center text-end">
-                            <div class="d-flex flex-column">
-                                <span class="news-date">2023/8/23</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                    }
+                }
+            }
         </div>
         <div class="tab-pane fade" id="game" role="tabpanel" aria-labelledby="game-tab">
-
-            <div class="container mt-4">
-                <a asp-controller="ShopNews" asp-action="NewsContent">
-                    <div class="row  justify-content-between clickable-row pt-3 pb-3">
-                        <div class="col">
-                            <div class="d-flex align-items-center thumbanil-p ">
-                                <img src="https://s1.pearlcdn.com/NAEU/Upload/thumbnail/2021/357BNSVET5PK6LX820210331143820744.400x225.jpg"
-                                     alt="..." class="img-thumbnail">
-                                <div class="d-flex flex-column ms-5 text-start ">
-                                    <h1>Hello</h1>
-                                    <p>hahaha</p>
+            @foreach (var group in Model.NewsContentGroupedByType)
+            {
+                if (group.Key == 2)
+                {
+                    @foreach (var content in group.Value)
+                    {
+                        <div class="container mt-4 ">
+                            <a asp-controller="ShopNews" asp-action="NewsContent">
+                                <div class="clickable-row w-100 position-relative">
+                                    <img class="w-25 m-2 rounded shadow" src="@content.AnnouncementImageHeader"
+                                         alt="...">
+                                    <div class="title-News">
+                                        <h1>@content.AnnouncementTitle</h1>
+                                    </div>
+                                    <div class="content-News">
+                                        <p id="gameNewContent">@content.AnnouncementContent</p>
+                                    </div>
+                                    <div class="pulishtime-News">
+                                        <h3>@content.PublishTime</h3>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
-                        <div class="col align-self-center text-end">
-                            <div class="d-flex flex-column">
-                                <span class="news-date">2023/8/24</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                    }
+                }
+            }
+
         </div>
     </div>
 </div>
@@ -118,4 +130,22 @@
     <script src="~/js/contact-form-script.js"></script>
     <script src="~/js/custom.js"></script>
     <script src="~/js/forNews.js"></script>
+    <script>
+        const content = $('#shopNewContent').text();
+        const textOnly = $('<div>').html(content).text();
+        const onlytext = (textOnly).replace(/<\/?[^>]+(>|$)/g, "");
+        const gamecontent = $('#gameNewContent').text();
+        const gametextOnly = $('<div>').html(gamecontent).text();
+        const gameonlytext = (gametextOnly).replace(/<\/?[^>]+(>|$)/g, "");
+        $('#shopNewContent').text(onlytext);
+        $('#gameNewContent').text(gameonlytext);
+        if ($('#shopNewContent').text().length>30){
+            const truncatedText = $('#shopNewContent').text().substr(0, 30) + "...";
+            $('#shopNewContent').text(truncatedText);
+        }
+        if ($('#gameNewContent').text().length > 30) {
+            const truncatedText = $('#gameNewContent').text().substr(0, 30) + "...";
+            $('#gameNewContent').text(truncatedText);
+        }
+    </script>
 }

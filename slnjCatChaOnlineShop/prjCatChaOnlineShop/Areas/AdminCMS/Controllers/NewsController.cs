@@ -172,6 +172,40 @@ namespace prjCatChaOnlineShop.Controllers.CMS
             }
             return Json(new { success = true, data = cAnnounce });
         }
+        [HttpPost]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> EditNews([FromForm] CAnnounceWrap cAnnounce)
+        {
+            var image = cAnnounce.ImageHeader;
+            GameShopAnnouncement editorNews = _cachaContext.GameShopAnnouncement.FirstOrDefault(p => p.AnnouncementId == cAnnounce.AnnouncementId);
+
+            if (image == null || image.Length == 0)
+            {
+                return BadRequest("No image provided.");
+            }
+            string imageUrl;
+            try
+            {
+                imageUrl = await _imageService.UploadImageAsync(image);
+            }
+            catch
+            {
+
+                return BadRequest("Error uploading the image.");
+            }
+            if (editorNews != null)
+            {
+                editorNews.AnnouncementTitle = cAnnounce.AnnouncementTitle;
+                editorNews.AnnouncementContent = cAnnounce.AnnouncementContent;
+                editorNews.AnnouncementImageHeader = imageUrl;
+                editorNews.DisplayOrNot = cAnnounce.DisplayOrNot;
+                editorNews.PinToTop = cAnnounce.PinToTop;
+                editorNews.PublishTime = cAnnounce.PublishTime;
+                editorNews.PublishEndTime = cAnnounce.PublishEndTime;
+                _cachaContext.SaveChanges();
+            }
+            return RedirectToAction("news", "News", new { area = "AdminCMS" });
+        }
 
     }
 }

@@ -116,7 +116,7 @@
                     <div class="d-flex mb-3 align-items-center mt-3">
                         <label>標題圖片：</label>
                         <div class="d-inline-flex">
-                            <input type="file" id="AnnouncementImageHeader" class="form-control" name="ImageHeader">
+                            <input type="file" accept="image/*" id="AnnouncementImageHeader" class="form-control" name="ImageHeader">
                         </div>
                     </div>
 
@@ -169,9 +169,17 @@
             <div class="modal-body">
                 <!--內容表單-->
                 <div class="d-flex">
+                    <input type="hidden" id="editor-ID" name="AnnouncementId" />
                     <label class="col-form-label">公告標題：</label>
                     <div class="d-inline-flex">
-                        <input type="text" id="newsTitle" class="form-control w-100" name="AnnouncementTitle">
+                        <input type="text" id="editor-newsTitle" class="form-control w-100" name="AnnouncementTitle">
+                        <select class="form-select" id="editor-type" name="AnnouncementTypeId">
+                            <option selected>請選擇公告類型</option>
+                            @foreach (var News in Model.NewsType)
+                            {
+                                <option value="@News.AnnouncementTypeId">@News.AnnouncementTypeName</option>
+                            }
+                        </select>
                     </div>
                 </div>
                 <div class="col">
@@ -193,18 +201,28 @@
                 <div class="d-flex mt-2 ">
                     <label for="form-check-input">是否置頂：</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="PinToTop" name="PinToTop">
+                        <input class="form-check-input" type="checkbox" value="" id="PinToTop-editor" name="PinToTop">
+                    </div>
+                </div>
+                <div class="d-flex mt-2 ">
+                    <label for="form-check-input">是否隱藏：</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="hide-editor" name="DisplayOrNot">
                     </div>
                 </div>
                 <div class="d-flex mb-3 align-items-center mt-3">
                     <label>標題圖片：</label>
                     <div class="d-inline-flex">
-                        <input type="file" id="AnnouncementImageHeader" class="form-control" name="ImageHeader">
+                        <input type="file" accept="image/*" id="ImageHeader-editor" class="form-control" name="ImageHeader">
                     </div>
                 </div>
-
-
-                <button class="btn btn-danger btn-block" style="width: 100%;" id="submitButton">儲存</button>
+                <div class=" mb-3 align-items-center mt-3">
+                    <label>目前標題圖片：</label>
+                    <div class="d-flex justify-content-center">
+                        <img id="previewImage" src="" alt="Image Preview" class="w-100 border">
+                    </div>
+                </div>
+                <button class="btn btn-danger btn-block w-100" id="submitButton-edior">儲存</button>
             </div>
         </div>
     </div>
@@ -303,9 +321,42 @@
             })
         }
         $(document).on('click', '.edit-button', function () {
-            const id = $(this).data('id')
-            console.log(id)
-        })
+            let id = $(this).data('id')
+            $.ajax({
+                url: '/AdminCMS/News/EditorNews?id=' + id,
+                type: 'GET',
+                success: function (response) {
+                    if (response.success) {
+                        $('#editor-ID').val(response.data.announcementId)
+                        $("#editor-newsTitle").val(response.data.announcementTitle)
+                        $('#editor-type').val(response.data.announcementTypeId);
+                        $('#summernote-for-editor').summernote('code', response.data.announcementContent);
+                        $('#PublishTime-editor').val(response.data.publishTime)
+                        $('#PublishEndTime-editor').val(response.data.publishEndTime)
+                        $('#PinToTop-editor').prop('checked', response.data.pinToTop)
+                        $('#previewImage').attr('src', response.data.announcementImageHeader);
+                        console.log(response.data)
+                    } else {
+                        alert(response.message);
+                    }
+                }
+            });
+        });
+        $('#ImageHeader-editor').on('change', function () {
+            const file = this.files[0];
+
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#previewImage').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please select an image file.');
+            }
+        });
         
 
         $(document).ready(function () {
@@ -341,6 +392,10 @@
             $('#announcementTypeSelect').on('change', function () {
                 Type = parseInt($(this).val(), 10);
             })
+            let TypeEditor;
+            $('#editor-type').on('change', function () {
+                TypeEditor = parseInt($(this).val(), 10);
+            })
 
             $('#submitButton').click(function () {
                 var content = $('#summernote').summernote('code');
@@ -374,6 +429,41 @@
             });
             $('#summernote-for-editor').summernote({
                 height: 300
+            });
+
+            $('#submitButton-edior').click(function () {
+                var content = $('#summernote-for-editor').summernote('code');
+                const editorID = $('#editor-ID').val();
+                var newsTitle = $('#editor-newsTitle').val();
+                const PublishTime = $('#PublishTime-editor').val();
+                const PublishEndTime = $('#PublishEndTime-editor').val();
+                const PinToTop = $('#PinToTop-editor').is(':checked');
+                const Hide = $('#hide-editor').is(':checked');
+                var fileInput = $('#ImageHeader-editor')[0];
+                var file = fileInput.files[0];
+
+                var formData = new FormData();
+                formData.append("AnnouncementId", editorID);
+                formData.append("AnnouncementTitle", newsTitle);
+                formData.append("AnnouncementContent", content);
+                formData.append("PublishTime", PublishTime);
+                formData.append("PublishEndTime", PublishEndTime);
+                formData.append("PinToTop", PinToTop);
+                formData.append("AnnouncementTypeId", TypeEditor);
+                formData.append("ImageHeader", file);
+                formData.append("DisplayOrNot",Hide)
+
+                $.ajax({
+                    url: "@Url.Action("EditNews","News" , new { area="AdminCMS" })",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        alert("Content saved successfully!");
+                        window.location.reload();
+                    }
+                });
             });
 
         });
