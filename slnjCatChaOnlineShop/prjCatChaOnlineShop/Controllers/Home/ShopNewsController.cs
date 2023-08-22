@@ -14,15 +14,20 @@ namespace prjCatChaOnlineShop.Controllers.Home
             _context = context;
         }
 
-        public IActionResult NewsContent()
+        public IActionResult NewsContent(int? id)
         {
-            //GameShopAnnouncement news = _context.GameShopAnnouncement.FirstOrDefault(x=>x.AnnouncementId == id);
-            //if (news != null)
-            //{
-            //    CAnnounceWrap cAnnounce = new CAnnounceWrap();
-            //    cAnnounce.
-            //}
-            return View();
+            GameShopAnnouncement news = _context.GameShopAnnouncement.FirstOrDefault(x => x.AnnouncementId == id);
+            if(id == null)
+            {
+                return RedirectToAction("News");
+            }
+            if (news == null)
+            {
+                return RedirectToAction("News");
+            }
+            CAnnounceWrap cAnnounce = new CAnnounceWrap();
+            cAnnounce.News = news;
+            return View(cAnnounce);
         }
         public IActionResult News()
         {
