@@ -269,7 +269,6 @@
                                         <div class="form-group mb-2">
                                             <label>E-mail：</label>
                                             <input type="email" class="form-control" id="email_edit">
-                                            <span id="error3" class="error-message"></span>
                                         </div>
 
                                         <div class="form-group mb-2">
@@ -282,13 +281,13 @@
                                             <input type="text" class="form-control" id="address_edit">
                                         </div>
 
-                                         <div class="form-group mb-2">
-                                        <label>會員狀態：</label>
-                                        <select class="form-control" id="memberStatus_edit">
-                                        <option value="true">開放</option>
-                                        <option value="false">凍結</option>
-                                        </select>
-                                        </div> 
+                                        <div class="form-group mb-2">
+                                            <label>會員狀態：</label>
+                                            <select class="form-control" id="memberStatus_edit">
+                                                <option value="true">開放</option>
+                                                <option value="false">凍結</option>
+                                            </select>
+                                        </div>
 
                                         <button class="btn btn-danger btn-block mt-2 EditMember_Save"
                                                 style="width: 100%;">
@@ -433,7 +432,6 @@
 
             validateEmail($("#CreatMemberAccount"), $("#error1"));
             validateEmail($("#CreatEmail"), $("#error2"));
-            validateEmail($("#email_edit"), $("#error3"));
         });
 
 
@@ -516,12 +514,12 @@
                             var addressNumber = i + 1; //計算幾筆資料的數字
 
                             itemDiv.innerHTML = `
-                                                                                                                        <h5><b>常用地址－${addressNumber}</b></h5>
-                                                                                                                        <p>收件人姓名: ${item.recipientName}</p>
-                                                                                                                        <p>連絡電話: ${item.recipientPhone}</p>
-                                                                                                                        <p>收件地址: ${item.recipientAddress}</p>
-                                                                                                                <hr>
-                                                                                                            `;
+                                                                                                                                <h5><b>常用地址－${addressNumber}</b></h5>
+                                                                                                                                <p>收件人姓名: ${item.recipientName}</p>
+                                                                                                                                <p>連絡電話: ${item.recipientPhone}</p>
+                                                                                                                                <p>收件地址: ${item.recipientAddress}</p>
+                                                                                                                        <hr>
+                                                                                                                    `;
                             CAContainer.append(itemDiv);
                         }
                     } else {
@@ -542,13 +540,13 @@
                             var couponNumber = i + 1; //計算幾筆資料的數字
 
                             itemDiv.innerHTML = `
-                                                                                                                                <h5><b>優惠券－${couponNumber}</b></h5>
-                                                                                                                                        <p>優惠券ID: ${item.couponId}</p>
-                                                                                                                                                <p>優惠券內容: ${item.coupon.couponContent}</p>
-                                                                                                                                                        <p>有效日期: ${item.coupon.expiryDate}</p>
-                                                                                                                                        <p>優惠券狀態: ${item.couponStatusId}</p>
-                                                                                                                <hr>
-                                                                                                            `;
+                                                                                                                                        <h5><b>優惠券－${couponNumber}</b></h5>
+                                                                                                                                                <p>優惠券ID: ${item.couponId}</p>
+                                                                                                                                                        <p>優惠券內容: ${item.coupon.couponContent}</p>
+                                                                                                                                                                <p>有效日期: ${item.coupon.expiryDate}</p>
+                                                                                                                                                <p>優惠券狀態: ${item.couponStatusId}</p>
+                                                                                                                        <hr>
+                                                                                                                    `;
                             couponContainer.append(itemDiv);
                         }
                     } else {
@@ -595,7 +593,7 @@
                     if (data.data.memberStatus == null) {
                         $('#memberStatus_edit').val("true");
                     } else {
-                    $('#memberStatus_edit').val(data.data.memberStatus.toString());
+                        $('#memberStatus_edit').val(data.data.memberStatus.toString());
                     }
 
                     //==================遊戲資料
@@ -609,6 +607,19 @@
 
         //==================編輯資料後，按下「儲存」按鈕的點擊事件處理
         $('.EditMember_Save').click(function () {
+
+            //==============送出前先驗證信箱格式
+            var email = $('#email_edit').val();
+            const emailRegex = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+
+            if (!emailRegex.test(email)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'email格式有誤',
+                    text: '請重新輸入'
+                });
+                return;
+            }
 
             //==================基本資料
             var MemberId = $('#memberId_edit').val();
@@ -644,12 +655,6 @@
                 LoyaltyPoints: LoyaltyPoints
             };
 
-            console.log(editMember);
-
-            //return;
-            //console.log("驗證：" + isVaild);
-
-            //if (!isVaild) {
                 $.ajax({
                     url: '/AdminCMS/Member/UpdateMember',
                     type: 'POST',
@@ -665,7 +670,10 @@
                             });
 
                             // 關閉modal
-                        $('#EditModalToggle').modal('hide');
+                            $('#EditModalToggle').modal('hide');
+
+                            // 重新整理dataTable
+                            $('#member-table').DataTable().ajax.reload(); // 這將重新載入dataTable的資料
                         } else {
                             // 更新失敗
                             Swal.fire({
@@ -681,10 +689,6 @@
                         console.log(error);
                     }
                 });
-            //} else {
-            //    console.log("驗證沒過");
-            //    return;
-            //}
         })
 
 
@@ -811,23 +815,23 @@
             }
         });
 
-                                                                                    // function userDelete() {
-                                                                                    //     Swal.fire({
-                                                                                    //         title: '確定要刪除嗎?',
-                                                                                    //         icon: 'warning',
-                                                                                    //         showCancelButton: true,
-                                                                                    //         confirmButtonColor: '#3085d6',
-                                                                                    //         cancelButtonColor: '#d33',
-                                                                                    //         confirmButtonText: 'Yes, delete it!'
-                                                                                    //     }).then((result) => {
-                                                                                    //         if (result.isConfirmed) {
-                                                                                    //             Swal.fire(
-                                                                                    //                 'Deleted!',
-                                                                                    //                 'Your file has been deleted.',
-                                                                                    //                 'success'
-                                                                                    //             )
-                                                                                    //         }
-                                                                                    //     })
-                                                                                    // }
+                                                                                            // function userDelete() {
+                                                                                            //     Swal.fire({
+                                                                                            //         title: '確定要刪除嗎?',
+                                                                                            //         icon: 'warning',
+                                                                                            //         showCancelButton: true,
+                                                                                            //         confirmButtonColor: '#3085d6',
+                                                                                            //         cancelButtonColor: '#d33',
+                                                                                            //         confirmButtonText: 'Yes, delete it!'
+                                                                                            //     }).then((result) => {
+                                                                                            //         if (result.isConfirmed) {
+                                                                                            //             Swal.fire(
+                                                                                            //                 'Deleted!',
+                                                                                            //                 'Your file has been deleted.',
+                                                                                            //                 'success'
+                                                                                            //             )
+                                                                                            //         }
+                                                                                            //     })
+                                                                                            // }
     </script>
 }

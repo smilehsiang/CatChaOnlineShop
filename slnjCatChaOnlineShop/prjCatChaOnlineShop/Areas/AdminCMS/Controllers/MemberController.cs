@@ -126,7 +126,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
             var memberData = _context.ShopMemberInfo.FirstOrDefault(m => m.MemberId == editMember.MemberId);
             try
             {
-                if (memberData != null) // 檢查 newMember 是否為空
+                if (memberData != null) // 檢查 memberData 是否為空
                 {
                     memberData.MemberId = editMember.MemberId;
                     memberData.MemberAccount = editMember.MemberAccount;
@@ -135,6 +135,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
                     memberData.Name = editMember.Name;
                     memberData.Gender = editMember.Gender;
                     memberData.Birthday = editMember.Birthday;
+                    memberData.Email = editMember.Email;
                     memberData.PhoneNumber = editMember.PhoneNumber;
                     memberData.MemberStatus = editMember.MemberStatus;
                     memberData.CatCoinQuantity = editMember.CatCoinQuantity;
