@@ -7,9 +7,11 @@ namespace prjCatChaOnlineShop.Models;
 
 public partial class GameMessageData
 {
-    public int ChatRoomId { get; set; }
+    public int? ChatRoomId { get; set; }
 
-    public int MemberBId { get; set; }
+    public int? MemberBId { get; set; }
+
+    public int Id { get; set; }
 
     public virtual GameFriendListChatData ChatRoom { get; set; }
 

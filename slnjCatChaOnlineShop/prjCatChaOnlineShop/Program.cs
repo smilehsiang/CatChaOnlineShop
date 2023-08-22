@@ -1,11 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using prjCatChaOnlineShop.Models;
-
+using prjCatChaOnlineShop.Models.ViewModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+// 添加 Session 服務
+builder.Services.AddSession(options=> {
+    // 設定 Session 的過期時間（以日為單位）
+    options.IdleTimeout = TimeSpan.FromDays(365); // 這裡設定為 365 天
+    });
+builder.Services.AddScoped<ProductService>();
 
 //讓網頁可以解析DB資料庫
 
@@ -23,7 +29,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();// 啟用 Session
 app.UseRouting();
 
 app.UseAuthorization();

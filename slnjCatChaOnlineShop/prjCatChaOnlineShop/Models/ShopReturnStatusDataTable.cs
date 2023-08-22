@@ -10,4 +10,6 @@ public partial class ShopReturnStatusDataTable
     public int ProcessingStatusId { get; set; }
 
     public string StatusName { get; set; }
+
+    public virtual ICollection<ShopReturnDataTable> ShopReturnDataTable { get; set; } = new List<ShopReturnDataTable>();
 }
