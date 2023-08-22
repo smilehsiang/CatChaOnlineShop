@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="~/css/forNews.css">
     <link rel="stylesheet" href="~/css/membership.css">
 
-    <!--增加的部分:用於圖片放大預覽-->
+    <!--用於圖片放大預覽-->
     <style>
         /* 原始圖片的視窗 */
         .image-popup {
@@ -67,16 +67,24 @@
         }
     </style>
 
-    <!--增加的部分:用於隱藏dataTables的內建搜尋框-->
+    <!--用於隱藏dataTables的內建搜尋框-->
     <style>
         .dataTables_filter {
             display: none;
         }
     </style>
 
-    <!--增加的部分:用於搜尋關鍵字採ajax-->
+    <!--用於搜尋關鍵字採ajax-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
 
+    <!--用於先隱藏更新照片的按鈕
+    <style>
+        #renewPersonalPicture {
+            display: none
+            /*剛開始載入時，先將按鈕隱藏none起來*/
+        }
+    </style>
+    -->
 }
 
 <div class="all-title-box all-title-box-picture">
@@ -389,13 +397,13 @@
                         <div class="col-lg-3 order-1 order-sm-1 order-md-1 order-xs-1">
                             <div class="card mb-3 border shadow-0">
                                 <div class="card-body text-center">
-                                    <form method="post" enctype="multipart/form-data" action="/ImageTest/UploadImage">
-                                        <div class="avatar text-center" id="headShotDiv">
-                                            <img class="avatar-img mx-auto"
-                                                 src='@Url.Content("~/images/toy.png")' alt="">
-                                        </div>
-                                    </form>
-                                    @* <span id="summonName" >會員</span> *@
+                                    <div class="avatar text-center">
+                                        <img class="avatar-img mx-auto" id="imagePreview" src='@Url.Content("~/images/toy.png")' alt="" style="width: 200px; height: 200px;">
+                                        <button class="btn btn-warning btn-sm mt-2 mb-3" data-bs-toggle="modal" id="renewPersonalPicture"
+                                                data-bs-target="#personalPictureModal">
+                                            更換個人圖片
+                                        </button>
+                                    </div>
                                     <h1 id="summonName">會員</h1>
 
                                     <div class="d-flex justify-content-center">
@@ -435,35 +443,6 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <!--下為切版時先把資料寫死的內容-->
-                        <!--
-                        <table class="table table-condensed">
-                            <thead class="table-warning">
-                                <tr>
-                                    <th>優惠名稱</th>
-                                    <th>適用範圍</th>
-                                    <th>使用期限</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>全站$299起免運券</td>
-                                    <td>本運費抵用券僅適用於全站有開啟四大超商超運費折抵</td>
-                                    <td>2023-8-8 00:00~2023-8-8 24:00</td>
-                                </tr>
-                                <tr>
-                                    <td>全站$299起免運券</td>
-                                    <td>本運費抵用券僅適用於全站有開啟四大超商超運費折抵</td>
-                                    <td>2023-8-8 00:00~2023-8-8 24:00</td>
-                                </tr>
-                                <tr>
-                                    <td>全站$299起免運券</td>
-                                    <td>本運費抵用券僅適用於全站有開啟四大超商超運費折抵</td>
-                                    <td>2023-8-8 00:00~2023-8-8 24:00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        -->
                         <table class="table table-bordered table-hover" id="couponTable">
                             <thead class="table-warning  text-center">
                                 <tr>
@@ -477,6 +456,40 @@
                         </table>
                     </div>
                     <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--彈跳視窗:更換個人照片-->
+        <div class="modal fade" id="personalPictureModal">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3>更換個人照片</h3>
+                                </div>
+                                <div class="col d-flex justify-content-end">
+                                    <button type="button" class="btn btn-warning btn-sm" data-bs-dismiss="modal">
+                                        X
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" enctype="multipart/form-data" action="/ImageTest/UploadImageToMemberInfo">
+                            <input type="text" name="AnnouncementContent" value="personalPicture" style="display: none;" />
+                            <input type="file" name="image" id="imageInput" accept="image/*" />
+                            <button type="submit">上傳圖片</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center align-items-center">
+                        <div class="avatar text-center" >
+                            <img id="uploadImagePreview" src='@Url.Content("~/images/toy.png")' alt="" style="max-width: 200px; max-height: 200px;">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1219,174 +1232,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
-    <!--增加的部分:用於圖片放大預覽-->
-    <script>
-        // 當頁面載入完成後執行
-        document.addEventListener("DOMContentLoaded", function () {
-            // 獲取所有包含縮略圖片和視窗的元素
-            const thumbnailImages = document.querySelectorAll(".thumbnail-image");
-            const imagePopups = document.querySelectorAll(".image-popup");
-
-            // 對每個圖片進行事件處理
-            thumbnailImages.forEach((thumbnailImage, index) => {
-                // 當滑鼠懸停在圖片上時
-                thumbnailImage.addEventListener("mouseover", function () {
-                    // 顯示對應的原始圖片的視窗
-                    imagePopups[index].style.display = "block";
-                });
-
-                // 當滑鼠移開圖片時
-                thumbnailImage.addEventListener("mouseout", function () {
-                    // 隱藏對應的原始圖片的視窗
-                    imagePopups[index].style.display = "none";
-                });
-            });
-        });
-    </script>
-
-    <!--新加入qrcode的cdn
-    <script  src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
-    <script  src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-    <script>
-        const qrcode = new QRCode(document.getElementById("qrcode"), {
-            width: 250,
-            height: 250,
-            text: "https://www.youtube.com/"
-        });
-    </script>
-    -->
-    <!--新加入sweetalert2的cdn-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        function showCancelConfirmation() {
-            Swal.fire({
-                title: '您確定要取消預約嗎',
-                text: "這將無法復原！",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: '是的，取消它！',
-                cancelButtonText: '離開'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                        '已取消',
-                        '',
-                        'success'
-                    )
-                }
-            });
-        }
-
-        document.getElementById("cancelBooking1").addEventListener("click", showCancelConfirmation);
-        document.getElementById("cancelBooking2").addEventListener("click", showCancelConfirmation);
-        document.getElementById("cancelBooking3").addEventListener("click", showCancelConfirmation);
-    </script>
-
-
-    <!--導入7-11超商的script，之後可以做address.cshtml導入老師的script.js-->
-    <script>
-        const countySelect = document.getElementById('countySelect');
-        const townSelect = document.getElementById('townSelect');
-
-        // 假設 countyData 是一個包含縣市和鄉鎮資料的物件陣列
-        const countyData = [
-            {
-                county: '台北市',
-                towns: ['中正區', '大同區', '中山區', '松山區', '大安區'] // 這裡只列了部分鄉鎮
-            },
-            {
-                county: '新北市',
-                towns: ['板橋區', '三重區', '新莊區', '永和區', '中和區'] // 這裡只列了部分鄉鎮
-            },
-            {
-                county: '基隆市',
-                towns: ['中正區', '七堵區', '暖暖區', '仁愛區', '安樂區']
-            },
-            {
-                county: '澎湖縣',
-                towns: ['馬公市', '湖西鄉', '白沙鄉', '西嶼鄉', '望安鄉', /* ... */]
-            }
-            // 其他縣市的資料...
-        ];
-
-        // 初始化縣市選單
-        countyData.forEach(item => {
-            const option = document.createElement('option');
-            option.value = item.county;
-            option.textContent = item.county;
-            countySelect.appendChild(option);
-        });
-
-        // 當縣市選項改變時，動態生成鄉鎮選單
-        countySelect.addEventListener('change', () => {
-            const selectedCounty = countySelect.value;
-            const selectedData = countyData.find(item => item.county === selectedCounty);
-
-            townSelect.innerHTML = ''; // 清空鄉鎮選單
-
-            selectedData.towns.forEach(town => {
-                const option = document.createElement('option');
-                option.value = town;
-                option.textContent = town;
-                townSelect.appendChild(option);
-            });
-        });
-
-    </script>
-    <!--導入全家超商的script，之後可以做address.cshtml導入老師的script.js-->
-    <script>
-        const county2Select = document.getElementById('county2Select');
-        const town2Select = document.getElementById('town2Select');
-
-        // 假設 countyData 是一個包含縣市和鄉鎮資料的物件陣列
-        const county2Data = [
-            {
-                county: '台北市',
-                towns: ['中正區', '大同區', '中山區', '松山區', '大安區'] // 這裡只列了部分鄉鎮
-            },
-            {
-                county: '新北市',
-                towns: ['板橋區', '三重區', '新莊區', '永和區', '中和區'] // 這裡只列了部分鄉鎮
-            },
-            {
-                county: '基隆市',
-                towns: ['中正區', '七堵區', '暖暖區', '仁愛區', '安樂區']
-            },
-            {
-                county: '澎湖縣',
-                towns: ['馬公市', '湖西鄉', '白沙鄉', '西嶼鄉', '望安鄉', /* ... */]
-            }
-            // 其他縣市的資料...
-        ];
-
-        // 初始化縣市選單
-        county2Data.forEach(item => {
-            const option = document.createElement('option');
-            option.value = item.county;
-            option.textContent = item.county;
-            county2Select.appendChild(option);
-        });
-
-        // 當縣市選項改變時，動態生成鄉鎮選單
-        county2Select.addEventListener('change', () => {
-            const selected2County = county2Select.value;
-            const selected2Data = county2Data.find(item => item.county === selected2County);
-
-            town2Select.innerHTML = ''; // 清空鄉鎮選單
-
-            selected2Data.towns.forEach(town => {
-                const option = document.createElement('option');
-                option.value = town;
-                option.textContent = town;
-                town2Select.appendChild(option);
-            });
-        });
-
-    </script>
-
-
 
     <!--1.載入時，導入基本資料-->
     <script>
@@ -1398,6 +1243,8 @@
                 $('#nameInput').val(data.name);
                 $('#emailInput').val(data.email);
                 $('#phoneNumberInput').val(data.phoneNumber);
+                $('#imagePreview').attr('src', data.memberImage);
+                $('#uploadImagePreview').attr('src', data.memberImage);
                 $('#summonName').text(`會員：${data.name}`);
                 $('#coinPointShow').text(`您目前持有貓幣和紅利點數：${data.catCoinQuantity}元/${data.loyaltyPoints}點`);
 
@@ -1476,19 +1323,34 @@
                 });
             });
         });
+
+
     </script>
 
     <!--上傳大頭照-->
     <script>
 
         $(document).ready(function () {
-
-            $('#headShotDiv').on('click', function () {
-
-
+            $('#imagePreview').click(function () {
+                $('#personalPictureModal').modal('show');
             });
         });
 
+        //圖片預覽
+        document.getElementById('imageInput').addEventListener('change', function (event) {
+            var previewImage = document.getElementById('uploadImagePreview');
+            var selectedImage = event.target.files[0];
+
+            if (selectedImage) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                };
+                reader.readAsDataURL(selectedImage);
+            } else {
+                previewImage.src = '@Url.Content("~/images/toy.png")';
+            }
+        });
     </script>
 
     <!--2.載入時，導入消費紀錄-->
@@ -1683,6 +1545,178 @@
                         });
                     });
                 }
+            });
+        });
+
+    </script>
+
+
+
+
+    <!--==========================================================-->
+
+    <!--增加的部分:用於圖片放大預覽-->
+    <script>
+        // 當頁面載入完成後執行
+        document.addEventListener("DOMContentLoaded", function () {
+            // 獲取所有包含縮略圖片和視窗的元素
+            const thumbnailImages = document.querySelectorAll(".thumbnail-image");
+            const imagePopups = document.querySelectorAll(".image-popup");
+
+            // 對每個圖片進行事件處理
+            thumbnailImages.forEach((thumbnailImage, index) => {
+                // 當滑鼠懸停在圖片上時
+                thumbnailImage.addEventListener("mouseover", function () {
+                    // 顯示對應的原始圖片的視窗
+                    imagePopups[index].style.display = "block";
+                });
+
+                // 當滑鼠移開圖片時
+                thumbnailImage.addEventListener("mouseout", function () {
+                    // 隱藏對應的原始圖片的視窗
+                    imagePopups[index].style.display = "none";
+                });
+            });
+        });
+    </script>
+
+    <!--新加入qrcode的cdn
+    <script  src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
+    <script  src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <script>
+        const qrcode = new QRCode(document.getElementById("qrcode"), {
+            width: 250,
+            height: 250,
+            text: "https://www.youtube.com/"
+        });
+    </script>
+    -->
+    <!--新加入sweetalert2的cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function showCancelConfirmation() {
+            Swal.fire({
+                title: '您確定要取消預約嗎',
+                text: "這將無法復原！",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '是的，取消它！',
+                cancelButtonText: '離開'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        '已取消',
+                        '',
+                        'success'
+                    )
+                }
+            });
+        }
+
+        document.getElementById("cancelBooking1").addEventListener("click", showCancelConfirmation);
+        document.getElementById("cancelBooking2").addEventListener("click", showCancelConfirmation);
+        document.getElementById("cancelBooking3").addEventListener("click", showCancelConfirmation);
+    </script>
+
+
+    <!--導入7-11超商的script，之後可以做address.cshtml導入老師的script.js-->
+    <script>
+        const countySelect = document.getElementById('countySelect');
+        const townSelect = document.getElementById('townSelect');
+
+        // 假設 countyData 是一個包含縣市和鄉鎮資料的物件陣列
+        const countyData = [
+            {
+                county: '台北市',
+                towns: ['中正區', '大同區', '中山區', '松山區', '大安區'] // 這裡只列了部分鄉鎮
+            },
+            {
+                county: '新北市',
+                towns: ['板橋區', '三重區', '新莊區', '永和區', '中和區'] // 這裡只列了部分鄉鎮
+            },
+            {
+                county: '基隆市',
+                towns: ['中正區', '七堵區', '暖暖區', '仁愛區', '安樂區']
+            },
+            {
+                county: '澎湖縣',
+                towns: ['馬公市', '湖西鄉', '白沙鄉', '西嶼鄉', '望安鄉', /* ... */]
+            }
+            // 其他縣市的資料...
+        ];
+
+        // 初始化縣市選單
+        countyData.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.county;
+            option.textContent = item.county;
+            countySelect.appendChild(option);
+        });
+
+        // 當縣市選項改變時，動態生成鄉鎮選單
+        countySelect.addEventListener('change', () => {
+            const selectedCounty = countySelect.value;
+            const selectedData = countyData.find(item => item.county === selectedCounty);
+
+            townSelect.innerHTML = ''; // 清空鄉鎮選單
+
+            selectedData.towns.forEach(town => {
+                const option = document.createElement('option');
+                option.value = town;
+                option.textContent = town;
+                townSelect.appendChild(option);
+            });
+        });
+
+    </script>
+    <!--導入全家超商的script，之後可以做address.cshtml導入老師的script.js-->
+    <script>
+        const county2Select = document.getElementById('county2Select');
+        const town2Select = document.getElementById('town2Select');
+
+        // 假設 countyData 是一個包含縣市和鄉鎮資料的物件陣列
+        const county2Data = [
+            {
+                county: '台北市',
+                towns: ['中正區', '大同區', '中山區', '松山區', '大安區'] // 這裡只列了部分鄉鎮
+            },
+            {
+                county: '新北市',
+                towns: ['板橋區', '三重區', '新莊區', '永和區', '中和區'] // 這裡只列了部分鄉鎮
+            },
+            {
+                county: '基隆市',
+                towns: ['中正區', '七堵區', '暖暖區', '仁愛區', '安樂區']
+            },
+            {
+                county: '澎湖縣',
+                towns: ['馬公市', '湖西鄉', '白沙鄉', '西嶼鄉', '望安鄉', /* ... */]
+            }
+            // 其他縣市的資料...
+        ];
+
+        // 初始化縣市選單
+        county2Data.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.county;
+            option.textContent = item.county;
+            county2Select.appendChild(option);
+        });
+
+        // 當縣市選項改變時，動態生成鄉鎮選單
+        county2Select.addEventListener('change', () => {
+            const selected2County = county2Select.value;
+            const selected2Data = county2Data.find(item => item.county === selected2County);
+
+            town2Select.innerHTML = ''; // 清空鄉鎮選單
+
+            selected2Data.towns.forEach(town => {
+                const option = document.createElement('option');
+                option.value = town;
+                option.textContent = town;
+                town2Select.appendChild(option);
             });
         });
 

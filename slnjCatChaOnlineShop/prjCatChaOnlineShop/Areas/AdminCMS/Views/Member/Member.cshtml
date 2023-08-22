@@ -8,6 +8,24 @@
         .RequiredText, .error-message {
             color: #b95756;
         }
+
+        .toggle-password {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /*密碼眼睛位置*/
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px; /* 調整此值以控制圖標與輸入框的距離 */
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
     </style>
 }
 
@@ -33,19 +51,34 @@
                             aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>姓名</label><span class="RequiredText"> *必填</span>
                         <input type="text" class="form-control" id="CreatName" name="Name">
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>帳號</label><span class="RequiredText"> *必填</span>
-                        <input type="email" class="form-control" id="CreatMemberAccount" name="MemberAccount" onblur="checkDuplicateName()" onfocus="hideErrorMessage()" placeholder="請輸入電子信箱">
+                        <input type="email" class="form-control" id="CreatMemberAccount" name="MemberAccount" onblur="CheckDuplicateAccount()" onfocus="hideErrorMessage()" placeholder="請輸入電子信箱">
                         <span id="duplicateMessage" style="display:none;color:red;" class="alert alert-danger"></span>
                         <span id="error1" class="error-message"></span>
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
+                        <label>密碼</label><span class="RequiredText"> *必填</span>
+                        <div class="password-container">
+                            <input type="password" class="form-control" id="CreatMemberPassword" name="Password">
+                            <span id="togglePassword" class="toggle-password">👁️</span>
+                        </div>
+                        <span id="error3" class="error-message"></span>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label>確認密碼</label><span class="RequiredText"> *必填</span>
+                        <input type="password" class="form-control" id="CreatMemberCheckPassword">
+                        <span id="error4" class="error-message"></span>
+                    </div>
+
+                    <div class="form-group mb-2">
                         <label>性別</label><span class="RequiredText"> *必填</span>
                         <select class="form-control" id="CreatGender" name="Gender">
                             <option value="男">男</option>
@@ -54,23 +87,23 @@
                         </select>
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>生日</label><span class="RequiredText"> *必填</span>
                         <input type="date" class="form-control" id="CreatBirthday" name="Birthday" onfocus="this.showPicker()">
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>E-mail</label><span class="RequiredText"> *必填</span>
                         <input type="email" class="form-control" id="CreatEmail" name="Email">
                         <span id="error2" class="error-message"></span>
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>電話</label><span class="RequiredText"> *必填</span>
                         <input type="text" class="form-control" id="CreatPhoneNumber" name="PhoneNumber">
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>地址</label>
                         <input type="text" class="form-control" id="CreatAddress" name="Address">
                     </div>
@@ -98,8 +131,8 @@
             會員狀態：
             <select class="form-select w-25" id="payList">
                 <option value="" selected>全部資料</option>
-                <option value="">開放</option>
-                <option value="">凍結</option>
+                <option value="true">開放</option>
+                <option value="false">凍結</option>
             </select>
         </div>
         <div class="row align-items-center mb-3">
@@ -269,7 +302,6 @@
                                         <div class="form-group mb-2">
                                             <label>E-mail：</label>
                                             <input type="email" class="form-control" id="email_edit">
-                                            <span id="error3" class="error-message"></span>
                                         </div>
 
                                         <div class="form-group mb-2">
@@ -282,13 +314,13 @@
                                             <input type="text" class="form-control" id="address_edit">
                                         </div>
 
-                                        @* <div class="form-group mb-2">
-                                        <label>會員狀態（待確認）：</label>
-                                        <select class="form-control" id="memberStatus_edit">
-                                        <option value="開放">開放</option>
-                                        <option value="凍結">凍結</option>
-                                        </select>
-                                        </div> *@
+                                        <div class="form-group mb-2">
+                                            <label>會員狀態：</label>
+                                            <select class="form-control" id="memberStatus_edit">
+                                                <option value="true">開放</option>
+                                                <option value="false">凍結</option>
+                                            </select>
+                                        </div>
 
                                         <button class="btn btn-danger btn-block mt-2 EditMember_Save"
                                                 style="width: 100%;">
@@ -298,7 +330,7 @@
                                     <div class="tab-pane fade" id="member-edit-nav-profile">
                                         <div class="form-group">
                                             <label>等級：</label>
-                                            <input type="text" class="form-control" id="levelId_edit">
+                                            <input type="number" class="form-control" id="levelId_edit">
                                         </div>
 
                                         <div class="form-group">
@@ -308,12 +340,12 @@
 
                                         <div class="form-group">
                                             <label>貓幣數量：</label>
-                                            <input type="text" class="form-control" id="catCoinQuantity_edit">
+                                            <input type="number" class="form-control" id="catCoinQuantity_edit">
                                         </div>
 
                                         <div class="form-group">
                                             <label>紅利數量：</label>
-                                            <input type="text" class="form-control" id="loyaltyPoints_edit">
+                                            <input type="number" class="form-control" id="loyaltyPoints_edit">
                                         </div>
 
                                         <button type="submit" class="btn btn-danger btn-block EditMember_Save"
@@ -379,7 +411,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
 
     <script>
-        var isVaild = "";
+        var isVaild = ""; //驗證bool
         //==========丟資料給DataTables前先console.log json 出來看結構是長怎樣
         $(document).ready(function () {
             $.ajax({
@@ -413,6 +445,15 @@
                 }
             });
 
+            //==============密碼眼睛
+            $('#togglePassword').click(function () {
+                if ($('#CreatMemberPassword').attr('type') === 'password') {
+                    $('#CreatMemberPassword').attr('type', 'text');
+                } else {
+                    $('#CreatMemberPassword').attr('type', 'password');
+                }
+            });
+
             function validateEmail(input, error) {
                 input.on("blur", function () {
                     if (!isValidEmail(input.val())) {
@@ -425,15 +466,67 @@
                 });
             }
 
+            function validatePassword(input, error) {
+                input.on("blur", function () {
+                    if (!isValidPassword(input.val())) {
+                        error.text("密碼需包含至少一個英文字母和一個數字，且長度至少8字元");
+                        isVaild = false;
+                    } else {
+                        error.text("");
+                        isVaild = true;
+                    }
+                });
+            }
+
+            function validateCheckPassword(input, error) {
+                input.on("blur", function () {
+                    if (!isValidCheckPassword(input.val())) {
+                        error.text("密碼與確認密碼不相符");
+                        console.log("in");
+                        isVaild = false;
+                    } else {
+                        console.log("oh");
+                        error.text("");
+                        isVaild = true;
+                    }
+                });
+            }
+
             //==================驗證帳號信箱格式是否正確
             function isValidEmail(email) {
                 const emailRegex = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
                 return emailRegex.test(email);
             }
 
+            //==================驗證密碼格式是否正確
+            function isValidPassword(password) {
+                // 包含至少一個英文字母和一個數字和至少8字元
+                if (password.length < 8) {
+                    console.log("?");
+                    return false;
+                } else {
+                    const containsLetter = /[a-zA-Z]/.test(password);
+                    const containsNumber = /\d/.test(password);
+
+                    return containsLetter && containsNumber;
+                }
+            }
+
+            //==================驗證確認密碼與密碼兩者是否相符
+            function isValidCheckPassword(check_password) {
+                var pwd = $('#CreatMemberPassword').val();
+
+                if (check_password !== pwd) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
             validateEmail($("#CreatMemberAccount"), $("#error1"));
             validateEmail($("#CreatEmail"), $("#error2"));
-            validateEmail($("#email_edit"), $("#error3"));
+            validatePassword($("#CreatMemberPassword"), $("#error3"));
+            validateCheckPassword($("#CreatMemberCheckPassword"), $("#error4"));
         });
 
 
@@ -448,7 +541,16 @@
                 { data: 'gender' },
                 { data: 'email' },
                 { data: 'phoneNumber' },
-                { data: 'memberStatus' },
+                {
+                    data: 'memberStatus',
+                    render: function (data, type, row, meta) {
+                        if (data) {
+                            return '開放';
+                        } else {
+                            return '凍結';
+                        }
+                    }
+                },
                 {
                     data: null, // 這裡設置為 null，因為我們會在 render 中創建按鈕
                     render: function (data, type, row, meta) {
@@ -494,7 +596,12 @@
                     $('#address').text("地址：" + data.data.address);
                     $('#registrationTime').text("註冊日期：" + data.data.registrationTime);
                     $('#lastLoginTime').text("最後登入：" + data.data.lastLoginTime);
-                    $('#memberStatus').text("會員狀態：" + data.data.memberStatus);
+
+                    if (data.data.memberStatus == true) {
+                        $('#memberStatus').text("會員狀態：開放");
+                    } else {
+                        $('#memberStatus').text("會員狀態：凍結");
+                    }
 
                     //============遊戲資料
                     $('#levelId').text("等級：" + data.data.levelId);
@@ -516,12 +623,12 @@
                             var addressNumber = i + 1; //計算幾筆資料的數字
 
                             itemDiv.innerHTML = `
-                                                                                                                        <h5><b>常用地址－${addressNumber}</b></h5>
-                                                                                                                        <p>收件人姓名: ${item.recipientName}</p>
-                                                                                                                        <p>連絡電話: ${item.recipientPhone}</p>
-                                                                                                                        <p>收件地址: ${item.recipientAddress}</p>
-                                                                                                                <hr>
-                                                                                                            `;
+                                                                                                                                        <h5><b>常用地址－${addressNumber}</b></h5>
+                                                                                                                                        <p>收件人姓名: ${item.recipientName}</p>
+                                                                                                                                        <p>連絡電話: ${item.recipientPhone}</p>
+                                                                                                                                        <p>收件地址: ${item.recipientAddress}</p>
+                                                                                                                                <hr>
+                                                                                                                            `;
                             CAContainer.append(itemDiv);
                         }
                     } else {
@@ -542,13 +649,13 @@
                             var couponNumber = i + 1; //計算幾筆資料的數字
 
                             itemDiv.innerHTML = `
-                                                                                                                                <h5><b>優惠券－${couponNumber}</b></h5>
-                                                                                                                                        <p>優惠券ID: ${item.couponId}</p>
-                                                                                                                                                <p>優惠券內容: ${item.coupon.couponContent}</p>
-                                                                                                                                                        <p>有效日期: ${item.coupon.expiryDate}</p>
-                                                                                                                                        <p>優惠券狀態: ${item.couponStatusId}</p>
-                                                                                                                <hr>
-                                                                                                            `;
+                                                                                                                                                <h5><b>優惠券－${couponNumber}</b></h5>
+                                                                                                                                                        <p>優惠券ID: ${item.couponId}</p>
+                                                                                                                                                                <p>優惠券內容: ${item.coupon.couponContent}</p>
+                                                                                                                                                                        <p>有效日期: ${item.coupon.expiryDate}</p>
+                                                                                                                                                        <p>優惠券狀態: ${item.couponStatusId}</p>
+                                                                                                                                <hr>
+                                                                                                                            `;
                             couponContainer.append(itemDiv);
                         }
                     } else {
@@ -591,7 +698,12 @@
                     $('#email_edit').val(data.data.email);
                     $('#phoneNumber_edit').val(data.data.phoneNumber);
                     $('#address_edit').val(data.data.address);
-                    $('#memberStatus_edit').val(data.data.memberStatus); //會員狀態待確認
+
+                    if (data.data.memberStatus == null) {
+                        $('#memberStatus_edit').val("true");
+                    } else {
+                        $('#memberStatus_edit').val(data.data.memberStatus.toString());
+                    }
 
                     //==================遊戲資料
                     $('#levelId_edit').val(data.data.levelId);
@@ -605,6 +717,19 @@
         //==================編輯資料後，按下「儲存」按鈕的點擊事件處理
         $('.EditMember_Save').click(function () {
 
+            //==============送出前先驗證信箱格式
+            var email = $('#email_edit').val();
+            const emailRegex = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+
+            if (!emailRegex.test(email)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'email格式有誤',
+                    text: '請重新輸入'
+                });
+                return;
+            }
+
             //==================基本資料
             var MemberId = $('#memberId_edit').val();
             var Name = $('#name_edit').val();
@@ -615,7 +740,7 @@
             var Email = $('#email_edit').val();
             var PhoneNumber = $('#phoneNumber_edit').val();
             var Address = $('#address_edit').val();
-            var MemberStatus = ('#memberStatus_edit').val(data.data.memberStatus); //會員狀態待確認
+            var MemberStatus = $('#memberStatus_edit').val();
 
             //==================遊戲資料
             var LevelId = $('#levelId_edit').val();
@@ -623,7 +748,7 @@
             var CatCoinQuantity = $('#catCoinQuantity_edit').val();
             var LoyaltyPoints = $('#loyaltyPoints_edit').val();
 
-            var memberData = {
+            var editMember = {
                 MemberId: MemberId,
                 Name: Name,
                 MemberAccount: MemberAccount,
@@ -639,57 +764,47 @@
                 LoyaltyPoints: LoyaltyPoints
             };
 
-            //================先驗證格式是否正確才跑ajax
-            //================驗證信箱&帳號格式是否正確
+            $.ajax({
+                url: '/AdminCMS/Member/UpdateMember',
+                type: 'POST',
+                data: { editMember: editMember },
+                success: function (response) {
+                    if (response.success) {
+                        // 更新成功的處理
+                        // 顯示成功訊息
+                        Swal.fire({
+                            icon: 'success',
+                            title: '編輯成功',
+                            text: response.message
+                        });
 
-            console.log("驗證：" + isVaild);
+                        // 關閉modal
+                        $('#EditModalToggle').modal('hide');
 
-            if (!isVaild) {
-                $.ajax({
-                    url: '/AdminCMS/Member/UpdateMember',
-                    type: 'POST',
-                    data: JSON.stringify(memberData),
-                    contentType: 'application/json',
-                    success: function (response) {
-                        if (response.success) {
-                            // 更新成功的處理
-                            // 顯示成功訊息
-                            Swal.fire({
-                                icon: 'success',
-                                title: '成功',
-                                text: data.message
-                            });
-
-                            // 關閉modal
-                            $('#addMemberModalToggle').modal('hide');
-                        } else {
-                            // 更新失敗
-                            Swal.fire({
-                                icon: 'error',
-                                title: '失敗',
-                                text: data.message
-                            });
-                        }
-                    },
-                    error: function (error) {
-                        // 錯誤處理
-                        // 會員新增失敗，顯示錯誤訊息
-                        console.log(error);
+                        // 重新整理dataTable
+                        $('#member-table').DataTable().ajax.reload(); // 這將重新載入dataTable的資料
+                    } else {
+                        // 更新失敗
+                        Swal.fire({
+                            icon: 'error',
+                            title: '失敗',
+                            text: response.message
+                        });
                     }
-                });
-            } else {
-                console.log("驗證沒過");
-                return;
-            }
-
-
+                },
+                error: function (error) {
+                    // 錯誤處理
+                    // 會員編輯失敗，顯示錯誤訊息
+                    console.log(error);
+                }
+            });
         })
 
 
         var CheckAccResult = ""; //將帳號是否已存在的結果，設成全域變數給儲存按鈕做驗證
 
         //====================離開input 驗證帳號是否重複
-        function checkDuplicateName() {
+        function CheckDuplicateAccount() {
             var account = $('#CreatMemberAccount').val(); //抓到使用者輸入的帳號
 
             if (account === "") { //當輸入框為空時，隱藏錯誤消息
@@ -701,7 +816,7 @@
             //===============打API驗證姓名是否已存在
             //資料庫有的帳號：catCha2、catCha
             $.ajax({
-                url: '/AdminCMS/Member/CheckDuplicateName',
+                url: '/AdminCMS/Member/CheckDuplicateAccount',
                 type: 'GET',
                 data: { account: account },
                 success: function (result) {
@@ -735,6 +850,8 @@
 
             var Name = $('#CreatName').val();
             var MemberAccount = $('#CreatMemberAccount').val();
+            var Password = $('#CreatMemberPassword').val();
+            var CheckPassword = $('#CreatMemberCheckPassword').val();
             var Gender = $('#CreatGender').val();
             var Birthday = $('#CreatBirthday').val();
             var Email = $('#CreatEmail').val();
@@ -743,7 +860,7 @@
             var MemberStatus = $('#CreatMemberStatus').val();
 
             // 檢查必填欄位是否有值
-            if (!Name || !MemberAccount || !Gender || !Birthday || !Email || !PhoneNumber) {
+            if (!Name || !MemberAccount || !Password || !CheckPassword || !Gender || !Birthday || !Email || !PhoneNumber) {
                 Swal.fire({
                     icon: 'error',
                     title: '錯誤',
@@ -752,7 +869,7 @@
                 return; // 不執行後續動作
             }
 
-            // 檢查帳號是否已存在
+            // 檢查帳號是否已存在或者isVaild只要是false就return
             if (CheckAccResult == true || isVaild == false) {
                 return; // 不執行後續動作
             }
@@ -809,23 +926,23 @@
             }
         });
 
-                                                                                    // function userDelete() {
-                                                                                    //     Swal.fire({
-                                                                                    //         title: '確定要刪除嗎?',
-                                                                                    //         icon: 'warning',
-                                                                                    //         showCancelButton: true,
-                                                                                    //         confirmButtonColor: '#3085d6',
-                                                                                    //         cancelButtonColor: '#d33',
-                                                                                    //         confirmButtonText: 'Yes, delete it!'
-                                                                                    //     }).then((result) => {
-                                                                                    //         if (result.isConfirmed) {
-                                                                                    //             Swal.fire(
-                                                                                    //                 'Deleted!',
-                                                                                    //                 'Your file has been deleted.',
-                                                                                    //                 'success'
-                                                                                    //             )
-                                                                                    //         }
-                                                                                    //     })
-                                                                                    // }
+                                                                                                    // function userDelete() {
+                                                                                                    //     Swal.fire({
+                                                                                                    //         title: '確定要刪除嗎?',
+                                                                                                    //         icon: 'warning',
+                                                                                                    //         showCancelButton: true,
+                                                                                                    //         confirmButtonColor: '#3085d6',
+                                                                                                    //         cancelButtonColor: '#d33',
+                                                                                                    //         confirmButtonText: 'Yes, delete it!'
+                                                                                                    //     }).then((result) => {
+                                                                                                    //         if (result.isConfirmed) {
+                                                                                                    //             Swal.fire(
+                                                                                                    //                 'Deleted!',
+                                                                                                    //                 'Your file has been deleted.',
+                                                                                                    //                 'success'
+                                                                                                    //             )
+                                                                                                    //         }
+                                                                                                    //     })
+                                                                                                    // }
     </script>
 }

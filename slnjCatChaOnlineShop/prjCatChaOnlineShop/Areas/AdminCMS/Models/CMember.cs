@@ -10,8 +10,6 @@
 
         public int? LevelId { get; set; }
 
-        //public string Password { get; set; }
-
         public string Name { get; set; }
 
         public string Gender { get; set; }
@@ -28,18 +26,8 @@
 
         public int? LoyaltyPoints { get; set; }
 
-        //public DateTime? RegistrationTime { get; set; }
-
-        //public DateTime? LastLoginTime { get; set; }
-
-        //public int? FavoriteId { get; set; }
-
-        //public int? CheckinDayCount { get; set; }
-
-        //public int? MyCatNameListId { get; set; }
-
         public int? RunGameHighestScore { get; set; }
 
-        //public int? MemberStatusId { get; set; }
+        public bool? MemberStatus { get; set; }
     }
 }

@@ -67,8 +67,8 @@ namespace prjCatChaOnlineShop.Controllers.CMS
                 return NotFound();
             }
         }
-        //=============檢查姓名是否重複
-        public IActionResult CheckDuplicateName(string account)
+        //=============新增會員檢查帳號是否重複
+        public IActionResult CheckDuplicateAccount(string account)
         {
             bool result = _context.ShopMemberInfo != null && _context.ShopMemberInfo.Where(c => c.MemberAccount == account).Count() >= 1;
 
@@ -78,7 +78,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
         [HttpPost]
         public IActionResult AddMember(ShopMemberInfo newMember)
         {
-            // 後端待補-檢查信箱&帳號格式，及檢查帳號是否已存在；前端驗證信箱&帳號格式，生日不可為未來
+            // 後端待補-檢查信箱&帳號格式，及檢查帳號是否已存在；
             try
             {
                 if (newMember != null) // 檢查 newMember 是否為空
@@ -118,41 +118,45 @@ namespace prjCatChaOnlineShop.Controllers.CMS
             }
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateMember([FromBody] CMember memberData)
+        public IActionResult UpdateMember(CMember editMember)
         {
             //Utility utility = new Utility();
             //if (IsValidFormat(memberData))
             //{
-            var member = _context.ShopMemberInfo.FirstOrDefault(m => m.MemberId == memberData.MemberId);
-
-            if (member != null)
+            var memberData = _context.ShopMemberInfo.FirstOrDefault(m => m.MemberId == editMember.MemberId);
+            try
             {
-                member.MemberId = memberData.MemberId;
-                member.MemberAccount = memberData.MemberAccount;
-                member.CharacterName = memberData.CharacterName;
-                member.LevelId = memberData.LevelId;
-                member.Name = memberData.Name;
-                member.Gender = memberData.Gender;
-                member.Birthday = memberData.Birthday;
-                member.PhoneNumber = memberData.PhoneNumber;
-                member.CatCoinQuantity = memberData.CatCoinQuantity;
-                member.LoyaltyPoints = memberData.LoyaltyPoints;
-                member.RunGameHighestScore = memberData.RunGameHighestScore;
-                // 更新其他字段...
-                try
+                if (memberData != null) // 檢查 memberData 是否為空
                 {
-                    // 將newMember存入DbContext
-                    await _context.SaveChangesAsync();
+                    memberData.MemberId = editMember.MemberId;
+                    memberData.MemberAccount = editMember.MemberAccount;
+                    memberData.CharacterName = editMember.CharacterName;
+                    memberData.LevelId = editMember.LevelId;
+                    memberData.Name = editMember.Name;
+                    memberData.Gender = editMember.Gender;
+                    memberData.Birthday = editMember.Birthday;
+                    memberData.Email = editMember.Email;
+                    memberData.PhoneNumber = editMember.PhoneNumber;
+                    memberData.MemberStatus = editMember.MemberStatus;
+                    memberData.CatCoinQuantity = editMember.CatCoinQuantity;
+                    memberData.LoyaltyPoints = editMember.LoyaltyPoints;
+                    memberData.RunGameHighestScore = editMember.RunGameHighestScore;
+                    // 更新其他字段...
 
-                    return Json(new { success = true, message = "編輯資料成功！" });
+                    // 將member存入DbContext
+                    _context.SaveChanges();
+
+                    return Json(new { success = true, message = "編輯會員成功！" });
                 }
-                catch (Exception ex)
+                else
                 {
-                    return Json(new { success = false, message = "編輯資料失敗：" + ex.Message });
+                    return Json(new { success = false, message = "編輯會員的資訊為空。" });
                 }
             }
-            //}
-            return NotFound();
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "編輯會員失敗：" + ex.Message });
+            }
         }
 
         //private bool IsValidFormat(CMember memberData)

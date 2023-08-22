@@ -87,7 +87,13 @@ testDBlogin.addEventListener('click', async function () {
                 'QuantityOfInGameItems:', IFM.QuantityOfInGameItems,
                 'ItemName:', IFM.ItemName
             )
-        }, console.log(information[0].MemberId,
+        },
+            使用者ID = information[0].MemberId,
+            角色名稱=information[0].CharacterName,
+            貓幣數量=information[0].CatCoinQuantity,
+            紅利數量=information[0].LoyaltyPoints,
+            console.log(
+            information[0].MemberId,
             information[0].CharacterName,
             information[0].CatCoinQuantity,
             information[0].LoyaltyPoints,
