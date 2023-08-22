@@ -1097,9 +1097,6 @@ public partial class cachaContext : DbContext
             entity.Property(e => e.Attributes).HasMaxLength(50);
             entity.Property(e => e.Discount).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.DiscountId).HasColumnName("Discount ID");
-            entity.Property(e => e.Image)
-                .HasMaxLength(10)
-                .HasColumnName("image");
             entity.Property(e => e.OffDay)
                 .HasColumnType("datetime")
                 .HasColumnName("offDay");

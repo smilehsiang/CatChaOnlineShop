@@ -291,36 +291,51 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <script>
-        //初始化表格
+            // 查看json結構
+            $(document).ready(function () {
+                $.ajax({
+                    url: '@Url.Action("LoadDatatable", "Product")',
+                    type: 'GET',
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+        //初始化表格==================================================
         $(document).ready(function () {
             var table = $('#Product-table').DataTable({
                 responsive: true,
+                    "paging": true,
                     "ajax": {
                         "url": "@Url.Action("LoadDatatable", "Product" , new{ area="AdminCMS"})",
                         type: 'GET',
                     },
-                    //載入欄位資料庫資料
+                    //載入欄位資料庫資料==========================================
                     "columns": [
                         { "data": "productId" },
                         { "data": "productName" },
-                        {"data":  "productDescription"},
+                        { "data":  "productDescription"},
                         { "data": "productPrice" },
-                        { "data": "RemainingQuantity" },
+                        { "data": "remainingQuantity" },
                         { "data": "productCategory" },
-                        { "data": "image" },
+                        { "data": "shopProductImageTable" },
                         { "data": "releaseDate" },
                         { "data": "size" },
                         { "data": "weight" },
                         { "data": "supplier" },
-                        { "data": "discontinued" },
+                        { "data": "discontinued"},
                         {
                             "data": null,
                             "render": function (data, type, row) {
                                 var deleteUrl = '@Url.Action("Delete", "Product", new { area = "AdminCMS", id = "productId" })';
                                 deleteUrl = deleteUrl.replace('announcementTypeId', row.Product);
-                                var editorUrl = '@Url.Action("EditorProducts","Product",new { area = "AdminCMS", id = "producteId" })';
+                                var editorUrl = '@Url.Action("EditShopProducts","Product",new { area = "AdminCMS", id = "producteId" })';
                                 editorUrl = editorUrl.replace('ProductId', row.Product);
-                                return `<a href="${editorUrl}" role="button"><button data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit"></i></button></a> |
+                                return `<a href="${editorUrl}" role="button"><button data-bs-toggle="modal" data-bs-target="#addProductModalToggle"><i class="fas fa-edit"></i></button></a> |
                                                     <a href="${deleteUrl}" onclick="return confirm('確定要刪除嗎?')"><i class="fas fa-trash-alt"></i></a>`;
                             }
                         }
@@ -328,7 +343,7 @@
                 });
 
 
-                 //篩選類別
+                 //篩選類別==============================================
                 // 在這裡指定需要過濾的列，商品類別為第六列->索引5
                 columnDefs: [
                     { targets: 5, searchable: true }
@@ -351,7 +366,8 @@
 
         ;
 
-        //圖片預覽-當頁面載入完成後執行
+        //圖片預覽-當頁面載入完成後執行==================================
+
         document.addEventListener("DOMContentLoaded", function () {
             // 獲取所有包含縮略圖片和視窗的元素
             const thumbnailImages = document.querySelectorAll(".thumbnail-image");
@@ -373,7 +389,7 @@
             });
         });
 
-        //日期篩選器
+        //日期篩選器==============================
         $('input[name="dates"]').daterangepicker();
         $(document).ready(function () {
             var table = $('#salon-table').DataTable({
@@ -381,7 +397,7 @@
             });
         });
 
-        //刪除按鈕
+        //刪除按鈕================================
         function userDelete() {
             Swal.fire({
                 title: '確定要刪除嗎?',
@@ -401,15 +417,81 @@
             })
         }
 
-        //編輯按鈕
+        //編輯按鈕==============================================
+            function handleEditButtonClick(id) {
+                $.ajax({
+                    url: '/AdminCMS/Product/EditShopProducts?id=' + id,
+                    type: 'GET',
+                    success: function (response) {
+                        if (response.success) {
+                            populateEditorFields(response.data);
+                        } else {
+                            alert(response.message);
+                        }
+                    }
+                });
+            }
+
             $(document).on('click', '.edit-button', function () {
-                const id = $(this).data('id')
-                console.log(id)
-            })
+                let id = $(this).data('id');
+                handleEditButtonClick(id);
+            });
+
+         //儲存按鈕==============================
+         //TODO
+            //$('#submitButton-edior').click(function () {
+            //    var content = $('#summernote-for-editor').summernote('code');
+            //    const editorID = $('#editor-ID').val();
+            //    var newsTitle = $('#editor-newsTitle').val();
+            //    const PublishTime = $('#PublishTime-editor').val();
+            //    const PublishEndTime = $('#PublishEndTime-editor').val();
+            //    const PinToTop = $('#PinToTop-editor').is(':checked');
+            //    const Hide = $('#hide-editor').is(':checked');
+            //    var fileInput = $('#ImageHeader-editor')[0];
+            //    var file = fileInput.files[0];
+
+            //    var formData = new FormData();
+            //    formData.append("AnnouncementId", editorID);
+            //    formData.append("AnnouncementTitle", newsTitle);
+            //    formData.append("AnnouncementContent", content);
+            //    formData.append("PublishTime", PublishTime);
+            //    formData.append("PublishEndTime", PublishEndTime);
+            //    formData.append("PinToTop", PinToTop);
+            //    formData.append("AnnouncementTypeId", TypeEditor);
+            //    formData.append("ImageHeader", file);
+            //    formData.append("DisplayOrNot", Hide)
+
+            //    $.ajax({
+            //        url: "@Url.Action("EditNews","News" , new { area="AdminCMS" })",
+            //        type: "POST",
+            //        data: formData,
+            //        processData: false,
+            //        contentType: false,
+            //        success: function (response) {
+            //            alert("Content saved successfully!");
+            //            window.location.reload();
+            //        }
+            //    });
+            //});
+
+            //        });
+
+            //document.addEventListener("DOMContentLoaded", function () {
+            //    const now = new Date();
+            //    const year = now.getFullYear();
+            //    const month = String(now.getMonth() + 1).padStart(2, '0');
+            //    const day = String(now.getDate()).padStart(2, '0');
+            //    const hours = String(now.getHours()).padStart(2, '0');
+            //    const minutes = String(now.getMinutes()).padStart(2, '0');
+            //    const dateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+            //    document.querySelector("#PublishTime").min = dateTime;
+            //    document.querySelector("#PublishEndTime").min = dateTime;
+            //    document.querySelector("#PublishTime-editor").min = dateTime;
+            //    document.querySelector("#PublishEndTime-editor").min = dateTime;
+            //});
 
 
 
-
-
-    </script>
+        </script>
 }
+
