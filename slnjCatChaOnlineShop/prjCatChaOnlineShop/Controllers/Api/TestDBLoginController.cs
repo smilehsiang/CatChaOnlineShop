@@ -51,7 +51,7 @@ namespace prjCatChaOnlineShop.Controllers.Api
                         group.Key.CatCoinQuantity,
                         group.Key.LoyaltyPoints,
                         group.Key.RunGameHighestScore,
-                        GameItemInfo = group.Select(g => new { g.ProductId, g.QuantityOfInGameItems,g.ItemName})
+                        GameItemInfo = group.Select(g => new { g.ProductId, g.QuantityOfInGameItems, g.ItemName })
                     })
                     .ToList();
                 return new JsonResult(mergedData);
@@ -62,6 +62,40 @@ namespace prjCatChaOnlineShop.Controllers.Api
             }
         }
 
+        [HttpPost]
+        public IActionResult 傳回玩家資訊數據([FromBody] GameReturnGachaDataModel rgm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("資料驗證失敗");
+            }
+            try
+            {
+                // 創建一個資料庫模型對象，將DTO數據映射到模型
+                var dbItemModel = new GameItemPurchaseRecord // 替換為你的資料庫模型類別
+                {
+                    MemberId = rgm.MemberId,
+                    ProductId = rgm.ProductId
+                };
+                var dbUserInformation = new ShopMemberInfo
+                {
+                    MemberId = rgm.MemberId,
+                    CatCoinQuantity = rgm.CatCoinQuantity,
+                    LoyaltyPoints = rgm.LoyaltyPoints,
+                };
 
+                // 將數據存儲到資料庫
+                _context.GameItemPurchaseRecord.Add(dbItemModel); // 替換為你的DbContext和資料庫模型集合
+                _context.ShopMemberInfo.Add(dbUserInformation); // 替換為你的DbContext和資料庫模型集合
+                _context.SaveChanges();
+
+                return Ok("數據已成功保存");
+            }
+            catch (Exception ex)
+            {
+                // 處理異常情況
+                return StatusCode(500, "保存數據時發生錯誤：" + ex.Message);
+            }
+        }
     }
 }
