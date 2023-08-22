@@ -98,10 +98,9 @@
                     <thead>
                         <tr>
                             <!-- <th>序號</th> -->
-                            <th>ID</th>
+                            <th>編號</th>
                             <th>產品類別</th>
                             <th>產品名稱</th>
-                            <th>圖片</th>
                             <th>評分</th>
                             <th>評論表ID</th>
                             <th>評論會員</th>
@@ -116,15 +115,6 @@
                             <td>1</td>
                             <td>貓咪用品</td>
                             <td>好好用貓砂</td>
-                            <td class="test">
-                                <img src="https://www.costco.com.tw/medias/sys_master/images/hb4/h77/28534423486494.jpg"
-                                     width="100" height="100" class="thumbnail-image">
-                                <!-- 原始圖片的視窗 -->
-                                <div class="image-popup">
-                                    <img src="https://www.costco.com.tw/medias/sys_master/images/hb4/h77/28534423486494.jpg"
-                                         alt="Original Image">
-                                </div>
-                            </td>
                             <td>5 顆星</td>
                             <td>001</td>
                             <td>A小姐</td>
@@ -200,25 +190,30 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />*@
 
     <script>
-        //$('input[name="dates"]').daterangepicker();
 
-        new DataTable('#PReview-table', {
-            responsive: true,
-            "searching": false, //隱藏搜尋框
+        $('#PReview-table').DataTable({
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/zh-HANT.json',
+            },
+            "responsive": true,
+            "searching": true,
+            "processing": true,
+            "serverSide": false,
+            "paging": true,
+            "pagingType": "full_numbers",
+            "pageLength": 10,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "全部"]],
+            "info": true,
+            "ajax": {
+                url:"@Url.Action()",
+                type:"GET"
+            }
+        })
 
-            //========隱藏某一欄
-            // columnDefs: [
-            // {
-            //     target: 10,
-            //     visible: false,
-            //     searchable: false
-            // },
-            // {
-            //     target: 11,
-            //     visible: false
-            // }
-            // ]
-        });
+        // new DataTable('#PReview-table', {
+        //     responsive: true,
+        //     "searching": false, 
+        // });
 
         //圖片縮放設定  當頁面載入完成後執行
         document.addEventListener("DOMContentLoaded", function () {
