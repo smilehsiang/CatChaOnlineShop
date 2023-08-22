@@ -7,6 +7,7 @@ using prjCatChaOnlineShop.Models;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using prjCatChaOnlineShop.Areas.AdminCMS.Models;
+using prjCatChaOnlineShop.Models.CDictionary;
 //using prjCatChaOnlineShop.Areas.AdminCMS.Util;
 
 namespace prjCatChaOnlineShop.Controllers.CMS
@@ -30,7 +31,12 @@ namespace prjCatChaOnlineShop.Controllers.CMS
 
         public IActionResult Member()
         {
-            return View();
+            //判斷是否有登入
+            if (HttpContext.Session.Keys.Contains(CAdminLogin.SK_LOGINED_USER))
+            {
+                return View();
+            }
+            return RedirectToAction("Login", "CMSHome");
         }
 
         public IActionResult ShowMemeberInfo()
