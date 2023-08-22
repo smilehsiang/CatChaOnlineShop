@@ -66,8 +66,8 @@
                     <div class="form-group mb-3">
                         <label>密碼</label><span class="RequiredText"> *必填</span>
                         <div class="password-container">
-                        <input type="password" class="form-control" id="CreatMemberPassword" name="Password">
-                        <span id="togglePassword" class="toggle-password">👁️</span>
+                            <input type="password" class="form-control" id="CreatMemberPassword" name="Password">
+                            <span id="togglePassword" class="toggle-password">👁️</span>
                         </div>
                         <span id="error3" class="error-message"></span>
                     </div>
@@ -445,6 +445,15 @@
                 }
             });
 
+            //==============密碼眼睛
+            $('#togglePassword').click(function () {
+                if ($('#CreatMemberPassword').attr('type') === 'password') {
+                    $('#CreatMemberPassword').attr('type', 'text');
+                } else {
+                    $('#CreatMemberPassword').attr('type', 'password');
+                }
+            });
+
             function validateEmail(input, error) {
                 input.on("blur", function () {
                     if (!isValidEmail(input.val())) {
@@ -460,7 +469,7 @@
             function validatePassword(input, error) {
                 input.on("blur", function () {
                     if (!isValidPassword(input.val())) {
-                        error.text("密碼需包含至少一個英文字母和一個數字，且長度至少8");
+                        error.text("密碼需包含至少一個英文字母和一個數字，且長度至少8字元");
                         isVaild = false;
                     } else {
                         error.text("");
@@ -481,15 +490,6 @@
                         isVaild = true;
                     }
                 });
-
-                //==============密碼眼睛
-                $('#togglePassword').click(function () {
-                    if ($('#CreatMemberPassword').attr('type') === 'password') {
-                        $('#CreatMemberPassword').attr('type', 'text');
-                    } else {
-                        $('#CreatMemberPassword').attr('type', 'password');
-                    }
-                });
             }
 
             //==================驗證帳號信箱格式是否正確
@@ -500,11 +500,16 @@
 
             //==================驗證密碼格式是否正確
             function isValidPassword(password) {
-                // 包含至少一個英文字母和一個數字
-                const containsLetter = /[a-zA-Z]/.test(password);
-                const containsNumber = /\d/.test(password);
+                // 包含至少一個英文字母和一個數字和至少8字元
+                if (password.length < 8) {
+                    console.log("?");
+                    return false;
+                } else {
+                    const containsLetter = /[a-zA-Z]/.test(password);
+                    const containsNumber = /\d/.test(password);
 
-                return containsLetter && containsNumber;
+                    return containsLetter && containsNumber;
+                }
             }
 
             //==================驗證確認密碼與密碼兩者是否相符
@@ -515,7 +520,7 @@
                     console.log("驗證密碼false");
                     return false;
                 } else {
-                return true;
+                    return true;
                 }
             }
 
@@ -605,12 +610,12 @@
                             var addressNumber = i + 1; //計算幾筆資料的數字
 
                             itemDiv.innerHTML = `
-                                                                                                                                <h5><b>常用地址－${addressNumber}</b></h5>
-                                                                                                                                <p>收件人姓名: ${item.recipientName}</p>
-                                                                                                                                <p>連絡電話: ${item.recipientPhone}</p>
-                                                                                                                                <p>收件地址: ${item.recipientAddress}</p>
-                                                                                                                        <hr>
-                                                                                                                    `;
+                                                                                                                                        <h5><b>常用地址－${addressNumber}</b></h5>
+                                                                                                                                        <p>收件人姓名: ${item.recipientName}</p>
+                                                                                                                                        <p>連絡電話: ${item.recipientPhone}</p>
+                                                                                                                                        <p>收件地址: ${item.recipientAddress}</p>
+                                                                                                                                <hr>
+                                                                                                                            `;
                             CAContainer.append(itemDiv);
                         }
                     } else {
@@ -631,13 +636,13 @@
                             var couponNumber = i + 1; //計算幾筆資料的數字
 
                             itemDiv.innerHTML = `
-                                                                                                                                        <h5><b>優惠券－${couponNumber}</b></h5>
-                                                                                                                                                <p>優惠券ID: ${item.couponId}</p>
-                                                                                                                                                        <p>優惠券內容: ${item.coupon.couponContent}</p>
-                                                                                                                                                                <p>有效日期: ${item.coupon.expiryDate}</p>
-                                                                                                                                                <p>優惠券狀態: ${item.couponStatusId}</p>
-                                                                                                                        <hr>
-                                                                                                                    `;
+                                                                                                                                                <h5><b>優惠券－${couponNumber}</b></h5>
+                                                                                                                                                        <p>優惠券ID: ${item.couponId}</p>
+                                                                                                                                                                <p>優惠券內容: ${item.coupon.couponContent}</p>
+                                                                                                                                                                        <p>有效日期: ${item.coupon.expiryDate}</p>
+                                                                                                                                                        <p>優惠券狀態: ${item.couponStatusId}</p>
+                                                                                                                                <hr>
+                                                                                                                            `;
                             couponContainer.append(itemDiv);
                         }
                     } else {
@@ -746,40 +751,40 @@
                 LoyaltyPoints: LoyaltyPoints
             };
 
-                $.ajax({
-                    url: '/AdminCMS/Member/UpdateMember',
-                    type: 'POST',
-                    data: { editMember: editMember },
-                    success: function (response) {
-                        if (response.success) {
-                            // 更新成功的處理
-                            // 顯示成功訊息
-                            Swal.fire({
-                                icon: 'success',
-                                title: '編輯成功',
-                                text: response.message
-                            });
+            $.ajax({
+                url: '/AdminCMS/Member/UpdateMember',
+                type: 'POST',
+                data: { editMember: editMember },
+                success: function (response) {
+                    if (response.success) {
+                        // 更新成功的處理
+                        // 顯示成功訊息
+                        Swal.fire({
+                            icon: 'success',
+                            title: '編輯成功',
+                            text: response.message
+                        });
 
-                            // 關閉modal
-                            $('#EditModalToggle').modal('hide');
+                        // 關閉modal
+                        $('#EditModalToggle').modal('hide');
 
-                            // 重新整理dataTable
-                            $('#member-table').DataTable().ajax.reload(); // 這將重新載入dataTable的資料
-                        } else {
-                            // 更新失敗
-                            Swal.fire({
-                                icon: 'error',
-                                title: '失敗',
-                                text: response.message
-                            });
-                        }
-                    },
-                    error: function (error) {
-                        // 錯誤處理
-                        // 會員編輯失敗，顯示錯誤訊息
-                        console.log(error);
+                        // 重新整理dataTable
+                        $('#member-table').DataTable().ajax.reload(); // 這將重新載入dataTable的資料
+                    } else {
+                        // 更新失敗
+                        Swal.fire({
+                            icon: 'error',
+                            title: '失敗',
+                            text: response.message
+                        });
                     }
-                });
+                },
+                error: function (error) {
+                    // 錯誤處理
+                    // 會員編輯失敗，顯示錯誤訊息
+                    console.log(error);
+                }
+            });
         })
 
 
@@ -851,22 +856,10 @@
                 return; // 不執行後續動作
             }
 
-            // 檢查帳號是否已存在
+            // 檢查帳號是否已存在或者isVaild只要是false就return
             if (CheckAccResult == true || isVaild == false) {
                 return; // 不執行後續動作
             }
-
-            //檢查密碼格式
-            // 最小長度要求為8
-            if (Password.length < 8) {
-                return false;
-            }
-
-            // 包含至少一個英文字母和一個數字
-            const containsLetter = /[a-zA-Z]/.test(password);
-            const containsNumber = /\d/.test(password);
-
-            return containsLetter && containsNumber;
 
             var newMember = {
                 Name: Name,
@@ -920,23 +913,23 @@
             }
         });
 
-                                                                                            // function userDelete() {
-                                                                                            //     Swal.fire({
-                                                                                            //         title: '確定要刪除嗎?',
-                                                                                            //         icon: 'warning',
-                                                                                            //         showCancelButton: true,
-                                                                                            //         confirmButtonColor: '#3085d6',
-                                                                                            //         cancelButtonColor: '#d33',
-                                                                                            //         confirmButtonText: 'Yes, delete it!'
-                                                                                            //     }).then((result) => {
-                                                                                            //         if (result.isConfirmed) {
-                                                                                            //             Swal.fire(
-                                                                                            //                 'Deleted!',
-                                                                                            //                 'Your file has been deleted.',
-                                                                                            //                 'success'
-                                                                                            //             )
-                                                                                            //         }
-                                                                                            //     })
-                                                                                            // }
+                                                                                                    // function userDelete() {
+                                                                                                    //     Swal.fire({
+                                                                                                    //         title: '確定要刪除嗎?',
+                                                                                                    //         icon: 'warning',
+                                                                                                    //         showCancelButton: true,
+                                                                                                    //         confirmButtonColor: '#3085d6',
+                                                                                                    //         cancelButtonColor: '#d33',
+                                                                                                    //         confirmButtonText: 'Yes, delete it!'
+                                                                                                    //     }).then((result) => {
+                                                                                                    //         if (result.isConfirmed) {
+                                                                                                    //             Swal.fire(
+                                                                                                    //                 'Deleted!',
+                                                                                                    //                 'Your file has been deleted.',
+                                                                                                    //                 'success'
+                                                                                                    //             )
+                                                                                                    //         }
+                                                                                                    //     })
+                                                                                                    // }
     </script>
 }
