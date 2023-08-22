@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Build.Experimental.ProjectCache;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using NuGet.Protocol;
 using prjCatChaOnlineShop.Models;
+using prjCatChaOnlineShop.Services.Function;
 
 namespace prjCatChaOnlineShop.Controllers.Home
 {
@@ -19,6 +21,7 @@ namespace prjCatChaOnlineShop.Controllers.Home
         {
             _context = context;
         }
+        
         public IActionResult Membership()
         {
             return View();
@@ -106,6 +109,9 @@ namespace prjCatChaOnlineShop.Controllers.Home
                 return Content("修改失敗：" + ex.Message);
             }
         }
+
+
+
 
         /*2.消費紀錄*/
 

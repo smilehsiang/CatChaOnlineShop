@@ -68,5 +68,48 @@ namespace prjCatChaOnlineShop.Controllers.Home
             return Json(new { uploaded = true, url = $"{imageUrl}" });
         }
 
+
+        [HttpPost]
+        public async Task<IActionResult> UploadImageToMemberInfo(IFormFile image, string AnnouncementContent)
+        {
+            if (image == null || image.Length == 0)
+            {
+                return BadRequest("No image provided.");
+            }
+
+            string imageUrl;
+            try
+            {
+                imageUrl = await _imageService.UploadImageAsync(image);
+            }
+            catch
+            {
+
+                return BadRequest("Error uploading the image.");
+            }
+
+            if (string.IsNullOrWhiteSpace(AnnouncementContent))
+            {
+                return BadRequest("Announcement content cannot be empty.");
+            }
+
+            try
+            {
+                //會員id需再調整，目前先假定會員編號4
+                var memberToUpdate = _cachaContext.ShopMemberInfo.FirstOrDefault(m => m.MemberId == 4);
+
+                memberToUpdate.MemberImage = imageUrl;
+                await _cachaContext.SaveChangesAsync();
+
+            }
+            catch
+            {
+                return BadRequest("Error saving the announcement.");
+            }
+
+            //return Json(new { uploaded = true, url = $"{imageUrl}" });
+            //return Content("hello");
+            return RedirectToAction("membership", "membership");
+        }
     }
 }
