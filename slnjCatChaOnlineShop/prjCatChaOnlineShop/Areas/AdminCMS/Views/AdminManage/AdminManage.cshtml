@@ -99,30 +99,14 @@
                             <th>ID</th>
                             <th>姓名</th>
                             <th>帳號</th>
-                            <th>最後登入</th>
+                            <th>密碼</th>
                             <th>編輯</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>管理員1</td>
-                            <td>admin@yahoo.com.tw</td>
-                            <td>2023-06-29</td>
-                            <td>
-                                <a href="#">
-                                    <button class="btn" data-bs-toggle="modal"
-                                            href="#exampleModalToggle" role="button">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
                 </table>
                 <!--表格-->
                 <!--編輯彈出視窗-->
-                <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                <div class="modal fade" id="editAdminModalToggle" aria-hidden="true"
                      aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -248,7 +232,26 @@
         });
         //==========丟資料給DataTables前先console.log json 出來看結構是長怎樣
 
-        new DataTable('#admin-table', {
+        //==================datatable
+        $('#admin-table').DataTable({
+            "ajax": '@Url.Action("ShowAdminManage", "AdminManage")',
+            "columns": [
+                //這裡要注意json裡面是大寫還是小寫
+                { data: 'adminId' },
+                { data: 'adminUsername' },
+                { data: 'adminAccount' },
+                {data: 'adminPassword' },
+                //{
+                //    data: null,
+                //    render: function (data, type, row, meta) {
+                //        var editButton = '<button class="btn edit_memberbtn" data-bs-toggle="modal" href="#editAdminModalToggle" role="button" data-memberid="' + row.memberId + '"><i class="fas fa-edit"></i></button>';
+                //        // var deleteButton = '<button class="btn" onclick="userDelete(' + row.memberId + ')"><a href="#" id="b5"><i class="fas fa-trash-alt"></i></a></button>';
+                //        return editButton;
+                //        // return editButton + ' | ' + deleteButton;
+                //    }
+                //},
+            ],
+            "paging": true, //分頁功能
             responsive: true, //RWD
             "searching": false, //隱藏搜尋框
         });
