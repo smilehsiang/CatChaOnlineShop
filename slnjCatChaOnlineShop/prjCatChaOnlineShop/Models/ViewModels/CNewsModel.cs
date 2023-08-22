@@ -8,5 +8,6 @@ namespace prjCatChaOnlineShop.Models.ViewModels
         public List<GameShopAnnouncement> NewsContent { get; set; }
         public List<AnnouncementTypeData> NewsType { get; set; }
         public CAnnounceWrap cAnnounceWrap { get; set; }
+        public Dictionary<int, List<GameShopAnnouncement>> NewsContentGroupedByType { get;set; }
     }
 }

@@ -21,12 +21,15 @@ namespace prjCatChaOnlineShop.Controllers.Home
         {
             DateTime currentTime = DateTime.Now;
 
+            var newsGroupedByType = _context.GameShopAnnouncement
+                                            .Where(p => DateTime.Parse(p.PublishTime) <= currentTime && DateTime.Parse(p.PublishEndTime) >= currentTime)
+                                            .GroupBy(p => p.AnnouncementTypeId)
+                                            .ToDictionary(g => g.Key, g => g.ToList());
+
             var NewsModel = new CNewsModel
             {
                 NewsType = _context.AnnouncementTypeData.ToList(),
-                NewsContent = _context.GameShopAnnouncement
-                                    .Where(p => p.PublishTime <= currentTime && p.PublishEndTime >= currentTime)
-                                    .ToList()
+                NewsContentGroupedByType = newsGroupedByType 
             };
 
             return View(NewsModel);
