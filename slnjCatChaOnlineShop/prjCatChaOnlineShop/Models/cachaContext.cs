@@ -69,6 +69,8 @@ public partial class cachaContext : DbContext
 
     public virtual DbSet<ShopAppealCategoryData> ShopAppealCategoryData { get; set; }
 
+    public virtual DbSet<ShopBookingStatus> ShopBookingStatus { get; set; }
+
     public virtual DbSet<ShopCaseDataTable> ShopCaseDataTable { get; set; }
 
     public virtual DbSet<ShopCatStatus> ShopCatStatus { get; set; }
@@ -84,6 +86,8 @@ public partial class cachaContext : DbContext
     public virtual DbSet<ShopComplaintStatusData> ShopComplaintStatusData { get; set; }
 
     public virtual DbSet<ShopCouponTotal> ShopCouponTotal { get; set; }
+
+    public virtual DbSet<ShopCustomerBooking> ShopCustomerBooking { get; set; }
 
     public virtual DbSet<ShopFavoriteDataTable> ShopFavoriteDataTable { get; set; }
 
@@ -389,7 +393,9 @@ public partial class cachaContext : DbContext
 
         modelBuilder.Entity<GamePet>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK_Game.Pet_1");
+            entity
+                .HasNoKey()
+                .ToTable("Game.Pet");
 
             entity.ToTable("Game.Pet");
 
@@ -620,6 +626,16 @@ public partial class cachaContext : DbContext
             entity.Property(e => e.CategoryName).HasColumnName("Category Name");
         });
 
+        modelBuilder.Entity<ShopBookingStatus>(entity =>
+        {
+            entity.HasKey(e => e.StatusId);
+
+            entity.ToTable("Shop.BookingStatus");
+
+            entity.Property(e => e.StatusId).HasColumnName("StatusID");
+            entity.Property(e => e.StatusText).HasMaxLength(50);
+        });
+
         modelBuilder.Entity<ShopCaseDataTable>(entity =>
         {
             entity.HasKey(e => e.CaseId).HasName("PK_Shop.案件資料表");
@@ -740,6 +756,25 @@ public partial class cachaContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("Expiry Date");
             entity.Property(e => e.TotalQuantity).HasColumnName("Total Quantity");
+        });
+
+        modelBuilder.Entity<ShopCustomerBooking>(entity =>
+        {
+            entity.HasKey(e => e.CustomerBookingId);
+
+            entity.ToTable("Shop.CustomerBooking");
+
+            entity.Property(e => e.CustomerBookingId).HasColumnName("CustomerBookingID");
+            entity.Property(e => e.MemberId).HasColumnName("Member ID");
+            entity.Property(e => e.OrderId).HasColumnName("Order ID");
+
+            entity.HasOne(d => d.BookingStatusNavigation).WithMany(p => p.ShopCustomerBooking)
+                .HasForeignKey(d => d.BookingStatus)
+                .HasConstraintName("FK_Shop.CustomerBooking_Shop.BookingStatus");
+
+            entity.HasOne(d => d.Order).WithMany(p => p.ShopCustomerBooking)
+                .HasForeignKey(d => d.OrderId)
+                .HasConstraintName("FK_Shop.CustomerBooking_Shop.Order Total Table");
         });
 
         modelBuilder.Entity<ShopFavoriteDataTable>(entity =>
@@ -890,6 +925,44 @@ public partial class cachaContext : DbContext
                 .HasForeignKey(d => d.MemberId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Shop.MyCatNameList_Shop.Member Info");
+        });
+
+        modelBuilder.Entity<ShopNavbarChild>(entity =>
+        {
+            entity.HasKey(e => e.NavbarChildId);
+
+            entity.ToTable("Shop.NavbarChild");
+
+            entity.Property(e => e.NavbarChildId)
+                .ValueGeneratedNever()
+                .HasColumnName("NavbarChildID");
+            entity.Property(e => e.NavText).HasMaxLength(50);
+            entity.Property(e => e.NavbarId).HasColumnName("NavbarID");
+
+            entity.HasOne(d => d.Navbar).WithMany(p => p.ShopNavbarChild)
+                .HasForeignKey(d => d.NavbarId)
+                .HasConstraintName("FK_Shop.NavbarChild_Shop.NavbarList");
+        });
+
+        modelBuilder.Entity<ShopNavbarList>(entity =>
+        {
+            entity.HasKey(e => e.NavbarId);
+
+            entity.ToTable("Shop.NavbarList");
+
+            entity.Property(e => e.NavbarId).HasColumnName("NavbarID");
+            entity.Property(e => e.NavbarText).HasMaxLength(50);
+            entity.Property(e => e.PublishTime).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<ShopNoserviceDate>(entity =>
+        {
+            entity.HasKey(e => e.ClosedDateId);
+
+            entity.ToTable("Shop.NoserviceDate");
+
+            entity.Property(e => e.ClosedDateId).HasColumnName("ClosedDateID");
+            entity.Property(e => e.BookingId).HasColumnName("BookingID");
         });
 
         modelBuilder.Entity<ShopNavbarChild>(entity =>
@@ -1168,7 +1241,7 @@ public partial class cachaContext : DbContext
                 .HasColumnName("Return Date");
             entity.Property(e => e.ReturnReasonId).HasColumnName("Return Reason ID");
 
-            entity.HasOne(d => d.ProcessingStatus).WithMany(p => p.ShopReturnDataTable)
+            entity.HasOne(d => d.ProcessingStatus).WithMany()
                 .HasForeignKey(d => d.ProcessingStatusId)
                 .HasConstraintName("FK_Shop.退換貨資料表_Shop.退換貨處理狀態資料表");
 
