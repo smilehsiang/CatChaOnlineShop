@@ -67,7 +67,7 @@
                         <label>密碼</label><span class="RequiredText"> *必填</span>
                         <div class="password-container">
                             <input type="password" class="form-control" id="CreatMemberPassword" name="Password">
-                            <span id="togglePassword" class="toggle-password">👁️</span>
+                            <span id="togglePassword" class="toggle-password"><i class="fas fa-eye"></i></span>
                         </div>
                         <span id="error3" class="error-message"></span>
                     </div>
@@ -482,10 +482,8 @@
                 input.on("blur", function () {
                     if (!isValidCheckPassword(input.val())) {
                         error.text("密碼與確認密碼不相符");
-                        console.log("in");
                         isVaild = false;
                     } else {
-                        console.log("oh");
                         error.text("");
                         isVaild = true;
                     }
@@ -502,7 +500,6 @@
             function isValidPassword(password) {
                 // 包含至少一個英文字母和一個數字和至少8字元
                 if (password.length < 8) {
-                    console.log("?");
                     return false;
                 } else {
                     const containsLetter = /[a-zA-Z]/.test(password);
@@ -886,7 +883,6 @@
             };
 
             try {
-                //============要驗證帳號是否重複，以及格式欄位是否正確，後端前端都要驗證才可新增
                 $.ajax({
                     url: '/AdminCMS/Member/AddMember',
                     type: 'POST',

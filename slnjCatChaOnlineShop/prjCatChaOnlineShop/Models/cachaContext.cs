@@ -67,7 +67,11 @@ public partial class cachaContext : DbContext
 
     public virtual DbSet<MessageTypeData> MessageTypeData { get; set; }
 
+    public virtual DbSet<ShopAdminBooking> ShopAdminBooking { get; set; }
+
     public virtual DbSet<ShopAppealCategoryData> ShopAppealCategoryData { get; set; }
+
+    public virtual DbSet<ShopBookingStatus> ShopBookingStatus { get; set; }
 
     public virtual DbSet<ShopCaseDataTable> ShopCaseDataTable { get; set; }
 
@@ -84,6 +88,8 @@ public partial class cachaContext : DbContext
     public virtual DbSet<ShopComplaintStatusData> ShopComplaintStatusData { get; set; }
 
     public virtual DbSet<ShopCouponTotal> ShopCouponTotal { get; set; }
+
+    public virtual DbSet<ShopCustomerBooking> ShopCustomerBooking { get; set; }
 
     public virtual DbSet<ShopFavoriteDataTable> ShopFavoriteDataTable { get; set; }
 
@@ -102,6 +108,10 @@ public partial class cachaContext : DbContext
     public virtual DbSet<ShopNavbarChild> ShopNavbarChild { get; set; }
 
     public virtual DbSet<ShopNavbarList> ShopNavbarList { get; set; }
+
+    public virtual DbSet<ShopNoserviceDate> ShopNoserviceDate { get; set; }
+
+    public virtual DbSet<ShopOpenBookingTime> ShopOpenBookingTime { get; set; }
 
     public virtual DbSet<ShopOrderDetailTable> ShopOrderDetailTable { get; set; }
 
@@ -610,6 +620,21 @@ public partial class cachaContext : DbContext
                 .HasColumnName("Message Type");
         });
 
+        modelBuilder.Entity<ShopAdminBooking>(entity =>
+        {
+            entity.HasKey(e => e.BookingId);
+
+            entity.ToTable("Shop.AdminBooking");
+
+            entity.Property(e => e.BookingId).HasColumnName("BookingID");
+            entity.Property(e => e.OpenMonth).HasColumnType("date");
+            entity.Property(e => e.ProductId).HasColumnName("Product ID");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.ShopAdminBooking)
+                .HasForeignKey(d => d.ProductId)
+                .HasConstraintName("FK_Shop.AdminBooking_Game.Product Total");
+        });
+
         modelBuilder.Entity<ShopAppealCategoryData>(entity =>
         {
             entity.HasKey(e => e.AppealCategoryId).HasName("PK_Shop.申訴類別資料表");
@@ -618,6 +643,16 @@ public partial class cachaContext : DbContext
 
             entity.Property(e => e.AppealCategoryId).HasColumnName("Appeal Category ID");
             entity.Property(e => e.CategoryName).HasColumnName("Category Name");
+        });
+
+        modelBuilder.Entity<ShopBookingStatus>(entity =>
+        {
+            entity.HasKey(e => e.StatusId);
+
+            entity.ToTable("Shop.BookingStatus");
+
+            entity.Property(e => e.StatusId).HasColumnName("StatusID");
+            entity.Property(e => e.StatusText).HasMaxLength(50);
         });
 
         modelBuilder.Entity<ShopCaseDataTable>(entity =>
@@ -740,6 +775,25 @@ public partial class cachaContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("Expiry Date");
             entity.Property(e => e.TotalQuantity).HasColumnName("Total Quantity");
+        });
+
+        modelBuilder.Entity<ShopCustomerBooking>(entity =>
+        {
+            entity.HasKey(e => e.CustomerBookingId);
+
+            entity.ToTable("Shop.CustomerBooking");
+
+            entity.Property(e => e.CustomerBookingId).HasColumnName("CustomerBookingID");
+            entity.Property(e => e.MemberId).HasColumnName("Member ID");
+            entity.Property(e => e.OrderId).HasColumnName("Order ID");
+
+            entity.HasOne(d => d.BookingStatusNavigation).WithMany(p => p.ShopCustomerBooking)
+                .HasForeignKey(d => d.BookingStatus)
+                .HasConstraintName("FK_Shop.CustomerBooking_Shop.BookingStatus");
+
+            entity.HasOne(d => d.Order).WithMany(p => p.ShopCustomerBooking)
+                .HasForeignKey(d => d.OrderId)
+                .HasConstraintName("FK_Shop.CustomerBooking_Shop.Order Total Table");
         });
 
         modelBuilder.Entity<ShopFavoriteDataTable>(entity =>
@@ -918,6 +972,35 @@ public partial class cachaContext : DbContext
             entity.Property(e => e.NavbarId).HasColumnName("NavbarID");
             entity.Property(e => e.NavbarText).HasMaxLength(50);
             entity.Property(e => e.PublishTime).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<ShopNoserviceDate>(entity =>
+        {
+            entity.HasKey(e => e.ClosedDateId);
+
+            entity.ToTable("Shop.NoserviceDate");
+
+            entity.Property(e => e.ClosedDateId).HasColumnName("ClosedDateID");
+            entity.Property(e => e.BookingId).HasColumnName("BookingID");
+
+            entity.HasOne(d => d.Booking).WithMany(p => p.ShopNoserviceDate)
+                .HasForeignKey(d => d.BookingId)
+                .HasConstraintName("FK_Shop.NoserviceDate_Shop.AdminBooking");
+        });
+
+        modelBuilder.Entity<ShopOpenBookingTime>(entity =>
+        {
+            entity.HasKey(e => e.OpenTimeId);
+
+            entity.ToTable("Shop.OpenBookingTime");
+
+            entity.Property(e => e.OpenTimeId).HasColumnName("openTimeID");
+            entity.Property(e => e.BookingId).HasColumnName("BookingID");
+            entity.Property(e => e.OpenTime).HasColumnName("openTime");
+
+            entity.HasOne(d => d.Booking).WithMany(p => p.ShopOpenBookingTime)
+                .HasForeignKey(d => d.BookingId)
+                .HasConstraintName("FK_Shop.OpenBookingTime_Shop.AdminBooking");
         });
 
         modelBuilder.Entity<ShopOrderDetailTable>(entity =>
@@ -1167,6 +1250,11 @@ public partial class cachaContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("Return Date");
             entity.Property(e => e.ReturnReasonId).HasColumnName("Return Reason ID");
+
+            entity.HasOne(d => d.Order).WithMany(p => p.ShopReturnDataTable)
+                .HasForeignKey(d => d.OrderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Shop.Return Data Table_Shop.Order Total Table");
 
             entity.HasOne(d => d.ProcessingStatus).WithMany(p => p.ShopReturnDataTable)
                 .HasForeignKey(d => d.ProcessingStatusId)

@@ -137,7 +137,7 @@
 
     <div class="tab-content" id="myTabContent">
 
-        <!--會員基本資料的內容-->
+        <!--1.會員基本資料的內容-->
         <div class="tab-pane fade show active" id="membership" role="tabpanel" aria-labelledby="membership-tab">
             <section class="my-5">
                 <div class="container">
@@ -424,7 +424,7 @@
             </section>
         </div>
 
-        <!--彈跳視窗:查看持有優惠券-->
+                <!--彈跳視窗:查看持有優惠券-->
         <div class="modal fade" id="couponModal">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
@@ -461,7 +461,7 @@
             </div>
         </div>
 
-        <!--彈跳視窗:更換個人照片-->
+                <!--彈跳視窗:更換個人照片-->
         <div class="modal fade" id="personalPictureModal">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
@@ -495,7 +495,7 @@
             </div>
         </div>
 
-        <!--消費紀錄的內容-->
+        <!--2.消費紀錄的內容-->
         <div class="tab-pane fade" id="shoppingsheet" role="tabpanel" aria-labelledby="shoppingsheet-tab">
             <section class="my-5">
                 <div class="container">
@@ -521,127 +521,6 @@
                         <div class="col-lg-9 order-3 order-sm-3 order-md-3 order-xs-3">
                             <div class="row gy-3 mb-4">
                                 <div style="height: 350px; overflow: auto;" class="table-responsive">
-                                    <!--下為切版時先把資料寫死的內容-->
-                                    <!--
-                                    <table class="table  table-bordered table-hover " id="example">
-                                        <thead class="table-warning text-center">
-                                            <tr>
-                                                <th scope="col">訂單編號</th>
-                                                <th scope="col">訂單成立日期</th>
-                                                <th scope="col">產品名稱</th>
-                                                <th scope="col">產品規格</th>
-                                                <th scope="col">訂購數量</th>
-                                                <th scope="col">消費金額</th>
-                                                <th scope="col">付款方式</th>
-                                                <th scope="col">付款時間</th>
-                                                <th scope="col">配送狀態</th>
-                                                <th scope="col">完成時間</th>
-                                                <th scope="col"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="text-left">
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>2023/07/26</td>
-                                                <td>寵愛貓飼料</td>
-                                                <td>家庭號</td>
-                                                <td>3</td>
-                                                <td>600</td>
-                                                <td>信用卡支付</td>
-                                                <td>2023/07/27 12:00</td>
-                                                <td>運送中</td>
-                                                <td>尚未完成</td>
-                                                <td>
-                                                    <div class="d-flex flex-column">
-                                                        <button type="button"
-                                                                class="btn btn-outline-dark mb-2 btn-sm"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#invoiceModal">
-                                                            電子發票
-                                                        </button>
-                                                        <button type="button"
-                                                                class="btn btn-outline-dark mb-2 btn-sm"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#returnModal">
-                                                            申請退換貨
-                                                        </button>
-                                                        <button type="button" class="btn btn-warning btn-sm"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#commentModal">
-                                                            評論
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>2023/07/21</td>
-                                                <td>逗貓棒</td>
-                                                <td>單支</td>
-                                                <td>1</td>
-                                                <td>50</td>
-                                                <td>貨到付款</td>
-                                                <td>2023/07/23 12:00</td>
-                                                <td>運送中</td>
-                                                <td>已完成</td>
-                                                <td>
-                                                    <div class="d-flex flex-column">
-                                                        <button type="button"
-                                                                class="btn btn-outline-dark mb-2 btn-sm"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#invoiceModal">
-                                                            電子發票
-                                                        </button>
-                                                        <button type="button"
-                                                                class="btn btn-outline-dark mb-2 btn-sm"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#returnModal">
-                                                            申請退換貨
-                                                        </button>
-                                                        <button type="button" class="btn btn-warning btn-sm"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#commentModal">
-                                                            評論
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>2023/06/26</td>
-                                                <td>貓跳台</td>
-                                                <td>特製三層版</td>
-                                                <td>1</td>
-                                                <td>1000</td>
-                                                <td>銀行轉帳</td>
-                                                <td>2023/06/30 12:00</td>
-                                                <td>運送中</td>
-                                                <td>已完成</td>
-                                                <td>
-                                                    <div class="d-flex flex-column">
-                                                        <button type="button"
-                                                                class="btn btn-outline-dark mb-2 btn-sm"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#invoiceModal">
-                                                            電子發票
-                                                        </button>
-                                                        <button type="button"
-                                                                class="btn btn-outline-dark mb-2 btn-sm"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#returnModal">
-                                                            申請退換貨
-                                                        </button>
-                                                        <button type="button" class="btn btn-warning btn-sm"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#commentModal">
-                                                            評論
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    -->
                                     <table class="table  table-bordered table-hover" id="orderTable">
                                         <thead class="table-warning text-center">
                                             <tr>
@@ -666,7 +545,7 @@
             </section>
         </div>
 
-        <!--彈跳視窗:申請退換貨-->
+                <!--彈跳視窗:申請退換貨-->
         <div class="modal fade" id="returnModal">
             <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
@@ -743,7 +622,7 @@
             </div>
         </div>
 
-        <!--彈跳視窗:評論-->
+                <!--彈跳視窗:評論-->
         <div class="modal fade" id="commentModal">
             <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
@@ -813,7 +692,52 @@
             </div>
         </div>
 
-        <!--退貨紀錄的內容-->
+                <!-- 跳出視窗:電子發票 -->
+        <div class="modal fade" id="invoiceModal">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <!-- 頭Header -->
+                        <div class="modal-header">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h1>電子發票</h1>
+                                    </div>
+                                    <div class="col d-flex justify-content-end">
+                                        <button type="button" class="btn btn-warning btn-sm" data-bs-dismiss="modal">
+                                            X
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 身體Body -->
+                        <div class="modal-body">
+                            <div>
+                                <h3>號碼: ML15495931</h3>
+                                <h3>期別: 112年09-10月</h3>
+                            </div>
+                            <div class="container">
+                                <div id="qrcode"></div>
+                            </div>
+                            <!--上方的qrcode沒有跑出來-->
+                            <!--
+                            <div>
+                                <p>將【QR Code】置於框內以進行掃描輸入</p>
+                            </div>
+                            -->
+                        </div>
+                        <!-- 腳Footer -->
+                        <div class="modal-footer">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--3.退貨紀錄的內容-->
         <div class="tab-pane fade" id="return" role="tabpanel" aria-labelledby="return-tab">
             <section class="my-5">
                 <div class="container">
@@ -911,12 +835,12 @@
             </section>
         </div>
 
-        <!--收藏紀錄的內容-->
+        <!--4.收藏紀錄的內容-->
         <div class="tab-pane fade" id="collect" role="tabpanel" aria-labelledby="collect-tab">
             <section class="my-5">
                 <div class="container">
                     <div class="row">
-
+                        <!--下面為刻板時，先把資料寫死
                         <div class="col-lg-12 order-3 order-sm-3 order-md-3 order-xs-3">
                             <div class="row gy-3 mb-4">
                                 <div class="col-lg-5">
@@ -948,13 +872,33 @@
                                 <hr class="for-hr">
                             </div>
                         </div>
+                        -->
+                        <div class="col-lg-12 order-3 order-sm-3 order-md-3 order-xs-3">
+                            <div class="row gy-3 mb-4">
+                                <div style="height: 350px; overflow: scroll;" class="table-responsive">
+                                    <table class="table table-bordered table-hover" id="favoriteRecordTable">
+                                        <thead class="table-warning text-center">
+                                            <tr>
+                                                <th scope="col">圖片</th>
+                                                <th scope="col">產品名稱</th>
+                                                <th scope="col">剩餘數量</th>
+                                                <th scope="col">售價</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-left">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
             </section>
         </div>
 
-        <!--客訴紀錄的內容-->
+        <!--5.客訴紀錄的內容-->
         <div class="tab-pane fade" id="Complaint" role="tabpanel" aria-labelledby="Complaint-tab">
             <section class="my-5">
                 <div class="container">
@@ -1057,7 +1001,7 @@
             </section>
         </div>
 
-        <!--客服中心的內容-->
+        <!--6.客服中心的內容-->
         <div class="tab-pane fade" id="CustomerService" role="tabpanel" aria-labelledby="CustomerService-tab">
             <section class="my-5">
                 <div class="container">
@@ -1094,109 +1038,68 @@
                 </div>
             </section>
         </div>
-    </div>
-</div>
 
-<!--彈跳視窗:客訴內容-->
-<div class="modal fade" id="ComplaintModal">
-    <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="col d-flex justify-content-end">
-                    <button type="button" class="btn btn-warning btn-sm px-2" data-bs-dismiss="modal">
-                        X
-                    </button>
-                </div>
-                <div class="container">
-                    <form action="">
-                        <div class="row my-1 ml-2">
-                            <label>客訴編號: </label>
-                        </div>
-                        <div class="row my-1 ml-2">
-                            <label>成立日期: </label>
-                        </div>
-                        <div class="row my-1 ml-2">
-                            <label>客訴類型: </label>
-                        </div>
-                        <div class="row my-1 ml-2">
-                            <label>客訴主旨: </label>
-                        </div>
-                        <div class="row my-1 ml-2">
-                            <label>客訴內文 </label>
-                            <div class="input-group">
-                                <textarea class="form-control" aria-label="With textarea"></textarea>
-                            </div>
-                        </div>
-                        <div class="row my-1 ml-2">
-                            <label>客服回覆 </label>
-                            <div class="input-group">
-                                <textarea class="form-control" aria-label="With textarea"></textarea>
-                            </div>
+                <!--彈跳視窗:客訴內容-->
+        <div class="modal fade" id="ComplaintModal">
+            <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="col d-flex justify-content-end">
+                            <button type="button" class="btn btn-warning btn-sm px-2" data-bs-dismiss="modal">
+                                X
+                            </button>
                         </div>
                         <div class="container">
-                            <div class="row">
-                                <div class="col mt-2">
-                                    <button type="button" class="btn btn-outline-secondary btn-block"
-                                            data-bs-dismiss="modal">
-                                        取消
-                                    </button>
+                            <form action="">
+                                <div class="row my-1 ml-2">
+                                    <label>客訴編號: </label>
                                 </div>
-                            </div>
+                                <div class="row my-1 ml-2">
+                                    <label>成立日期: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>客訴類型: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>客訴主旨: </label>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>客訴內文 </label>
+                                    <div class="input-group">
+                                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row my-1 ml-2">
+                                    <label>客服回覆 </label>
+                                    <div class="input-group">
+                                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col mt-2">
+                                            <button type="button" class="btn btn-outline-secondary btn-block"
+                                                    data-bs-dismiss="modal">
+                                                取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </form>
                         </div>
 
-
-                    </form>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 
-<!-- 跳出視窗:電子發票 -->
-<div class="modal fade" id="invoiceModal">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-body">
-                <!-- 頭Header -->
-                <div class="modal-header">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h1>電子發票</h1>
-                            </div>
-                            <div class="col d-flex justify-content-end">
-                                <button type="button" class="btn btn-warning btn-sm" data-bs-dismiss="modal">
-                                    X
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 身體Body -->
-                <div class="modal-body">
-                    <div>
-                        <h3>號碼: ML15495931</h3>
-                        <h3>期別: 112年09-10月</h3>
-                    </div>
-                    <div class="container">
-                        <div id="qrcode"></div>
-                    </div>
-                    <!--上方的qrcode沒有跑出來-->
-                    <!--
-                    <div>
-                        <p>將【QR Code】置於框內以進行掃描輸入</p>
-                    </div>
-                    -->
-                </div>
-                <!-- 腳Footer -->
-                <div class="modal-footer">
-                </div>
 
-            </div>
-        </div>
-    </div>
-</div>
+
+
 
 
 
@@ -1433,7 +1336,7 @@
         }
 
         
-        initializeDataTable('#example3', '#myKeyWord3', '#btnQuery3');
+
         initializeDataTable('#example4', '#myKeyWord4', '#btnQuery4');
 
 
@@ -1462,6 +1365,48 @@
                 });
 
                 initializeDataTable('#returnRecordTable', '#myKeyWord2', '#btnQuery2');
+
+            });
+        });
+
+    </script>
+
+    <!--5.載入時，導入收藏紀錄-->
+    <script>
+
+        $(document).ready(function () {
+            $.getJSON('@Url.Content("~/membership/GetFavoriteData")', function (data) {
+                var tbody = document.querySelector('#favoriteRecordTable tbody');
+
+                // 清空表格內容
+                tbody.innerHTML = '';
+
+                // 遍歷 JSON 資料並建立表格列
+                data.forEach(function (item) {
+                    var row = tbody.insertRow();
+
+
+                    // 創建一個新的<img>元素
+                    var imgElement = document.createElement('img');
+                    // 設定圖片的src屬性為item.productPhoto（假設item.productPhoto是圖片的URL）
+                    // imgElement.src = item.productPhoto;
+                    imgElement.src = '@Url.Content("~/images/")' + item.productPhoto;
+                    // 設定其他屬性，如寬度、高度等
+                    imgElement.width = 100;  // 設定寬度，根據您的需求調整
+                    imgElement.height = 100; // 設定高度，根據您的需求調整
+                    // 在表格中插入圖片的單元格
+                    var imgCell = row.insertCell();
+                    imgCell.appendChild(imgElement);
+
+
+
+                    row.insertCell().textContent = item.productName;
+                    row.insertCell().textContent = item.remainingQuantity;
+                    row.insertCell().textContent = "$" + item.productPrice + " / 份";
+                    row.insertCell().textContent = item.remainingQuantity;
+                });
+
+                initializeDataTable('#favoriteRecordTable', null, null);
 
             });
         });

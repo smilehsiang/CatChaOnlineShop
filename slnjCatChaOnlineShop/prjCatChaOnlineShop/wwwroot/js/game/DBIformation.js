@@ -2,7 +2,7 @@
 
 async function fetchData() {
     try {
-        const response = await fetch('/api/Api/GameApi');
+        const response = await fetch('/api/Api/Gameapi');
         if (!response.ok) {
             throw new Error('網絡錯誤');
         }

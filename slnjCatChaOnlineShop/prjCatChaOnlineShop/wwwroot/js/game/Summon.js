@@ -9,10 +9,46 @@ const animationImages = animationContainer.querySelectorAll('.catcha');
 const summonbuttons = document.getElementById('summon-buttons');
 
 let processedData = []; //建立一個空陣列接Data資料
+//連接使用者的資料庫數據
 let 使用者ID;
 let 角色名稱;
 let 貓幣數量;
 let 紅利數量;
+let 道具ID = [];
+// 初始化 playerDataArray 為一個空陣列
+const playerDataArray = [];
+
+// 當使用者進行抽獎時，將抽獎數據添加到 playerDataArray
+async function 添加使用者抽獎數據(使用者ID, 貓幣數量, 紅利數量, 道具ID) {
+    const userData = {
+        MemberId: 使用者ID,
+        ProductId: 道具ID,
+        CatCoinQuantity: 貓幣數量,
+        LoyaltyPoints: 紅利數量,
+    };
+
+    playerDataArray.push(userData);
+
+    try {
+        const response = await fetch('/Api/Api/TestDBLogin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(playerDataArray),
+        });
+
+        if (!response.ok) {
+            throw new Error('發送數據時發生錯誤');
+        }
+
+        const data = await response.json();
+        console.log('數據已成功發送:', data);
+    } catch (error) {
+        console.error('發送數據時發生錯誤:', error);
+    }
+}
+
 
 
 CatPointTenDrows.addEventListener('click', async function () {
@@ -243,8 +279,8 @@ RubySingleDrow.addEventListener('click', async function () {
                     drawResults.push(drawnItem);
                     allImages.push(drawnItem.productImage);
                     allItemName.push(drawnItem.productName);
-                    allproductid.push(drawnItem.productId)
-                    console.log(`第 ${i + 1} 次轉蛋：你獲得了 ${drawnItem.productName},${drawnItem.scaledProbability},${drawnItem.productImage}`);
+                    allproductid.push(drawnItem.productId);
+                    console.log(`第 ${i + 1} 次轉蛋：你獲得了${drawnItem.productName},${drawnItem.scaledProbability},${drawnItem.productImage},${drawnItem.productId}`);
                 } else {
                     i--; // 減少i以重新執行本次抽獎
                 }
@@ -262,9 +298,10 @@ RubySingleDrow.addEventListener('click', async function () {
 
             // 顯示最高等級的動畫和結果，並傳遞所有物品的圖片
             if (maxResult) {
-                showGachaResult(maxResult.scaledProbability, allImages, allItemName, TenOrSingle);
+                道具ID =allproductid.productId
+                showGachaResult(maxResult.scaledProbability, allImages, allItemName, TenOrSingle, 道具ID);
                 console.log(maxResult.productName);
-
+                添加使用者抽獎數據(使用者ID, 貓幣數量, 紅利數量, 道具ID);
             }
         } catch (error) {
             console.error('轉蛋時發生錯誤:', error);
@@ -364,23 +401,3 @@ function showGachaResult(scaledProbability, allImages, allItemName, TenOrSingle)
         result.style.display = 'grid';
     }, 5000); // 5000毫秒等於5秒
 }
-
-fetch('你的控制器端點 URL', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(玩家數據數組),
-})
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('發送數據時發生錯誤');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('數據已成功發送:', data);
-    })
-    .catch(error => {
-        console.error('發送數據時發生錯誤:', error);
-    });
