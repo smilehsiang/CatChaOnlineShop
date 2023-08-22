@@ -14,7 +14,7 @@ namespace prjCatChaOnlineShop.Controllers.Home
             _context = context;
         }
 
-        public IActionResult NewsContent(int? id)
+        public IActionResult NewsContent()
         {
             //GameShopAnnouncement news = _context.GameShopAnnouncement.FirstOrDefault(x=>x.AnnouncementId == id);
             //if (news != null)
