@@ -51,19 +51,19 @@
                             aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>姓名</label><span class="RequiredText"> *必填</span>
                         <input type="text" class="form-control" id="CreatName" name="Name">
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>帳號</label><span class="RequiredText"> *必填</span>
                         <input type="email" class="form-control" id="CreatMemberAccount" name="MemberAccount" onblur="CheckDuplicateAccount()" onfocus="hideErrorMessage()" placeholder="請輸入電子信箱">
                         <span id="duplicateMessage" style="display:none;color:red;" class="alert alert-danger"></span>
                         <span id="error1" class="error-message"></span>
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>密碼</label><span class="RequiredText"> *必填</span>
                         <div class="password-container">
                             <input type="password" class="form-control" id="CreatMemberPassword" name="Password">
@@ -72,13 +72,13 @@
                         <span id="error3" class="error-message"></span>
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>確認密碼</label><span class="RequiredText"> *必填</span>
                         <input type="password" class="form-control" id="CreatMemberCheckPassword">
                         <span id="error4" class="error-message"></span>
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>性別</label><span class="RequiredText"> *必填</span>
                         <select class="form-control" id="CreatGender" name="Gender">
                             <option value="男">男</option>
@@ -87,23 +87,23 @@
                         </select>
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>生日</label><span class="RequiredText"> *必填</span>
                         <input type="date" class="form-control" id="CreatBirthday" name="Birthday" onfocus="this.showPicker()">
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>E-mail</label><span class="RequiredText"> *必填</span>
                         <input type="email" class="form-control" id="CreatEmail" name="Email">
                         <span id="error2" class="error-message"></span>
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>電話</label><span class="RequiredText"> *必填</span>
                         <input type="text" class="form-control" id="CreatPhoneNumber" name="PhoneNumber">
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-2">
                         <label>地址</label>
                         <input type="text" class="form-control" id="CreatAddress" name="Address">
                     </div>
@@ -411,7 +411,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
 
     <script>
-        var isVaild = "";
+        var isVaild = ""; //驗證bool
         //==========丟資料給DataTables前先console.log json 出來看結構是長怎樣
         $(document).ready(function () {
             $.ajax({
@@ -515,9 +515,8 @@
             //==================驗證確認密碼與密碼兩者是否相符
             function isValidCheckPassword(check_password) {
                 var pwd = $('#CreatMemberPassword').val();
-                console.log("~~~~~~~");
+
                 if (check_password !== pwd) {
-                    console.log("驗證密碼false");
                     return false;
                 } else {
                     return true;
@@ -542,7 +541,16 @@
                 { data: 'gender' },
                 { data: 'email' },
                 { data: 'phoneNumber' },
-                { data: 'memberStatus' },
+                {
+                    data: 'memberStatus',
+                    render: function (data, type, row, meta) {
+                        if (data) {
+                            return '開放';
+                        } else {
+                            return '凍結';
+                        }
+                    }
+                },
                 {
                     data: null, // 這裡設置為 null，因為我們會在 render 中創建按鈕
                     render: function (data, type, row, meta) {
@@ -588,7 +596,12 @@
                     $('#address').text("地址：" + data.data.address);
                     $('#registrationTime').text("註冊日期：" + data.data.registrationTime);
                     $('#lastLoginTime').text("最後登入：" + data.data.lastLoginTime);
-                    $('#memberStatus').text("會員狀態：" + data.data.memberStatus);
+
+                    if (data.data.memberStatus == true) {
+                        $('#memberStatus').text("會員狀態：開放");
+                    } else {
+                        $('#memberStatus').text("會員狀態：凍結");
+                    }
 
                     //============遊戲資料
                     $('#levelId').text("等級：" + data.data.levelId);
