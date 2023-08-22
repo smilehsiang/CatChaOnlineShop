@@ -8,6 +8,24 @@
         .RequiredText, .error-message {
             color: #b95756;
         }
+
+        .toggle-password {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /*密碼眼睛位置*/
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px; /* 調整此值以控制圖標與輸入框的距離 */
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
     </style>
 }
 
@@ -43,6 +61,21 @@
                         <input type="email" class="form-control" id="CreatMemberAccount" name="MemberAccount" onblur="CheckDuplicateAccount()" onfocus="hideErrorMessage()" placeholder="請輸入電子信箱">
                         <span id="duplicateMessage" style="display:none;color:red;" class="alert alert-danger"></span>
                         <span id="error1" class="error-message"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>密碼</label><span class="RequiredText"> *必填</span>
+                        <div class="password-container">
+                        <input type="password" class="form-control" id="CreatMemberPassword" name="Password">
+                        <span id="togglePassword" class="toggle-password">👁️</span>
+                        </div>
+                        <span id="error3" class="error-message"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>確認密碼</label><span class="RequiredText"> *必填</span>
+                        <input type="password" class="form-control" id="CreatMemberCheckPassword">
+                        <span id="error4" class="error-message"></span>
                     </div>
 
                     <div class="form-group mb-3">
@@ -424,14 +457,72 @@
                 });
             }
 
+            function validatePassword(input, error) {
+                input.on("blur", function () {
+                    if (!isValidPassword(input.val())) {
+                        error.text("密碼需包含至少一個英文字母和一個數字，且長度至少8");
+                        isVaild = false;
+                    } else {
+                        error.text("");
+                        isVaild = true;
+                    }
+                });
+            }
+
+            function validateCheckPassword(input, error) {
+                input.on("blur", function () {
+                    if (!isValidCheckPassword(input.val())) {
+                        error.text("密碼與確認密碼不相符");
+                        console.log("in");
+                        isVaild = false;
+                    } else {
+                        console.log("oh");
+                        error.text("");
+                        isVaild = true;
+                    }
+                });
+
+                //==============密碼眼睛
+                $('#togglePassword').click(function () {
+                    if ($('#CreatMemberPassword').attr('type') === 'password') {
+                        $('#CreatMemberPassword').attr('type', 'text');
+                    } else {
+                        $('#CreatMemberPassword').attr('type', 'password');
+                    }
+                });
+            }
+
             //==================驗證帳號信箱格式是否正確
             function isValidEmail(email) {
                 const emailRegex = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
                 return emailRegex.test(email);
             }
 
+            //==================驗證密碼格式是否正確
+            function isValidPassword(password) {
+                // 包含至少一個英文字母和一個數字
+                const containsLetter = /[a-zA-Z]/.test(password);
+                const containsNumber = /\d/.test(password);
+
+                return containsLetter && containsNumber;
+            }
+
+            //==================驗證確認密碼與密碼兩者是否相符
+            function isValidCheckPassword(check_password) {
+                var pwd = $('#CreatMemberPassword').val();
+                console.log("~~~~~~~");
+                if (check_password !== pwd) {
+                    console.log("驗證密碼false");
+                    return false;
+                } else {
+                return true;
+                }
+            }
+
             validateEmail($("#CreatMemberAccount"), $("#error1"));
             validateEmail($("#CreatEmail"), $("#error2"));
+            validatePassword($("#CreatMemberPassword"), $("#error3"));
+            validateCheckPassword($("#CreatMemberCheckPassword"), $("#error4"));
         });
 
 
@@ -741,6 +832,8 @@
 
             var Name = $('#CreatName').val();
             var MemberAccount = $('#CreatMemberAccount').val();
+            var Password = $('#CreatMemberPassword').val();
+            var CheckPassword = $('#CreatMemberCheckPassword').val();
             var Gender = $('#CreatGender').val();
             var Birthday = $('#CreatBirthday').val();
             var Email = $('#CreatEmail').val();
@@ -749,7 +842,7 @@
             var MemberStatus = $('#CreatMemberStatus').val();
 
             // 檢查必填欄位是否有值
-            if (!Name || !MemberAccount || !Gender || !Birthday || !Email || !PhoneNumber) {
+            if (!Name || !MemberAccount || !Password || !CheckPassword || !Gender || !Birthday || !Email || !PhoneNumber) {
                 Swal.fire({
                     icon: 'error',
                     title: '錯誤',
@@ -762,6 +855,18 @@
             if (CheckAccResult == true || isVaild == false) {
                 return; // 不執行後續動作
             }
+
+            //檢查密碼格式
+            // 最小長度要求為8
+            if (Password.length < 8) {
+                return false;
+            }
+
+            // 包含至少一個英文字母和一個數字
+            const containsLetter = /[a-zA-Z]/.test(password);
+            const containsNumber = /\d/.test(password);
+
+            return containsLetter && containsNumber;
 
             var newMember = {
                 Name: Name,
