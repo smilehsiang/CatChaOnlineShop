@@ -1,4 +1,6 @@
-﻿@{
+﻿@model prjCatChaOnlineShop.Models.ViewModels.CNewsModel
+
+@{
     ViewData["Title"] = "NewsContent";
 }
 
@@ -33,10 +35,12 @@
 <!-- End All Title Box -->
 <!-- 開始公告頁 -->
 <div class="container mb-4">
+    <input type="hidden" value="@Model.cAnnounceWrap.AnnouncementId" name="AnnouncementId" />
     <div class="title_area">
         <div class="back-page"> <a href="#"> <返回上一頁 </a></div>
         <span class="tag_label noti">商城公告</span>
         <span class="date">2023/8/23</span>
+        @
         <strong class="title">Hello</strong>
         <div class="icon">
             <a href="">

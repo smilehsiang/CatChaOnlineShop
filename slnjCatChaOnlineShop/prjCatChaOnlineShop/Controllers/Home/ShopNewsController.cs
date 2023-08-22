@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using prjCatChaOnlineShop.Models;
+using prjCatChaOnlineShop.Models.CModels;
 using prjCatChaOnlineShop.Models.ViewModels;
 
 namespace prjCatChaOnlineShop.Controllers.Home
@@ -13,18 +14,35 @@ namespace prjCatChaOnlineShop.Controllers.Home
             _context = context;
         }
 
-        public IActionResult NewsContent()
-        { 
+        public IActionResult NewsContent(int? id)
+        {
+            //GameShopAnnouncement news = _context.GameShopAnnouncement.FirstOrDefault(x=>x.AnnouncementId == id);
+            //if (news != null)
+            //{
+            //    CAnnounceWrap cAnnounce = new CAnnounceWrap();
+            //    cAnnounce.
+            //}
             return View();
         }
         public IActionResult News()
         {
             DateTime currentTime = DateTime.Now;
-
-            var newsGroupedByType = _context.GameShopAnnouncement
-                                            .Where(p => DateTime.Parse(p.PublishTime) <= currentTime && DateTime.Parse(p.PublishEndTime) >= currentTime)
+            var selectAllNews = _context.GameShopAnnouncement.ToList();
+            var newsGroupedByType = selectAllNews
+                                            .Where(p =>
+                                            {
+                                                DateTime parsePublishTime, parsePublishEndTime;
+                                                if (!DateTime.TryParse(p.PublishTime, out parsePublishTime) ||
+                                                   !DateTime.TryParse(p.PublishEndTime, out parsePublishEndTime))
+                                                {
+                                                    return false;
+                                                }
+                                                return parsePublishTime <= currentTime && parsePublishEndTime >= currentTime;
+                                            })
                                             .GroupBy(p => p.AnnouncementTypeId)
-                                            .ToDictionary(g => g.Key, g => g.ToList());
+                                            .Where(g => g.Key.HasValue)
+                                            .ToDictionary(g => g.Key.Value, g => g.ToList());
+
 
             var NewsModel = new CNewsModel
             {
