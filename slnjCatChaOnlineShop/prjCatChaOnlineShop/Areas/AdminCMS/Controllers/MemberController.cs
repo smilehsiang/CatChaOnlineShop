@@ -83,7 +83,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
             {
                 if (newMember != null) // 檢查 newMember 是否為空
                 {
-                    // 將 newMember 存入 DbContext
+                    // 將 newMember 存入 _context
                     _context.ShopMemberInfo.Add(newMember);
                     _context.SaveChanges();
 
