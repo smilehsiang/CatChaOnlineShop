@@ -30,8 +30,7 @@ namespace prjCatChaOnlineShop.Areas.AdminCMS.Models
         public DateTime? ReleaseDate { get { return _sprod.ReleaseDate; } set { _sprod.ReleaseDate = value; } }
         [DisplayName("是否停售")]
         public bool? Discontinued { get { return _sprod.Discontinued; } set { _sprod.Discontinued = value; } }
-        [DisplayName("圖片")]
-        public string Image { get { return _sprod.Image; } set { _sprod.Image = value; } }
+        public IFormFile? Image { get; set; }
         [DisplayName("剩餘數量")]
         public int? RemainingQuantity { get { return _sprod.RemainingQuantity; } set { _sprod.RemainingQuantity = value; } }
         [DisplayName("供應商ID")]
@@ -46,12 +45,13 @@ namespace prjCatChaOnlineShop.Areas.AdminCMS.Models
         public decimal? Discount { get { return _sprod.Discount; } set { _sprod.Discount = value; } }
 
         public virtual ShopProductDiscount DiscountNavigation { get { return _sprod.DiscountNavigation; } set { _sprod.DiscountNavigation = value; } }
-        [DisplayName("種類")]
+        [DisplayName("類別")]
         public virtual ShopProductCategory ProductCategory { get { return _sprod.ProductCategory; } set { _sprod.ProductCategory = value; } }
 
         public virtual ICollection<ShopFavoriteDataTable> ShopFavoriteDataTable { get; set; } = new List<ShopFavoriteDataTable>();
 
         public virtual ICollection<ShopOrderDetailTable> ShopOrderDetailTable { get; set; } = new List<ShopOrderDetailTable>();
+        [DisplayName("圖片")]
         public virtual ICollection<ShopProductImageTable> ShopProductImageTable { get; set; } = new List<ShopProductImageTable>();
 
         public virtual ICollection<ShopProductReviewTable> ShopProductReviewTable { get; set; } = new List<ShopProductReviewTable>();
