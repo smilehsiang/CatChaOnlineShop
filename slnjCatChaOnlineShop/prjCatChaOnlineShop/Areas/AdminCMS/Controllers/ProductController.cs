@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using prjCatChaOnlineShop.Areas.AdminCMS.Models;
 using prjCatChaOnlineShop.Models;
 using prjCatChaOnlineShop.Models.CModels;
@@ -122,7 +123,7 @@ namespace prjCatChaOnlineShop.Controllers.CMS
                 Supplier = x.Supplier == null ? "沒有資料" :
                                      x.Supplier.CompanyName.ToString(),
                 Discontinued = x.Discontinued == null ? "未設定" : (x.Discontinued == true ? "是" : "否")
-            }).ToList(); ;
+            }).ToList();
             return Json(new { data });
         }
 
@@ -149,23 +150,38 @@ namespace prjCatChaOnlineShop.Controllers.CMS
             Console.WriteLine($"Received id: {id}");
             if (id == null)
             {
-                return Json(new { success = false, message = "ID不存在" });
+                return Json(new { success = false, message = "Invalid ID" });
             }
-            ShopProductTotal cShopproduct = _cachaContext.ShopProductTotal.FirstOrDefault(p => p.ProductId == id);
-            if (cShopproduct == null)
+            ShopProductTotal cShopProductTotal = _cachaContext.ShopProductTotal.FirstOrDefault(p => p.ProductId == id);
+            if (cShopProductTotal == null)
             {
-                return Json(new { success = false, message = "商品不存在" });
+                return Json(new { success = false, message = "Item not found" });
             }
-            return Json(new { success = true, data = cShopproduct });
+            return Json(new { success = true, data = cShopProductTotal });
+
+            //var prod = _cachaContext.ShopProductTotal
+            //          .Include(p => p.ProductCategory)
+            //          .Include(p => p.ShopProductImageTable)
+            //           .Include(p => p.Supplier)
+            //          .FirstOrDefault(p => p.ProductId == id);
+
+            //if (prod != null)
+            //{
+            //    return Json(new { data = prod });
+            //}
+            //else
+            //{
+            //    return NotFound();
+            //}
         }
 
-
+        //編輯
         [HttpPost]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> EditShopProducts([FromForm] CShopProductTotalWrap cShopproduct)
         {
             var image = cShopproduct.Image;
-            ShopProductTotal editProduct = _cachaContext.ShopProductTotal.FirstOrDefault(p => p.ProductId == cShopproduct.ProductId);
+            var editProduct = _cachaContext.ShopProductTotal.FirstOrDefault(p => p.ProductId == cShopproduct.ProductId);
 
             if (image == null || image.Length == 0)
             {
@@ -198,6 +214,31 @@ namespace prjCatChaOnlineShop.Controllers.CMS
                 _cachaContext.SaveChanges();
             }
             return RedirectToAction("Product", "Product", new { area = "AdminCMS" });
+        }
+
+
+        //儲存
+        [HttpPost]
+        public IActionResult CreateProduct(ShopProductTotal newProduct)
+        {
+            try
+            {
+                if (newProduct != null) // 檢查 newMember 是否為空
+                {
+                    _cachaContext.ShopProductTotal.Add(newProduct);
+                    _cachaContext.SaveChanges();
+
+                    return Json(new { success = true, message = "會員商品成功！" });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "新增的商品資訊為空。" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "商品新增失敗：" + ex.Message });
+            }
         }
 
 
