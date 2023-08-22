@@ -77,13 +77,14 @@
     <!--用於搜尋關鍵字採ajax-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
 
-    <!--用於先隱藏更新照片的按鈕-->
+    <!--用於先隱藏更新照片的按鈕
     <style>
         #renewPersonalPicture {
             display: none
             /*剛開始載入時，先將按鈕隱藏none起來*/
         }
     </style>
+    -->
 }
 
 <div class="all-title-box all-title-box-picture">
@@ -396,17 +397,13 @@
                         <div class="col-lg-3 order-1 order-sm-1 order-md-1 order-xs-1">
                             <div class="card mb-3 border shadow-0">
                                 <div class="card-body text-center">
-                                    <form method="post" enctype="multipart/form-data" action="/ImageTest/UploadImageToMemberInfo">
-                                        <div class="avatar text-center" id="headShotDiv">
-                                            <label for="imageInput" class="avatar-container">
-                                                <img class="avatar-img mx-auto" id="imagePreview" src='@Url.Content("~/images/toy.png")' alt="" style="width: 200px; height: 200px;">
-                                                <input type="text" name="AnnouncementContent" value="personalPicture" style="display: none;" />
-                                                <input type="file" id="imageInput" name="image" style="display: none;" onchange="previewImage(event)" />
-                                            </label>
-                                            <button type="submit" id="renewPersonalPicture">更新個人圖片</button>
-                                        </div>
-                                        
-                                    </form>
+                                    <div class="avatar text-center">
+                                        <img class="avatar-img mx-auto" id="imagePreview" src='@Url.Content("~/images/toy.png")' alt="" style="width: 200px; height: 200px;">
+                                        <button class="btn btn-warning btn-sm mt-2 mb-3" data-bs-toggle="modal" id="renewPersonalPicture"
+                                                data-bs-target="#personalPictureModal">
+                                            更換個人圖片
+                                        </button>
+                                    </div>
                                     <h1 id="summonName">會員</h1>
 
                                     <div class="d-flex justify-content-center">
@@ -446,35 +443,6 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <!--下為切版時先把資料寫死的內容-->
-                        <!--
-                        <table class="table table-condensed">
-                            <thead class="table-warning">
-                                <tr>
-                                    <th>優惠名稱</th>
-                                    <th>適用範圍</th>
-                                    <th>使用期限</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>全站$299起免運券</td>
-                                    <td>本運費抵用券僅適用於全站有開啟四大超商超運費折抵</td>
-                                    <td>2023-8-8 00:00~2023-8-8 24:00</td>
-                                </tr>
-                                <tr>
-                                    <td>全站$299起免運券</td>
-                                    <td>本運費抵用券僅適用於全站有開啟四大超商超運費折抵</td>
-                                    <td>2023-8-8 00:00~2023-8-8 24:00</td>
-                                </tr>
-                                <tr>
-                                    <td>全站$299起免運券</td>
-                                    <td>本運費抵用券僅適用於全站有開啟四大超商超運費折抵</td>
-                                    <td>2023-8-8 00:00~2023-8-8 24:00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        -->
                         <table class="table table-bordered table-hover" id="couponTable">
                             <thead class="table-warning  text-center">
                                 <tr>
@@ -488,6 +456,40 @@
                         </table>
                     </div>
                     <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--彈跳視窗:更換個人照片-->
+        <div class="modal fade" id="personalPictureModal">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3>更換個人照片</h3>
+                                </div>
+                                <div class="col d-flex justify-content-end">
+                                    <button type="button" class="btn btn-warning btn-sm" data-bs-dismiss="modal">
+                                        X
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" enctype="multipart/form-data" action="/ImageTest/UploadImageToMemberInfo">
+                            <input type="text" name="AnnouncementContent" value="personalPicture" style="display: none;" />
+                            <input type="file" name="image" id="imageInput" accept="image/*" />
+                            <button type="submit">上傳圖片</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center align-items-center">
+                        <div class="avatar text-center" >
+                            <img id="uploadImagePreview" src='@Url.Content("~/images/toy.png")' alt="" style="max-width: 200px; max-height: 200px;">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1242,6 +1244,7 @@
                 $('#emailInput').val(data.email);
                 $('#phoneNumberInput').val(data.phoneNumber);
                 $('#imagePreview').attr('src', data.memberImage);
+                $('#uploadImagePreview').attr('src', data.memberImage);
                 $('#summonName').text(`會員：${data.name}`);
                 $('#coinPointShow').text(`您目前持有貓幣和紅利點數：${data.catCoinQuantity}元/${data.loyaltyPoints}點`);
 
@@ -1320,20 +1323,34 @@
                 });
             });
         });
+
+
     </script>
 
     <!--上傳大頭照-->
     <script>
 
         $(document).ready(function () {
-
-            $('#headShotDiv').on('click', function () {
-                document.querySelector('#renewPersonalPicture').style.display = "inline";
-
-
+            $('#imagePreview').click(function () {
+                $('#personalPictureModal').modal('show');
             });
         });
 
+        //圖片預覽
+        document.getElementById('imageInput').addEventListener('change', function (event) {
+            var previewImage = document.getElementById('uploadImagePreview');
+            var selectedImage = event.target.files[0];
+
+            if (selectedImage) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                };
+                reader.readAsDataURL(selectedImage);
+            } else {
+                previewImage.src = '@Url.Content("~/images/toy.png")';
+            }
+        });
     </script>
 
     <!--2.載入時，導入消費紀錄-->

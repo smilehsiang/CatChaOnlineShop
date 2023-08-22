@@ -107,8 +107,6 @@ namespace prjCatChaOnlineShop.Controllers.Home
                 return BadRequest("Error saving the announcement.");
             }
 
-            //return Json(new { uploaded = true, url = $"{imageUrl}" });
-            //return Content("hello");
             return RedirectToAction("membership", "membership");
         }
     }
