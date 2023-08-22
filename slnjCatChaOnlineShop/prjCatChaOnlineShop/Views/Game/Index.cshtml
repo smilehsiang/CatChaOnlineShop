@@ -89,18 +89,94 @@
     </div>
     <!-- End 獲得物品確認視窗 -->
     <!-- Start Canvas遊戲畫布 -->
-
-            <canvas id="CanvasCheckIn"></canvas>
+    <!-- Start 排行榜 -->
             <div id="CanvasRank">
-                    <button id="commonbackBTN"></button>
-                <!-- End 小遊戲排行榜 -->
+        <button id="commonbackBTN" style="top:20px !important;" onclick="pagesControl(Canvaslobby)"></button>
+                 <div id="rank-container" >
+                     <div id="rankpage-title" >小遊戲排行榜</div>
+                    <table id="emTable" class="table table-striped" >
+                    <thead>
+                        <tr>
+                            <th>排名</th>
+                            <th>玩家名稱</th>
+                            <th>分數</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>艾主席</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>艾主席</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>艾主席</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>艾主席</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>艾主席</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>艾主席</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>艾主席</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>艾主席</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>艾主席</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>艾主席</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>艾主席</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>艾主席</td>
+                            <td>20</td>
+                        </tr>
+                    </tbody>
+                </table>
+             </div>
+                    
             </div>
+    <!-- End 排行榜 -->
+             <canvas id="CanvasCheckIn"></canvas>
             <canvas id="Canvasrungame"></canvas>
             <canvas id="CanvasGatcha"></canvas>
             <canvas id="CanvasStore"></canvas>
             <canvas id="CanvasSummonResult"></canvas>
             <canvas id="CanvasDoubleCheck"></canvas>
-            <!-- End Canvas遊戲畫布 -->
+            
+    <!-- End Canvas遊戲畫布 -->
         </div>
 
     <button type="submit" id="testlogin">測試登入</button>

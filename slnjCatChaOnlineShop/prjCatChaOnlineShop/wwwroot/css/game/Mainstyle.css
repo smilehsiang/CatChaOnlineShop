@@ -106,6 +106,7 @@
     }
 
     #CanvasRank {
+        padding-top:76px;
         position: absolute;
         text-align: center;
         justify-content: center;
@@ -114,7 +115,48 @@
         background-color: rgba(0, 0, 0, 0.5);
         display: none;
     }
+    /* 網頁捲軸【寬度】 */
+    /*::-webkit-scrollbar {
+        width: 30px;
+    }*/
 
+    /* 網頁捲軸【背景】顏色 */
+    /*::-webkit-scrollbar-track {
+        background: #437c97;
+    }*/
+
+    /* 網頁捲軸【把手】顏色 */
+    /*::-webkit-scrollbar-thumb {
+        background: #c7bba5;
+        border-radius: 
+    }*/
+
+        /* 網頁捲軸【滑過時】把手的顏色 */
+        /*::-webkit-scrollbar-thumb:hover {
+            background: #fff;
+        }*/
+    #rank-container {
+        font-family: 微軟正黑體;
+        height: 450px;
+        overflow-y: auto;
+        padding: 5px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #rankpage-title {
+        font-family: 微軟正黑體;
+        font-size: 22px;
+        position: absolute;
+        top: 4%;
+        color: floralwhite;
+        background-image: url('/images/game/rankTitleBack.png');
+        background-size:cover; /* 設定背景圖片覆蓋整個按鈕 */
+        background-position: center; /* 設定背景圖片居中對齊 */
+        width:170px;
+        height: 38px;
+    }
     #Canvasrungame {
         text-align: center;
         position: relative;
