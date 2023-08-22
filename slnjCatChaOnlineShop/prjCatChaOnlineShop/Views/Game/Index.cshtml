@@ -102,67 +102,7 @@
                             <th>分數</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>艾主席</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>艾主席</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>艾主席</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>艾主席</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>艾主席</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>艾主席</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>艾主席</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>艾主席</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>艾主席</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>艾主席</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>艾主席</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>艾主席</td>
-                            <td>20</td>
-                        </tr>
+                    <tbody>                     
                     </tbody>
                 </table>
              </div>
@@ -200,6 +140,30 @@
             <script src="~/js/game/loadImages.js"></script>
             <script src="~/js/game/instructions.js"></script>
             <script src="~/js/game/catFeed.js"></script>
+
+
+            <!--排行榜測試資料-->
+            <script>
+                const rank = {
+                    "排名": [
+                        { "name": "艾主席", "排名": 1, "分數": 50 },
+                        { "name": "貓仔", "排名": 2, "分數": 30 },
+                { "name": "遊戲之鬼", "排名": 3, "分數": 20 }
+                    ]
+                };
+
+        const datas = rank.排名.map(r => `
+                        <tr>
+                             <td>${r.name}</td>
+                             <td>${r.排名}</td>
+                             <td>${r.分數}</td>
+                        </tr>
+                        ` );
+        document.querySelector('#emTable > tbody').innerHTML = datas.join("")
+               
+
+
+            </script>
         }
 
 

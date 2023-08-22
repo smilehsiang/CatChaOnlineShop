@@ -13,10 +13,7 @@ heart.src = '../../images/game/thought_bubble.png'
 
 //大廳背包格子
 bagItem1.src = '../../images/game/staticCats/kittenDefault_stopR.png'
-bagItem2.src = '../../images/game/staticCats/kittenBB_stopR.png'
-bagItem3.src = '../../images/game/staticCats/kittenBK_stopR.png'
-bagItem4.src = '../../images/game/staticCats/kittenGY_stopR.png'
-bagItem5.src = '../../images/game/staticCats/kittenOG_stopR.png'
+bagItem2.src =bagItem3.src = bagItem4.src = bagItem5.src = '../../images/game/staticCats/kitten_lock.png'
 bagItem6.src = '../../images/game/milk_bottle.png'
 bagItem7.src = '../../images/game/tuna_can.png'
 itemSelected.src = '../../images/game/Inventory_select.png'
