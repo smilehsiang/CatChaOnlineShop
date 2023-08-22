@@ -180,9 +180,9 @@ namespace prjCatChaOnlineShop.Controllers.Home
         }
 
 
-        /*3.退換紀錄*/
+        /*3.退貨紀錄*/
 
-        //取得退貨紀錄:待處理
+        //取得退貨紀錄
         public IActionResult GetReturnRecord()
         {
 
@@ -214,9 +214,48 @@ namespace prjCatChaOnlineShop.Controllers.Home
             } 
 
         }
-           
-        /*6.客服中心*/
 
+
+        /*5.收藏紀錄*/
+
+        //取得退貨紀錄
+        public IActionResult GetFavoriteData()
+        {
+
+            try
+            {
+
+                var datas = from p in _context.ShopFavoriteDataTable
+                            join q in _context.ShopProductImageTable on p.ProductId equals q.ProductId
+                            where p.MemberId == 1
+                            select new
+                            {
+                                p.Product.ProductName,
+                                p.Product.ProductPrice,
+                                p.Product.RemainingQuantity,
+                                p.Product.ProductDescription,
+                                p.Product.ProductId,
+                                q.ProductPhoto
+                            };
+
+
+                if (datas.Any())
+                {
+                    return new JsonResult(datas);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+
+        }
+
+        /*6.客服中心*/
 
         //取得申訴類型放到客服中心的頁面
         public IActionResult GetAppealCategory()
