@@ -72,29 +72,47 @@ namespace prjCatChaOnlineShop.Controllers.Api
             try
             {
                 // 創建一個資料庫模型對象，將DTO數據映射到模型
-                var dbItemModel = new GameItemPurchaseRecord // 替換為你的資料庫模型類別
-                {
-                    MemberId = rgm.MemberId,
-                    ProductId = rgm.ProductId
-                };
-                var dbUserInformation = new ShopMemberInfo
-                {
-                    MemberId = rgm.MemberId,
-                    CatCoinQuantity = rgm.CatCoinQuantity,
-                    LoyaltyPoints = rgm.LoyaltyPoints,
-                };
+                // 檢查資料庫中是否已存在具有相同 MemberId 和 ProductId 的記錄
+                var existingRecord = _context.GameItemPurchaseRecord
+                    .FirstOrDefault(record => record.MemberId == rgm.MemberId && record.ProductId == rgm.ProductId);
 
-                // 將數據存儲到資料庫
-                _context.GameItemPurchaseRecord.Add(dbItemModel); // 替換為你的DbContext和資料庫模型集合
-                _context.ShopMemberInfo.Add(dbUserInformation); // 替換為你的DbContext和資料庫模型集合
-                _context.SaveChanges();
+                if (existingRecord != null)
+                {
+                    // 如果存在相同記錄，則執行更新操作
+                    existingRecord.QuantityOfInGameItems+=1; // 更新其他屬性
+                                                                    // 更新其他需要更新的屬性
 
-                return Ok("數據已成功保存");
+                    _context.SaveChanges(); // 儲存更改
+                }
+                else
+                {
+                    // 如果不存在相同記錄，則執行新增操作
+                    var dbItemModel = new GameItemPurchaseRecord
+                    {
+                        MemberId = rgm.MemberId,
+                        ProductId = rgm.ProductId,
+                        // 設定其他屬性
+                    };
+                    var dbUserInformation = new ShopMemberInfo
+                    {
+                        CatCoinQuantity = rgm.CatCoinQuantity,
+                        LoyaltyPoints = rgm.LoyaltyPoints,
+                        // 設定其他屬性
+                    };
+
+                    _context.GameItemPurchaseRecord.Add(dbItemModel);
+                    _context.ShopMemberInfo.Add(dbUserInformation);
+
+                    _context.SaveChanges(); // 儲存新增的記錄
+                }
+
+
+                return Ok(new { message = "數據已成功保存" });
             }
             catch (Exception ex)
             {
                 // 處理異常情況
-                return StatusCode(500, "保存數據時發生錯誤：" + ex.Message);
+                return StatusCode(600, "哈哈是我這邊錯了保存數據時發生錯誤：" + ex.Message);
             }
         }
     }
