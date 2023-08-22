@@ -335,6 +335,7 @@
                         $('#PublishEndTime-editor').val(response.data.publishEndTime)
                         $('#PinToTop-editor').prop('checked', response.data.pinToTop)
                         $('#previewImage').attr('src', response.data.announcementImageHeader);
+                        $('#hide-editor').prop('checked',response.data.displayOrNot)
                         console.log(response.data)
                     } else {
                         alert(response.message);
@@ -450,8 +451,10 @@
                 formData.append("PublishEndTime", PublishEndTime);
                 formData.append("PinToTop", PinToTop);
                 formData.append("AnnouncementTypeId", TypeEditor);
-                formData.append("ImageHeader", file);
-                formData.append("DisplayOrNot",Hide)
+                if (file) {
+                    formData.append("ImageHeader", file);
+                }
+                formData.append("DisplayOrNot", Hide)
 
                 $.ajax({
                     url: "@Url.Action("EditNews","News" , new { area="AdminCMS" })",

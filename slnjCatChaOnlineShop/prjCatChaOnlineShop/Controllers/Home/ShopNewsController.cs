@@ -42,8 +42,10 @@ namespace prjCatChaOnlineShop.Controllers.Home
                                                 {
                                                     return false;
                                                 }
-                                                return parsePublishTime <= currentTime && parsePublishEndTime >= currentTime;
+                                                return parsePublishTime <= currentTime && parsePublishEndTime >= currentTime && p.DisplayOrNot == false;
                                             })
+                                            .OrderByDescending(p => p.PinToTop)
+                                            .ThenByDescending(p => p.PublishEndTime)
                                             .GroupBy(p => p.AnnouncementTypeId)
                                             .Where(g => g.Key.HasValue)
                                             .ToDictionary(g => g.Key.Value, g => g.ToList());
