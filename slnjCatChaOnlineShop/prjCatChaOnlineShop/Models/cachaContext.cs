@@ -67,6 +67,8 @@ public partial class cachaContext : DbContext
 
     public virtual DbSet<MessageTypeData> MessageTypeData { get; set; }
 
+    public virtual DbSet<ShopAdminBooking> ShopAdminBooking { get; set; }
+
     public virtual DbSet<ShopAppealCategoryData> ShopAppealCategoryData { get; set; }
 
     public virtual DbSet<ShopBookingStatus> ShopBookingStatus { get; set; }
@@ -106,6 +108,10 @@ public partial class cachaContext : DbContext
     public virtual DbSet<ShopNavbarChild> ShopNavbarChild { get; set; }
 
     public virtual DbSet<ShopNavbarList> ShopNavbarList { get; set; }
+
+    public virtual DbSet<ShopNoserviceDate> ShopNoserviceDate { get; set; }
+
+    public virtual DbSet<ShopOpenBookingTime> ShopOpenBookingTime { get; set; }
 
     public virtual DbSet<ShopOrderDetailTable> ShopOrderDetailTable { get; set; }
 
@@ -393,9 +399,7 @@ public partial class cachaContext : DbContext
 
         modelBuilder.Entity<GamePet>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Game.Pet");
+            entity.HasKey(e => e.Id).HasName("PK_Game.Pet_1");
 
             entity.ToTable("Game.Pet");
 
@@ -614,6 +618,21 @@ public partial class cachaContext : DbContext
             entity.Property(e => e.MessageType)
                 .IsRequired()
                 .HasColumnName("Message Type");
+        });
+
+        modelBuilder.Entity<ShopAdminBooking>(entity =>
+        {
+            entity.HasKey(e => e.BookingId);
+
+            entity.ToTable("Shop.AdminBooking");
+
+            entity.Property(e => e.BookingId).HasColumnName("BookingID");
+            entity.Property(e => e.OpenMonth).HasColumnType("date");
+            entity.Property(e => e.ProductId).HasColumnName("Product ID");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.ShopAdminBooking)
+                .HasForeignKey(d => d.ProductId)
+                .HasConstraintName("FK_Shop.AdminBooking_Game.Product Total");
         });
 
         modelBuilder.Entity<ShopAppealCategoryData>(entity =>
@@ -963,34 +982,25 @@ public partial class cachaContext : DbContext
 
             entity.Property(e => e.ClosedDateId).HasColumnName("ClosedDateID");
             entity.Property(e => e.BookingId).HasColumnName("BookingID");
+
+            entity.HasOne(d => d.Booking).WithMany(p => p.ShopNoserviceDate)
+                .HasForeignKey(d => d.BookingId)
+                .HasConstraintName("FK_Shop.NoserviceDate_Shop.AdminBooking");
         });
 
-        modelBuilder.Entity<ShopNavbarChild>(entity =>
+        modelBuilder.Entity<ShopOpenBookingTime>(entity =>
         {
-            entity.HasKey(e => e.NavbarChildId);
+            entity.HasKey(e => e.OpenTimeId);
 
-            entity.ToTable("Shop.NavbarChild");
+            entity.ToTable("Shop.OpenBookingTime");
 
-            entity.Property(e => e.NavbarChildId)
-                .ValueGeneratedNever()
-                .HasColumnName("NavbarChildID");
-            entity.Property(e => e.NavText).HasMaxLength(50);
-            entity.Property(e => e.NavbarId).HasColumnName("NavbarID");
+            entity.Property(e => e.OpenTimeId).HasColumnName("openTimeID");
+            entity.Property(e => e.BookingId).HasColumnName("BookingID");
+            entity.Property(e => e.OpenTime).HasColumnName("openTime");
 
-            entity.HasOne(d => d.Navbar).WithMany(p => p.ShopNavbarChild)
-                .HasForeignKey(d => d.NavbarId)
-                .HasConstraintName("FK_Shop.NavbarChild_Shop.NavbarList");
-        });
-
-        modelBuilder.Entity<ShopNavbarList>(entity =>
-        {
-            entity.HasKey(e => e.NavbarId);
-
-            entity.ToTable("Shop.NavbarList");
-
-            entity.Property(e => e.NavbarId).HasColumnName("NavbarID");
-            entity.Property(e => e.NavbarText).HasMaxLength(50);
-            entity.Property(e => e.PublishTime).HasColumnType("datetime");
+            entity.HasOne(d => d.Booking).WithMany(p => p.ShopOpenBookingTime)
+                .HasForeignKey(d => d.BookingId)
+                .HasConstraintName("FK_Shop.OpenBookingTime_Shop.AdminBooking");
         });
 
         modelBuilder.Entity<ShopOrderDetailTable>(entity =>
@@ -1241,7 +1251,12 @@ public partial class cachaContext : DbContext
                 .HasColumnName("Return Date");
             entity.Property(e => e.ReturnReasonId).HasColumnName("Return Reason ID");
 
-            entity.HasOne(d => d.ProcessingStatus).WithMany()
+            entity.HasOne(d => d.Order).WithMany(p => p.ShopReturnDataTable)
+                .HasForeignKey(d => d.OrderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Shop.Return Data Table_Shop.Order Total Table");
+
+            entity.HasOne(d => d.ProcessingStatus).WithMany(p => p.ShopReturnDataTable)
                 .HasForeignKey(d => d.ProcessingStatusId)
                 .HasConstraintName("FK_Shop.退換貨資料表_Shop.退換貨處理狀態資料表");
 

@@ -17,6 +17,8 @@ public partial class ShopReturnDataTable
 
     public int Id { get; set; }
 
+    public virtual ShopOrderTotalTable Order { get; set; }
+
     public virtual ShopReturnStatusDataTable ProcessingStatus { get; set; }
 
     public virtual ShopReturnReasonDataTable ReturnReason { get; set; }

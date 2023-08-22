@@ -12,4 +12,6 @@ public partial class ShopOpenBookingTime
     public string OpenTime { get; set; }
 
     public int? BookingId { get; set; }
+
+    public virtual ShopAdminBooking Booking { get; set; }
 }

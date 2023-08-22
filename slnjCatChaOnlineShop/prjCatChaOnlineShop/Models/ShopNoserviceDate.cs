@@ -12,4 +12,6 @@ public partial class ShopNoserviceDate
     public int? BookingId { get; set; }
 
     public string ClosedDate { get; set; }
+
+    public virtual ShopAdminBooking Booking { get; set; }
 }

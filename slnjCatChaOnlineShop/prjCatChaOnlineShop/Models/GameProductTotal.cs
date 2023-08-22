@@ -30,4 +30,6 @@ public partial class GameProductTotal
     public virtual ICollection<GamePet> GamePet { get; set; } = new List<GamePet>();
 
     public virtual GameProductCategory ProductCategory { get; set; }
+
+    public virtual ICollection<ShopAdminBooking> ShopAdminBooking { get; set; } = new List<ShopAdminBooking>();
 }
