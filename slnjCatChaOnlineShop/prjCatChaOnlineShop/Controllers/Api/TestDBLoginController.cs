@@ -95,17 +95,21 @@ namespace prjCatChaOnlineShop.Controllers.Api
                     {
                         MemberId = rgm.MemberId,
                         ProductId = rgm.ProductId,
+                        //ItemName=rgm.ItemName
                         // 設定其他屬性
                     };
-                    var dbUserInformation = new ShopMemberInfo
-                    {
-                        CatCoinQuantity = rgm.CatCoinQuantity,
-                        LoyaltyPoints = rgm.LoyaltyPoints,
-                        // 設定其他屬性
-                    };
-
                     _context.GameItemPurchaseRecord.Add(dbItemModel);
-                    _context.ShopMemberInfo.Add(dbUserInformation);
+                    var existingRecord2 = _context.ShopMemberInfo
+                        .FirstOrDefault(record => record.MemberId == rgm.MemberId);
+                    if (existingRecord2 != null)
+                    {
+                        existingRecord2.MemberId = rgm.MemberId;
+                        existingRecord2.CatCoinQuantity = rgm.CatCoinQuantity;
+                        existingRecord2.LoyaltyPoints = rgm.LoyaltyPoints;
+                        _context.SaveChanges() ;
+                    }
+
+ 
 
                     _context.SaveChanges(); // 儲存新增的記錄
                 }

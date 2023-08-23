@@ -19,48 +19,54 @@ let 道具ID = [];
 const playerDataArray = [];
 
 // 當使用者進行抽獎時，將抽獎數據添加到 playerDataArray
-function SAVEDATA(使用者ID, 貓幣數量, 紅利數量, 道具ID) {
-    const userData = {
-        MemberId: 使用者ID,
-        ProductId: 道具ID,
-        CatCoinQuantity: 貓幣數量,
-        LoyaltyPoints: 紅利數量,
-    };
+function SAVEDATA(使用者ID, 貓幣數量, 紅利數量, 道具ID, isTenDraw = false, allItemName) {
+    const apiUrl = '/api/Api/TestDBLogin';
 
+    // 確保道具ID是陣列
+    const 道具ID陣列 = Array.isArray(道具ID) ? 道具ID : [道具ID];
 
-const apiUrl = '/api/Api/TestDBLogin'; 
+    // 遍歷道具ID陣列，每次處理一個ProductId
+    道具ID陣列.forEach(id => {
+        const userData = {
+/*            ItemName: allItemName,*/
+            MemberId: 使用者ID,
+            ProductId: parseInt(id),
+            CatCoinQuantity: 貓幣數量,
+            LoyaltyPoints: 紅利數量,
+        };
 
-
-    fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('發送數據時發生錯誤GGGGGG');
-            }
-            return response.json();
+        // 發送 POST 請求
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
         })
-        .then(data => {
-            console.log('數據已成功發送666666666666:', data);
-        })
-        .catch(error => {
-            console.error('發送數據時發生錯誤啦啦啦啦啦啦啦啦啦啦:', error);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('發送數據時發生錯誤GGGGGG');
+                }
+                return response.json();
+            })
+            .then(responseData => {
+                console.log('數據已成功發送:', responseData);
+            })
+            .catch(error => {
+                console.error('發送數據時發生錯誤:', error);
+            });
+    });
 }
+
 CatPointTenDrows.addEventListener('click', async function () {
     if (貓幣數量 >= 9000) {
         try {
             const gachaData = await fetchData(); // 取得轉蛋資料
-            const numDraws = 10;
+            const numDraws = 100;
             const drawResults = [];
             const allImages = [];
             const allItemName = [];
             const allproductid = [];
-            let TenOrSingle = 0;
             貓幣數量 -= 9000;
             console.log(貓幣數量);
 
@@ -104,7 +110,7 @@ CatPointTenDrows.addEventListener('click', async function () {
                     maxResult = result;
                 }
             }
-            SAVEDATA(使用者ID, 貓幣數量, 紅利數量, 道具ID);
+            SAVEDATA(使用者ID, 貓幣數量, 紅利數量, 道具ID, true, allItemName)
             // 顯示最高等級的動畫和結果，並傳遞所有物品的圖片
             if (maxResult) {
                 showGachaResult(maxResult.scaledProbability, allImages, allItemName);
@@ -123,12 +129,11 @@ RubyTenDrows.addEventListener('click', async function () {
     if (紅利數量 >= 1800) {
         try {
             const gachaData = await fetchData(); // 取得轉蛋資料
-            const numDraws = 100;
+            const numDraws = 10;
             const drawResults = [];
             const allImages = [];
             const allItemName = [];
             const allproductid = [];
-            let TenOrSingle = 0;
             紅利數量 -= 1800;
             console.log(紅利數量);
 
@@ -171,7 +176,7 @@ RubyTenDrows.addEventListener('click', async function () {
                     maxResult = result;
                 }
             }
-            SAVEDATA(使用者ID, 貓幣數量, 紅利數量, 道具ID);
+            SAVEDATA(使用者ID, 貓幣數量, 紅利數量, 道具ID,true);
             // 顯示最高等級的動畫和結果，並傳遞所有物品的圖片
             if (maxResult) {
                 showGachaResult(maxResult.scaledProbability, allImages, allItemName,);

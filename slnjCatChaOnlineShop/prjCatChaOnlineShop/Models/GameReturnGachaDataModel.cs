@@ -6,6 +6,7 @@
         public int CatCoinQuantity { get; set; }
         public int LoyaltyPoints { get; set; }
         public int ProductId { get; set; }
+        //public string? ItemName { get; set; }
 
     }
 }
