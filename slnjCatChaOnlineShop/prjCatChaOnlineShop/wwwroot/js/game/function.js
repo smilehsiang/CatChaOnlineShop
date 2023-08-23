@@ -13,8 +13,8 @@ let userBagData = {
     catBK: false,//ProductID 14
     catGY: false,//ProductID 1
     catOG: false,//ProductID 2
-    milk: 66,
-    can: 40
+    milk: 0,
+    can: 0
 }
 
 let gachaTextCCoin = document.getElementById('gachaTextCCoin')
@@ -23,7 +23,6 @@ let gachaTextRuby = document.getElementById('gachaTextRuby')
 //載入資料庫資訊
 function initialize() {
     //UserName = userInfo.name;
-    
     /*Ccoin = gachaTextCCoin.innerHTML =   userInfo.CCoin;*/
     Ruby = gachaTextRuby.innerHTML =  userInfo.Ruby;
     milkCount = userBagData.milk;

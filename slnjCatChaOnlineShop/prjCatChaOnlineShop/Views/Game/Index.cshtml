@@ -97,7 +97,7 @@
                     <table id="emTable" class="table table-striped" >
                     <thead>
                         <tr>
-                            <th>排名</th>
+                            <th style="width: 60px;" >排名</th>
                             <th>玩家名稱</th>
                             <th>分數</th>
                         </tr>
@@ -152,14 +152,14 @@
                     ]
                 };
 
-        const datas = rank.排名.map(r => `
-                        <tr>
-                             <td>${r.name}</td>
-                             <td>${r.排名}</td>
-                             <td>${r.分數}</td>
-                        </tr>
-                        ` );
-        document.querySelector('#emTable > tbody').innerHTML = datas.join("")
+            const datas = rank.排名.map(r => `
+                            <tr>
+                                         <td>${r.排名}</td>
+                                 <td>${r.name}</td>
+                                 <td>${r.分數}</td>
+                            </tr>
+                            ` );
+            document.querySelector('#emTable > tbody').innerHTML = datas.join("")
                
 
 

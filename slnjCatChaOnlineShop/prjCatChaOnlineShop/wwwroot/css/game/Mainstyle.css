@@ -143,6 +143,8 @@
         align-items: center;
         display: flex;
         flex-direction: column;
+        background: white;
+        margin: 10px;
     }
 
     #rankpage-title {
