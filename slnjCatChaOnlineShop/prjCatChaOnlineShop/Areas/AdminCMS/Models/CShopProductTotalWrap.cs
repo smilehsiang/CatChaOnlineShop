@@ -37,14 +37,12 @@ namespace prjCatChaOnlineShop.Areas.AdminCMS.Models
         public int? SupplierId { get { return _sprod.SupplierId; } set { _sprod.SupplierId = value; } }
         [DisplayName("下架日期")]
         public DateTime? OffDay { get { return _sprod.OffDay; } set { _sprod.OffDay = value; } }
-        [DisplayName("折扣ID")]
-        public int? DiscountId { get { return _sprod.DiscountId; } set { _sprod.DiscountId = value; } }
+
 
         public string Attributes { get { return _sprod.Attributes; } set { _sprod.Attributes = value; } }
         [DisplayName("折扣")]
         public decimal? Discount { get { return _sprod.Discount; } set { _sprod.Discount = value; } }
 
-        public virtual ShopProductDiscount DiscountNavigation { get { return _sprod.DiscountNavigation; } set { _sprod.DiscountNavigation = value; } }
         [DisplayName("類別")]
         public virtual ShopProductCategory ProductCategory { get { return _sprod.ProductCategory; } set { _sprod.ProductCategory = value; } }
 
