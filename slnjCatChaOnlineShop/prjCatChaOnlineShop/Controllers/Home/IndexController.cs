@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using prjCatChaOnlineShop.Models;
 using prjCatChaOnlineShop.Models.CModels;
-using prjCatChaOnlineShop.Models.ViewModels;
+using prjCatChaOnlineShop.Services.Function;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace prjCatChaOnlineShop.Controllers.Home

@@ -44,49 +44,59 @@
             <div class="col-lg-9 order-1 order-sm-1 order-md-1 order-xs-1">
                 <div class="card border shadow-0">
                     <div class="m-4">
-                        <div class="row gy-3 mb-4">
-                            <div class="col-lg-5">
-                                <div class="me-lg-5">
-                                    <div class="d-flex">
-                                        <img src="~/images/instagram-img-08.jpg" class="border rounded me-3" style="width: 96px; height: 96px;" />
-                                        <div class="ml-5 mt-2">
-                                            <a href="#" class="nav-link">一個貓罐頭</a>
-                                            <div class="">
-                                                <select class="form-select for-detail-select me-4">
-                                                    <option>1kg,小份</option>
-                                                    <option>2kg,中份</option>
-                                                    <option>3kg,大份</option>
-                                                </select>
+                        @{
+                            foreach(var item in Model)
+                            {
+                                
+                                <div class="row gy-3 mb-4">
+                                    <div class="col-lg-5">
+                                        <div class="me-lg-5">
+                                            <div class="d-flex">
+                                                <img src="@item.cImgPath" class="border rounded me-3" style="width: 96px; height: 96px;" />
+                                                <div class="ml-5 mt-2">
+                                                    <a href="#" class="nav-link">@item.cName</a>
+                                                    <div class="">
+                                                        <select class="form-select for-detail-select me-4">
+
+                                                            @foreach (var group in Model.GroupBy(item => item.cName))
+                                                            {
+                                                                <option>@group.Select(i => i.c子選項);</option>
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
-                                <div class="mt-2">
-                                    <span>數量</span>
-                                    <select class="form-select me-4 for-count-select">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                    </select>
-                                </div>
-                                <div class="mt-2 ml-5">
-                                    <p class=" mb-0">價格</p>
-                                    <span class="h6">$1,156</span> <br />
-                                    <small class="text-muted text-nowrap"> $460 / 份 </small>
-                                </div>
-                            </div>
-                            <div class="col-lg col-sm-6 d-flex flex-column justify-content-center align-items-sm-center align-items-md-start align-items-lg-center align-items-xl-end mb-2">
-                                <div class="float-md-end">
-                                    <a href="#" class="btn btn-light border  icon-hover-danger"> 移除</a>
-                                </div>
-                            </div>
-                            <hr class="for-hr">
-                        </div>
+                                    <div class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
+                                        <div class="mt-2">
+                                            <span>數量</span>
+                                            <select id="#SelectedQuantity" class="form-select me-4 for-count-select">
+                                                
+                                                <option selected value="1">@item.c數量</option>
+                                                
 
-                        <div class="row gy-3 mb-4">
+                                            </select>
+                                        </div>
+                                        <div class="mt-2 ml-5">
+                                            <p class=" mb-0">價格</p>
+                                            <span id="subtotal" class="h6">$ @item.c小計 </span> <br />
+                                            <small class="text-muted text-nowrap"> $ @item.cPrice / 份 </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg col-sm-6 d-flex flex-column justify-content-center align-items-sm-center align-items-md-start align-items-lg-center align-items-xl-end mb-2">
+                                        <div class="float-md-end">
+                                            <a href="#" class="btn btn-light border  icon-hover-danger"> 移除</a>
+                                        </div>
+                                    </div>
+                                    <hr class="for-hr">
+                                </div>
+                            }
+
+
+                        }
+
+                        @* <div class="row gy-3 mb-4">
                             <div class="col-lg-5">
                                 <div class="me-lg-5">
                                     <div class="d-flex">
@@ -126,9 +136,9 @@
                                 </div>
                             </div>
                             <hr class="for-hr">
-                        </div>
+                        </div> *@
 
-                        <div class="row gy-3">
+                        @* <div class="row gy-3">
                             <div class="col-lg-5">
                                 <div class="me-lg-5">
                                     <div class="d-flex">
@@ -167,7 +177,7 @@
                                     <a href="#" class="btn btn-light border  icon-hover-danger"> 移除</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> *@
                     </div>
                 </div>
             </div>
@@ -265,6 +275,17 @@
     <script src="~/js/form-validator.min.js"></script>
     <script src="~/js/contact-form-script.js"></script>
     <script src="~/js/custom.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#selectedOption").on("change", function () {
+                var selectedValue = parseFloat($(this).val());
+                var price = parseFloat(@Model.);
+
+                var result = selectedValue * price;
+                $("#result").text(result.toFixed(2)); // Display result with 2 decimal places
+            });
+        });
+    </script>
 }
 
 

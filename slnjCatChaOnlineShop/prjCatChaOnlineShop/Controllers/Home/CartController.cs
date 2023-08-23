@@ -2,7 +2,7 @@
 using prjCatChaOnlineShop.Models;
 using prjCatChaOnlineShop.Models.CDictionary;
 using prjCatChaOnlineShop.Models.CModels;
-using prjCatChaOnlineShop.Models.ViewModels;
+using prjCatChaOnlineShop.Services.Function;
 using System.Text.Json;
 
 namespace prjCatChaOnlineShop.Controllers.Home

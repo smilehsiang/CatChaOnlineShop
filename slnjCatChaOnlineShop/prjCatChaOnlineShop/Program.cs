@@ -1,6 +1,6 @@
+using Autofac.Core;
 using Microsoft.EntityFrameworkCore;
 using prjCatChaOnlineShop.Models;
-using prjCatChaOnlineShop.Models.ViewModels;
 using prjCatChaOnlineShop.Services.Function;
 using System.Text.Json.Serialization;
 
@@ -10,11 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 // 添加 Session 服務
 builder.Services.AddSession(options=> {
-    // 設定 Session 的過期時間（以日為單位）
-    options.IdleTimeout = TimeSpan.FromDays(365); // 這裡設定為 365 天
+    // 設定 Session 的過期時間（以分為單位）
+    options.IdleTimeout = TimeSpan.FromMinutes(3); // 測試:這裡設定為 3 分鐘
     });
 builder.Services.AddScoped<ProductService>();
-
+builder.Services.AddHttpContextAccessor();
 //==============解決 json too big 問題（Mandy需要的請勿刪~桑Q）
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
