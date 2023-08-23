@@ -46,30 +46,16 @@ testlogin.addEventListener("click", () => {
 
     // 使用 AJAX 請求呼叫 API
     $.ajax({
-        url: '/Api/Api/TestDBLogin',
+        url: '/Api/Api/玩家資訊數據',
         type: 'GET',
         success: function (data) {
             if (data.length > 0) {
                 UserName = data[0].characterName; //登入時載入使用者名稱
                 Ccoin = gachaTextCCoin.innerHTML = data[0].catCoinQuantity; //貓幣數量
                 Ruby = gachaTextRuby.innerHTML = data[0].loyaltyPoints; //紅利數量
-                milkCount = data[0]["gameItemInfo"][6]["quantityOfInGameItems"]; //牛奶數量productID7
-                canCount = data[0]["gameItemInfo"][7]["quantityOfInGameItems"];//罐罐數量productID8
+                milkCount = data[0]["gameItemInfo"][3]["quantityOfInGameItems"]; //牛奶數量
+                canCount = data[0]["gameItemInfo"][4]["quantityOfInGameItems"];//罐罐數量
                 hightestScore = data[0].runGameHighestScore
-                //載入使用者貓貓資訊
-                if (data[0]["gameItemInfo"][0]["quantityOfInGameItems"] > 0) //productID1 catGY
-                    userBagData.catGY = true; 
-                if (data[0]["gameItemInfo"][1]["quantityOfInGameItems"] > 0) //productID2 catOG
-                    userBagData.catOG = true;  
-                if (data[0]["gameItemInfo"][2]["quantityOfInGameItems"] > 0) //productID3 catBB
-                    userBagData.catBB = true; 
-                if (data[0]["gameItemInfo"][10]["quantityOfInGameItems"] > 0) //productID14 catBK
-                    userBagData.catBK = true; 
-                loadUserBagCatInfo();
-                //console.log(userBagData.catGY)
-                //console.log(userBagData.catOG)
-                //console.log(userBagData.catBB)
-                //console.log(userBagData.catBK)
             }
         },
         error: function () {
