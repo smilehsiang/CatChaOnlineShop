@@ -9,12 +9,21 @@ let userInfo = {
 }
 let userBagData = {
     catDefault: true,
+<<<<<<< HEAD
     catBB: false,//ProductID 3
     catBK: false,//ProductID 14
     catGY: false,//ProductID 1
     catOG: false,//ProductID 2
     milk: 0,
     can: 0
+=======
+    catBB: true,
+    catBK: true,
+    catGY: true,
+    catOG: true,
+    milk: 66,
+    can: 40
+>>>>>>> 0f8cdad65ffc8cab8695511926b56446697dd856
 }
 
 let gachaTextCCoin = document.getElementById('gachaTextCCoin')
@@ -28,23 +37,25 @@ function initialize() {
     milkCount = userBagData.milk;
     canCount = userBagData.can;
     hightestScore = userInfo.runGameHighestScore
-    
+    loadUserBagCatInfo();
 }
 
 //使用者背包貓咪資訊
 function loadUserBagCatInfo() {
-    
-    if (userBagData.catBB == true) {
-        bagItem2.src = '../../images/game/staticCats/kittenBB_stopR.png'
+    if (userBagData.catDefault != true) {
+        bagItem1.src = '../../images/game/staticCats/kitten_lock.png'
     }
-    if (userBagData.catBK == true) {
-        bagItem3.src = '../../images/game/staticCats/kittenBK_stopR.png'
+    if (userBagData.catBB != true) {
+        bagItem2.src = '../../images/game/staticCats/kitten_lock.png'
     }
-    if (userBagData.catGY == true) {
-        bagItem4.src = '../../images/game/staticCats/kittenGY_stopR.png'
+    if (userBagData.catBK != true) {
+        bagItem3.src = '../../images/game/staticCats/kitten_lock.png'
     }
-    if (userBagData.catOG == true) {
-        bagItem5.src = '../../images/game/staticCats/kittenOG_stopR.png'
+    if (userBagData.catGY != true) {
+        bagItem4.src = '../../images/game/staticCats/kitten_lock.png'
+    }
+    if (userBagData.catOG != true) {
+        bagItem5.src = '../../images/game/staticCats/kitten_lock.png'
     }
 }
 
