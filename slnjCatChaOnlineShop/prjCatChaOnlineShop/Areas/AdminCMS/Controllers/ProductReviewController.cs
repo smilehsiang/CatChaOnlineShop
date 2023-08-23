@@ -19,13 +19,14 @@ namespace prjCatChaOnlineShop.Controllers.CMS
         }
         public IActionResult tableData()
         {
-            var rawData = _context.ShopProductReviewTable.ToList();
-            var tableDatas = rawData.Select(x =>
-            {
-                DateTime parsedDateTime;
-                string formattedDateTime = DateTime.TryParse(x.ReviewTime, out parsedDateTime) ? parsedDateTime.ToString("yyyy-MM-dd HH:mm") : "未設定時間";
-                                                            
-            })
+            //var rawData = _context.ShopProductReviewTable.ToList();
+            //var tableDatas = rawData.Select(x =>
+            //{
+            //    DateTime parsedDateTime;
+            //    string formattedDateTime = DateTime.TryParse(x.ReviewTime, out parsedDateTime) ? parsedDateTime.ToString("yyyy-MM-dd HH:mm") : "未設定時間";
+
+            //})
+            return View();
         }
     }
 }

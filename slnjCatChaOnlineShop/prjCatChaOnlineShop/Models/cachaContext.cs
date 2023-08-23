@@ -1240,10 +1240,9 @@ public partial class cachaContext : DbContext
 
         modelBuilder.Entity<ShopReturnDataTable>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Shop.Return Data Table");
+            entity.ToTable("Shop.Return Data Table");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.OrderId).HasColumnName("Order ID");
             entity.Property(e => e.ProcessingStatusId).HasColumnName("Processing Status ID");
             entity.Property(e => e.ReturnDate)
@@ -1251,12 +1250,13 @@ public partial class cachaContext : DbContext
                 .HasColumnName("Return Date");
             entity.Property(e => e.ReturnReasonId).HasColumnName("Return Reason ID");
 
-            entity.HasOne(d => d.ProcessingStatus).WithMany()
+            entity.HasOne(d => d.ProcessingStatus).WithMany(p => p.ShopReturnDataTable)
                 .HasForeignKey(d => d.ProcessingStatusId)
                 .HasConstraintName("FK_Shop.退換貨資料表_Shop.退換貨處理狀態資料表");
 
-            entity.HasOne(d => d.ReturnReason).WithMany()
+            entity.HasOne(d => d.ReturnReason).WithMany(p => p.ShopReturnDataTable)
                 .HasForeignKey(d => d.ReturnReasonId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Shop.退換貨資料表_Shop.退換貨原因資料表");
         });
 

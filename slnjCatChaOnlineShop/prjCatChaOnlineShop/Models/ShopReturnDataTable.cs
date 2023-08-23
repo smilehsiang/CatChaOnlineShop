@@ -9,11 +9,13 @@ public partial class ShopReturnDataTable
 {
     public int OrderId { get; set; }
 
-    public int? ReturnReasonId { get; set; }
+    public int ReturnReasonId { get; set; }
 
     public int? ProcessingStatusId { get; set; }
 
     public DateTime? ReturnDate { get; set; }
+
+    public int Id { get; set; }
 
     public virtual ShopReturnStatusDataTable ProcessingStatus { get; set; }
 

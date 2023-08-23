@@ -44,6 +44,4 @@ public partial class ShopOrderTotalTable
     public virtual ICollection<ShopCustomerBooking> ShopCustomerBooking { get; set; } = new List<ShopCustomerBooking>();
 
     public virtual ICollection<ShopOrderDetailTable> ShopOrderDetailTable { get; set; } = new List<ShopOrderDetailTable>();
-
-    public virtual ICollection<ShopReturnDataTable> ShopReturnDataTable { get; set; } = new List<ShopReturnDataTable>();
 }
