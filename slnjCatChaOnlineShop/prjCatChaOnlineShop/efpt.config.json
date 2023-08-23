@@ -228,10 +228,6 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[Shop.Product Discount]",
-         "ObjectType": 0
-      },
-      {
          "Name": "[dbo].[Shop.Product Image Table]",
          "ObjectType": 0
       },

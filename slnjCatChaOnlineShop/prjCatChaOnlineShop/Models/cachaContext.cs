@@ -123,8 +123,6 @@ public partial class cachaContext : DbContext
 
     public virtual DbSet<ShopProductCategory> ShopProductCategory { get; set; }
 
-    public virtual DbSet<ShopProductDiscount> ShopProductDiscount { get; set; }
-
     public virtual DbSet<ShopProductImageTable> ShopProductImageTable { get; set; }
 
     public virtual DbSet<ShopProductReviewTable> ShopProductReviewTable { get; set; }
@@ -1103,18 +1101,6 @@ public partial class cachaContext : DbContext
                 .HasColumnName("Category Name");
         });
 
-        modelBuilder.Entity<ShopProductDiscount>(entity =>
-        {
-            entity.HasKey(e => e.DiscountId);
-
-            entity.ToTable("Shop.Product Discount");
-
-            entity.Property(e => e.DiscountId).HasColumnName("Discount ID");
-            entity.Property(e => e.DiscountValue)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("Discount Value");
-        });
-
         modelBuilder.Entity<ShopProductImageTable>(entity =>
         {
             entity.HasKey(e => e.ProductImageId).HasName("PK_Shop.商品圖片表");
@@ -1178,6 +1164,7 @@ public partial class cachaContext : DbContext
 
             entity.Property(e => e.ProductId).HasColumnName("Product ID");
             entity.Property(e => e.Attributes).HasMaxLength(50);
+            entity.Property(e => e.Discount).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.DiscountId).HasColumnName("Discount ID");
             entity.Property(e => e.OffDay)
                 .HasColumnType("datetime")
@@ -1197,10 +1184,6 @@ public partial class cachaContext : DbContext
             entity.Property(e => e.Size).HasMaxLength(50);
             entity.Property(e => e.SupplierId).HasColumnName("Supplier ID");
             entity.Property(e => e.Weight).HasMaxLength(50);
-
-            entity.HasOne(d => d.Discount).WithMany(p => p.ShopProductTotal)
-                .HasForeignKey(d => d.DiscountId)
-                .HasConstraintName("FK_Shop.Product Total_Shop.Product Discount");
 
             entity.HasOne(d => d.ProductCategory).WithMany(p => p.ShopProductTotal)
                 .HasForeignKey(d => d.ProductCategoryId)
