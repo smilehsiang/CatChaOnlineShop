@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using prjCatChaOnlineShop.Models;
 using prjCatChaOnlineShop.Models.CModels;
 using System.Collections.Generic;
 
-namespace prjCatChaOnlineShop.Models.ViewModels
+namespace prjCatChaOnlineShop.Services.Function
 {
     public class ProductService
     {
@@ -30,8 +31,8 @@ namespace prjCatChaOnlineShop.Models.ViewModels
                            //p子項目 = p.Attributes,
                            pImgPath = i.ProductPhoto
                        };
-            List<CProductItem> prodList = data.ToList();
-            return prodList;
+             
+            return data.ToList();
         }
         public CProductItem GetProductById(int? id)
         {
@@ -52,7 +53,7 @@ namespace prjCatChaOnlineShop.Models.ViewModels
                            //p子項目 = p.Attributes,
                            pImgPath = i.ProductPhoto
                        };
-            CProductItem item= data.FirstOrDefault();
+            CProductItem item = data.FirstOrDefault();
             return item;
         }
 
