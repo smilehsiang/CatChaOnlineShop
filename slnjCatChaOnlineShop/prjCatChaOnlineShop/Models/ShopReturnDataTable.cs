@@ -15,8 +15,6 @@ public partial class ShopReturnDataTable
 
     public DateTime? ReturnDate { get; set; }
 
-    public int Id { get; set; }
-
     public virtual ShopReturnStatusDataTable ProcessingStatus { get; set; }
 
     public virtual ShopReturnReasonDataTable ReturnReason { get; set; }

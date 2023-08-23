@@ -10,6 +10,4 @@ public partial class ShopReturnReasonDataTable
     public int ReturnReasonId { get; set; }
 
     public string ReturnReason { get; set; }
-
-    public virtual ICollection<ShopReturnDataTable> ShopReturnDataTable { get; set; } = new List<ShopReturnDataTable>();
 }

@@ -135,11 +135,9 @@ public partial class cachaContext : DbContext
 
     public virtual DbSet<ShopShippingMethod> ShopShippingMethod { get; set; }
 
-    public virtual DbSet<Uploadsuccess> Uploadsuccess { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=msit150team02resouce.database.windows.net;Initial Catalog=catcha;Persist Security Info=True;User ID=msit150team02;Password=catcha!123");
+        => optionsBuilder.UseSqlServer("Data Source=msit150team02.database.windows.net;Initial Catalog=msit150team02resouce;Persist Security Info=True;User ID=msit150team02resoucegroup;Password=catcha!123");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -372,34 +370,36 @@ public partial class cachaContext : DbContext
 
         modelBuilder.Entity<GameMessageData>(entity =>
         {
-            entity.ToTable("Game.Message Data");
+            entity
+                .HasNoKey()
+                .ToTable("Game.Message Data");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.ChatRoomId).HasColumnName("Chat Room ID");
             entity.Property(e => e.MemberBId).HasColumnName("Member (B) ID");
 
-            entity.HasOne(d => d.ChatRoom).WithMany(p => p.GameMessageData)
+            entity.HasOne(d => d.ChatRoom).WithMany()
                 .HasForeignKey(d => d.ChatRoomId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Game.訊息資料表_Game.好友列表聊天室資料表");
 
-            entity.HasOne(d => d.MemberB).WithMany(p => p.GameMessageData)
+            entity.HasOne(d => d.MemberB).WithMany()
                 .HasForeignKey(d => d.MemberBId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Game.訊息資料表_Game.會員B訊息資料表");
         });
 
         modelBuilder.Entity<GamePet>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK_Game.Pet_1");
+            entity
+                .HasNoKey()
+                .ToTable("Game.Pet");
 
-            entity.ToTable("Game.Pet");
-
-            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.PetLevelId).HasColumnName("Pet Level ID");
             entity.Property(e => e.PetRarityId).HasColumnName("Pet Rarity ID");
             entity.Property(e => e.PetSkillId).HasColumnName("Pet Skill ID");
             entity.Property(e => e.ProductId).HasColumnName("Product ID");
 
-            entity.HasOne(d => d.Product).WithMany(p => p.GamePet)
+            entity.HasOne(d => d.Product).WithMany()
                 .HasForeignKey(d => d.ProductId)
                 .HasConstraintName("FK_Game.寵物_Game.商品總表");
         });
@@ -773,7 +773,6 @@ public partial class cachaContext : DbContext
             entity.ToTable("Shop.Game Admin Data");
 
             entity.Property(e => e.AdminId).HasColumnName("Admin ID");
-            entity.Property(e => e.AdminAccount).HasMaxLength(50);
             entity.Property(e => e.AdminPassword).HasColumnName("Admin Password");
             entity.Property(e => e.AdminUsername).HasColumnName("Admin Username");
         });
@@ -873,7 +872,9 @@ public partial class cachaContext : DbContext
 
             entity.ToTable("Shop.MemberStatus");
 
-            entity.Property(e => e.StatusId).HasColumnName("StatusID");
+            entity.Property(e => e.StatusId)
+                .ValueGeneratedNever()
+                .HasColumnName("StatusID");
             entity.Property(e => e.Status).HasMaxLength(50);
         });
 
@@ -1053,7 +1054,6 @@ public partial class cachaContext : DbContext
             entity.ToTable("Shop.Product Review Table");
 
             entity.Property(e => e.ProductReviewId).HasColumnName("Product Review ID");
-            entity.Property(e => e.HideReview).HasColumnName("hideReview");
             entity.Property(e => e.MemberId).HasColumnName("Member ID");
             entity.Property(e => e.ProductId).HasColumnName("Product ID");
             entity.Property(e => e.ProductRating).HasColumnName("Product Rating");
@@ -1095,7 +1095,6 @@ public partial class cachaContext : DbContext
 
             entity.Property(e => e.ProductId).HasColumnName("Product ID");
             entity.Property(e => e.Attributes).HasMaxLength(50);
-            entity.Property(e => e.Discount).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.DiscountId).HasColumnName("Discount ID");
             entity.Property(e => e.OffDay)
                 .HasColumnType("datetime")
@@ -1116,7 +1115,7 @@ public partial class cachaContext : DbContext
             entity.Property(e => e.SupplierId).HasColumnName("Supplier ID");
             entity.Property(e => e.Weight).HasMaxLength(50);
 
-            entity.HasOne(d => d.DiscountNavigation).WithMany(p => p.ShopProductTotal)
+            entity.HasOne(d => d.Discount).WithMany(p => p.ShopProductTotal)
                 .HasForeignKey(d => d.DiscountId)
                 .HasConstraintName("FK_Shop.Product Total_Shop.Product Discount");
 
@@ -1158,9 +1157,10 @@ public partial class cachaContext : DbContext
 
         modelBuilder.Entity<ShopReturnDataTable>(entity =>
         {
-            entity.ToTable("Shop.Return Data Table");
+            entity
+                .HasNoKey()
+                .ToTable("Shop.Return Data Table");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.OrderId).HasColumnName("Order ID");
             entity.Property(e => e.ProcessingStatusId).HasColumnName("Processing Status ID");
             entity.Property(e => e.ReturnDate)
@@ -1168,11 +1168,11 @@ public partial class cachaContext : DbContext
                 .HasColumnName("Return Date");
             entity.Property(e => e.ReturnReasonId).HasColumnName("Return Reason ID");
 
-            entity.HasOne(d => d.ProcessingStatus).WithMany(p => p.ShopReturnDataTable)
+            entity.HasOne(d => d.ProcessingStatus).WithMany()
                 .HasForeignKey(d => d.ProcessingStatusId)
                 .HasConstraintName("FK_Shop.退換貨資料表_Shop.退換貨處理狀態資料表");
 
-            entity.HasOne(d => d.ReturnReason).WithMany(p => p.ShopReturnDataTable)
+            entity.HasOne(d => d.ReturnReason).WithMany()
                 .HasForeignKey(d => d.ReturnReasonId)
                 .HasConstraintName("FK_Shop.退換貨資料表_Shop.退換貨原因資料表");
         });
@@ -1229,19 +1229,6 @@ public partial class cachaContext : DbContext
                 .IsFixedLength()
                 .HasColumnName("Shipping Method Name");
             entity.Property(e => e.Shippment).HasColumnType("decimal(18, 0)");
-        });
-
-        modelBuilder.Entity<Uploadsuccess>(entity =>
-        {
-            entity.HasKey(e => e.Uploaded);
-
-            entity.ToTable("uploadsuccess");
-
-            entity.Property(e => e.Uploaded).HasColumnName("uploaded");
-            entity.Property(e => e.FileName)
-                .HasMaxLength(50)
-                .HasColumnName("fileName");
-            entity.Property(e => e.Url).HasColumnName("url");
         });
 
         OnModelCreatingPartial(modelBuilder);

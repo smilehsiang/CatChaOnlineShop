@@ -27,7 +27,5 @@ public partial class GameProductTotal
 
     public virtual ICollection<GameItemPurchaseRecord> GameItemPurchaseRecord { get; set; } = new List<GameItemPurchaseRecord>();
 
-    public virtual ICollection<GamePet> GamePet { get; set; } = new List<GamePet>();
-
     public virtual GameProductCategory ProductCategory { get; set; }
 }
