@@ -270,13 +270,9 @@
       {
          "Name": "[dbo].[Shop.Shipping Method]",
          "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[uploadsuccess]",
-         "ObjectType": 0
       }
    ],
-   "UiHint": "msit150team02resouce.catcha.dbo",
+   "UiHint": "msit150team02.msit150team02resouce.dbo",
    "UncountableWords": null,
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,

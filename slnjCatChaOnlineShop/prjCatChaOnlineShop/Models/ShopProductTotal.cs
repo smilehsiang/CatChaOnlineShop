@@ -35,9 +35,7 @@ public partial class ShopProductTotal
 
     public string Attributes { get; set; }
 
-    public decimal? Discount { get; set; }
-
-    public virtual ShopProductDiscount DiscountNavigation { get; set; }
+    public virtual ShopProductDiscount Discount { get; set; }
 
     public virtual ShopProductCategory ProductCategory { get; set; }
 

@@ -10,6 +10,4 @@ public partial class GameFriendListChatData
     public int FriendId { get; set; }
 
     public int ChatRoomId { get; set; }
-
-    public virtual ICollection<GameMessageData> GameMessageData { get; set; } = new List<GameMessageData>();
 }
