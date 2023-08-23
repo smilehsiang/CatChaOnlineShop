@@ -23,34 +23,51 @@
     <title>後台登入頁-貓抓抓</title>
 </head>
 
-<body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-10 col-xl-8 col-lg-9 col-md-8 col-sm-10">
-                <div class="card" style="box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;">
-                    <div class="card-body p-0">
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="login-right-card p-3 m-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+@using (Html.BeginForm())
+{
+    <body>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10 col-xl-8 col-lg-9 col-md-8 col-sm-10">
+                    <div class="card" style="box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;">
+                        <div class="card-body p-0">
+                            <div class="row">
+                                <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                                <div class="col-lg-6">
+                                    <div class="login-right-card p-3 m-5">
+                                        <div class="text-center">
+                                            <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        </div>
+                                        <div class="user">
+                                            @*<div class="form-group mb-4">
+                                                <input type="email" class="form-control form-control-user"
+                                                       id="exampleInputEmail" aria-describedby="emailHelp" placeholder="帳號"
+                                                       style="border-radius: 30px;">
+                                            </div>*@
+                                            <div class="form-group mb-4">
+                                                帳號
+                                                <div class="col-md-10">
+                                                    @Html.TextBox("AdminAccount", "", new { htmlAttributes = new { @class = "form-control form-control-user" } })
+                                                </div>
+                                            </div>
+@*                                            <div class="form-group mb-4">
+                                                <input type="password" class="form-control form-control-user"
+                                                       id="exampleInputPassword" placeholder="密碼" style="border-radius: 30px;">
+                                            </div>*@
+                                            <div class="form-group mb-4">
+                                                密碼
+                                                <div class="col-md-10">
+                                                    @Html.TextBox("AdminPassword", "", new { htmlAttributes = new { @class = "form-control  form-control-user" } })
+                                                </div>
+                                            </div>
+@*                                            <a href="javascript:;" class="btn btn-primary btn-user btn-block"
+                                               style="width: 100%;border-radius: 30px;">
+                                                登入
+                                            </a>*@
+                                            <button type="submit" class="btn btn-primary btn-user btn-block"
+                                               style="width: 100%;border-radius: 30px;">登入</button>
+                                        </div>
                                     </div>
-                                    <form class="user">
-                                        <div class="form-group mb-4">
-                                            <input type="email" class="form-control form-control-user"
-                                                   id="exampleInputEmail" aria-describedby="emailHelp" placeholder="帳號"
-                                                   style="border-radius: 30px;">
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <input type="password" class="form-control form-control-user"
-                                                   id="exampleInputPassword" placeholder="密碼" style="border-radius: 30px;">
-                                        </div>
-                                        <a href="javascript:;" class="btn btn-primary btn-user btn-block"
-                                           style="width: 100%;border-radius: 30px;">
-                                            登入
-                                        </a>
-                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -58,5 +75,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
+}

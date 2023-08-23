@@ -2,7 +2,7 @@
 body {
     height: 100vh;
     /* 設定容器高度為視窗高度，確保垂直置中的效果 */
-    display: flex;
+    /*display: flex;*/
     justify-content: center;
     align-items: center;
     background-color: #e5d27891;
