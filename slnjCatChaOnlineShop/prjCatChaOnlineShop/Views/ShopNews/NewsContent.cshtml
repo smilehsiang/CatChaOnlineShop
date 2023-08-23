@@ -1,4 +1,4 @@
-﻿
+﻿@model prjCatChaOnlineShop.Models.CModels.CAnnounceWrap
 
 @{
     ViewData["Title"] = "NewsContent";
@@ -35,12 +35,13 @@
 <!-- End All Title Box -->
 <!-- 開始公告頁 -->
 <div class="container mb-4">
-    <div class="title_area">
-        <div class="back-page"> <a href="#"> <返回上一頁 </a></div>
-        <span class="tag_label noti">商城公告</span>
-        <span class="date">2023/8/23</span>
 
-        <strong class="title">Hello</strong>
+    <div class="title_area">
+        <div class="back-page"> <a asp-controller="ShopNews" asp-action="News"> ＜返回上一頁 </a></div>
+        <span class="tag_label noti">商城公告</span>
+        <span class="date">@Model.PublishTime</span>
+
+        <strong class="title">@Model.AnnouncementTitle</strong>
         <div class="icon">
             <a href="">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
@@ -50,12 +51,8 @@
         </div>
     </div>
 
-    <div class="mt-4 d-flex justify-content-center">
-        <img src="https://s1.pearlcdn.com/NAEU/Upload/News/d60c5c1fade20210331143810118.jpg" alt="..." class="img-fluid">
-    </div>
-    <div class="container-area">
-        <h1>haha</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia aliquam impedit harum voluptatibus corporis? Cum veritatis totam vero id maxime ipsa accusantium quidem, cupiditate repellendus nulla, non facilis, quaerat ex.</p>
+    <div class="mt-4" id="html-News">
+        
     </div>
 </div>
 
@@ -79,4 +76,8 @@
     <script src="~/js/contact-form-script.js"></script>
     <script src="~/js/custom.js"></script>
     <script src="~/js/forNews.js"></script>
+    <script>
+        var announcementContent = @Html.Raw(Json.Serialize(Model.AnnouncementContent));
+        $('#html-News').html(announcementContent);
+    </script>
 }
